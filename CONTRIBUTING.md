@@ -2,7 +2,7 @@
 
 ## Request GitHub Project Access
 
-Send an email to the Modular Documentation Project mailing list (ccs-mod-docs@redhat.com) asking nicely to be given access to the Modular Documentation Project on GitHub. Please use the following subject line: REQUESTING ACCESS
+Send an email to the Modular Documentation Project mailing list (ccs-mod-docs@redhat.com) asking nicely to be given access to the Modular Documentation Project on GitHub. Please give us your GitHub username and use the following subject line: REQUESTING ACCESS.
 
 ## Configuring a Local Copy of the GitHub Project
 
