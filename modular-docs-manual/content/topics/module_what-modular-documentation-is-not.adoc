@@ -1,0 +1,8 @@
+[id='what-modular-documentation-is-not']
+= What Modular Documentation Is Not
+
+Legacy (non-modular) documentation split into small, _meaningless_ pieces:: A module must make sense and provide value on its own, even when read separately from the other modules. The templates included in this manual help ensure this.
+A collection of modules that have no relationship to one another:: An unorganized set of modules is confusing to users. That is why we combine modules into:
+* Assemblies that are based on user stories
+* Deliverables, like a book or help system, that present a structured view of the body of knowledge represented by a set of modules
+Always a linear, book-type model:: Modular documentation is designed to enable you to deliver content flexibly. You can combine modules to build lean, article-based content or large, linear books.

@@ -1,0 +1,114 @@
+[[modular-docs-assembly-examples]]
+= Assembly Examples
+
+.Assembly Example: Backing up an MBaaS
+====
+*ASSEMBLY TITLE*
+
+link:https://access.redhat.com/documentation/en/red-hat-mobile-application-platform/4.2/single/mbaas-administration-and-installation-guide/#backing-up-an-mbaas[Backing up an MBaaS]
+
+*PURPOSE OF THE ASSEMBLY*
+
+You can back up an MBaas by following this procedure. After completing the procedure and storing the backup data safely, you can restore an MBaaS to the state at the time of backup.
+
+*PREREQUISITES*
+
+**Requirements**
+
+* A self-managed MBaaS installation on an OpenShift platform
+* A local installation of the oc binary
+* The oc binary has a logged in user on the platform you wish to back up
+* The oc binary has a logged in user with permission to run the oc get pc command
+
+*CONCEPT MODULE(S)*
+
+**Expected Storage Requirements**
+
+(...)
+
+**What Data is Backed Up**
+
+(...)
+
+*PROCEDURE MODULE(S)*
+
+**Backing up the MongoDB Data**
+
+(...)
+
+**Backing up the Nagios Data**
+
+(...)
+
+*RELATED INFORMATION*
+
+N/A
+====
+
+.Assembly Example: Tuning Provisioning of a Large Number of Entries
+====
+*ASSEMBLY TITLE*
+
+link:https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7-Beta/html/Linux_Domain_Identity_Authentication_and_Policy_Guide/performance-tuning.html[Tuning Provisioning of a Large Number of Entries]
+
+*PURPOSE OF THE ASSEMBLY*
+
+Adding a large number of entries using the usual workflow can be very slow. This chapter describes how to tune the process to ensure the provisioning is completed as quickly as possible.
+
+As part of the procedure:
+
+* Identity Management reads entries to be provisioned from an LDIF file and then imports them to the target Identity Management LDAP instance.
+* The administrator sets custom values for certain attributes, such as cache sizes, and disables the MemberOf and Schema Compatibility plug-ins. The procedure includes running the **fixup-memberof.pl** plug-in on the provisioned entries to compensate for disabling MemberOf.
+
+This procedure has been designed and tested to provision the following entry types: user, user group, host, host group, sudo rules, and host-based access control rules.
+
+*PREREQUISITES*
+
+**Recommendations and Prerequisites**
+
+Recommendations:
+
+* When provisioning a large number of entries (10,000 or more), do not allow any LDAP client to access the server on which the entries are provisioned or to rely on the information from the server. For example, you can achieve this by disabling ports 389 and 636 on the server and using LDAPI to work over Unix sockets.
++
+Reason: The MemberOf plug-in is disabled on the server, which means that membership information on the server is not valid.
+* Stop applications that are not required to be running during the provisioning.
++
+Reason: This helps free as much memory on the machine as possible. The free memory will be used by the file system cache, thus improving the performance of the provisioning.
+* Run the procedure on a fresh IdM deployment with only one server. Create replicas only after the provisioning has been completed.
++
+Reason: The provisioning throughput is much faster than replication. In a deployment with more that one server, information on the replicas would become significantly outdated.
+
+Prerequisites:
+
+* Generate an LDIF file containing the entries you want to provision. For example, if you are migrating an existing IdM deployment, create the LDIF file by exporting all the entries using the **ldapsearch** utility.
+
+*CONCEPT MODULE(S)*
+
+N/A
+
+*PROCEDURE MODULE(S)*
+
+**Backing up the Current DS Tuning Parameter Values**
+
+(...)
+
+**Adjusting the Database, Domain Entry, and DN Cache Size**
+
+(...)
+
+**Disabling Unnecessary Services and Adjusting Database Locks**
+
+(...)
+
+**Importing the Entries**
+
+(...)
+
+**Re-enabling the Disabled Services and Restoring the Original Attribute Values**
+
+(...)
+
+*RELATED INFORMATION*
+
+N/A
+====

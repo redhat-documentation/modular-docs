@@ -1,0 +1,9 @@
+// The master.adoc file for The Modular Documentation Reference Guide
+
+include::common-content/attributes.adoc[]
+
+
+// Book Title
+= Modular Documentation Reference Guide
+
+include::content/modular-doc-manual.adoc[]

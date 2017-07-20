@@ -1,0 +1,62 @@
+[[procedure-module-guidelines]]
+= Procedure Module Guidelines
+
+// [bhardest] - The original structure of the content here confused me since it's presented as a cross between a procedure template and a description of what a procedure is. I've taken a stab at reorganizing it in a way that hopefully is more clear and more consistent with template_concept.adoc.
+
+A procedure module is a procedure written with numbered steps -- what a customer needs to do to accomplish a goal successfully.
+
+// [bhardest] - Here's a stab at a procedure diagram. Like with the concept, this can be made more professional later.
+
+image::procedure-diagram.png[]
+
+[[writing-the-short-description]]
+.Writing the Short Description
+This paragraph explains why the user performs the procedure, sets the context of the procedure, and may explain or list special considerations specific to this procedure. Keep the information brief and focused on what is needed for this specific procedure. Suggested length is 1-3 sentences, but it can be longer if needed.
+
+To write an effective short description, include information about when users should perform the procedure and why it is necessary. If applicable, you can also include information about who should perform it and where it should be performed.
+
+[[writing-prerequisites]]
+.Writing Prerequisites
+Prerequisites are the set of conditions that must be in place before the user can start the procedure.
+
+If the procedure has a single prerequisite, write it as a sentence. If there are multiple prerequisites, use a bulleted list. In both cases, each prerequisite should be stated as a condition that already exists.
+
+|===
+| Correct | Incorrect
+
+| A static IP address has been allocated.
+| Obtain a static IP address.
+
+|===
+
+// [bhardest] - The above table illustrates the form I've used for prereqs that has been most effective. However, we might want to soften it to a suggestion if others prefer to state prereqs differently.
+
+If a prerequisite is a procedure that the user must do before starting this procedure, include a link to it.
+
+The `Prerequisites` section is optional. Try to focus on relevant prerequisites that users might not otherwise be aware of. Don't list obvious prerequisites.
+
+// [bhardest] - We'll probably need to add some examples to further illustrate the different scenarios that are described above.
+
+[[writing-the-procedure]]
+.Writing the Procedure
+The procedure consists of one or more steps required to complete the procedure. If there is just a single step, use an unnumbered bullet. If there are multiple steps, use a numbered list.
+
+// [bhardest] - While single-step procedures are allowed, it can be difficult for users to scan/find what they need if there are a large number of single-step procedures. We should advise writers how to handle this type of scenario (for example, if each procedure is a single step to run a single command). The way that I have handled this scenario in the past has been to use a two-column table in which the left column defines the procedure you can do, and the right column lists the command to use.
+
+Start each step with an active verb, because each step corresponds to one user action. Include only one command or action per step.
+
+////
+[bhardest] - It might be helpful here to include some examples that demonstrate different scenarios. For example:
+* Single-step procedure
+* Multi-step procedure (preferably showing both the command/action and "result" of the procedure)
+* Step with choices (i.e. step with indented bulleted list)
+* procedure with substeps (with some accompanying guidelines about how much step-nesting is appropriate)
+////
+
+.Adding Additional Resources
+If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this procedure. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.
+
+== Related Information
+For real-world examples of procedure modules, and its individual parts, see <<modular-docs-procedure-examples>>.
+
+Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[procedure module template] for new projects.

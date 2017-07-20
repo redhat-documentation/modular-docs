@@ -1,0 +1,63 @@
+[[modular-docs-concept-examples]]
+= Concept Module Examples
+
+.Concept Module: How Ceph Works with Satellite 5
+====
+
+*CONCEPT TITLE*
+
+How Ceph Works with Satellite 5
+
+*CONCEPT EXPLANATION*
+
+When a Red Hat Ceph Storage node is connected to a Red Hat Satellite 5 Server, the server hosts package repositories and provides system updates.
+
+Once you register the Red Hat Ceph Storage nodes with the Satellite 5 server, you can deliver upgrades to the Ceph cluster without allowing a direct connection to the Internet, as well as search and view errata applicable to the cluster nodes.
+
+*RELATED INFORMATION*
+
+N/A
+====
+
+.Concept Module Example: What a Database Contains
+====
+*CONCEPT TITLE*
+
+What a Database Contains
+
+*CONCEPT EXPLANATION*
+
+Every database consists of:
+
+* _Data_
+* _Schema_: a specification of structure of the data
+
+For example, an online store might contain such data: user names, their passwords, products they bought, and how many products remain in the store.
+
+This data is organized using a schema that might be represented by three tables, each containing:
+
+* User names and their corresponding passwords
+* User names and the list of products they bought
+* Products available in the store and their quantities
+
+*RELATED INFORMATION*
+
+N/A
+====
+
+.Concept Module Example: Types of Groups in Identity Management
+====
+*CONCEPT TITLE*
+
+Types of Groups in Identity Management
+
+*CONCEPT EXPLANATION*
+
+POSIX groups (the default):: Groups that support POSIX attributes for their members.
+Non-POSIX groups:: Groups whose group members must belong to the IdM domain.
+External groups:: Groups that support adding group members who exist in an identity store outside of the IdM domain. The external store can be a local system, an Active Directory domain, or a directory service.
+
+*RELATED INFORMATION*
+
+N/A
+====

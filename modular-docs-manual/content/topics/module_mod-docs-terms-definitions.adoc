@@ -1,0 +1,35 @@
+[[modular-docs-terms-definitions]]
+= Modular Documentation Terms and Definitions
+
+Assembly:: A collection of several modules combined into a larger piece of text, preceded by an introduction that explains the purpose of the assembly.
++
+The docs realization of a _user story_.
+
+Module:: A building block of information with a well-organized structure.
++
+Because modules are written as context-free elements independent of other modules, they are re-usable: one module can be part of multiple assemblies.
++
+Concept Module::: Explains a concept; i.e. not action-based.
+Procedure Module::: Describes steps to perform an action.
+Reference Module::: Presents detailed reference material, for example, command syntax.
+
+User Story:: A short description of something the user does to achieve a goal.
++
+Example: As an administrator, I want to set up authentication to a critical system in my infrastructure (gateway VPN, accounting system) to only allow users authenticated via strong authentication methods (two-factor authentication).
++
+As opposed to a _use case_, which is a description of interactions between the system and the user or other systems.
++
+For details, see link:https://mojo.redhat.com/groups/ccs/blog/2016/11/24/user-stories-and-use-cases-whats-the-difference[User Stories and Use Cases: What's the Difference?] in Mojo.
++
+[IMPORTANT]
+====
+To fulfill their purpose, user stories must be defined based on customer needs. Therefore, they must be produced by customer-facing associates (such as product management or field teams), not by writers. Writers can only help polish the user stories if required.
+
+If your team does not have user stories, do not write them yourselves. Instead, ask the stakeholders for your product to provide them to you.
+====
+
+User story-based docs:: Docs developed to support a user story. For our purposes, user-story-based docs are the same as use-case-based docs.
+
+Modular docs:: Docs structured into modules and assemblies.
+
+NOTE: We do not use the terms _topic_ or _topic-based documentation_ because they are too ambiguous. A _topic_ can mean a piece of documentation, a user story, or a short chunk of content. Therefore, topic-based can mean a number of things.

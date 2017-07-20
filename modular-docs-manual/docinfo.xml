@@ -1,0 +1,45 @@
+<title>Modular Documentation Reference Manual</title>
+<productname>CCS Internal Documentation</productname>
+<productnumber>1.3</productnumber>
+<subtitle>Creating modular documentation at Red Hat</subtitle>
+<abstract>
+    <para>
+      This reference manual provides instructions on how to create modular documentation.
+    </para>
+</abstract>
+<authorgroup id="Author_Group" remap="TID_28780">
+  <affiliation>
+    <orgname> Modular Documentation Team </orgname>
+    <email> ccs-mod-docs@redhat.com </email>
+  </affiliation>
+  <author>
+    <firstname>Aneta</firstname>
+    <surname>Šteflová Petrová</surname>
+    <email>apetrova@redhat.com</email>
+  </author>
+  <author>
+    <firstname>Betty</firstname>
+    <surname>Prioux</surname>
+    <email>bprioux@redhat.com</email>
+  </author>
+  <author>
+    <firstname>Aron</firstname>
+    <surname>Gunn</surname>
+    <email>agunn@redhat.com</email>
+  </author>
+  <author>
+    <firstname>Ben</firstname>
+    <surname>Hardesty</surname>
+    <email>bhardest@redhat.com</email>
+  </author>
+  <author>
+    <firstname>Robert</firstname>
+    <surname>Krátký</surname>
+    <email>rkratky@redhat.com</email>
+  </author>
+  <author>
+    <firstname>Toby</firstname>
+    <surname>Drake</surname>
+    <email>tdrake@redhat.com</email>
+  </author>
+</authorgroup>

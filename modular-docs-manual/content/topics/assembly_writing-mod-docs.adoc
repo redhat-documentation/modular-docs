@@ -1,0 +1,33 @@
+[[writing-mod-docs]]
+= Writing Modular Documentation
+
+Assemblies can include various types of modules. Use the instructions in the following sections to create modules and combine them into assemblies.
+
+
+== Creating Modules
+
+Follow these guidelines to create different types of modules:
+
+* xref:concept-module-guidelines[Concept Module]
+* xref:procedure-module-guidelines[Procedure Module]
+* xref:reference-module-guidelines[Reference Module]
+
+See <<appendix-examples>> for real-world examples of assemblies, modules, and their individual parts.
+
+include::module_guidelines-concept.adoc[leveloffset=+2]
+
+include::module_guidelines-procedure.adoc[leveloffset=+2]
+
+include::module_guidelines-reference.adoc[leveloffset=+2]
+
+
+== Forming Assemblies
+
+Form assemblies by following the assembly guideline.
+
+include::module_guidelines-assembly.adoc[leveloffset=+2]
+
+
+== Additional Resources
+
+* Real-world examples of assemblies, modules, and their individual parts: <<appendix-examples>>.

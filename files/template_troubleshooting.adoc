@@ -1,0 +1,22 @@
+[[troubleshooting-module-guidelines]]
+=== Troubleshooting Module Guidelines
+
+Start the module with a more detailed description of how the problem presents itself. Help the reader make sure that this is the problem they are experiencing. Describe the symptoms of the problem: for example, what error messsages are displayed?
+
+After reading this, the reader must be able to tell whether to continue reading or whether to search the other troubleshooting modules for a better match.
+
+.What this means:
+
+Explain the root cause of the problem. Why is the problem happening?
+
+The reader must be able to skip this part if they are only looking to resolve the problem.
+
+.To fix the problem:
+
+Steps to resolve the problem. See the Procedure part of the Procedure Module template.
+
+.Related Information
+
+* Links to content that can help prevent similar problems in the future.
+* Links to content that explains the subject matter in more detail.
+* See the Related Information part of the Procedure Module template.

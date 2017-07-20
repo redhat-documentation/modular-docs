@@ -1,0 +1,22 @@
+[id='what-modular-documentation-is']
+= What Modular Documentation Is
+
+Modular documentation is documentation based on _modules_, which the writer combines into _assemblies_. An assembly can also include other assemblies.
+
+[IMPORTANT]
+====
+Nesting assemblies too deep can create too much complexity, which might make the documentation difficult to use and maintain. If you are worried this might be the case, consider linking to another assembly as an alternative to direct inclusion.
+====
+
+At Red Hat, we write modular documentation that is based on _user-stories_. This means that each assembly documents a user story.
+
+.Schema of a Module and an Assembly
+image::modules_assemblies.png[]
+// The image is just a draft, we can create a fancier one later.
+
+[discrete]
+== Additional Resources
+
+* For definitions of the terms we use, including modules, assemblies, and user stories, see <<modular-docs-terms-definitions>>.
+
+* For an explanation of why user-story-based docs are useful, see link:https://mojo.redhat.com/groups/ccs/blog/2017/06/27/from-legacy-docs-to-modular-docs-based-on-user-stories[From Legacy Docs to Modular Docs Based on User Stories] in Mojo.

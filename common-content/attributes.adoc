@@ -1,0 +1,3 @@
+// Use this file to defione attributes shared by all content in the repo.
+
+:imagesdir: images
