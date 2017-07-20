@@ -14,8 +14,8 @@ USAGE: $0 [OPTION]... <guide>
 
 DESCRIPTION: Build all of the guides (default), or a single guide.
 
-Run this script from either the root of your cloned repo or from the 'scripts/' directory. For example:
-  cd doc-Tech_Writers_Manual/scripts
+Run this script from either the root of your cloned repository or from the 'scripts/' directory, for example:
+  cd modular-docs/scripts
   $0
 
 OPTIONS:
@@ -26,9 +26,7 @@ EXAMPLES:
    $0
 
   Build a specific guide(s) from $DOCS_SRC:
-    $0 asciidoc-cookbooks
     $0 modular-docs-manual
-    $0 asciidoc-cookbooks modular-docs-manual
 
 EOM
 # Now list the valid book values
