@@ -13,13 +13,6 @@ This repository uses the following directory structure:
     └── *.png (Image files)
 ├── scripts/
     └── buildGuide.sh (Script to build the books locally)
-├── asciidoc-cookbooks/ (A book)
-    ├── README.md (The README file)
-    ├── docinfo.xml (Publican build information)
-    ├── master.adoc (Master layout of included modules for the book)
-    ├── metadata.ini (Pantheon build information)
-    ├── topics/
-        └── *.adoc (AsciiDoc module files)
 ├── common-content/
     └── attributes.adoc (AsciiDoc files)
 ├── modular-docs-manual/ (Another book)
