@@ -42,6 +42,8 @@ When you make changes to these books, it is a good practice to do a local test b
 
 You can build the book locally using AsciiDoctor.
 
+http://asciidoctor.org/docs/#get-started-with-asciidoctor
+
 For Red Hat Use Only :
 
 You can install `ccutil` to test the build before you submit a merge request. Follow these instructions to install `ccutil`:
