@@ -44,7 +44,7 @@ You can build the book locally using AsciiDoctor.
 
 http://asciidoctor.org/docs/#get-started-with-asciidoctor
 
-For Red Hat Use Only :
+**Red Hat Use Only:**
 
 You can install `ccutil` to test the build before you submit a merge request. Follow these instructions to install `ccutil`:
 
@@ -63,7 +63,7 @@ or
 The build script in this repository execute two builds for each reference:
 
 * An HTML version using `asciidoctor`. This provides a basic build for people who do not have access to `ccutil`.
-* Red Hat Use Only : An epub/PDF/HTML version using `ccutil`. This build is closer to the Publican build and does better error checking.
+* **Red Hat Use Only:** An epub/PDF/HTML version using `ccutil`. This build is closer to the Publican build and does better error checking.
 
 They also provide a link to the resulting guides in the console output.
 
