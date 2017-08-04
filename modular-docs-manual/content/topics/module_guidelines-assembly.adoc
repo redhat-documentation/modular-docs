@@ -13,7 +13,7 @@ You can include additional paragraphs--and even concept modules--if they're nece
 
 // [bhardest] - Do we have any examples of including concepts within the intro paras? In the "Examples" appendices, the concept modules appear after the prereqs section, not as part of the intro.
 
-For more information about writing the intro paragraphs, see xref:writing-the-short-description[Writing the Short Description].
+For more information about writing the intro paragraphs, see xref:writing-the-introduction[Writing the Introduction].
 
 .Writing Prerequisites
 

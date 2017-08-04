@@ -1,0 +1,13 @@
+[[creating-procedure-modules]]
+= Creating Procedure Modules
+
+This section explains what a procedure module is and provides recommended practices for writing procedure modules.
+
+include::module_definition-procedure.adoc[leveloffset=+1]
+
+include::module_guidelines-procedure.adoc[leveloffset=+1]
+
+== Additional Resources
+
+* Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[procedure module template (adoc file)] for new projects.
+* For real-world examples of procedure modules, see <<modular-docs-procedure-examples>>.
