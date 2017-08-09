@@ -1,0 +1,32 @@
+[[concept-module-guidelines]]
+= Concept Module Guidelines
+
+A concept module describes and explains things such as a product, subsystem, or feature -- what a customer needs to understand to do a procedure. A concept module may also explain how things relate and interact with other things. The use of graphics and diagrams can speed up understanding of a concept.
+
+image::concept-diagram.png[]
+
+.Guidelines for Writing Concepts
+* Look at nouns and noun phrases in related procedure modules and user story assemblies to find the concepts to explain to users.
+
+* A concept module in product documentation should explain only things that are visible to users.
+
+* If a product concept is interesting, but not visible to users, the concept probably does not require explanation in a concept module.
+
+* A concept module should NOT include numbered steps or other wording that instructs a user to execute a command or perform an action. Instead, put that information in a separate procedure module or user story assembly.
+
+.Writing the Short Description
+A concept module should start with a short description - a single, concise paragraph that provides a short overview of the module, its content, and why users should care about it. You can think of the short description as the module's thesis statement.
+
+Writing a good short description makes your content more usable, as users can quickly determine whether the content is useful for their goals without having to read the entire concept module.
+
+A good short description should answer the following questions:
+* What is this?
+* Why should I care about this?
+
+TIP: For maximum effect, keep your short description to 50 words or less. If you need more than 50 words, the concept might be too broad for a single module.
+
+.Writing the Body
+The body is where you describe the subject of the concept module. You can use paragraphs, unordered lists, tables, graphics, and examples. However, each element in the body should relate back to the short description.
+
+.Adding Additional Resources
+If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this concept. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.
