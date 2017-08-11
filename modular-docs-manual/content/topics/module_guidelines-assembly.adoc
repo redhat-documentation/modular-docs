@@ -1,8 +1,6 @@
 [[assembly-guidelines]]
 = Assembly Guidelines
 
-An assembly is a collection of modules that describes how to accomplish a user story.
-
 // [bhardest] - Can assemblies be nested and/or combined?
 
 .Writing the Intro Paragraphs
@@ -30,7 +28,3 @@ The assembly procedure consists of one or more steps to complete the user story.
 If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this user story. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.
 
 // [bhardest] - This might not technically be correct. At the assembly level, I think we only want to provide related links to other assemblies (or possibly to other modules that apply to the entire assembly). It would be overkill to provide related links specific only to a particular module contained within the assembly.
-
-== Related Information
-
-Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_ASSEMBLY.adoc[assembly template] for new projects.

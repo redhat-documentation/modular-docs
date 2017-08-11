@@ -1,0 +1,12 @@
+[[forming-assemblies]]
+= Forming Assemblies
+
+This section explains what an assembly is and provides recommended practices for forming assemblies.
+
+include::module_definition-assembly.adoc[leveloffset=+1]
+
+include::module_guidelines-assembly.adoc[leveloffset=+1]
+
+== Additional Resources
+
+* Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_ASSEMBLY.adoc[assembly template] for new projects.

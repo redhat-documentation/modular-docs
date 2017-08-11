@@ -21,11 +21,7 @@ include::assembly_creating_procedure_modules.adoc[leveloffset=+2]
 include::module_guidelines-reference.adoc[leveloffset=+2]
 
 
-== Forming Assemblies
-
-Form assemblies by following the assembly guideline.
-
-include::module_guidelines-assembly.adoc[leveloffset=+2]
+include::assembly_forming_assemblies.adoc[leveloffset=+1]
 
 
 == Additional Resources
