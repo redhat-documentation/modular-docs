@@ -1,3 +1,30 @@
 [[assembly-guidelines]]
 = Assembly Guidelines
 
+// [bhardest] - Can assemblies be nested and/or combined?
+
+.Writing the Intro Paragraphs
+
+The first paragraph of the assembly explains what the user will accomplish by working through the procedures in sequence. It sets context or explains the benefit the user will gain by performing the procedures that comprise the story.
+
+You can include additional paragraphs--and even concept modules--if they're necessary to fully explain the context, benefits, and other things the user must understand to complete the procedures successfully.
+
+// [bhardest] - Do we have any examples of including concepts within the intro paras? In the "Examples" appendices, the concept modules appear after the prereqs section, not as part of the intro.
+
+For more information about writing the intro paragraphs, see xref:writing-the-short-description[Writing the Short Description].
+
+.Writing Prerequisites
+
+Prerequisites are the set of conditions that must be in place before the user can start the procedure. For more information, see xref:writing-prerequisites[Writing Prerequisites].
+
+// [bhardest] - We have a lot of xref-ing in these guidelines. A better approach might be to create a "snippets" .adoc file with snippets of common content (for example, the content about writing prerequisites, which applies to multiple sections). Then we can just include the relevant content from the snippets file wherever it's needed.
+
+.Writing the Procedure
+
+The assembly procedure consists of one or more steps to complete the user story. Each step should be a link to a procedure module.
+
+.Adding Related Information
+
+If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this user story. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.
+
+// [bhardest] - This might not technically be correct. At the assembly level, I think we only want to provide related links to other assemblies (or possibly to other modules that apply to the entire assembly). It would be overkill to provide related links specific only to a particular module contained within the assembly.
