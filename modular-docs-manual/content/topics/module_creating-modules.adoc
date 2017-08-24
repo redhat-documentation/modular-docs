@@ -1,0 +1,20 @@
+[[creating-modules]]
+= Creating Modules
+
+After identifying and creating the assemblies, each assembly should identify the modules that you need to create.
+
+.Procedure
+
+. For each assembly that you created, create a module file for each module that is identified in the assembly.
++
+Each assembly should already have the names of the modules that should be included in the assembly. Now you just need to create the actual files for those modules.
+
+. For each module file that you created, add content.
++
+--
+Use your existing, feature-based manual to get the content. Make sure to rewrite and rework it to fit the modular documentation module templates. For more information, see:
+
+* xref:concept-module-guidelines[Concept Module Guidelines]
+* xref:procedure-module-guidelines[Procedure Module Guidelines]
+* xref:reference-module-guidelines[Reference Module Guidelines]
+--

@@ -1,0 +1,38 @@
+[[converting-to-mod-doc]]
+= Converting to Modular Documentation
+
+If you have a monolithic, feature-based manual, you can convert it to a set of modular content based on user stories. This conversion workflow involves using the customer product lifecycle to define user stories for your product, and creating the assemblies and modules necessary to fit each user story.
+
+The result is documentation that is more relevant for your readers, because it is based on real-world user stories (it tells them how to accomplish their goals), and modular (it can be assembled into whatever sets and formats they might need). 
+
+
+== Prerequisites
+
+* You should understand the following important concepts:
+** xref:what-modular-documentation-is[What Modular Documentation Is]
+** xref:what-modular-documentation-is-not[What Modular Documentation Is Not]
+** Modular documentation benefits [NEED LINK]
+** xref:modular-docs-terms-definitions[Modular Documentation Terminology]
+
+* Find a user story and practice documenting it as an xref:assembly-guidelines[assembly].
++
+This process of breaking down user stories into assemblies and modules is an essential element of modular documentation. You should be familiar with this process before attempting to do it for an entire feature-based book.
+
+* Your repository should be set up.
++
+--
+If you are using AsciiDoc, your repository should have a directory structure that supports modular documentation, and you should have a `master.adoc` file for each publication.
+
+[NEED LINK] 
+--
+
+
+include::module_customer-product-lifecycle.adoc[leveloffset=+1]
+
+include::module_defining-user-stories.adoc[leveloffset=+1]
+
+include::module_creating-assemblies.adoc[leveloffset=+1]
+
+include::module_creating-modules.adoc[leveloffset=+1]
+
+include::module_auditing.adoc[leveloffset=+1]

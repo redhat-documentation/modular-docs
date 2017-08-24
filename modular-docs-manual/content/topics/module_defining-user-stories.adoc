@@ -1,0 +1,77 @@
+[[defining-user-stories]]
+= Defining User Stories for Your Product
+
+User stories provide the context and structure from which you can determine which assemblies and modules to create.
+
+Ideally, well-defined user stories would already exist for the product you are documenting. For most writers, however, this ideal is not a reality. If you do not have any user stories from which to work, and you -- as a writer -- do not have all of the user information you would need to create the user stories yourself, how do you get started? This procedure provides a general approach that you can take. Of course, every product differs in terms of tools, processes, team dynamics, and access to SMEs. Since you are most familiar with these aspects for your own team, you will need to adapt this general approach for your own team.
+
+.Procedure
+
+. Collect any existing user stories for your product.
++
+You might need to talk to your Product Manager and Content Strategist.
+
+. Identify the key, top-level user stories for your product.
++
+--
+If your product does not have any user stories, you can use the customer product lifecycle to get started. You can consider each phase of the lifecycle to be a user story.
+
+You may not need to use every phase of the customer lifecycle, but for now, you should pick the ones that you know apply to your product. In the next step, you will start to refine them.
+
+For more information, see xref:customer-product-lifecycle[Overview of the Customer Product Lifecycle].
+--
+
+. Define the supporting user stories that are necessary to complete each of the top-level user stories.
++
+--
+Each top-level user story represents a "phase" of the customer lifecycle. You should go through each phase and define the user stories needed to complete the phase. You will need to use your own knowledge and expertise of the product.
+
+For example, for the _Configure and Verify_ phase, users would need to know how to configure and set up each component or feature of the product to work in their environment. You could break it down like this:
+
+.Creating Second-Level User Stories
+====
+* Configure Product X so that it is ready for production
+** Create network connections to enable Product X to accept and make connections to other endpoints
+** Add security settings so that Product X can communicate with remote peers securely
+** Set up logging to ensure that error conditions can be diagnosed
+====
+
+At this point, you should have a two-deep list of user stories.
+--
+
+. Go back through the list and add any additional user stories that might be needed to complete any of the secondary user stories.
++
+--
+Depending on the product, one or two levels of user stories might be sufficient. For larger, more complex products, you might find yourself going multiple levels deep.
+
+Be careful not to go too deep, however. At this stage, you are not defining every procedure or step needed to complete each user story. User stories represent user goals, so you should only need to go deeper if a secondary user story has multiple goals.
+
+For example, under the "Configuring Product X" example in the previous step, the logging user story does not need any additional user stories -- the goal cannot be reduced any further than it already is. On the other hand, the adding security settings user story might be able to go a bit deeper. Security is a goal in and of itself (users want their applications to be secure), but there are more specific goals users might have within it: they might want to use mutual authentication, or only single-factor authentication. They might need to encrypt connections, and so on.
+-- 
+
+. For each user story in your list, define the following:
++
+--
+* What concepts does the user need to understand to complete the user story?
++
+These will become the concept modules for the assembly.
+
+* What are the steps to complete the user story?
++
+Each step will become a procedure module.
+
+* Is there any reference information that the user might want to refer to when performing this user story?
++
+These will become reference modules.
+
+.Breaking Down User Stories
+====
+* Configure Product X so that it is ready for production
+** Create network connections to enable Product X to accept and make connections to other endpoints
+*** Concept: Types of connections
+*** Procedure: Create "listeners" to accept incoming connections
+*** Procedure: Create "connectors" to connect to outbound endpoints
+*** Reference: Network connection configuration attributes
+** _Additional user stories..._
+====
+--
