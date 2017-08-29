@@ -10,7 +10,8 @@ To help the documentation teams become more agile with their documentation.
 This agility will help us to better serve our readers with a more purposeful reading experience.
 A modular-based content model sets a foundation for innovation.
 Modular documentation provides a structure for writing and presenting user-story-based documentation.
-User-story-based documentation attempts to address the customer's needs more than focusing on feature-based documentation.  User-story-based documentation also helps the documentation teams with the amount of documents that they have to maintain, by helping them to focus on what really matters.
+User-story-based documentation attempts to address the reader's needs more than focusing on feature-based documentation.
+User-story-based documentation also helps the documentation teams with the amount of documents that they have to maintain, by helping them to focus on what really matters.
 
 ## Any Questions?
 
