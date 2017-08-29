@@ -1,5 +1,21 @@
 # The Modular Documentation Project Source Repository
 
+## What is the Purpose of the Modular Documentation Project?
+
+To provide the documentation teams within Customer Content Services with a set of resources to assist them as they write user-driven content or convert their current documentation framework to a modular-based documentation framework.
+
+## Why Are We Doing This?
+
+To help the documentation teams become more agile with their documentation.
+This agility will help us to better serve our customers with a more purposeful reading experience.
+A modular-based content model sets a foundation for innovation.
+Modular documentation provides a structure for writing and presenting user-story-based documentation.
+User-story-based documentation attempts to address the customer's needs more than focusing on feature-based documentation.  User-story-based documentation also helps the documentation teams with the amount of documents that they have to maintain, by helping them to focus on what really matters.
+
+## Any Questions?
+
+Send an email to our mailing list (ccs-mod-docs@redhat.com).
+
 ## Repository Structure
 
 This repository uses the following directory structure:
@@ -43,20 +59,6 @@ When you make changes to these books, it is a good practice to do a local test b
 You can build the book locally using AsciiDoctor.
 
 http://asciidoctor.org/docs/#get-started-with-asciidoctor
-
-**Red Hat Use Only:**
-
-You can install `ccutil` to test the build before you submit a merge request. Follow these instructions to install `ccutil`:
-
-https://gitlab.cee.redhat.com/ccs-tools-documentation/docs2drupal-user-guide/blob/master/ccutil-install.adoc
-
-The `ccutil` utility requires Ruby. If you have not installed Ruby, you can use this command to install it:
-
-    dnf install ruby
-
-or
-
-    yum install ruby
 
 ### Building the References
 
