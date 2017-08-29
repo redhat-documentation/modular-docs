@@ -2,7 +2,7 @@
 
 ## What is the Purpose of the Modular Documentation Project?
 
-To provide the documentation teams with a set of resources to assist them as they write user-driven content or convert their current documentation framework to a modular-based documentation framework.
+To provide documentation teams with a set of resources to assist them as they write user-driven content or convert their current documentation framework to a modular-based documentation framework.
 
 ## Why Are We Doing This?
 
