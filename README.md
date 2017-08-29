@@ -62,17 +62,15 @@ http://asciidoctor.org/docs/#get-started-with-asciidoctor
 
 ### Building the References
 
-The build script in this repository execute two builds for each reference:
+The build script in this repository execute a build for each reference:
 
-* An HTML version using `asciidoctor`. This provides a basic build for people who do not have access to `ccutil`.
-* **Red Hat Use Only:** An epub/PDF/HTML version using `ccutil`. This build is closer to the Publican build and does better error checking.
+* An HTML version using `asciidoctor`.
 
-They also provide a link to the resulting guides in the console output.
+The build script provides a link to the resulting guide in the console output.
 
 To build all of the books, navigate to the root of this directory and type the following command:
 
     scripts/buildGuides.sh
-
 
 To build a single book, you can pass the book folder name on the above command line, for example:
 
