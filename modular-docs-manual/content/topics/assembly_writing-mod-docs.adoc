@@ -9,14 +9,14 @@ Assemblies can include various types of modules. Use the instructions in the fol
 Follow these guidelines to create different types of modules:
 
 * xref:concept-module-guidelines[Concept Module]
-* xref:procedure-module-guidelines[Procedure Module]
+* xref:creating-procedure-modules[Procedure Module]
 * xref:reference-module-guidelines[Reference Module]
 
 See <<appendix-examples>> for real-world examples of assemblies, modules, and their individual parts.
 
 include::module_guidelines-concept.adoc[leveloffset=+2]
 
-include::module_guidelines-procedure.adoc[leveloffset=+2]
+include::assembly_creating_procedure_modules.adoc[leveloffset=+2]
 
 include::module_guidelines-reference.adoc[leveloffset=+2]
 
