@@ -1,0 +1,86 @@
+[#using-a-document-attribute-in-an-anchor-id]
+
+= Using a Document Attribute in an Anchor ID
+
+In some cases, a book will need to include the same module multiple times within the same assembly.
+How do you reuse modules within the same assembly without getting build errors for using duplicate anchor IDs?
+The answer is embedding a user-defined document attribute in the anchor ID name.
+
+Programming languages call this variable substitution, which is also know as variable interpolation.
+The AsciiDoc markup language is doing the same type of substitution with document attributes.
+
+There are three syntax formats for creating anchor IDs within a module or an assembly:
+
+* *Standard ID Syntax:*
++
+----
+[[anchor-id]]
+----
+
+* *Short-hand ID Syntax:*
++
+----
+[#anchor-id]
+----
+
+* *Long-hand ID Syntax:*
++
+----
+[id='anchor-id']
+----
+
+[discrete]
+== Examples
+
+Only the short-hand and long-hand ID syntax formats support document attribute substitution.
+
+.Syntax Example
+----
+[#anchor-id-{doc_attribute}]
+----
+or
+----
+[id='anchor-id-{doc_attribute}']
+----
+
+Define the document attribute in the assembly, such as the `master.adoc` file.
+
+////
+TODO - ritz303 : I've only seen this appendix rendering problem in one scenario.
+Need to do some more research and testing in different scenarios to verify the validity of the note below before adding this content.
+
+[NOTE]
+====
+When including an appendix in a book, and using either the short-hand or the long-hand ID syntax format, will cause the appendix to be rendered as a chapter and not an appendix.
+Using the standard syntax format will render the appendix correctly.
+====
+////
+
+.Practical Example
+
+In a book about data replication, you want to reuse a procedure module for monitoring the progress of data replication in two different chapters.
+
+The assembly file contains the following content:
+----
+= Data Replication Guide
+
+// Chapter 1 - Doing the Initial Data Replication of Disks
+:chapter: initial
+\include::procedure_monitoring-the-progress-of-data-replication.adoc[leveloffset=+1]
+
+// Chapter 2 - Replacing a Fail Disk
+:chapter: replacing
+\include::procedure_monitoring-the-progress-of-data-replication.adoc[leveloffset=+1]
+----
+
+The first two lines of the _procedure_monitoring-the-progress-of-data-replication.adoc_ module file contains the following content:
+----
+[id='monitoring-the-progress-of-data-replication-{chapter}']
+
+= Monitoring the Progress of Data Replication
+----
+
+[discrete]
+== Additional Resources
+
+* The link:http://asciidoctor.org/docs/user-manual/[AsciiDoc User Manual].
