@@ -6,3 +6,5 @@ include::module_mod-docs-concept-examples.adoc[leveloffset=+1]
 include::module_mod-docs-procedure-examples.adoc[leveloffset=+1]
 
 include::module_mod-docs-assembly-examples.adoc[leveloffset=+1]
+
+include::concept_using-a-document-attribute-in-an-anchor-id.adoc[leveloffset=+1]
