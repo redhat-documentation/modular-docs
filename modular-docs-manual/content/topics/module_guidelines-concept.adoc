@@ -10,12 +10,12 @@ image::concept-diagram.png[]
 [id='concept-writing-the-introduction']
 .Writing the Introduction
 
-The introduction to a concept module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable, because users can quickly determine whether the concept is useful without having to read the entire module.
+The introduction to a concept module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the concept is useful without having to read the entire module.
 
 The introduction typically answers the following questions:
 
 * What is the concept?
-* Why should I care about the concept?
+* Why should the user care about the concept?
 
 [id='concept-writing-the-concept-explanation']
 .Writing the Concept Explanation
@@ -28,6 +28,6 @@ Do not include any instructions to perform an action, such as executing a comman
 
 .Writing Additional Resources
 
-Additional resources list links to other material closely related to the contents of the procedure module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
+The additional resources list links to other material closely related to the contents of the concept module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
 
 Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.
