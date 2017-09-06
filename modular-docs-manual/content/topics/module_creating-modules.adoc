@@ -3,7 +3,8 @@
 
 After identifying and creating the assemblies, each assembly should identify the modules that you need to create.
 
-.Procedure
+[discrete]
+== Procedure
 
 . For each assembly that you created, create a module file for each module that is identified in the assembly.
 +

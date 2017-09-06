@@ -3,37 +3,47 @@
 
 User stories provide the context and structure from which you can determine which assemblies and modules to create.
 
-Ideally, well-defined user stories would already exist for the product you are documenting. For most writers, however, this ideal is not a reality. If you do not have any user stories from which to work, and you -- as a writer -- do not have all of the user information you would need to create the user stories yourself, how do you get started? This procedure provides a general approach that you can take. Of course, every product differs in terms of tools, processes, team dynamics, and access to SMEs. Since you are most familiar with these aspects for your own team, you will need to adapt this general approach for your own team.
+For more information about user stories, see xref:modular-docs-terms-definitions[Modular Documentation Terms and Definitions].
 
-.Procedure
+Ideally, well-defined user stories would already exist for the product you are documenting. For most writers, however, this ideal is not a reality. If you do not have any user stories from which to work, and you -- as a writer -- do not have all of the user information you would need to create the user stories yourself, how do you get started? This procedure provides a general approach that you can take. 
 
-. Collect any existing user stories for your product.
-+
-You might need to talk to your Product Manager and Content Strategist.
+Of course, every product differs in terms of tools, processes, team dynamics, and access to SMEs. Since you are most familiar with these aspects for your own team, you will need to adapt this general approach for your own team. Depending on your team structure, each step can be completed by either a writer or a collaboration between a writer and Content Strategist.
+
+[discrete]
+== Procedure
 
 . Identify the key, top-level user stories for your product.
 +
 --
-If your product does not have any user stories, you can use the customer product lifecycle to get started. You can consider each phase of the lifecycle to be a user story.
+This step should typically be performed by the Content Strategist.
 
-You may not need to use every phase of the customer lifecycle, but for now, you should pick the ones that you know apply to your product. In the next step, you will start to refine them.
+Start with the customer product lifecycle phases. If you have existing user stories, ask yourself which ones correspond to phases in the lifecycle. If you do not have existing user stories, create a user story for each lifecycle phase that applies to your product.
 
 For more information, see xref:customer-product-lifecycle[Overview of the Customer Product Lifecycle].
+
+For example, here is a top-level user story for the _Configure and Verify_ phase of the customer product lifecycle:
+
+.Creating Top-Level User Stories
+====
+* [Phase] Configure and Verify -- [Top-level user story] As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
+====
 --
 
 . Define the supporting user stories that are necessary to complete each of the top-level user stories.
 +
 --
+This step should typically be a collaborative effort between the Content Strategist and the writer.
+
 Each top-level user story represents a "phase" of the customer lifecycle. You should go through each phase and define the user stories needed to complete the phase. You will need to use your own knowledge and expertise of the product.
 
 For example, for the _Configure and Verify_ phase, users would need to know how to configure and set up each component or feature of the product to work in their environment. You could break it down like this:
 
 .Creating Second-Level User Stories
 ====
-* Configure Product X so that it is ready for production
-** Create network connections to enable Product X to accept and make connections to other endpoints
-** Add security settings so that Product X can communicate with remote peers securely
-** Set up logging to ensure that error conditions can be diagnosed
+* As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
+** As a system administrator, I want to enable _PRODUCT_ to make and accept connections so that remote peers can exchange data with _PRODUCT_.
+** As a system administrator, I want to secure _PRODUCT_ so that it can communicate with remote peers securely.
+** As a system administrator, I want to set up logging so that error conditions can be diagnosed.
 ====
 
 At this point, you should have a two-deep list of user stories.
@@ -46,7 +56,17 @@ Depending on the product, one or two levels of user stories might be sufficient.
 
 Be careful not to go too deep, however. At this stage, you are not defining every procedure or step needed to complete each user story. User stories represent user goals, so you should only need to go deeper if a secondary user story has multiple goals.
 
-For example, under the "Configuring Product X" example in the previous step, the logging user story does not need any additional user stories -- the goal cannot be reduced any further than it already is. On the other hand, the adding security settings user story might be able to go a bit deeper. Security is a goal in and of itself (users want their applications to be secure), but there are more specific goals users might have within it: they might want to use mutual authentication, or only single-factor authentication. They might need to encrypt connections, and so on.
+For example, under the "Configuring Product X" example in the previous step, the logging user story does not need any additional user stories -- the goal cannot be reduced any further than it already is. On the other hand, the adding security settings user story might be able to go a bit deeper. Security is a goal in and of itself (users want their applications to be secure), but there are more specific goals users might have within it: 
+
+.Creating Additional User Stories
+====
+* As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
+** As a system administrator, I want to enable _PRODUCT_ to make and accept connections so that remote peers can exchange data with _PRODUCT_.
+** As a system administrator, I want to secure _PRODUCT_ so that it can communicate with remote peers securely.
+*** As a system administrator, I want to add security certificates so that clients can be authenticated.
+*** As a system administrator, I want to use my existing LDAP configuration so that clients can be authenticated.
+** As a system administrator, I want to set up logging so that error conditions can be diagnosed.
+====
 -- 
 
 . For each user story in your list, define the following:
@@ -56,9 +76,9 @@ For example, under the "Configuring Product X" example in the previous step, the
 +
 These will become the concept modules for the assembly.
 
-* What are the steps to complete the user story?
+* What are the procedures to complete the user story?
 +
-Each step will become a procedure module.
+These will become the procedure modules for the assembly.
 
 * Is there any reference information that the user might want to refer to when performing this user story?
 +
@@ -66,8 +86,8 @@ These will become reference modules.
 
 .Breaking Down User Stories
 ====
-* Configure Product X so that it is ready for production
-** Create network connections to enable Product X to accept and make connections to other endpoints
+* As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
+** As a system administrator, I want to enable _PRODUCT_ to make and accept connections so that remote peers can exchange data with _PRODUCT_.
 *** Concept: Types of connections
 *** Procedure: Create "listeners" to accept incoming connections
 *** Procedure: Create "connectors" to connect to outbound endpoints

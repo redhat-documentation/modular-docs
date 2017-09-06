@@ -8,11 +8,14 @@ The result is documentation that is more relevant for your readers, because it i
 
 == Prerequisites
 
-* You should understand the following important concepts:
+* You should understand what modular documentation is:
 ** xref:what-modular-documentation-is[What Modular Documentation Is]
 ** xref:what-modular-documentation-is-not[What Modular Documentation Is Not]
-** Modular documentation benefits [NEED LINK]
 ** xref:modular-docs-terms-definitions[Modular Documentation Terminology]
+
+* You should understand the benefits of modular documentation.
++
+For example, see link:https://opensource.com/article/17/6/documentation-based-user-stories[_Documentation based on user stories_].
 
 * Find a user story and practice documenting it as an xref:assembly-guidelines[assembly].
 +
@@ -20,11 +23,9 @@ This process of breaking down user stories into assemblies and modules is an ess
 
 * Your repository should be set up.
 +
---
 If you are using AsciiDoc, your repository should have a directory structure that supports modular documentation, and you should have a `master.adoc` file for each publication.
-
-[NEED LINK] 
---
++
+// Add an xref to Issue #4 when it's available (https://github.com/redhat-documentation/modular-docs/issues/4)
 
 
 include::module_customer-product-lifecycle.adoc[leveloffset=+1]

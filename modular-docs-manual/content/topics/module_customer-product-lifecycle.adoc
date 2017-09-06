@@ -5,11 +5,11 @@ User stories are the basis of modular documentation. The modular documentation c
 
 While all products are different, everyone tends to use them in a similar workflow that starts with the initial research to determine which product to use, includes implementing and managing the product, and ends when the product is no longer needed. This customer product lifecycle can be broken down into phases, each of which presents unique user information requirements (that is, the user needs different types of information at each phase of the lifecycle):
 
-Plan:: What information should be gathered and what decisions should be made (for example, design/deployment) before the user can start installing the product?
-Install:: This involves installing the product.
-Configure and Verify:: After the product's installed, what does the user need to do to configure it to work in their environment? How do they test or verify that it is ready to put into production?
+Plan:: What information should be gathered and what decisions should be made (for example, design/deployment) before the customer can start installing the product?
+Install:: How does the customer install the product on each of the supported platforms?
+Configure and Verify:: After the product is installed, what does the customer need to do to configure it to work in their environment? How do they test or verify that it is ready to put into production?
 Develop and Test:: Does the customer need to develop any custom applications to connect the product to any of their existing infrastructure? 
-Manage:: This includes the day-to-day control and customization that occurs once the product is in production.
+Manage:: Once the product is in production, how does the customer customize and change it on a day-to-day basis?
 Monitor and Tune:: Once the product is in production, how does the customer monitor its performance in order to know when changes are needed?
-Upgrade and Migrate:: This involves upgrading to newer versions of the product.
+Upgrade and Migrate:: How does the customer upgrade to newer versions of the product?
 Troubleshoot:: How does the customer fix common problems they may encounter?
