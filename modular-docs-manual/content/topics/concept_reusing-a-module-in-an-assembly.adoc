@@ -1,6 +1,6 @@
-[#using-a-document-attribute-in-an-anchor-id]
+[#reusing-a-module-in-an-assembly]
 
-= Using a Document Attribute in an Anchor ID
+= Reusing a Module in an Assembly
 
 In some cases, a book will need to include the same module multiple times within the same assembly.
 How do you reuse modules within the same assembly without getting build errors for using duplicate anchor IDs?

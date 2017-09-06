@@ -7,4 +7,4 @@ include::module_mod-docs-procedure-examples.adoc[leveloffset=+1]
 
 include::module_mod-docs-assembly-examples.adoc[leveloffset=+1]
 
-include::concept_using-a-document-attribute-in-an-anchor-id.adoc[leveloffset=+1]
+include::concept_reusing-a-module-in-an-assembly.adoc[leveloffset=+1]
