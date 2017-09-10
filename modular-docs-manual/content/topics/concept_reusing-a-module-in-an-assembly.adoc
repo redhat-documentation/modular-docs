@@ -83,4 +83,4 @@ The first two lines of the _procedure_monitoring-the-progress-of-data-replicatio
 [discrete]
 == Additional Resources
 
-* The link:http://asciidoctor.org/docs/user-manual/[AsciiDoc User Manual].
+* The link:http://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual].
