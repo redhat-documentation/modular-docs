@@ -435,6 +435,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#modular-docs-concept-examples">Concept Module Examples</a></li>
 <li><a href="#modular-docs-procedure-examples">Procedure Module Examples</a></li>
 <li><a href="#modular-docs-assembly-examples">Assembly Examples</a></li>
+<li><a href="#reusing-a-module-in-an-assembly">Reusing a Module in an Assembly</a></li>
+</ul>
+</li>
+<li><a href="#converting-to-mod-doc">Appendix C: Converting to Modular Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#customer-product-lifecycle">Overview of the Customer Product Lifecycle</a></li>
+<li><a href="#defining-user-stories">Defining User Stories for Your Product</a></li>
+<li><a href="#creating-assemblies">Creating Assemblies</a></li>
+<li><a href="#creating-modules">Creating Modules</a></li>
+<li><a href="#auditing">Auditing Your Feature-Based Manual</a></li>
 </ul>
 </li>
 </ul>
@@ -1535,6 +1546,495 @@ Corruption: 1 missing files; e.g.: /var/lib/ceph/mon/mon.0/store.db/1234567.ldb<
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="reusing-a-module-in-an-assembly">Reusing a Module in an Assembly</h3>
+<div class="paragraph">
+<p>With some user stories, an assembly will need to include the same module multiple times.
+How do you reuse modules within the same assembly without getting build errors for using duplicate anchor IDs?
+By embedding a user-defined document attribute in the anchor ID name.
+This allows you to <a href="http://asciidoctor.org/docs/user-manual/#include-multiple">include a module multiple time</a> in the same assembly.</p>
+</div>
+<h4 id="_examples" class="discrete">Examples</h4>
+<div class="paragraph">
+<p>Only the short-hand and long-hand ID syntax formats support document attribute substitution.</p>
+</div>
+<div class="listingblock">
+<div class="title">Syntax Example</div>
+<div class="content">
+<pre>[#anchor-id-{doc_attribute}]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[id='anchor-id-{doc_attribute}']</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Define the document attribute in the assembly, such as the <code>master.adoc</code> file.</p>
+</div>
+<div class="paragraph">
+<div class="title">Practical Example</div>
+<p>In a user story about data replication, you want to reuse a procedure module for monitoring the progress of data replication in two different chapters.</p>
+</div>
+<div class="paragraph">
+<p>The assembly file contains the following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>= Data Replication Guide
+
+// Chapter 1 - Doing the Initial Data Replication of Disks
+:chapter: initial
+include::procedure_monitoring-the-progress-of-data-replication.adoc[leveloffset=+1]
+
+// Chapter 2 - Replacing a Fail Disk
+:chapter: replacing
+include::procedure_monitoring-the-progress-of-data-replication.adoc[leveloffset=+1]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first two lines of the <em>procedure_monitoring-the-progress-of-data-replication.adoc</em> module file contains the following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>[id='monitoring-the-progress-of-data-replication-{chapter}']
+
+= Monitoring the Progress of Data Replication</pre>
+</div>
+</div>
+<h4 id="_additional_resources_4" class="discrete">Additional Resources</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>The <a href="http://asciidoctor.org/docs/user-manual/">Asciidoctor User Manual</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="converting-to-mod-doc">Appendix C: Converting to Modular Documentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have a monolithic, feature-based manual, you can convert it to a set of modular content based on user stories. This conversion workflow involves using the customer product lifecycle to define user stories for your product, and creating the assemblies and modules necessary to fit each user story.</p>
+</div>
+<div class="paragraph">
+<p>The result is documentation that is more relevant for your readers, because it is based on real-world user stories (it tells them how to accomplish their goals), and modular (it can be assembled into whatever sets and formats they might need).</p>
+</div>
+<div class="sect2">
+<h3 id="_prerequisites">Prerequisites</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>You should understand what modular documentation is:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#what-modular-documentation-is">What Modular Documentation Is</a></p>
+</li>
+<li>
+<p><a href="#what-modular-documentation-is-not">What Modular Documentation Is Not</a></p>
+</li>
+<li>
+<p><a href="#modular-docs-terms-definitions">Modular Documentation Terminology</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>You should understand the benefits of modular documentation.</p>
+<div class="paragraph">
+<p>For example, see <a href="https://opensource.com/article/17/6/documentation-based-user-stories"><em>Documentation based on user stories</em></a>.</p>
+</div>
+</li>
+<li>
+<p>Find a user story and practice documenting it as an <a href="#assembly-guidelines">assembly</a>.</p>
+<div class="paragraph">
+<p>This process of breaking down user stories into assemblies and modules is an essential element of modular documentation. You should be familiar with this process before attempting to do it for an entire feature-based book.</p>
+</div>
+</li>
+<li>
+<p>Your repository should be set up.</p>
+<div class="paragraph">
+<p>If you are using AsciiDoc, your repository should have a directory structure that supports modular documentation, and you should have a <code>master.adoc</code> file for each publication.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="customer-product-lifecycle">Overview of the Customer Product Lifecycle</h3>
+<div class="paragraph">
+<p>User stories are the basis of modular documentation. The modular documentation conversion workflow uses the <em>customer product lifecycle</em> to help you discover and develop the user stories that your documentation should include.</p>
+</div>
+<div class="paragraph">
+<p>While all products are different, everyone tends to use them in a similar workflow that starts with the initial research to determine which product to use, includes implementing and managing the product, and ends when the product is no longer needed. This customer product lifecycle can be broken down into phases, each of which presents unique user information requirements (that is, the user needs different types of information at each phase of the lifecycle):</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Plan</dt>
+<dd>
+<p>What information should be gathered and what decisions should be made (for example, design/deployment) before the customer can start installing the product?</p>
+</dd>
+<dt class="hdlist1">Install</dt>
+<dd>
+<p>How does the customer install the product on each of the supported platforms?</p>
+</dd>
+<dt class="hdlist1">Configure and Verify</dt>
+<dd>
+<p>After the product is installed, what does the customer need to do to configure it to work in their environment? How do they test or verify that it is ready to put into production?</p>
+</dd>
+<dt class="hdlist1">Develop and Test</dt>
+<dd>
+<p>Does the customer need to develop any custom applications to connect the product to any of their existing infrastructure?</p>
+</dd>
+<dt class="hdlist1">Manage</dt>
+<dd>
+<p>Once the product is in production, how does the customer customize and change it on a day-to-day basis?</p>
+</dd>
+<dt class="hdlist1">Monitor and Tune</dt>
+<dd>
+<p>Once the product is in production, how does the customer monitor its performance in order to know when changes are needed?</p>
+</dd>
+<dt class="hdlist1">Upgrade and Migrate</dt>
+<dd>
+<p>How does the customer upgrade to newer versions of the product?</p>
+</dd>
+<dt class="hdlist1">Troubleshoot</dt>
+<dd>
+<p>How does the customer fix common problems they may encounter?</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="defining-user-stories">Defining User Stories for Your Product</h3>
+<div class="paragraph">
+<p>User stories provide the context and structure from which you can determine which assemblies and modules to create.</p>
+</div>
+<div class="paragraph">
+<p>For more information about user stories, see <a href="#modular-docs-terms-definitions">Modular Documentation Terms and Definitions</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ideally, well-defined user stories would already exist for the product you are documenting. For most writers, however, this ideal is not a reality. If you do not have any user stories from which to work, and you&#8201;&#8212;&#8201;as a writer&#8201;&#8212;&#8201;do not have all of the user information you would need to create the user stories yourself, how do you get started? This procedure provides a general approach that you can take.</p>
+</div>
+<div class="paragraph">
+<p>Of course, every product differs in terms of tools, processes, team dynamics, and access to SMEs. Since you are most familiar with these aspects for your own team, you will need to adapt this general approach for your own team. Depending on your team structure, each step can be completed by either a writer or a collaboration between a writer and Content Strategist.</p>
+</div>
+<h4 id="_procedure" class="discrete">Procedure</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify the key, top-level user stories for your product.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This step should typically be performed by the Content Strategist.</p>
+</div>
+<div class="paragraph">
+<p>Start with the customer product lifecycle phases. If you have existing user stories, ask yourself which ones correspond to phases in the lifecycle. If you do not have existing user stories, create a user story for each lifecycle phase that applies to your product.</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="#customer-product-lifecycle">Overview of the Customer Product Lifecycle</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example, here is a top-level user story for the <em>Configure and Verify</em> phase of the customer product lifecycle:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 10. Creating Top-Level User Stories</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>[Phase] Configure and Verify&#8201;&#8212;&#8201;[Top-level user story] As a system administrator, I want to configure <em>PRODUCT</em> so that it is ready for production.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Define the supporting user stories that are necessary to complete each of the top-level user stories.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This step should typically be a collaborative effort between the Content Strategist and the writer.</p>
+</div>
+<div class="paragraph">
+<p>Each top-level user story represents a "phase" of the customer lifecycle. You should go through each phase and define the user stories needed to complete the phase. You will need to use your own knowledge and expertise of the product.</p>
+</div>
+<div class="paragraph">
+<p>For example, for the <em>Configure and Verify</em> phase, users would need to know how to configure and set up each component or feature of the product to work in their environment. You could break it down like this:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 11. Creating Second-Level User Stories</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>As a system administrator, I want to configure <em>PRODUCT</em> so that it is ready for production.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As a system administrator, I want to enable <em>PRODUCT</em> to make and accept connections so that remote peers can exchange data with <em>PRODUCT</em>.</p>
+</li>
+<li>
+<p>As a system administrator, I want to secure <em>PRODUCT</em> so that it can communicate with remote peers securely.</p>
+</li>
+<li>
+<p>As a system administrator, I want to set up logging so that error conditions can be diagnosed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>At this point, you should have a two-deep list of user stories.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Go back through the list and add any additional user stories that might be needed to complete any of the secondary user stories.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Depending on the product, one or two levels of user stories might be sufficient. For larger, more complex products, you might find yourself going multiple levels deep.</p>
+</div>
+<div class="paragraph">
+<p>Be careful not to go too deep, however. At this stage, you are not defining every procedure or step needed to complete each user story. User stories represent user goals, so you should only need to go deeper if a secondary user story has multiple goals.</p>
+</div>
+<div class="paragraph">
+<p>For example, under the "Configuring Product X" example in the previous step, the logging user story does not need any additional user stories&#8201;&#8212;&#8201;the goal cannot be reduced any further than it already is. On the other hand, the adding security settings user story might be able to go a bit deeper. Security is a goal in and of itself (users want their applications to be secure), but there are more specific goals users might have within it:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 12. Creating Additional User Stories</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>As a system administrator, I want to configure <em>PRODUCT</em> so that it is ready for production.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As a system administrator, I want to enable <em>PRODUCT</em> to make and accept connections so that remote peers can exchange data with <em>PRODUCT</em>.</p>
+</li>
+<li>
+<p>As a system administrator, I want to secure <em>PRODUCT</em> so that it can communicate with remote peers securely.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As a system administrator, I want to add security certificates so that clients can be authenticated.</p>
+</li>
+<li>
+<p>As a system administrator, I want to use my existing LDAP configuration so that clients can be authenticated.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>As a system administrator, I want to set up logging so that error conditions can be diagnosed.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>For each user story in your list, define the following:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>What concepts does the user need to understand to complete the user story?</p>
+<div class="paragraph">
+<p>These will become the concept modules for the assembly.</p>
+</div>
+</li>
+<li>
+<p>What are the procedures to complete the user story?</p>
+<div class="paragraph">
+<p>These will become the procedure modules for the assembly.</p>
+</div>
+</li>
+<li>
+<p>Is there any reference information that the user might want to refer to when performing this user story?</p>
+<div class="paragraph">
+<p>These will become reference modules.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="title">Example 13. Breaking Down User Stories</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>As a system administrator, I want to configure <em>PRODUCT</em> so that it is ready for production.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>As a system administrator, I want to enable <em>PRODUCT</em> to make and accept connections so that remote peers can exchange data with <em>PRODUCT</em>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Concept: Types of connections</p>
+</li>
+<li>
+<p>Procedure: Create "listeners" to accept incoming connections</p>
+</li>
+<li>
+<p>Procedure: Create "connectors" to connect to outbound endpoints</p>
+</li>
+<li>
+<p>Reference: Network connection configuration attributes</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>Additional user stories&#8230;&#8203;</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-assemblies">Creating Assemblies</h3>
+<div class="paragraph">
+<p>An assembly is a representation of a user story, so you need to create an assembly for each user story that you defined.</p>
+</div>
+<div class="paragraph">
+<p>An assembly could represent an article, "chapter" in a book, or even an entire book. However, one of the benefits of modular documentation is that you do not need to worry about how the assembly will ultimately be used&#8201;&#8212;&#8201;each assembly represents a user goal, and once you create it, it can be "included" anywhere it is needed (a publication, within another assembly, and so on).</p>
+</div>
+<h4 id="_procedure_2" class="discrete">Procedure</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create an assembly file for each user story that you identified.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Be sure to follow a consistent file naming standard. For example, you could use the following file naming pattern:</p>
+</div>
+<div class="paragraph">
+<p><code>assembly_configuring-security.adoc</code></p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>For each top-level assembly file that you created, fill in the content.</p>
+<div class="paragraph">
+<p>For more information, see <a href="#assembly-guidelines">Assembly Guidelines</a>.</p>
+</div>
+</li>
+<li>
+<p>Repeat the previous step for each second-level assembly.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-modules">Creating Modules</h3>
+<div class="paragraph">
+<p>After identifying and creating the assemblies, each assembly should identify the modules that you need to create.</p>
+</div>
+<h4 id="_procedure_3" class="discrete">Procedure</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>For each assembly that you created, create a module file for each module that is identified in the assembly.</p>
+<div class="paragraph">
+<p>Each assembly should already have the names of the modules that should be included in the assembly. Now you just need to create the actual files for those modules.</p>
+</div>
+</li>
+<li>
+<p>For each module file that you created, add content.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Use your existing, feature-based manual to get the content. Make sure to rewrite and rework it to fit the modular documentation module templates. For more information, see:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#concept-module-guidelines">Concept Module Guidelines</a></p>
+</li>
+<li>
+<p><a href="#procedure-module-guidelines">Procedure Module Guidelines</a></p>
+</li>
+<li>
+<p><a href="#reference-module-guidelines">Reference Module Guidelines</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auditing">Auditing Your Feature-Based Manual</h3>
+<div class="paragraph">
+<p>In the process of adding content to the modules from your existing feature-based manual, it is likely that there is some existing content that did not fit into any of the user stories that you identified and thus was not pulled out. It is important to identify this content to ensure that it is no longer needed.</p>
+</div>
+<h4 id="_procedure_4" class="discrete">Procedure</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go through your existing feature-based manual and identify any content that you did not add to an assembly or module.</p>
+</li>
+<li>
+<p>For each piece of content that you find, determine whether it is necessary.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>If the content does not fit into a user story or assembly, then it stands to reason that it may not be necessary to complete any particular user goal. If this is the case, you should be able to discard it.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 14. Handling Extraneous Content</div>
+<div class="content">
+<div class="paragraph">
+<p>For example, many feature-based manuals contain detailed sections about how a particular feature works. This type of content, which valuable in certain contexts, is not always necessary for user documentation&#8201;&#8212;&#8201;user goals generally involve <em>doing</em> something, not understanding how all the details work. When you encounter this type of content, ask yourself whether a user would need to understand it in order to accomplish any of their goals (planning, installing, configuring, managing, and so on). If the answer is no, then you can probably discard it.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>On the other hand, it is also possible that the content is related to a user story that you have not considered. In that case, you should create the necessary assemblies and modules and add them to your modular doc.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1546,7 +2046,7 @@ Corruption: 1 missing files; e.g.: /var/lib/ceph/mon/mon.0/store.db/1234567.ldb<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-04 16:42:19 CDT
+Last updated 2017-09-12 16:35:06 CDT
 </div>
 </div>
 </body>
