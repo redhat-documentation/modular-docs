@@ -13,3 +13,7 @@ include::topics/module_mod-docs-terms-definitions.adoc[leveloffset=+1]
 
 [appendix]
 include::topics/assembly_mod-docs-examples.adoc[leveloffset=+1]
+
+[appendix]
+include::topics/assembly_mod-docs-conversion.adoc[leveloffset=+1]
+
