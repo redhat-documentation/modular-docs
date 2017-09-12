@@ -17,6 +17,13 @@ User-story-based documentation also helps the documentation teams with the amoun
 
 Send an email to our mailing list (ccs-mod-docs@redhat.com).
 
+## Modular Documentation Reference Guide
+
+The Modular Documentation Reference Guide is one of the deliverables for this project.
+You can view the latest build of the guide here:
+
+http://htmlpreview.github.io/?https://github.com/redhat-documentation/modular-docs/blob/master/modular-docs-manual/modular-docs-manual.html
+
 ## Repository Structure
 
 This repository uses the following directory structure:
