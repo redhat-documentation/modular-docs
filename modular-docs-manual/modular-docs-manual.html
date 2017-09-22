@@ -425,8 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#writing-mod-docs">Writing Modular Documentation</a>
 <ul class="sectlevel2">
 <li><a href="#_creating_modules">Creating Modules</a></li>
-<li><a href="#_forming_assemblies">Forming Assemblies</a></li>
-<li><a href="#_additional_resources_3">Additional Resources</a></li>
+<li><a href="#forming-assemblies">Forming Assemblies</a></li>
+<li><a href="#_additional_resources_4">Additional Resources</a></li>
 </ul>
 </li>
 <li><a href="#modular-docs-terms-definitions">Appendix A: Modular Documentation Terms and Definitions</a></li>
@@ -551,7 +551,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#concept-module-guidelines">Concept Module</a></p>
+<p><a href="#creating-concept-modules">Concept Module</a></p>
 </li>
 <li>
 <p><a href="#creating-procedure-modules">Procedure Module</a></p>
@@ -565,71 +565,75 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>See <a href="#appendix-examples">Module and Assembly Examples</a> for real-world examples of assemblies, modules, and their individual parts.</p>
 </div>
 <div class="sect3">
-<h4 id="concept-module-guidelines">Concept Module Guidelines</h4>
+<h4 id="creating-concept-modules">Creating Concept Modules</h4>
 <div class="paragraph">
-<p>A concept module describes and explains things such as a product, subsystem, or feature&#8201;&#8212;&#8201;what a customer needs to understand to do a procedure. A concept module may also explain how things relate and interact with other things. The use of graphics and diagrams can speed up understanding of a concept.</p>
+<p>This section explains what a concept module is and provides recommended practices for writing concept modules.</p>
+</div>
+<div class="sect4">
+<h5 id="concept-module-definition">Concept Module Definition</h5>
+<div class="paragraph">
+<p>A concept module is an "understand" module. Concept modules give the user descriptions and explanations needed to understand and use a product.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="concept-module-guidelines">Concept Module Guidelines</h5>
+<div class="paragraph">
+<p>The required part of a procedure module is the concept explanation. Optionally, the module can also include an introduction and additional resources.</p>
+</div>
+<div class="paragraph">
+<p>When planning a concept module, look at nouns in related procedure modules and assemblies to find the concepts to explain to users. Explain only things that are visible to users. Even if a concept is interesting, it probably does not require explanation if it is not visible to users.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/concept-diagram.png" alt="concept diagram">
 </div>
 </div>
+<div id="concept-writing-the-introduction" class="paragraph">
+<div class="title">Writing the Introduction</div>
+<p>The introduction to a concept module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the concept is useful without having to read the entire module.</p>
+</div>
+<div class="paragraph">
+<p>The introduction typically answers the following questions:</p>
+</div>
 <div class="ulist">
-<div class="title">Guidelines for Writing Concepts</div>
 <ul>
 <li>
-<p>Look at nouns and noun phrases in related procedure modules and user story assemblies to find the concepts to explain to users.</p>
+<p>What is the concept?</p>
 </li>
 <li>
-<p>A concept module in product documentation should explain only things that are visible to users.</p>
-</li>
-<li>
-<p>If a product concept is interesting, but not visible to users, the concept probably does not require explanation in a concept module.</p>
-</li>
-<li>
-<p>A concept module should NOT include numbered steps or other wording that instructs a user to execute a command or perform an action. Instead, put that information in a separate procedure module or user story assembly.</p>
+<p>Why should the user care about the concept?</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<div class="title">Writing the Short Description</div>
-<p>A concept module should start with a short description - a single, concise paragraph that provides a short overview of the module, its content, and why users should care about it. You can think of the short description as the module&#8217;s thesis statement.</p>
+<div id="concept-writing-the-concept-explanation" class="paragraph">
+<div class="title">Writing the Concept Explanation</div>
+<p>The concept explanation describes the subject of the concept module.</p>
 </div>
 <div class="paragraph">
-<p>Writing a good short description makes your content more usable, as users can quickly determine whether the content is useful for their goals without having to read the entire concept module.</p>
+<p>Apart from paragraphs, you can use other AsciiDoc elements, such as lists, tables, or examples. Consider including graphics or diagrams to speed up the understanding of the concept.</p>
 </div>
 <div class="paragraph">
-<p>A good short description should answer the following questions:
-* What is this?
-* Why should I care about this?</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-For maximum effect, keep your short description to 50 words or less. If you need more than 50 words, the concept might be too broad for a single module.
-</td>
-</tr>
-</table>
+<p>Do not include any instructions to perform an action, such as executing a command. Action items belong in procedure modules. See also <a href="http://www.informationmapping.com/fspro2013-tutorial/infotypes/infotype2.html">The Six Information Types</a> at <em>informationmapping.com</em> for ways to present different types of conceptual information: principle, concept, structure, process, fact.</p>
 </div>
 <div class="paragraph">
-<div class="title">Writing the Body</div>
-<p>The body is where you describe the subject of the concept module. You can use paragraphs, unordered lists, tables, graphics, and examples. However, each element in the body should relate back to the short description.</p>
+<div class="title">Writing Additional Resources</div>
+<p>The additional resources list links to other material closely related to the contents of the concept module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</p>
 </div>
 <div class="paragraph">
-<div class="title">Adding Additional Resources</div>
-<p>If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this concept. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.</p>
+<p>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.</p>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_related_information">Related Information</h5>
-<div class="paragraph">
-<p>For real-world examples of concept modules, and its individual parts, see <a href="#modular-docs-concept-examples">Concept Module Examples</a>.</p>
-</div>
-<div class="paragraph">
-<p>Download the <a href="https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_CONCEPT_concept_template_and_guidelines.adoc">concept module template</a> for new projects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Download the <a href="https://github.com/redhat-documentation/modular-docs/blob/master/files/TEMPLATE_CONCEPT_concept_template_and_guidelines.adoc">concept module template (adoc file)</a> for new projects.</p>
+</li>
+<li>
+<p>For real-world examples of concept modules, see <a href="#modular-docs-concept-examples">Concept Module Examples</a>.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -750,47 +754,70 @@ A procedure module does not consist solely of a procedure. At the very least, th
 </div>
 </div>
 <div class="sect2">
-<h3 id="_forming_assemblies">Forming Assemblies</h3>
+<h3 id="forming-assemblies">Forming Assemblies</h3>
 <div class="paragraph">
-<p>Form assemblies by following the assembly guideline.</p>
+<p>This section explains what an assembly is and provides recommended practices for forming assemblies.</p>
+</div>
+<div class="sect3">
+<h4 id="assembly-definition">Assembly Definition</h4>
+<div class="paragraph">
+<p>An assembly is a collection of modules that describes how to accomplish a user story. See also <a href="#understanding-mod-docs">Understanding Modular Documentation</a>.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="assembly-guidelines">Assembly Guidelines</h4>
 <div class="paragraph">
-<p>An assembly is a collection of modules that describes how to accomplish a user story.</p>
+<p>The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.</p>
 </div>
 <div class="paragraph">
-<div class="title">Writing the Intro Paragraphs</div>
-<p>The first paragraph of the assembly explains what the user will accomplish by working through the procedures in sequence. It sets context or explains the benefit the user will gain by performing the procedures that comprise the story.</p>
+<div class="title">Writing the Introduction</div>
+<p>The introduction explains what the user will accomplish by working through the assembled modules. It typically provides context for the assembly.</p>
 </div>
 <div class="paragraph">
-<p>You can include additional paragraphs&#8212;&#8203;and even concept modules&#8212;&#8203;if they&#8217;re necessary to fully explain the context, benefits, and other things the user must understand to complete the procedures successfully.</p>
+<p>Consider rewording the user story to write the assembly introduction, for example:</p>
 </div>
-<div class="paragraph">
-<p>For more information about writing the intro paragraphs, see <a href="#writing-the-introduction">Writing the Introduction</a>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>User story: As an administrator, I want to provide external identity, authentication and authorization services for my Atomic Host, so that users from external identity sources can access the Atomic Host.</p>
+</li>
+<li>
+<p>Assembly introduction: As a system administrator, you can use SSSD in a container to provide external identity, authentication, and authorization services for the Atomic Host system. This enables users from external identity sources to authenticate to the Atomic Host.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <div class="title">Writing Prerequisites</div>
-<p>Prerequisites are the set of conditions that must be in place before the user can start the procedure. For more information, see <a href="#writing-prerequisites">Writing Prerequisites</a>.</p>
+<p>Prerequisites are conditions that must be satisfied before the user can start following the assembly. For details, see <a href="#writing-prerequisites">Writing Prerequisites</a>.</p>
 </div>
 <div class="paragraph">
-<div class="title">Writing the Procedure</div>
-<p>The assembly procedure consists of one or more steps to complete the user story. Each step should be a link to a procedure module.</p>
+<div class="title">Adding Modules</div>
+<p>List <a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files">include files</a> to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly.</p>
 </div>
 <div class="paragraph">
-<div class="title">Adding Related Information</div>
-<p>If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this user story. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.</p>
+<div class="title">Adding Additional Resources</div>
+<p>Additional resources list links to other material closely related to the contents of the assembly: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.</p>
 </div>
-<div class="sect4">
-<h5 id="_related_information_3">Related Information</h5>
 <div class="paragraph">
-<p>Download the <a href="https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_ASSEMBLY.adoc">assembly template</a> for new projects.</p>
+<p>Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_additional_resources_3">Additional Resources</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Download the <a href="https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_ASSEMBLY.adoc">assembly template (adoc file)</a> for new projects.</p>
+</li>
+<li>
+<p>For real-world examples of assemblies, see <a href="#modular-docs-assembly-examples">Assembly Examples</a>.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_additional_resources_3">Additional Resources</h3>
+<h3 id="_additional_resources_4">Additional Resources</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1605,7 +1632,7 @@ include::procedure_monitoring-the-progress-of-data-replication.adoc[leveloffset=
 = Monitoring the Progress of Data Replication</pre>
 </div>
 </div>
-<h4 id="_additional_resources_4" class="discrete">Additional Resources</h4>
+<h4 id="_additional_resources_5" class="discrete">Additional Resources</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2046,7 +2073,7 @@ include::procedure_monitoring-the-progress-of-data-replication.adoc[leveloffset=
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-12 16:35:06 CDT
+Last updated 2017-09-22 16:09:45 CDT
 </div>
 </div>
 </body>
