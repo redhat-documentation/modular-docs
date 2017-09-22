@@ -1,0 +1,1979 @@
+@charset "UTF-8";
+@font-face {
+    font-family: "redhat-books-icons";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../../en-US/icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.eot?#iefix") format("embedded-opentype"), url("../../en-US/icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.woff") format("woff"), url("../../en-US/icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.ttf") format("truetype"), url("../../en-US/icons/redhat-books-icons-a2efd68d1f13be356c9c4e5c29a64e69.svg?#redhat-books-icons") format("svg");
+}
+
+#main div,
+#main span,
+#main applet,
+#main object,
+#main iframe,
+#main h1,
+#main h2,
+#main h3,
+#main h4,
+#main h5,
+#main h6,
+#main p,
+#main blockquote,
+#main pre,
+#main a,
+#main abbr,
+#main acronym,
+#main address,
+#main big,
+#main cite,
+#main code,
+#main del,
+#main dfn,
+#main em,
+#main img,
+#main ins,
+#main kbd,
+#main q,
+#main s,
+#main samp,
+#main small,
+#main strike,
+#main strong,
+#main sub,
+#main sup,
+#main tt,
+#main var,
+#main b,
+#main u,
+#main i,
+#main center,
+#main dl,
+#main dt,
+#main dd,
+#main ol,
+#main ul,
+#main li,
+#main fieldset,
+#main form,
+#main label,
+#main legend,
+#main table,
+#main caption,
+#main tbody,
+#main tfoot,
+#main thead,
+#main tr,
+#main th,
+#main td,
+#main article,
+#main aside,
+#main canvas,
+#main details,
+#main embed,
+#main figure,
+#main figcaption,
+#main footer,
+#main header,
+#main hgroup,
+#main menu,
+#main nav,
+#main output,
+#main ruby,
+#main section,
+#main summary,
+#main time,
+#main mark,
+#main audio,
+#main video {
+    -moz-font-feature-settings: inherit;
+    -moz-font-language-override: inherit;
+    border: 0 none;
+    /* this breaks the portal menus & header
+        font-family: inherit;
+    */
+    font-size: 100%;
+    font-size-adjust: inherit;
+    font-stretch: inherit;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+#main,
+#main > div > .chapter,
+#main div.admonition_header p,
+#main > div > .section {
+    color: #1A1A1A;
+}
+
+/* Hack to fix excess whitespace for some content due to zero-width spaces */
+#main .abstract > a:first-child:not([href]),
+#main .authorgroup > a:first-child:not([href]),
+#main .titlepage .title > a:first-child:not([href]),
+#main .table > a:first-child:not([href]),
+#main .procedure > a:first-child:not([href]),
+#main .figure > a:first-child:not([href]) {
+    display: inline;
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+#main table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+#main caption,
+#main th,
+#main td {
+    font-weight: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#main q,
+#main blockquote {
+    quotes: none;
+}
+
+#main q:before,
+#main q:after,
+#main blockquote:before,
+#main blockquote:after {
+    content: none;
+}
+#main a img {
+    border: medium none;
+}
+
+#main article,
+#main aside,
+#main details,
+#main figcaption,
+#main figure,
+#main footer,
+#main header,
+#main hgroup,
+#main menu,
+#main nav,
+#main section,
+#main summary {
+    display: block;
+}
+
+#main [class^="icon-"]:before,
+#main [class*=" icon-"]:before {
+    display: inline-block;
+    font-family: "redhat-books-icons";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    text-rendering: optimizelegibility;
+    text-transform: none;
+}
+#main .note:before,
+#main .important:before,
+#main .warning:before {
+    content: "" !important;
+    padding: 0px !important;
+}
+
+#main .icon-arrow-left:before,
+#main .docnav .previous a:before {
+    content: "" !important;
+}
+
+#main .icon-arrow-right:before,
+#main .docnav .next a:before {
+    content: "" !important;
+}
+#main .icon-book:before {
+    content: "" !important;
+}
+#main .icon-support:before,
+#main .RoleCreateBugPara a:before {
+    content: "" !important;
+}
+#main .icon-warning:before,
+#main .warning:before {
+    content: "" !important;
+}
+#main .buttons,
+#title,
+#main .docnav {
+    clear: both;
+    display: block;
+}
+#main ul.docnav {
+    margin: auto !important;
+}
+#main .pageSelect,
+#main .doctoc {
+    width: 80%;
+}
+
+#main .buttons:before,
+#title:before,
+#main .docnav:before,
+#main .buttons:after,
+#title:after,
+#main .docnav:after {
+    content: "";
+    display: table;
+}
+#main .buttons:after,
+#main #title:after,
+#main .docnav:after {
+    clear: both;
+}
+#main .pill {
+    -moz-appearance: none;
+    border: medium none;
+    border-radius: 0.15em;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 100%;
+    line-height: 1.8em;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    outline: 0 none;
+    padding: 0.45em 0.9em;
+    position: relative;
+    text-align: center;
+}
+#main .border-heavy-solid {
+    border-style: solid;
+    border-width: 0.45em;
+}
+#main .border-medium-solid {
+    border-style: solid;
+    border-width: 0.225em;
+}
+#main .border-light-solid {
+    border-style: solid;
+    border-width: thin;
+}
+#main .border-top-heavy-solid {
+    border-top-style: solid;
+    border-top-width: 0.45em;
+}
+#main .border-top-medium-solid {
+    border-top-style: solid;
+    border-top-width: 0.225em;
+}
+#main .border-top-light-solid {
+    border-top-style: solid;
+    border-top-width: thin;
+}
+#main .border-bottom-heavy-solid {
+    border-bottom-style: solid;
+    border-bottom-width: 0.45em;
+}
+#main .border-bottom-medium-solid {
+    border-bottom-style: solid;
+    border-bottom-width: 0.225em;
+}
+#main .border-bottom-light-solid {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+}
+#main {
+    color: #1A1A1A;
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-size: 100%;
+    line-height: 1.8em;
+    text-rendering: optimizelegibility;
+}
+
+#main p,
+#main .para,
+#main .formalpara {
+    margin-bottom: 1.8em;
+}
+#main p:empty,
+#main .para:empty {
+    margin-bottom: 0;
+}
+#main em,
+#main i,
+#main cite,
+#main .package {
+    font-style: italic;
+}
+#main b,
+#main strong {
+    font-weight: 700;
+}
+#main small {
+    font-size: 0.8em;
+}
+#main s {
+}
+#main u {
+    text-decoration: underline;
+}
+#main q:before {
+    content: "\"";
+}
+#main q:after {
+    content: "\"";
+}
+#main abbr {
+    border-bottom: thin dotted;
+    cursor: help;
+}
+#main sub {
+    bottom: -0.3em;
+    font-size: 0.8em;
+    position: relative;
+}
+#main sup {
+    font-size: 0.8em;
+    position: relative;
+    top: -0.45em;
+}
+#main mark {
+    background-color: #5BC6E8;
+}
+#main ins {
+    background-color: #7AB800;
+}
+#main del {
+    background-color: #A30000;
+}
+#main hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #555555 -moz-use-text-color -moz-use-text-color;
+    border-image: none;
+    border-right: medium none;
+    border-style: solid none none;
+    border-width: 0.125em medium medium;
+    height: 0;
+    margin-bottom: 1.8em;
+    margin-top: 1.8em;
+    width: 3em;
+}
+#main pre,
+#main code,
+#main var,
+#main samp,
+#main kbd,
+#main .keycap,
+#main .command,
+#main .filename,
+#main .classname,
+#main .literal {
+    font-family: "Menlo","Monaco","Courier New",monospace;
+}
+#main kbd,
+#main .keycap {
+    -moz-appearance: none;
+    background: none repeat scroll 0 0 #F2F2F2;
+    border-color: #E6E6E6;
+    border-radius: 0.15em;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 90%;
+    line-height: 1.8em;
+    margin: 0 0.25em;
+    outline: 0 none;
+    padding: 0 0.5em;
+    position: relative;
+    text-align: center;
+}
+/* BZ #1110611 & #1185149 */
+#main p code,
+#main .para code {
+    display: inline-block;
+    max-width: 100%;
+}
+#main pre {
+    background: none repeat scroll 0 0 #333333;
+    border-radius: 0.25em;
+    color: #CCCCCC;
+    margin-bottom: 1.7em;
+    padding: 0.9em 1.8em;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+#main p pre,
+#main .para pre {
+    margin-top: 1.8em;
+}
+#main .perl_Char {
+    color: #FFA500;
+}
+#main .perl_Comment {
+    color: #4D4D4D;
+}
+#main .perl_DataType {
+    color: #F08080;
+}
+#main .perl_DecVal {
+    color: #A0522D;
+}
+#main .perl_Error {
+    color: #A30000;
+}
+#main .perl_Float {
+    color: #87CEFA;
+    font-weight: 600;
+}
+#main .perl_Keyword {
+    color: #FFA07A;
+}
+#main .perl_String {
+    color: #FAFAD2;
+}
+#main .perl_Variable {
+    color: #F1C000;
+}
+#main .perl_Warning {
+    color: #EC7A08;
+}
+#main h1,
+#main h2,
+#main h3,
+#main h4,
+#main h5,
+#main h6,
+#main .formalpara > .title,
+#main .para > .title,
+#main .titlepage .edition {
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-weight: 600;
+}
+#main h1 {
+    font-size: 42px;
+    line-height: 1.2em;
+    margin-bottom: 1.2em;
+    margin-top: 1.5em;
+    text-transform: uppercase;
+}
+#main h2 {
+    font-size:24.5px;
+    line-height: 1.54286em;
+    margin-bottom: 1.02857em;
+    margin-top: 2.05714em;
+    text-transform: uppercase;
+}
+#main h3 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin-bottom: 1.2em;
+    margin-top: 2.4em;
+}
+#main h4 {
+    font-size: 1.25em;
+    line-height: 1.44em;
+    margin-bottom: 1.44em;
+    margin-top: 2.88em;
+}
+#main h5 {
+    font-size: 1em;
+    line-height: 1.8em;
+    margin-bottom: 1.8em;
+    margin-top: 3.6em;
+}
+#main h6 {
+    font-size: 0.8em;
+    line-height: 1.6875em;
+    margin-bottom: 2.25em;
+    margin-top: 4.5em;
+}
+#main .formalpara > .title,
+#main .para > .title {
+    font-size: 1.25em;
+    line-height: 1.44em;
+    margin-bottom: 1em;
+    margin-top: 0;
+}
+#main h1 + h1,
+#main h1 + h2,
+#main h1 + h3,
+#main h1 + h4,
+#main h1 + h5,
+#main h1 + h6,
+#main h2 + h1,
+#main h2 + h2,
+#main h2 + h3,
+#main h2 + h4,
+#main h2 + h5,
+#main h2 + h6,
+#main h3 + h1,
+#main h3 + h2,
+#main h3 + h3,
+#main h3 + h4,
+#main h3 + h5,
+#main h3 + h6,
+#main h4 + h1,
+#main h4 + h2,
+#main h4 + h3,
+#main h4 + h4,
+#main h4 + h5,
+#main h4 + h6,
+#main h5 + h1,
+#main h5 + h2,
+#main h5 + h3,
+#main h5 + h4,
+#main h5 + h5,
+#main h5 + h6,
+#main h6 + h1,
+#main h6 + h2,
+#main h6 + h3,
+#main h6 + h4,
+#main h6 + h5,
+#main h6 + h6 {
+    margin-top: 0;
+}
+#main header h1:last-child,
+#main header h2:last-child,
+#main header h3:last-child,
+#main header h4:last-child,
+#main header h5:last-child,
+#main header h6:last-child {
+    margin-bottom: 0;
+}
+
+#main div.subtitle,
+#main h2.subtitle,
+#main h3.subtitle {
+    font-size: 24.5px;
+    text-align: left;
+}
+#main .formalpara > .title,
+#main .para > .title {
+    line-height: 1.44;
+}
+#main [data-icon],
+#main [class*="icon-"],
+#main .docnav .previous a,
+#main .docnav .next a,
+#main .warning {
+    font-family: inherit;
+}
+#main .article > .titlepage h2.title {
+    text-align: left;
+    font-size: 42px;
+    line-height: 1.2em;
+    margin-bottom: 1.2em;
+    margin-top: 1.5em;
+}
+#main [data-icon]:before,
+#main [class*="icon-"]:before,
+#main .docnav .previous a:before,
+#main .docnav .next a:before,
+#main .warning:before {
+    font-family: "redhat-books-icons";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    margin-right: 0.5em;
+    text-transform: none;
+}
+#main .icon-only {
+    display: inline-block;
+    height: 1.8em;
+    line-height: 1.8em;
+    overflow: hidden;
+    position: relative;
+    text-indent: 9999em;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1.8em;
+}
+#main .icon-only:before {
+    height: 1.8em;
+    left: 50%;
+    line-height: 1.8em;
+    margin: -0.9em;
+    position: absolute;
+    text-align: center;
+    text-indent: 0;
+    top: 50%;
+    width: 1.8em;
+}
+#main .icon-position-left {
+    padding-left: 2.7em;
+    position: relative;
+}
+#main .icon-position-left:before {
+    display: block;
+    left: 0;
+    line-height: 1.8em;
+    position: absolute;
+    width: 1.8em;
+}
+#main .icon-position-right {
+    padding-right: 2.7em;
+    position: relative;
+}
+#main .icon-position-right:before {
+    display: block;
+    line-height: 1.8em;
+    position: absolute;
+    right: 0;
+    width: 1.8em;
+}
+#main ul,
+#main ol {
+    margin-top: 0;
+    padding: 0;
+}
+#main ul ul,
+#main ol ul,
+#main ol ol,
+#main ul ol {
+    padding-left: 24px;
+    padding-left: 1.5rem;
+}
+#main ol > li {
+    font-weight: bold;
+}
+#main ol > li > *{
+    font-weight: normal;
+}
+
+#main dl {
+    margin-bottom: 1.8em;
+}
+#main dl dt {
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-weight: 600;
+}
+#main dl dd {
+    padding-left: 1.35em;
+}
+#main .para .itemizedlist {
+    margin-top: 1.8em;
+}
+
+#main .docnav a,
+#main .docnav a:link,
+#main .docnav a:visited,
+#main .docnav a strong,
+#main .docnav a:hover {
+    color: #CC0000 !important;
+}
+#main .book a,
+#main main a {
+    text-decoration: none;
+}
+#main .RoleCreateBugPara a:before {
+    background-color: #E6E6E6;
+    border-radius: 50%;
+    color: #333333;
+    display: inline-block;
+    font-family: 'redhat-books-icons';
+    font-size: 3em;
+    line-height: 1.2006em;
+    margin-right: 0.25em;
+    text-align: center;
+    vertical-align: middle;
+    width: 1.2006em;
+}
+#main .button,
+#main button,
+#main input[type="submit"],
+#main input[type="button"] {
+    -moz-appearance: none;
+    background-color: #333333;
+    border: medium none #1A1A1A;
+    border-radius: 0.15em;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-size: 100%;
+    font-weight: 600;
+    height: auto;
+    line-height: 1.8em;
+    margin: 0;
+    outline: 0 none;
+    padding: 0.45em 0.9em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+}
+#main .button:hover,
+#main button:hover,
+#main input[type="submit"]:hover,
+#main input[type="button"]:hover {
+    background-color: #1A1A1A;
+    border-color: #0D0D0D;
+    color: #FFFFFF;
+    cursor: pointer;
+    text-decoration: none;
+}
+#main .active.button,
+#main button.active,
+#main input.active[type="submit"],
+#main input.active[type="button"],
+#main .button:active,
+#main button:active,
+#main input[type="submit"]:active,
+#main input[type="button"]:active {
+    background-color: #4D4D4D;
+    border-color: #333333;
+    color: #FFFFFF;
+}
+#main .button[disabled="disabled"],
+#main button[disabled="disabled"],
+#main input[disabled="disabled"][type="submit"],
+#main input[disabled="disabled"][type="button"],
+#main .button[disabled="disabled"]:hover,
+#main button[disabled="disabled"]:hover,
+#main input[disabled="disabled"][type="submit"]:hover,
+#main input[disabled="disabled"][type="button"]:hover,
+#main .button[disabled="disabled"]:active,
+#main button[disabled="disabled"]:active,
+#main input[disabled="disabled"][type="submit"]:active,
+#main input[disabled="disabled"][type="button"]:active {
+    cursor: default;
+    opacity: 0.5;
+}
+#main .icon-only.button,
+#main button.icon-only,
+#main input.icon-only[type="submit"],
+#main input.icon-only[type="button"] {
+    height: 1.8em;
+    padding: 0;
+    width: 1.8em;
+}
+#main .buttons .button,
+#main .buttons button,
+#main .buttons input[type="submit"],
+#main .buttons input[type="button"] {
+    border-left: thin solid rgba(0, 0, 0, 0.25);
+    border-radius: 0;
+    float: left;
+    margin: 0;
+}
+#main .buttons .button:focus,
+#main .buttons button:focus,
+#main .buttons input[type="submit"]:focus,
+#main .buttons input[type="button"]:focus {
+    outline: 0 none;
+}
+#main .buttons .button:first-child,
+#main .buttons button:first-child,
+#main .buttons input[type="submit"]:first-child,
+#main .buttons input[type="button"]:first-child {
+    border-bottom-left-radius: 0.15em;
+    border-left-width: 0;
+    border-top-left-radius: 0.15em;
+}
+#main .buttons .button:last-child,
+#main .buttons button:last-child,
+#main .buttons input[type="submit"]:last-child,
+#main .buttons input[type="button"]:last-child,
+#main .buttons .last-child.button,
+#main .buttons button.last-child,
+#main .buttons input.last-child[type="submit"],
+#main .buttons input.last-child[type="button"] {
+    border-bottom-right-radius: 0.15em;
+    border-top-right-radius: 0.15em;
+}
+#main input[type="text"],
+#main input[type="search"],
+#main input[type="tel"],
+#main input[type="email"],
+#main input[type="password"],
+#main input[type="url"],
+#main input[type="date"],
+#main input[type="datetime"],
+#main input[type="time"],
+#main input[type="number"],
+#main input[list],
+#main textarea {
+    -moz-appearance: none;
+    background-color: #FFFFFF;
+    border-color: #CCCCCC;
+    border-radius: 0.15em;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    color: #000000;
+    display: block;
+    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1.8em;
+    margin-bottom: 1.8em;
+    margin-top: 0;
+    outline: 0 none;
+    padding: 0.3em 0.45em;
+    position: relative;
+    text-align: left;
+    transition: border-color 0.5s ease 0s;
+    width: 100%;
+}
+#main input[type="text"]:focus,
+#main input[type="search"]:focus,
+#main input[type="tel"]:focus,
+#main input[type="email"]:focus,
+#main input[type="password"]:focus,
+#main input[type="url"]:focus,
+#main input[type="date"]:focus,
+#main input[type="datetime"]:focus,
+#main input[type="time"]:focus,
+#main input[type="number"]:focus,
+#main input[list]:focus,
+#main textarea:focus {
+    background-color: #FFFFFF;
+    border-color: #004153;
+    color: #000000;
+}
+#main input[type="text"]:focus:hover,
+#main input[type="search"]:focus:hover,
+#main input[type="tel"]:focus:hover,
+#main input[type="email"]:focus:hover,
+#main input[type="password"]:focus:hover,
+#main input[type="url"]:focus:hover,
+#main input[type="date"]:focus:hover,
+#main input[type="datetime"]:focus:hover,
+#main input[type="time"]:focus:hover,
+#main input[type="number"]:focus:hover,
+#main input[list]:focus:hover,
+#main textarea:focus:hover {
+    background-color: #FFFFFF;
+    border-color: #004153;
+    color: #000000;
+}
+#main input[type="text"]:hover,
+#main input[type="search"]:hover,
+#main input[type="tel"]:hover,
+#main input[type="email"]:hover,
+#main input[type="password"]:hover,
+#main input[type="url"]:hover,
+#main input[type="date"]:hover,
+#main input[type="datetime"]:hover,
+#main input[type="time"]:hover,
+#main input[type="number"]:hover,
+#main input[list]:hover,
+#main textarea:hover {
+    background-color: #F2F2F2;
+    border-color: #F2F2F2;
+    color: #F2F2F2;
+}
+#main :-moz-placeholder {
+    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-weight: 400;
+}
+#main *::-moz-placeholder {
+    font-family: "Open Sans","Helvetica Neue",sans-serif;
+    font-weight: 400;
+}
+#main img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+}
+#main .para .mediaobject {
+    margin-top: 1.8em;
+}
+#main .inlinemediaobject {
+    display: inline-block;
+    line-height: 1.8em;
+}
+#main .inlinemediaobject img {
+    max-width: inherit;
+    min-width: 100%;
+}
+#title,
+#main .book,
+#main .docnav,
+#main > div > .preface,
+#main > div > .section,
+#main > div > .chapter,
+#main > div > .appendix {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+@media screen and (max-width: 64em) {
+    #title,
+    #main .book,
+    #main .docnav,
+    #main > div > .preface,
+    #main > div > .section,
+    #main > div > .chapter,
+    #main > div > .appendix {
+        padding-left: 1.8em;
+        padding-right: 1.8em;
+    }
+}
+#main blockquote.blockquote {
+    border-left: 0.6em solid #E6E6E6;
+    padding-left: 1.8em;
+}
+@media screen and (max-width: 32em) {
+    #main blockquote.blockquote {
+        background: none repeat scroll 0 0 #F2F2F2;
+        margin: -1.8em 1.8em;
+        padding: 1.8em 1.8em 0.01em 1.2em;
+    }
+}
+#main .one-half {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -0.25em;
+    vertical-align: top;
+    width: 50%;
+}
+#main .one-half:first-child {
+    padding-left: 0;
+    padding-right: 1.35em;
+}
+#main .one-half:last-child {
+    padding-left: 1.35em;
+    padding-right: 0;
+}
+#main .one-half:nth-child(2n+1) {
+    padding-left: 0;
+    padding-right: 1.35em;
+}
+#main .one-half:nth-child(2n) {
+    padding-left: 1.35em;
+    padding-right: 0;
+}
+#main .one-half.first {
+    padding-left: 0;
+    padding-right: 1.35em;
+}
+#main .one-half.last {
+    padding-left: 1.35em;
+    padding-right: 0;
+}
+#main .one-third {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -0.25em;
+    padding-left: 1.8009em;
+    padding-right: 1.8009em;
+    vertical-align: top;
+    width: 33.3333%;
+}
+#main .one-third:nth-child(3n+3) {
+    padding-left: 0.9em;
+    padding-right: 0;
+}
+#main .one-third:nth-child(3n+1) {
+    padding-left: 0;
+    padding-right: 0.9em;
+}
+#main .one-third.first {
+    padding-left: 0;
+    padding-right: 0.9em;
+}
+#main .one-third.second {
+    padding-left: 1.8009em;
+    padding-right: 1.8009em;
+}
+#main .one-third.third,
+#main .one-third.last {
+    padding-left: 0.9em;
+    padding-right: 0;
+}
+#main .two-thirds {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -0.25em;
+    vertical-align: top;
+    width: 66.6667%;
+}
+#main .two-thirds.first {
+    padding-left: 0;
+    padding-right: 0.8991em;
+}
+#main .two-thirds.last {
+    padding-left: 0.8991em;
+    padding-right: 0;
+}
+#main .one-quarter {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -0.25em;
+    vertical-align: top;
+    width: 25%;
+}
+#main .one-quarter:nth-child(4n+1) {
+    padding-left: 0;
+    padding-right: 2.025em;
+}
+#main .one-quarter:nth-child(4n+2) {
+    padding-left: 0.675em;
+    padding-right: 1.35em;
+}
+#main .one-quarter:nth-child(4n+3) {
+    padding-left: 1.35em;
+    padding-right: 0.675em;
+}
+#main .one-quarter:nth-child(4n+4) {
+    padding-left: 2.025em;
+    padding-right: 0;
+}
+#main .one-quarter.first {
+    padding-left: 0;
+    padding-right: 2.025em;
+}
+#main .one-quarter.second {
+    padding-left: 0.675em;
+    padding-right: 1.35em;
+}
+#main .one-quarter.third {
+    padding-left: 1.35em;
+    padding-right: 0.675em;
+}
+#main .one-quarter.fourth,
+#main .one-quarter.last {
+    padding-left: 2.025em;
+    padding-right: 0;
+}
+#main .three-quarters {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: -0.25em;
+    vertical-align: top;
+    width: 75%;
+}
+#main .three-quarters:first-child {
+    padding-left: 0;
+    padding-right: 0.675em;
+}
+#main .three-quarters:last-child {
+    padding-left: 0.675em;
+    padding-right: 0;
+}
+@media screen and (max-width: 32em) {
+    #main .one-half:not(.no-break):not(.break-mobile),
+    #main .two-thirds:not(.no-break):not(.break-mobile),
+    #main .three-quarters:not(.no-break):not(.break-mobile) {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+    #main .one-quarter:not(.no-break):not(.break-mobile),
+    #main .one-third:not(.no-break):not(.break-mobile) {
+        padding-left: 1.35em;
+        padding-right: 1.35em;
+        width: 50%;
+    }
+    #main .one-quarter:nth-child(2n+1):not(.no-break):not(.break-mobile),
+    #main .one-third:nth-child(2n+1):not(.no-break):not(.break-mobile) {
+        padding-left: 0;
+    }
+    #main .one-quarter:nth-child(2n):not(.no-break):not(.break-mobile),
+    #main .one-third:nth-child(2n):not(.no-break):not(.break-mobile) {
+        padding-right: 0;
+    }
+    #main .one-half .one-quarter:not(.no-break):not(.break-mobile),
+    #main .one-half .three-quarters:not(.no-break):not(.break-mobile) {
+        padding-left: 1.35em;
+        padding-right: 1.35em;
+    }
+    #main .one-half .one-quarter.first:not(.no-break):not(.break-mobile),
+    #main .one-half .three-quarters.first:not(.no-break):not(.break-mobile) {
+        padding-left: 0;
+    }
+    #main .one-half .one-quarter.last:not(.no-break):not(.break-mobile),
+    #main .one-half .three-quarters.last:not(.no-break):not(.break-mobile) {
+        padding-right: 0;
+    }
+    #main .one-half .one-quarter:not(.no-break):not(.break-mobile) {
+        width: 25%;
+    }
+    #main .one-half .three-quarters:not(.no-break):not(.break-mobile) {
+        width: 75%;
+    }
+}
+@media screen and (max-width: 32em) {
+    #main .one-half:not(.no-break),
+    #main .one-third:not(.no-break),
+    #main .two-thirds:not(.no-break),
+    #main .one-quarter:not(.no-break),
+    #main .three-quarters:not(.no-break) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
+    #main .one-half .one-quarter:not(.no-break) {
+        width: 25%;
+    }
+    #main .one-half .three-quarters:not(.no-break) {
+        width: 75%;
+    }
+}
+#title {
+    height: 42px;
+    padding-bottom: 1.8em;
+    padding-top: 1.8em;
+}
+@media screen and (max-width: 64em) {
+    #title {
+        padding-left: 1.8em;
+        padding-right: 1.8em;
+    }
+}
+#title .left,
+#title .right {
+    text-decoration: none;
+}
+#title .left {
+    float: left;
+}
+#title .left img {
+    display: block;
+}
+#title .right {
+    color: #000000;
+    float: right;
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+}
+#title .right:before {
+    content: "Documentation";
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 42px;
+    text-transform: uppercase;
+}
+#title .right img {
+    display: none;
+}
+
+#main .docnav {
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    padding-bottom: 7.2em;
+    padding-top: 3.6em;
+    position: relative;
+    text-align: center;
+}
+#main .docnav a {
+    text-decoration: none;
+}
+#main .docnav li.previous {
+    left: 50px;
+}
+
+#main .docnav .previous,
+#main .docnav .next {
+    position: absolute;
+    margin-top: 10px;
+}
+#main .docnav .previous a,
+#main .docnav .next a {
+    display: block;
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-weight: 400;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+#main .docnav .previous a:before,
+#main .docnav .next a:before {
+    font-size: 8em;
+    line-height: 1em;
+    margin-top: -0.5em;
+    position: absolute;
+    top: 50%;
+}
+#main .docnav .previous a strong,
+#main .docnav .next a strong {
+    /*    display: none; */
+}
+#main .docnav li.next a strong,
+#main .docnav li.previous a strong {
+    background: none;
+    padding: 0px;
+}
+
+#main {
+    margin-left: 31em !important;
+}
+
+#main.noLtoc {
+    margin-left: 4em !important;
+}
+
+#main .docnav .previous {
+    margin-right: 0.9em;
+    /*    right: 50%; */
+    text-align: left;
+}
+#main .docnav .previous a:before {
+    /*    left: -0.15em; */
+}
+#main .docnav .next {
+    /*    left: 50%; */
+    margin-left: 0.9em !important;
+    right: 3.6em !important;
+    text-align: right !important;
+}
+#main .docnav .next a:before {
+    right: -0.50em;
+}
+#main .docnav .home, .docnav .up {
+    display: inline-block;
+}
+#main .docnav .home a {
+    left: 3.6em;
+}
+#main .docnav .up a {
+    right: 3.6em;
+}
+#main .docnav.top {
+    /*    display: none; */
+}
+#main .docnav.top a strong {
+    display: block;
+}
+#main .docnav.top .home {
+    display: none;
+}
+
+#floatingtoc {
+    display: none;
+}
+
+#main {
+    position: relative;
+}
+#main #chromed-app-content #navigation {
+    top: -25px !important;
+    margin-left: -31em !important;
+}
+#navigation {
+    background: none repeat scroll 0 0 #F9F9F9;
+    box-sizing: border-box;
+    height: 100%;
+    position: absolute;
+    margin-left: -31em;
+    width: 26em;
+    z-index: 5;
+}
+
+#navigation > .toc {
+    height: calc(100vh - 104px);
+    background: none repeat scroll 0 0 #F9F9F9;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-left: 1.8em;
+    padding-right: 1.8em;
+    padding-top: 1.8em;
+    padding-bottom: 0em;
+    text-align: left;
+    width: 26em;
+}
+
+#main .docnav li.doctoc { display: none !important;}
+
+#navigation.bottom {
+    bottom: 0;
+    top: auto;
+}
+#navigation .toc dl dd {
+    margin: 0;
+    padding: 0 0 0 1.35em;
+}
+#main .producttitle {
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-size: 1.75em;
+    line-height: 1;
+    margin-bottom: 1.02857em;
+    margin-top: 0;
+    padding-top: 0.75em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+#main div.producttitle,
+#main .book > .titlepage h1.title,
+#main .authorgroup div,
+#main .titlepage .corpauthor,
+#main .titlepage .edition,
+#main .titlepage .releaseinfo {
+    text-align: left !important;
+}
+#main .titlepage .corpauthor {
+    margin-top: 1em;
+}
+#main .titlepage .author,
+#main .titlepage .editor {
+    margin-bottom: 0;
+}
+#main h3.author {
+    margin-top: 1.5em;
+}
+#main h4.editedby {
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+#main .authorgroup {
+    margin-bottom: 1.8em;
+}
+#main .abstract {
+    margin-top: 1.8em;
+}
+/* BUGBUG this requires renaming products in books :(
+#main .producttitle:before {
+    content: "Red Hat";
+    font-size: 0.7em;
+    font-weight: 600;
+    left: 0;
+    position: absolute;
+    top: 0;
+    white-space: nowrap;
+}
+*/
+#main .productname {
+    font-weight: bold;
+}
+
+#main .titlepage .productname {
+    display: block;
+    font-weight: 300;
+    font-size: 24.5px;
+    white-space: normal;
+    width: 10em;
+}
+#main .productnumber {
+    color: #CC0000;
+    display: block;
+    font-weight: 700;
+    font-size: 24.5px;
+}
+#main table {
+    border: thin solid #CCCCCC;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    margin: 0 0 1.8em;
+    text-align: left;
+    width: 100%;
+}
+#main table caption,
+#main table th,
+#main table td {
+    padding: 0.9em;
+    vertical-align: top;
+}
+#main table caption {
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+#main table th {
+    font-weight: 600;
+}
+#main table thead tr {
+    background-color: #E6E6E6;
+}
+#main table thead tr.no-wrap th {
+    line-height: 2.7em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#main table tbody tr {
+    border-top: thin solid #CCCCCC;
+}
+#main table tbody tr th {
+    background-color: #E6E6E6;
+    font-weight: 600;
+}
+#main table tbody tr.no-wrap td,
+#main table tbody tr.no-wrap th {
+    line-height: 2.7em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#main table tfoot {
+    color: #808080;
+}
+#main table tfoot tr {
+    border-top: thin solid #CCCCCC;
+}
+#main table.fixed {
+    box-sizing: border-box;
+    table-layout: fixed;
+}
+#main table.fixed * {
+    box-sizing: border-box;
+}
+#main .toc * {
+    font-weight: normal;
+}
+#main .toc a,
+#main .toc a:link,
+#main .toc a:visited {
+    color: #4D4D4D !important;
+    text-decoration: none;
+}
+#main .toc a:hover {
+    color: #808080 !important;
+}
+#main div.toc li {
+    border-bottom: medium none;
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-transform: none;;
+    list-style: none outside none;
+}
+#main div.toc > ul.toc > li > span:after {
+    content: "" !important;
+    display: block;
+    border-bottom: 0.125em solid #EEEEEE;
+    margin-bottom: 1em;
+    padding-bottom: 0.25em;
+}
+#main div.toc > ul.toc li ul {
+    margin-bottom: 1.5em;
+}
+#main div.toc > ul.toc ul {
+    padding-left: 1.35em;
+}
+#main div.toc > ul.toc >  li {
+    font-family: "Overpass","Open Sans","Helvetica Neue",sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    list-style: none outside none;
+}
+
+#main .admonition_header {
+    margin: 0 !important;
+    position: relative !important;
+    text-transform: uppercase !important;
+    top: -0.3em !important;
+    background: none !important;
+    padding-left: 0px !important;
+    font-weight: bold;
+}
+#main .admonition_header code {
+    text-transform: none !important;
+}
+#main .admonition_header p {
+    margin-bottom: 0 !important;
+}
+
+#main div.admonition > div {
+    padding-left: 0px !important;
+    border: none !important;
+    background-color: white;
+}
+
+#main .note,
+#main .important,
+#main .warning {
+    margin-bottom: 1.8em !important;
+    border-bottom: none !important;
+}
+#main .admonition p:last-child,
+#main .admonition .para:last-child {
+    margin-bottom: 0 !important;
+}
+#main .note,
+#main .important {
+    background-size: 2.7em auto !important;
+    padding-left: 4.5em !important;
+}
+#main .note {
+    background-image: url("../images/service_pattern_tile_positive.svg") !important;
+    background-repeat: repeat-y !important;
+}
+#main .important {
+    background-image: url("../images/service_pattern_tile_negative.svg") !important;
+    background-repeat: repeat-y !important;
+}
+#main .warning {
+    background-color: #333333 !important;
+    border-radius: 0.25em !important;
+    color: #FFFFFF !important;
+    padding: 1.2006em 0.9em 1.2006em 4.5em !important;
+    position: relative;
+}
+#main .warning > *,
+#main .warning .admonition_header strong {
+    background-color: #333333 !important;
+    color: #FFFFFF !important;
+}
+
+#main .warning:before {
+    font-size: 2.7em !important;
+    left: 0.36em !important;
+    position: absolute !important;
+    top: 0.36em !important;
+}
+
+/* toc hider */
+#main .menu-toggle {
+    background: none repeat scroll 0 0 #f9f9f9;
+    height: 48px;
+    right: -48px;
+    line-height: 48px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 48px;
+}
+#main .menu-toggle:hover,
+#main .menu-toggle:active {
+    background: none repeat scroll 0 0 #f2f2f2;
+}
+#main .menu-toggle > span {
+    background-color: #1a1a1a;
+    border-radius: 1px;
+    display: block;
+    height: 3px;
+    left: 50%;
+    margin-left: -12px;
+    margin-top: -1.5px;
+    position: absolute;
+    text-indent: -9999px;
+    top: 50%;
+    transition: all 0.2s ease 0s;
+    width: 24px;
+}
+#main .menu-toggle > span:before,
+#main .menu-toggle > span:after {
+    background-color: #1a1a1a;
+    border-radius: 1.5px;
+    content: "";
+    display: block;
+    height: 3px;
+    position: absolute;
+    transition: all 0.2s ease 0s;
+    width: 100%;
+}
+#main .menu-toggle > span:before {
+}
+#main .menu-toggle > span:after {
+    bottom: -6px;
+}
+#main .menu-toggle > span {
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+#main .menu-toggle > span:before {
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    transform: rotate(90deg);
+}
+
+#main .menu-toggle > span:after {
+    opacity: 0;
+}
+
+#main .menu-toggle.tocClosed {
+    margin-right: -1em;
+}
+
+#main .menu-toggle.tocClosed > span {
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -ms-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
+    transform: rotate(0deg);
+}
+#main .menu-toggle.tocClosed > span:before {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    top: -6px;
+}
+#main .menu-toggle.tocClosed > span:after {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+    opacity: 1;
+}
+
+/* less than 960px wide */
+@media screen and (max-width: 960px) {
+    #main #chromed-app-content #navigation {
+        margin-left: -21em !important;
+    }
+
+    #navigation {
+        margin-left: -21em;
+        width: 18em;
+    }
+    #main {
+        margin-left: 21em !important;
+    }
+    #navigation > .toc {
+        width: 18em;
+    }
+
+    #main .menu-toggle.tocClosed {
+        margin-right: 1em;
+    }
+
+    #title,
+    #main .book,
+    #main .docnav,
+    #main > div > .preface,
+    #main > div > .section,
+    #main > div > .chapter,
+    #main > div > .appendix {
+        margin-left: 1em !important;
+    }
+}
+
+#main .formalpara-title {
+    color: #454545;
+    display: block;
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 1em;
+    margin-top: 1.5em;
+}
+
+#main .calloutlist dt {
+    border-top: 2px solid rgba(0,0,0,0.1);
+    padding-top: .5em;
+}
+
+#main dl.calloutlist {
+    margin-top: 10px !important;
+}
+
+#main a.co,
+#main dl.calloutlist dt a,
+#main span.inlinecallout,
+#main dl.calloutlist dt > span.callout {
+    font-family: "liberation mono","bitstream vera mono","dejavu mono",monospace;
+    background-color: #9a9a9a;
+    color: white;
+    position: absolute;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.5em;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 1.5em;
+    -moz-border-radius: 1.5em;
+    -webkit-border-radius: 1.5em;
+}
+#main a.co {
+    right: 2em;
+}
+
+#main .callout {
+}
+
+#main dl.calloutlist dd {
+    margin-top: 0px;
+    padding-left: 2em;
+}
+#main a.co {
+    position: absolute !important;
+    width: 90% !important;
+    text-align: right;
+    padding: .6em .5em;
+    background-color: transparent;
+    margin-top: -.4em;
+}
+#main a.co:before {
+    border-top: .1em solid rgba(0,0,0,0.1);
+    content: "";
+    display: block;
+    width: 100%;
+    height: .1em;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    top: .33em !important;
+    left: auto;
+    right: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#main a.co:after {
+    content: "";
+    display: block;
+    background-color: #aaa;
+    border-radius: 0% 0 50% 50%;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    top: .33em !important;
+    left: auto;
+    right: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#main a.co:hover {
+    position: relative;
+    z-index: 9;
+}
+#main a.co:hover:before {
+    border-top: .1em solid #d00;
+    height: 1.5em;
+    margin-right: 1em;
+}
+#main a.co:hover:after {
+    background-color: #d00;
+}
+#main .programlisting {
+    position: relative !important;
+}
+#main .calloutlist dt {
+    border-top: 2px solid rgba(0,0,0,0.1);
+    padding-top: .25em;
+}
+#main a.co, dl.calloutlist dt a,
+#main span.inlinecallout,
+#main dl.calloutlist dt > span.callout {
+    border-radius: 0 0% 50% 50%;
+}
+
+#main dl.calloutlist dt.active,
+#main dl.calloutlist dt.active span.callout,
+#main dl.calloutlist dt.active a {
+    border-color: #d00;
+}
+#main dl.calloutlist dt.active a {
+    background-color: #d00;
+}
+
+#main .application,
+#main .guimenu,
+#main .guilabel,
+#main .guibutton,
+#main .guisubmenu,
+#main .guimenuitem,
+#main .abstract-title {
+    font-weight: bold;
+}
+
+#main .popper:hover,
+#main .popped:hover {
+    cursor:pointer;
+    background-color:rgba(0,0,0,0.03);
+}
+
+#main .popper {
+    max-height: 5.9em;
+    overflow: hidden;
+    overflow: -moz-hidden-unscrollable;
+    border-bottom: 3px dashed #A1A1A1;
+    position:relative;
+}
+
+#main .popper > .hide {
+    display: none;
+}
+
+#main .popper .show,
+#main .popped .hide {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+#main .popped {
+    max-height: 100%;
+    position:relative;
+}
+#main .popped > .show {
+    display: none;
+}
+
+@media print {
+    #main .hide, #main .show {display: none;}
+    #main pre.popper {max-height: auto;}
+}
+
+#main pre.numbered {
+    counter-reset: linecounter;
+}
+#main pre.numbered span.line{
+    counter-increment: linecounter;
+}
+#main pre.numbered span.line:before{
+    content: counter(linecounter);
+    width: 2em;
+    display: inline-block;
+    border-right: 1px solid black;
+}
+
+#main .example {
+    padding: 0.5em 0px 0.5em 1em;
+    border-left: 0.5em solid #AAAAAA;
+}
+
+#main .example p:first-child {
+    margin-top: 0px;
+}
+
+#main .switchery {
+}
+
+#main .switchery .labels {
+    margin-left:8px;
+}
+
+#main .switchery .labels > span {
+    background-color: #EEEEEE;
+    color: #666;
+    display: inline;
+    margin: 0;
+    margin-left: -1px;
+    padding: 0.5em 0.5em 0.2em;
+    border: 1px solid #AAAAAA;
+    cursor: pointer;
+}
+
+#main .switchery .labels > span.active {
+    background-color: white;
+    color: black;
+    border-bottom: white !important;
+}
+
+#main .switchery .code {
+    margin-top: 0px;
+}
+
+#main .switchery .code pre {
+    margin-top: 0px;
+    display: none;
+}
+#main .switchery .code pre.active {
+    display: block;
+}
+
+#main .switchery select.deflang {
+    float: right;
+}
+
+/* Start Highlighting css */
+#main .hljs {
+    -webkit-text-size-adjust: none;
+    text-shadow: none;
+}
+
+#main .hljs-comment,
+#main .language-diff .hljs-header,
+#main .hljs-javadoc,
+#main .hljs-preprocessor,
+#main .hljs-pragma,
+#main .hljs-pi,
+#main .hljs-doctype,
+#main .hljs-shebang,
+#main .hljs-cdata {
+    color: #8d8d8d;
+}
+
+#main .hljs-keyword,
+#main .hljs .assignment,
+#main .hljs-literal,
+#main .language-css .rule .hljs-keyword,
+#main .hljs-winutils,
+#main .language-javascript .hljs-title,
+#main .language-lisp .hljs-title,
+#main .hljs-subst {
+    color: #FFA07A;
+}
+
+#main .hljs-number,
+#main .hljs-hexcolor {
+    color: #87CEFA;
+    font-weight: 600;
+}
+
+#main .hljs-string,
+#main .hljs-tag .hljs-value,
+#main .hljs-phpdoc,
+#main .hljs-dartdoc,
+#main .language-tex .hljs-formula {
+    color: #FAFAD2;
+}
+
+#main .language-javascript .hljs-title,
+#main .language-lisp .hljs-title,
+#main .hljs-subst {
+    font-weight: normal;
+}
+
+#main .hljs-tag,
+#main .hljs-tag .hljs-title,
+#main .hljs-rules .hljs-property,
+#main .language-django .hljs-tag .hljs-keyword {
+    color: #FFA07A;
+    font-weight: normal;
+}
+
+#main .language-java .hljs-annotation {
+    color: #a4e2a4;
+}
+
+#main .hljs-attribute,
+#main .hljs-variable,
+#main .hjls .instancevar,
+#main .language-lisp .hljs-body,
+#main .language-xml .hljs-attribute{
+    color: #ca5380;
+}
+
+#main .hljs-regexp {
+    color: #d6b4df;
+}
+
+#main .hljs-symbol,
+#main .language-ruby .hljs-symbol .hljs-string,
+#main .language-ruby .hljs-symbol .hljs-keyword,
+#main .language-ruby .hljs-symbol .keymethods,
+#main .language-lisp .hljs-keyword,
+#main .language-tex .hljs-special,
+#main .hjls .input_number {
+    color: #FFA07A;
+}
+
+#main .hljs-deletion {
+    color: #d9534f;
+}
+
+#main .hljs-addition {
+    color: #a4e2a4;
+}
+
+#main .language-diff .hljs-change {
+    color: #FFA07A;
+}
+
+#main .hljs-chunk {
+    color: #aaa;
+}
+
+#main .language-tex .hljs-formula {
+    opacity: 0.5;
+}
+/* End Highlighting css */

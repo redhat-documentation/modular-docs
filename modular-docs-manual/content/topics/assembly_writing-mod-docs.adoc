@@ -20,8 +20,12 @@ include::assembly_creating_procedure_modules.adoc[leveloffset=+2]
 
 include::module_guidelines-reference.adoc[leveloffset=+2]
 
+include::module_anchor-and-file-names-concept.adoc[leveloffset=+2]
+
 
 include::assembly_forming_assemblies.adoc[leveloffset=+1]
+
+include::module_reusing-modules-procedure.adoc[leveloffset=+2]
 
 
 == Additional Resources
