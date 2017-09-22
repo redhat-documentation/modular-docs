@@ -1,0 +1,52 @@
+[#anchor-and-file-names]
+= Anchor Names and File Names
+
+To optimize modular documentation, follow these guidelines for naming module anchors and files.
+
+Anchor names:: Provide an anchor for every module so that it can be identified when reused or cross-referenced. Give the anchor name the same or a similar name to the module heading, separated by underscores, and indicate the module type (`con`, `ref`, `proc`) at the end of the name. If applicable, consider also providing a module sub-type (`create`, `edit`, `delete`) before the module type:
++
+[source]
+----
+[#anchor_name]
+= Module Heading
+
+First sentence of topic.
+----
++
+.Example 1. Concept module
+[source]
+----
+[#guided_decision_tables_con]
+= Guided Decision Tables
+
+The guided decision tables feature works similarly to ...
+----
++
+.Example 2. Procedure module
+[source]
+----
+[#guided_decision_tables_create_proc]
+= Creating Guided Decision Tables
+
+You can use guided decision tables to ...
+----
+
+NOTE: Although you can use other formats for naming anchors, the format defined here is recommended and in some cases required to enable topics to be properly cross-referenced and reused. For details, see xref:reusing-modules[].
+
+For more information about Asciidoc anchors, see the link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual].
+
+File names:: Give an informative name separated by dashes and indicate the module type (`con`, `ref`, `proc`) at the end of the name. If applicable, consider also providing a module sub-type (`create`, `edit`, `delete`) right before the module type. Indicating the module type and sub-type at the end of the file name instead of the beginning of the file name results in topics being sorted based on subject matter rather than module type. This assortment can be helpful for managing related content.
++
+For assemblies, however, precede the file name with `assembly_`. This sets assembled content apart from the content modules.
++
+.Examples
+* `guided-decision-tables-con.adoc`  (Concept module)
+* `guided-decision-tables-create-proc.adoc`  (Procedure module for creating)
+* `guided-decision-tables-edit-proc.adoc`  (Procedure module for editing)
+* `guided-decision-tables-examples-ref.adoc`  (Reference module with examples)
+* `guided-decision-tables-limitations-ref.adoc`  (Reference module with limitations)
+* `assembly_guided-decision-tables.adoc`  (Assembly of guided decision table modules)
+
+== Additional Resources
+
+* The link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual]

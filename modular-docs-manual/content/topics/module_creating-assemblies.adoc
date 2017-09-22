@@ -11,9 +11,7 @@ An assembly could represent an article, "chapter" in a book, or even an entire b
 . Create an assembly file for each user story that you identified.
 +
 --
-Be sure to follow a consistent file naming standard. For example, you could use the following file naming pattern:
-
-`assembly_configuring-security.adoc`
+Be sure to follow the conventions for xref:anchor-and-file-names[naming anchors and files]. For example: `assembly_guided-decision-tables.adoc`
 --
 
 . For each top-level assembly file that you created, fill in the content.
