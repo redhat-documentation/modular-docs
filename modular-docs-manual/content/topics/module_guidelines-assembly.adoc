@@ -1,36 +1,32 @@
 [[assembly-guidelines]]
 = Assembly Guidelines
 
-An assembly is a collection of modules that describes how to accomplish a user story.
+The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.
 
-// [bhardest] - Can assemblies be nested and/or combined?
+.Writing the Introduction
 
-.Writing the Intro Paragraphs
+The introduction explains what the user will accomplish by working through the assembled modules. It typically provides context for the assembly.
 
-The first paragraph of the assembly explains what the user will accomplish by working through the procedures in sequence. It sets context or explains the benefit the user will gain by performing the procedures that comprise the story.
+Consider rewording the user story to write the assembly introduction, for example:
 
-You can include additional paragraphs--and even concept modules--if they're necessary to fully explain the context, benefits, and other things the user must understand to complete the procedures successfully.
-
-// [bhardest] - Do we have any examples of including concepts within the intro paras? In the "Examples" appendices, the concept modules appear after the prereqs section, not as part of the intro.
-
-For more information about writing the intro paragraphs, see xref:writing-the-introduction[Writing the Introduction].
+* User story: As an administrator, I want to provide external identity, authentication and authorization services for my Atomic Host, so that users from external identity sources can access the Atomic Host.
+* Assembly introduction: As a system administrator, you can use SSSD in a container to provide external identity, authentication, and authorization services for the Atomic Host system. This enables users from external identity sources to authenticate to the Atomic Host.
 
 .Writing Prerequisites
 
-Prerequisites are the set of conditions that must be in place before the user can start the procedure. For more information, see xref:writing-prerequisites[Writing Prerequisites].
+Prerequisites are conditions that must be satisfied before the user can start following the assembly. For details, see xref:writing-prerequisites[Writing Prerequisites].
 
 // [bhardest] - We have a lot of xref-ing in these guidelines. A better approach might be to create a "snippets" .adoc file with snippets of common content (for example, the content about writing prerequisites, which applies to multiple sections). Then we can just include the relevant content from the snippets file wherever it's needed.
+// [asteflova] - Let's do this after we finish reviewing the guidelines for procedures and assemblies.
 
-.Writing the Procedure
+.Adding Modules
 
-The assembly procedure consists of one or more steps to complete the user story. Each step should be a link to a procedure module.
+List link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include files] to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly.
 
-.Adding Related Information
+.Adding Additional Resources
 
-If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this user story. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.
+Additional resources list links to other material closely related to the contents of the assembly: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
 
-// [bhardest] - This might not technically be correct. At the assembly level, I think we only want to provide related links to other assemblies (or possibly to other modules that apply to the entire assembly). It would be overkill to provide related links specific only to a particular module contained within the assembly.
+Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.
 
-== Related Information
-
-Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_ASSEMBLY.adoc[assembly template] for new projects.
+// [asteflova] This is another candidate for reuse.
