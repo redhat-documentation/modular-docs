@@ -1,9 +1,9 @@
 [#anchor-and-file-names]
 = Anchor Names and File Names
 
-To optimize modular documentation, follow these guidelines for naming module anchors and files.
+To optimize modular documentation, follow these guidelines for naming module anchors and files:
 
-Anchor names:: Provide an anchor for every module so that it can be identified when reused or cross-referenced. Give the anchor name the same or a similar name to the module heading, separated by underscores, and indicate the module type (`con`, `ref`, `proc`) at the end of the name. If applicable, consider also providing a module sub-type (`create`, `edit`, `delete`) before the module type:
+Anchor names:: Provide an anchor for every module so that it can be identified when reused or cross-referenced. Give the anchor the same name as the file name, separated by underscores. The name should include the module type (`con` for concept, `ref` for reference, `proc` for procedure) at the end of the name. If applicable, consider also providing a module sub-type (such as `create`, `edit`, `delete`) before the module type:
 +
 [source]
 ----
@@ -35,7 +35,7 @@ NOTE: Although you can use other formats for naming anchors, the format defined 
 
 For more information about Asciidoc anchors, see the link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual].
 
-File names:: Give an informative name separated by dashes and indicate the module type (`con`, `ref`, `proc`) at the end of the name. If applicable, consider also providing a module sub-type (`create`, `edit`, `delete`) right before the module type. Indicating the module type and sub-type at the end of the file name instead of the beginning of the file name results in topics being sorted based on subject matter rather than module type. This assortment can be helpful for managing related content.
+File names:: Give an informative name separated by dashes and indicate the module type (`con` for concept, `ref` for reference, `proc` for procedure) at the end of the name. If applicable, consider also providing a module sub-type (such as `create`, `edit`, `delete`) right before the module type. Indicating the module type and sub-type at the end of the file name instead of the beginning of the file name results in topics being sorted based on subject matter rather than module type. This assortment can be helpful for managing related content.
 +
 For assemblies, however, precede the file name with `assembly_`. This sets assembled content apart from the content modules.
 +
