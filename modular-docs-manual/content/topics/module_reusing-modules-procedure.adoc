@@ -15,7 +15,7 @@ This error is resolved by adding and defining a document attribute.
 [discrete]
 == Procedure
 
-. In the module file that will be reused, add a `+++{context}+++` attribute to the end of the anchor name.
+. In the module file that will be reused, add the `+++{context}+++` suffix with an underscore to anchor name in the format `[#anchor-name_+++{context}+++]`.
 
 +
 NOTE: Although you can use any document attribute that clearly indicates the variable in question, such as `+++{product}+++` or `+++{chapter}+++`, the `+++{context}+++` attribute is recommended. This attribute indicates more generally that the same module can be reused in the specified "context" of one section of a document or another, regardless of whether that section is product-specific or not, whether it is a whole chapter or a small assembly, or some other limitation.
@@ -24,17 +24,17 @@ NOTE: Although you can use any document attribute that clearly indicates the var
 .Two Modules to Be Reused: Module A and Module B
 [source]
 ----
-[#module_A_being_reused_{context}]
+[#module-A-being-reused_{context}]
 = Module A Heading
 ----
 +
 [source]
 ----
-[#module_B_being_reused_{context}]
+[#module-B-being-reused_{context}]
 = Module B Heading
 ----
 
- . In the assembly file, define the `+++:context:+++` attribute immediately above any included modules that are being reused. How you define the attribute depends on whether the module is included once in multiple assemblies, or is included multiple times in a single assembly.
+ . In the assembly file, define the `+++:context:+++` attribute, separated by dashes, immediately above any included modules that are being reused, in the format `+++:context:+++ attribute-name`. How you define the attribute depends on whether the module is included once in multiple assemblies, or is included multiple times in a single assembly.
 +
 Module Included Once in Multiple Assemblies:: If the reused modules are included only once in this assembly and in at least one other assembly, then you can define an assembly-level attribute such as `+++:context: assembly-name+++`. This  indicates that the reused module is appearing in the context of that assembly.
 
@@ -42,30 +42,30 @@ Module Included Once in Multiple Assemblies:: If the reused modules are included
 .Assembly 1
 [source]
 ----
-include::some-module-not-being-reused.adoc
+include::con_some-module-not-being-reused.adoc
 
 :context: assembly-1-name
-include::module-A-being-reused.adoc
+include::con_module-A-being-reused.adoc
 
-include::some-module-not-being-reused.adoc
+include::con_some-module-not-being-reused.adoc
 
 :context: assembly-1-name
-include::module-B-being-reused.adoc
+include::con_module-B-being-reused.adoc
 ----
 
 +
 .Assembly 2
 [source]
 ----
-include::some-module-not-being-reused.adoc
+include::con_some-module-not-being-reused.adoc
 
 :context: assembly-2-name
-include::module-A-being-reused.adoc
+include::con_module-A-being-reused.adoc
 
-include::some-module-not-being-reused.adoc
+include::con_some-module-not-being-reused.adoc
 
 :context: assembly-2-name
-include::module-B-being-reused.adoc
+include::con_module-B-being-reused.adoc
 ----
 
 +
@@ -75,15 +75,15 @@ Module Included Multiple Times in a Single Assembly:: If a module is included mu
 .Assembly
 [source]
 ----
-include::some-module-not-being-reused.adoc
+include::con_some-module-not-being-reused.adoc
 
 :context: section-1-name
-include::module-A-being-reused.adoc
+include::con_module-A-being-reused.adoc
 
-include::some-module-not-being-reused.adoc
+include::con_some-module-not-being-reused.adoc
 
 :context: section-2-name
-include::module-A-being-reused.adoc
+include::con_module-A-being-reused.adoc
 ----
 
 +
@@ -94,7 +94,7 @@ include::module-A-being-reused.adoc
 ----
 // Module included in the following assemblies ...
 
-[#module_A_being_reused_{context}]
+[#module-A-being-reused_{context}]
 = Module A Heading
 ----
 
@@ -105,131 +105,130 @@ To cross-reference a reused module, specify both the anchor name and the `+++{co
 
 [source]
 ----
-xref:anchor_name_attribute-name[]
+xref:anchor-name_context-attribute-name[]
 ----
 
 Example:
 
 [source]
 ----
-For details, see xref:module_A_being_reused_assembly-1-name[].
+For details, see xref:module-A-being-reused_assembly-1-name[].
 ----
 ====
 
 == Practical Example 1: Reusing Modules in Multiple Assemblies
 
-In a user guide, you want to reuse the "Creating Assets" procedure module and the "Projects" concept module in both "Chapter 3: Assets" and "Chapter 4: Projects" assemblies.
+You want to reuse the "Creating Assets" procedure module and the "Projects" concept module in two assemblies: in an "Asset Definitions" assembly and in a "Business Rules" assembly.
 
 The module files contain the following content:
 
-.projects-con.adoc
+.con_projects.adoc
 [source]
 ----
-// Module included in the following assemblies: "assembly_projects.adoc", "assembly_assets.adoc"
+// Module included in the following assemblies: assembly_asset-definitions.adoc, assembly_business-rules.adoc
 
-[#projects_con_{context}]
+[#projects_{context}]
 = Projects
 ----
 
-.assets-creating-proc.adoc
+.proc_creating-assets.adoc
 [source]
 ----
-// Module included in the following assemblies: "assembly_projects.adoc", "assembly_assets.adoc"
+// Module included in the following assemblies: assembly_asset-definitions.adoc, assembly_business-rules.adoc
 
-[#assets_creating_proc_{context}]
+[#creating-assets_{context}]
 = Creating Assets
 ----
 
 The assembly files contain the following content:
 
-.assembly_projects.adoc
+.assembly_asset-definitions.adoc
 [source]
 ----
-include::organizational-unit-con.adoc
+include::con_organizational-unit.adoc
 
-include::repository-con.adoc
+include::con_repository.adoc
 
-:context: assembly-projects
-include::projects-con.adoc
+:context: asset-definitions
+include::con_projects.adoc
 
-include::organizational-unit-con.adoc
+include::con_organizational-unit.adoc
 
-include::packages-create-proc.adoc
+include::proc_creating-packages.adoc
 
-:context: assembly-projects
-include::assets-creating-proc.adoc
+:context: asset-definitions
+include::proc_creating-assets.adoc
 
-include::dependencies-add-proc.adoc
+include::proc_adding-dependencies.adoc
 ----
 
-.assembly_assets.adoc
+.assembly_business-rules.adoc
 [source]
 ----
-include::assets-business-processes-con.adoc
+include::con_business-processes.adoc
 
-:context: assembly-assets
-include::projects-con.adoc
+:context: business-rules
+include::con_projects.adoc
 
-include::projects-types-ref.adoc
+include::ref_project-types.adoc
 
-include::assets-packages-gloss.adoc
+include::con_packages.adoc
 
-:context: assembly-assets
-include::assets-creating-proc.adoc
+:context: business-rules
+include::proc_creating-assets.adoc
 ----
 
-Then for cross-references to the reused modules, you specify which context (assembly) you want to link to. For example, you can link to the "Projects" module as it appears either in the "Chapter 3: Assets" assembly or in the "Chapter 4: Projects" assembly:
+Then for cross-references to the reused modules, specify which context (assembly) you want to link to. For example, you can link to the "Creating Assets" procedure module as it appears either in the "Asset Definitions" assembly or in the "Business Rules" assembly. You create cross-references in the format `+++xref:anchor-name_context-attribute-name[]+++`:
 
 [source]
 ----
-For details, see xref:projects_con_assembly-assets[].
+For details, see xref:creating-assets_asset-definitions[].
 
 or
 
-For details, see xref:projects_con_assembly-projects[].
-
+For details, see xref:creating-assets_business-rules[].
 ----
 
 == Practical Example 2: Reusing a Module in a Single Assembly
 
-In a user guide, you want to reuse the "Projects" concept module two times in the same "Chapter 4: Projects" assembly.
+You want to reuse the "Projects" concept module two times in the same "Business Rules" assembly.
 
 The module file contains the following content:
 
-.projects-con.adoc
+.con_projects.adoc
 [source]
 ----
-[#projects_con_{context}]
+[#projects_{context}]
 = Projects
 ----
 
 The assembly file contains the following content:
 
-.assembly_projects.adoc
+.assembly_business-rules.adoc
 [source]
 ----
 :context: intro
-include::projects-con.adoc
+include::con_projects.adoc
 
-include::organizational-unit-con.adoc
+include::con_organizational-unit.adoc
 
-include::asset-types-ref.adoc
+include::ref_asset-types.adoc
 
-:context: definitions
-include::projects-con.adoc
+:context: asset-types
+include::con_projects.adoc
 
-include::dependencies-con.adoc
+include::con_dependencies.adoc
 ----
 
-Then for cross-references to the reused module, you specify which context (section) you want to link to. For example, you can link to the "Projects" module as it appears either in the introduction or in the definitions section:
+Then for cross-references to the reused module, specify which context (section) you want to link to. For example, you can link to the "Projects" module as it appears either in the "Introduction" or in the "Asset Types" section. You create cross-references in the format `+++xref:anchor-name_context-attribute-name[]+++`:
 
 [source]
 ----
-For details, see xref:projects_con_intro[].
+For details, see xref:projects_introduction[].
 
 or
 
-For details, see xref:projects_con_definitions[].
+For details, see xref:projects_asset-types[].
 ----
 
 == Additional Resources
