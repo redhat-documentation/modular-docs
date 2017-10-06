@@ -15,7 +15,7 @@ This error is resolved by adding and defining a document attribute.
 [discrete]
 == Procedure
 
-. In the module file that will be reused, add the `+++{context}+++` suffix with an underscore to anchor name in the format `[#anchor-name_+++{context}+++]`.
+. In the module file that will be reused, add the `+++{context}+++` suffix with an underscore to the anchor name in the format `[#anchor-name_+++{context}+++]`.
 
 +
 NOTE: Although you can use any document attribute that clearly indicates the variable in question, such as `+++{product}+++` or `+++{chapter}+++`, the `+++{context}+++` attribute is recommended. This attribute indicates more generally that the same module can be reused in the specified "context" of one section of a document or another, regardless of whether that section is product-specific or not, whether it is a whole chapter or a small assembly, or some other limitation.
