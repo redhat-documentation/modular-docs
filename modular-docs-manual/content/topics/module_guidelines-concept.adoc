@@ -1,4 +1,4 @@
-[[concept-module-guidelines]]
+[#concept-module-guidelines]
 = Concept Module Guidelines
 
 The required part of a procedure module is the concept explanation. Optionally, the module can also include an introduction and additional resources.

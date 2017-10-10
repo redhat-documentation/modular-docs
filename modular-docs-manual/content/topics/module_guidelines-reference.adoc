@@ -1,4 +1,4 @@
-[[reference-module-guidelines]]
+[#reference-module-guidelines]
 = Reference Module Guidelines
 
 A reference module lists things, such as a list of commands, or has a very regimented structure, such as the consistent structure of man pages. A reference module explains the details that a customer needs to know to do a procedure. A reference module is well-organized if users can scan it quickly to find the details they want.

@@ -1,4 +1,4 @@
-[[procedure-module-guidelines]]
+[#procedure-module-guidelines]
 = Procedure Module Guidelines
 
 The required parts of a procedure module are a procedure and its introduction. Optionally, the module can also include prerequisites and additional resources.
@@ -6,7 +6,7 @@ The required parts of a procedure module are a procedure and its introduction. O
 .Schema of a procedure module
 image::procedure-diagram.png[]
 
-[[writing-the-introduction]]
+[#writing-the-introduction]
 .Writing the Introduction
 The introduction is a short description of the procedure. For example, it can be a lead-in sentence or an infinitive phrase (_To extract the certificate: <steps>_). See also _The IBM Style Guide_ footnoteref:[ibm-style-guide,DERESPINIS, Francis, Peter HAYWARD, Jana JENKINS, Amy LAIRD, Leslie McDONALD, Eric RADZINKSI. _The IBM style guide: conventions for writers and editors_. Upper Saddle River, NJ: IBM Press/Pearson, c2012. ISBN 0132101300.] for details on introducing procedures.
 
@@ -18,13 +18,13 @@ The introduction typically provides context for the procedure, such as:
 
 Keep the information brief and focused on what the user needs for this specific procedure. Suggested length is 1--3 sentences, but it can be longer.
 
-[[writing-prerequisites]]
+[#writing-prerequisites]
 .Writing Prerequisites
 Prerequisites are conditions that must be satisfied before the user starts the procedure. If a prerequisite is a procedure or an assembly, include a link to them. See also _The IBM Style Guide_ footnoteref:[ibm-style-guide] for details on writing prerequisites.
 
 Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
 
-[[writing-the-procedure]]
+[#writing-the-procedure]
 .Writing the Procedure
 The procedure consists of one or more steps required to complete the procedure. Each step describes one action.
 
