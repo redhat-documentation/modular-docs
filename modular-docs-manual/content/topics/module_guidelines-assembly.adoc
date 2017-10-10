@@ -1,4 +1,4 @@
-[[assembly-guidelines]]
+[#assembly-guidelines]
 = Assembly Guidelines
 
 An assembly is a collection of modules that describes how to accomplish a user story.

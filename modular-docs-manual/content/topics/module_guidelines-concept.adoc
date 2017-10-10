@@ -1,4 +1,4 @@
-[[concept-module-guidelines]]
+[#concept-module-guidelines]
 = Concept Module Guidelines
 
 A concept module describes and explains things such as a product, subsystem, or feature -- what a customer needs to understand to do a procedure. A concept module may also explain how things relate and interact with other things. The use of graphics and diagrams can speed up understanding of a concept.

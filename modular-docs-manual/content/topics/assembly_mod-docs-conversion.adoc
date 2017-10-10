@@ -1,4 +1,4 @@
-[[converting-to-mod-doc]]
+[#converting-to-mod-doc]
 = Converting to Modular Documentation
 
 If you have a monolithic, feature-based manual, you can convert it to a set of modular content based on user stories. This conversion workflow involves using the customer product lifecycle to define user stories for your product, and creating the assemblies and modules necessary to fit each user story.

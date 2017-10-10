@@ -1,4 +1,4 @@
-[[writing-mod-docs]]
+[#writing-mod-docs]
 = Writing Modular Documentation
 
 Assemblies can include various types of modules. Use the instructions in the following sections to create modules and combine them into assemblies.

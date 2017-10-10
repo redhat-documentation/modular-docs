@@ -1,4 +1,4 @@
-[[modular-docs-concept-examples]]
+[#modular-docs-concept-examples]
 = Concept Module Examples
 
 .Concept Module: How Ceph Works with Satellite 5

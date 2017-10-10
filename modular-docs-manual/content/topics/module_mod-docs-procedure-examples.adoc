@@ -1,4 +1,4 @@
-[[modular-docs-procedure-examples]]
+[#modular-docs-procedure-examples]
 = Procedure Module Examples
 
 .Procedure Module: Installing Third-Party Certificates for HTTP or LDAP
