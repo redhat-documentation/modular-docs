@@ -1,7 +1,12 @@
+// Module included in the following assemblies:
+//
+// <List assemblies here, each on a new line>
+
+
 // Include an 'ID' that corresponds to the title of the assembly
 // The ID will be used as an anchor for linking to the title
 // Do not change the ID to make sure existing links keep working
-[#reference_template_and_guidelines]
+[#reference-template-and-guidelines_{context}]
 = Reference Template and Guidelines
 
 _In the title, include nouns that are used in the body text — this helps readers and search engines find information quickly._
