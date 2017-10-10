@@ -1,4 +1,9 @@
-[[troubleshooting-module-guidelines]]
+// Module included in the following assemblies:
+//
+// <List assemblies here, each on a new line>
+
+
+[#troubleshooting-module-guidelines_{context}]
 === Troubleshooting Module Guidelines
 
 Start the module with a more detailed description of how the problem presents itself. Help the reader make sure that this is the problem they are experiencing. Describe the symptoms of the problem: for example, what error messsages are displayed?

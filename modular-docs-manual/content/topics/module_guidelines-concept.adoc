@@ -39,4 +39,4 @@ If necessary, you can provide a bulleted list of links to other concept, procedu
 == Related Information
 For real-world examples of concept modules, and its individual parts, see <<modular-docs-concept-examples>>.
 
-Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_CONCEPT_concept_template_and_guidelines.adoc[concept module template] for new projects.
+Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_CONCEPT_concept-template-and-guidelines.adoc[concept module template] for new projects.
