@@ -1,0 +1,52 @@
+[#anchor-and-file-names]
+= Anchor Names and File Names
+
+To optimize modular documentation, follow these guidelines for naming module anchors and files:
+
+Anchor names:: Provide an anchor in the format `+++[#anchor-name]+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:
++
+--
+[source]
+----
+[#anchor-name]
+= Module Heading
+
+First sentence of topic.
+----
+
+.Example 1. Concept Module
+[source]
+----
+[#guided-decision-tables]
+= Guided Decision Tables
+
+The guided decision tables feature works similarly to ...
+----
+
+.Example 2. Procedure Module
+[source]
+----
+[#creating-guided-decision-tables]
+= Creating Guided Decision Tables
+
+You can use guided decision tables to ...
+----
+
+NOTE: The format defined here is recommended because it supports attributes that enable topics to be reused and cross-referenced properly. For details, see xref:reusing-modules[]. You can also use the format `+++[id='anchor-name']+++`, but be consistent in your choice of anchor formatting.
+
+For more information about Asciidoc anchors, see the link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual].
+--
+
+File names:: Give the module file the same name as the anchor used in it (which is the same as or similar to the module heading), also separated by dashes. Add a prefix with an underscore to the file name to indicate the module type in the format `prefix_file-name`. Use `con_` for concept, `ref_` for reference, `proc_` for procedure, and `assembly_` for assembly.
++
+.Examples
+* `con_guided-decision-tables.adoc`  (Concept module)
+* `proc_creating-guided-decision-tables.adoc`  (Procedure module for creating)
+* `proc_editing-guided-decision-tables.adoc`  (Procedure module for editing)
+* `ref_guided-decision-table-examples.adoc`  (Reference module with examples)
+* `ref_guided-decision-table-columns.adoc`  (Reference module with column types)
+* `assembly_guided-decision-tables.adoc`  (Assembly of guided decision table modules)
+
+== Additional Resources
+
+* The link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual]

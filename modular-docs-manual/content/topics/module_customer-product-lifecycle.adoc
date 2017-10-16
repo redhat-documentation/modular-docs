@@ -1,4 +1,4 @@
-[[customer-product-lifecycle]]
+[#customer-product-lifecycle]
 = Overview of the Customer Product Lifecycle
 
 User stories are the basis of modular documentation. The modular documentation conversion workflow uses the _customer product lifecycle_ to help you discover and develop the user stories that your documentation should include.

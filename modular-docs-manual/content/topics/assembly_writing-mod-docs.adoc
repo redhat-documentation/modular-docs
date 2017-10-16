@@ -1,4 +1,4 @@
-[[writing-mod-docs]]
+[#writing-mod-docs]
 = Writing Modular Documentation
 
 Assemblies can include various types of modules. Use the instructions in the following sections to create modules and combine them into assemblies.
@@ -20,10 +20,9 @@ include::assembly_creating_procedure_modules.adoc[leveloffset=+2]
 
 include::module_guidelines-reference.adoc[leveloffset=+2]
 
+include::module_anchor-and-file-names-concept.adoc[leveloffset=+2]
+
 
 include::assembly_forming_assemblies.adoc[leveloffset=+1]
 
-
-== Additional Resources
-
-* Real-world examples of assemblies, modules, and their individual parts: <<appendix-examples>>.
+include::module_reusing-modules-procedure.adoc[leveloffset=+2]

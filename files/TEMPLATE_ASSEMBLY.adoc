@@ -1,7 +1,12 @@
+// Module included in the following assemblies:
+//
+// <List assemblies here, each on a new line>
+
+
 // Include an 'ID' that corresponds to the title of the assembly
 // The ID will be used as an anchor for linking to the title
 // Do not change the ID to make sure existing links keep working
-[#doing_several_tasks_in_sequence]
+[#doing-several-tasks-in-sequence_{context}]
 = Doing Several Tasks in Sequence
 
 _Start the title with a verb in the gerund form, such as Creating or Configuring._
