@@ -20,7 +20,8 @@ _A task module is a procedure written with numbered steps -- what a customer nee
 
 This paragraph explains why the user performs the task, sets the context of the task, and may explain or list specical considerations specific to this task. Keep the information brief and focused on what is needed for this specific task. Suggested length is 1 to 3 sentences, can be longer if needed.
 
-.Prerequisites
+[discrete]
+== Prerequisites
 
 * Sentence or a bulleted list of pre-requisites that must be in place or done before the user starts this task.
 
@@ -28,8 +29,8 @@ This paragraph explains why the user performs the task, sets the context of the 
 
 * Text can be a link to a pre-requisite task that the user must do before starting this task.
 
-
-.Procedure
+[discrete]
+== Procedure
 
 _Put steps in a numbered list. The step sequence is important to a repeatable successful outcome._
 
@@ -43,8 +44,8 @@ _Put steps in a numbered list. The step sequence is important to a repeatable su
 
 . Include one command or action per step.
 
-
-.Related Information
+[discrete]
+== Additional Resources
 
 * Bulleted list of links to concepts, reference, or other tasks closely related to this task.
 
