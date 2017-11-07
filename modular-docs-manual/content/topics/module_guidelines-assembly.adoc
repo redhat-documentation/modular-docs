@@ -1,4 +1,4 @@
-[#assembly-guidelines]
+[id='assembly-guidelines']
 = Assembly Guidelines
 
 The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.

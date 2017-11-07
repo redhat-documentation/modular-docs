@@ -1,4 +1,4 @@
-[#procedure-module-definition]
+[id='procedure-module-definition']
 = Procedure Module Definition
 
 A procedure module is a "do" module. It gives the user numbered, step-by-step instructions.
