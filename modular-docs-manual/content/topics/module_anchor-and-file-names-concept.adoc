@@ -1,14 +1,14 @@
-[#anchor-and-file-names]
+[id='anchor-and-file-names']
 = Anchor Names and File Names
 
 To optimize modular documentation, follow these guidelines for naming module anchors and files:
 
-Anchor names:: Provide an anchor in the format `+++[#anchor-name]+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:
+Anchor names:: Provide an anchor in the format `+++[id='anchor-name']+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:
 +
 --
 [source]
 ----
-[#anchor-name]
+[id='anchor-name']
 = Module Heading
 
 First sentence of topic.
@@ -17,7 +17,7 @@ First sentence of topic.
 .Example 1. Concept Module
 [source]
 ----
-[#guided-decision-tables]
+[id='guided-decision-tables']
 = Guided Decision Tables
 
 The guided decision tables feature works similarly to ...
@@ -26,13 +26,17 @@ The guided decision tables feature works similarly to ...
 .Example 2. Procedure Module
 [source]
 ----
-[#creating-guided-decision-tables]
+[id='creating-guided-decision-tables']
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...
 ----
 
-NOTE: The format defined here is recommended because it supports attributes that enable topics to be reused and cross-referenced properly. For details, see xref:reusing-modules[]. You can also use the format `+++[id='anchor-name']+++`, but be consistent in your choice of anchor formatting.
+[NOTE]
+.Note on Other Anchor Formats (Not Recommended)
+====
+The format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced properly. For details, see xref:reusing-modules[]. Other anchor formats include `+++[[anchor-name]]+++` and `+++[#anchor-name]+++`, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.
+====
 
 For more information about Asciidoc anchors, see the link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual].
 --

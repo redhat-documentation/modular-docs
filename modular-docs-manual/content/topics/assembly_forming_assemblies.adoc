@@ -1,4 +1,4 @@
-[[forming-assemblies]]
+[id='forming-assemblies']
 = Forming Assemblies
 
 This section explains what an assembly is and provides recommended practices for forming assemblies.

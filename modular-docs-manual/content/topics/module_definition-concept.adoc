@@ -1,4 +1,4 @@
-[[concept-module-definition]]
+[id='concept-module-definition']
 = Concept Module Definition
 
 A concept module is an "understand" module. Concept modules give the user descriptions and explanations needed to understand and use a product.

@@ -1,4 +1,4 @@
-[#modular-docs-assembly-examples]
+[id='modular-docs-assembly-examples']
 = Assembly Examples
 
 .Assembly Example: Backing up an MBaaS

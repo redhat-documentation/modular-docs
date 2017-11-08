@@ -1,4 +1,4 @@
-[#modular-docs-terms-definitions]
+[id='modular-docs-terms-definitions']
 = Modular Documentation Terms and Definitions
 
 Assembly:: A collection of several modules combined into a larger piece of text, preceded by an introduction that explains the purpose of the assembly.
