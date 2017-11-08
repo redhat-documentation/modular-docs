@@ -428,15 +428,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#forming-assemblies">Forming Assemblies</a></li>
 </ul>
 </li>
-<li><a href="#modular-docs-terms-definitions">Modular Documentation Terms and Definitions</a></li>
-<li><a href="#appendix-examples">Module and Assembly Examples</a>
+<li><a href="#modular-docs-terms-definitions">Appendix A: Modular Documentation Terms and Definitions</a></li>
+<li><a href="#appendix-examples">Appendix B: Module and Assembly Examples</a>
 <ul class="sectlevel2">
 <li><a href="#modular-docs-concept-examples">Concept Module Examples</a></li>
 <li><a href="#modular-docs-procedure-examples">Procedure Module Examples</a></li>
 <li><a href="#modular-docs-assembly-examples">Assembly Examples</a></li>
 </ul>
 </li>
-<li><a href="#converting-to-mod-doc">Converting to Modular Documentation</a>
+<li><a href="#converting-to-mod-doc">Appendix C: Converting to Modular Documentation</a>
 <ul class="sectlevel2">
 <li><a href="#_prerequisites">Prerequisites</a></li>
 <li><a href="#customer-product-lifecycle">Overview of the Customer Product Lifecycle</a></li>
@@ -769,12 +769,12 @@ A procedure module does not consist solely of a procedure. At the very least, th
 <dl>
 <dt class="hdlist1">Anchor names</dt>
 <dd>
-<p>Provide an anchor in the format <code>[#anchor-name]</code> for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:</p>
+<p>Provide an anchor in the format <code>[id='anchor-name']</code> for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:</p>
 <div class="openblock">
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>[#anchor-name]
+<pre class="highlight"><code>[id='anchor-name']
 = Module Heading
 
 First sentence of topic.</code></pre>
@@ -783,7 +783,7 @@ First sentence of topic.</code></pre>
 <div class="listingblock">
 <div class="title">Example 1. Concept Module</div>
 <div class="content">
-<pre class="highlight"><code>[#guided-decision-tables]
+<pre class="highlight"><code>[id='guided-decision-tables']
 = Guided Decision Tables
 
 The guided decision tables feature works similarly to ...</code></pre>
@@ -792,7 +792,7 @@ The guided decision tables feature works similarly to ...</code></pre>
 <div class="listingblock">
 <div class="title">Example 2. Procedure Module</div>
 <div class="content">
-<pre class="highlight"><code>[#creating-guided-decision-tables]
+<pre class="highlight"><code>[id='creating-guided-decision-tables']
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...</code></pre>
@@ -805,7 +805,10 @@ You can use guided decision tables to ...</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-The format defined here is recommended because it supports attributes that enable topics to be reused and cross-referenced properly. For details, see <a href="#reusing-modules">Reusing Modules in Assemblies</a>. You can also use the format <code>[id='anchor-name']</code>, but be consistent in your choice of anchor formatting.
+<div class="title">Note on Other Anchor Formats (Not Recommended)</div>
+<div class="paragraph">
+<p>The format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced properly. For details, see <a href="#reusing-modules">Reusing Modules in Assemblies</a>. Other anchor formats include <code>[[anchor-name]]</code> and <code>[#anchor-name]</code>, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -922,10 +925,10 @@ The format defined here is recommended because it supports attributes that enabl
 <div class="sect3">
 <h4 id="reusing-modules">Reusing Modules in Assemblies</h4>
 <div class="paragraph">
-<p>When you create content in modules, you can use the same module multiple times in an assembly without having to replicate information in multiple source files. However, in order to facilitate module reuse, you must embed a document attribute variable in the anchor name for the module and then define that attribute in the assembly each time the reused module appears. If the attribute is not embedded and assigned, an error appears at build time reporting the duplicated anchor ID.</p>
+<p>When you create content in modules, you can use the same module multiple times in an assembly without having to replicate information in multiple source files. However, in order to facilitate module reuse, you must embed a document attribute variable in the anchor name for the module and then define that variable in the assembly each time the reused module appears. If the variable is not embedded and assigned, an error appears at build time reporting the duplicated anchor ID.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 1. Error at Build Time When Anchor Has No Attribute</div>
+<div class="title">Example 1. Error at Build Time When Anchor Has No Variable</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -936,13 +939,13 @@ $BUILD_PATH fails to validate</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This error is resolved by adding and defining a document attribute.</p>
+<p>This error is resolved by adding and defining a document variable.</p>
 </div>
 <h5 id="_procedure" class="discrete">Procedure</h5>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>In the module file that will be reused, add the <code>{context}</code> suffix with an underscore to the anchor name in the format <code>[#anchor-name_{context}]</code>.</p>
+<p>In the module file that will be reused, add the <code>{context}</code> suffix with an underscore to the anchor name in the format <code>[id='anchor-name_{context}']</code>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -950,7 +953,7 @@ $BUILD_PATH fails to validate</code></pre>
 <div class="title">Note</div>
 </td>
 <td class="content">
-Although you can use any document attribute that clearly indicates the variable in question, such as <code>{product}</code> or <code>{chapter}</code>, the <code>{context}</code> attribute is recommended. This attribute indicates more generally that the same module can be reused in the specified "context" of one section of a document or another, regardless of whether that section is product-specific or not, whether it is a whole chapter or a small assembly, or some other limitation.
+Although you can use any document variable that clearly indicates the variable in question, such as <code>{product}</code> or <code>{chapter}</code>, the <code>{context}</code> variable is recommended. This variable indicates more generally that the same module can be reused in the specified "context" of one section of a document or another, regardless of whether that section is product-specific or not, whether it is a whole chapter or a small assembly, or some other limitation.
 </td>
 </tr>
 </table>
@@ -958,24 +961,24 @@ Although you can use any document attribute that clearly indicates the variable 
 <div class="listingblock">
 <div class="title">Two Modules to Be Reused: Module A and Module B</div>
 <div class="content">
-<pre class="highlight"><code>[#module-A-being-reused_{context}]
+<pre class="highlight"><code>[id='module-A-being-reused_{context}']
 = Module A Heading</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>[#module-B-being-reused_{context}]
+<pre class="highlight"><code>[id='module-B-being-reused_{context}']
 = Module B Heading</code></pre>
 </div>
 </div>
 </li>
 <li>
-<p>In the assembly file or the master book file, define the <code>:context:</code> attribute, separated by dashes, immediately above any included modules that are being reused, in the format <code>:context: attribute-name</code>. How you define the attribute depends on whether the module is included once in multiple assemblies, or is included multiple times in a single assembly.</p>
+<p>In the assembly file or the master book file, define the <code>:context:</code> variable, separated by dashes, immediately above any included modules that are being reused, in the format <code>:context: variable-name</code>. How you define the variable depends on whether the module is included once in multiple assemblies, or is included multiple times in a single assembly.</p>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Module Included Once in Multiple Assemblies</dt>
 <dd>
-<p>If the reused modules are included only once in this assembly and in at least one other assembly, define an assembly-level attribute such as <code>:context: assembly-name</code>. This  indicates that the reused module is appearing in the context of that assembly.</p>
+<p>If the reused modules are included only once in this assembly and in at least one other assembly, define an assembly-level variable such as <code>:context: assembly-name</code>. This  indicates that the reused module is appearing in the context of that assembly.</p>
 <div class="listingblock">
 <div class="title">Assembly 1</div>
 <div class="content">
@@ -1007,7 +1010,7 @@ include::con_module-B-being-reused.adoc</code></pre>
 </dd>
 <dt class="hdlist1">Module Included Multiple Times in a Single Assembly</dt>
 <dd>
-<p>If a module is included multiple times in the same assembly, define an attribute specific to a section or a chapter of that assembly, such as <code>:context: section-name</code>. This  indicates that the reused module is appearing in the context of that section of the assembly.</p>
+<p>If a module is included multiple times in the same assembly, define a variable specific to a section or a chapter of that assembly, such as <code>:context: section-name</code>. This  indicates that the reused module is appearing in the context of that section of the assembly.</p>
 <div class="listingblock">
 <div class="title">Assembly</div>
 <div class="content">
@@ -1034,7 +1037,7 @@ include::con_module-A-being-reused.adoc</code></pre>
 //
 // ...
 
-[#module-A-being-reused_{context}]
+[id='module-A-being-reused_{context}']
 = Module A Heading</code></pre>
 </div>
 </div>
@@ -1050,11 +1053,11 @@ include::con_module-A-being-reused.adoc</code></pre>
 <td class="content">
 <div class="title">Cross-Referencing Reused Modules</div>
 <div class="paragraph">
-<p>To cross-reference a reused module, specify both the anchor name and the <code>{context}</code> attribute as defined in the assembly:</p>
+<p>To cross-reference a reused module, specify both the anchor name and the <code>{context}</code> variable as defined in the assembly:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>xref:anchor-name_context-attribute-name[]</code></pre>
+<pre class="highlight"><code>xref:anchor-name_context-variable-name[]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1084,7 +1087,7 @@ include::con_module-A-being-reused.adoc</code></pre>
 // assembly_asset-definitions.adoc
 // assembly_business-rules.adoc
 
-[#projects_{context}]
+[id='projects_{context}']
 = Projects</code></pre>
 </div>
 </div>
@@ -1096,7 +1099,7 @@ include::con_module-A-being-reused.adoc</code></pre>
 // assembly_asset-definitions.adoc
 // assembly_business-rules.adoc
 
-[#creating-assets_{context}]
+[id='creating-assets_{context}']
 = Creating Assets</code></pre>
 </div>
 </div>
@@ -1140,7 +1143,7 @@ include::proc_creating-assets.adoc</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For all cross-references to the reused modules, specify which context (assembly) you want to link to. For example, you can link to the "Creating Assets" procedure module as it appears either in the "Asset Definitions" assembly or in the "Business Rules" assembly. Create cross-references in the <code>xref:anchor-name_context-attribute-name[]</code> format:</p>
+<p>For all cross-references to the reused modules, specify which context (assembly) you want to link to. For example, you can link to the "Creating Assets" procedure module as it appears either in the "Asset Definitions" assembly or in the "Business Rules" assembly. Create cross-references in the <code>xref:anchor-name_context-variable-name[]</code> format:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1165,7 +1168,7 @@ include::proc_creating-assets.adoc</code></pre>
 <div class="listingblock">
 <div class="title">con_projects.adoc</div>
 <div class="content">
-<pre class="highlight"><code>[#projects_{context}]
+<pre class="highlight"><code>[id='projects_{context}']
 = Projects</code></pre>
 </div>
 </div>
@@ -1189,7 +1192,7 @@ include::con_dependencies.adoc</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>For all cross-references to the reused module, specify which context (section) you want to link to. For example, you can link to the "Projects" module as it appears either in the "Introduction" or in the "Asset Types" section. You create cross-references in the format <code>xref:anchor-name_context-attribute-name[]</code>:</p>
+<p>For all cross-references to the reused module, specify which context (section) you want to link to. For example, you can link to the "Projects" module as it appears either in the "Introduction" or in the "Asset Types" section. You create cross-references in the format <code>xref:anchor-name_context-variable-name[]</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1217,7 +1220,7 @@ include::con_dependencies.adoc</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="modular-docs-terms-definitions">Modular Documentation Terms and Definitions</h2>
+<h2 id="modular-docs-terms-definitions">Appendix A: Modular Documentation Terms and Definitions</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -1306,7 +1309,7 @@ We do not use the terms <em>topic</em> or <em>topic-based documentation</em> bec
 </div>
 </div>
 <div class="sect1">
-<h2 id="appendix-examples">Module and Assembly Examples</h2>
+<h2 id="appendix-examples">Appendix B: Module and Assembly Examples</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="modular-docs-concept-examples">Concept Module Examples</h3>
@@ -1964,7 +1967,7 @@ Corruption: 1 missing files; e.g.: /var/lib/ceph/mon/mon.0/store.db/1234567.ldb<
 </div>
 </div>
 <div class="sect1">
-<h2 id="converting-to-mod-doc">Converting to Modular Documentation</h2>
+<h2 id="converting-to-mod-doc">Appendix C: Converting to Modular Documentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>If you have a monolithic, feature-based manual, you can convert it to a set of modular content based on user stories. This conversion workflow involves using the customer product lifecycle to define user stories for your product, and creating the assemblies and modules necessary to fit each user story.</p>
@@ -2397,7 +2400,7 @@ Corruption: 1 missing files; e.g.: /var/lib/ceph/mon/mon.0/store.db/1234567.ldb<
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-16 16:28:18 CDT
+Last updated 2017-11-08 09:46:47 CST
 </div>
 </div>
 </body>
