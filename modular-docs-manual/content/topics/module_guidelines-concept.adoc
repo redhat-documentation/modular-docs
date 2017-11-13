@@ -29,12 +29,3 @@ Do not include any instructions to perform an action, such as executing a comman
 .Writing Additional Resources
 
 The additional resources list links to other material closely related to the contents of the concept module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
-
-.Adding Additional Resources
-// [bhardest] - I don't think the latest concept module template has a section for additional resources/related links. If this section isn't useful, we can just remove it.
-If necessary, you can provide a bulleted list of links to other concept, procedure, and reference modules that are closely related to this concept. Only include items that are likely to be of immediate interest to a user, not every item that could conceivably be related.
-
-== Related Information
-For real-world examples of concept modules, and its individual parts, see <<modular-docs-concept-examples>>.
-
-Download the link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/TEMPLATE_CONCEPT_concept-template-and-guidelines.adoc[concept module template] for new projects.
