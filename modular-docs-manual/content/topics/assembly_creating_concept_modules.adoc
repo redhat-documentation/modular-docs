@@ -7,7 +7,7 @@ include::module_definition-concept.adoc[leveloffset=+1]
 
 include::module_guidelines-concept.adoc[leveloffset=+1]
 
-== Related Information
+== Additional Resources
 
-* Download the link:https://github.com/redhat-documentation/modular-docs/blob/master/files/TEMPLATE_CONCEPT_concept_template_and_guidelines.adoc[concept module template (adoc file)] for new projects.
+* Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/files/TEMPLATE_CONCEPT_concept-template-and-guidelines.adoc[concept module template (adoc file)] for new projects.
 * For real-world examples of concept modules, see <<modular-docs-concept-examples>>.

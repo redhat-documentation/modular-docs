@@ -10,6 +10,6 @@ A reference module lists things, such as a list of commands, or has a very regim
 
 * If you have a large volume of the same type of information to document, figure out a consistent structure into which the information details can fit, and then doument each logical unit of information as one reference module. For example, think of man pages, which document very different information details, but which still use consistent titles and formats to present those details in a consistent information structure.
 
-== Related information
+== Additional Resources
 
-Download the reference module link:https://gitlab.cee.redhat.com/ccs-internal-documentation/Modular_Documentation_Project/raw/master/files/template_reference.adoc[template] for new projects.
+Download the reference module link:https://https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/files/TEMPLATE_REFERENCE_reference-template-and-guidelines.adoc[template] for new projects.
