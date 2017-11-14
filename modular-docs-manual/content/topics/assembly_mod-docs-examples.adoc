@@ -5,4 +5,6 @@ include::module_mod-docs-concept-examples.adoc[leveloffset=+1]
 
 include::module_mod-docs-procedure-examples.adoc[leveloffset=+1]
 
+include::module_mod-docs-reference-examples.adoc[leveloffset=+1]
+
 include::module_mod-docs-assembly-examples.adoc[leveloffset=+1]
