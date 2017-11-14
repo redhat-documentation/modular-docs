@@ -1,0 +1,13 @@
+[id='creating-reference-modules']
+= Creating Reference Modules
+
+This section explains what a reference module is and provides recommended practices for writing reference modules.
+
+include::module_definition-reference.adoc[leveloffset=+1]
+
+include::module_guidelines-reference.adoc[leveloffset=+1]
+
+== Additional Resources
+
+* Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/files/TEMPLATE_REFERENCE_reference-template-and-guidelines.adoc[reference module template (adoc file)] for new projects.
+* For advice on when to use lists and when to use tables, see link:https://medium.com/@heyoka/lets-bring-table-to-the-table-again-f1ae751159d5[Let’s bring <table> to the table, again.]

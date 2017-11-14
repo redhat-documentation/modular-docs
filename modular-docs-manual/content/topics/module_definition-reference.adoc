@@ -1,0 +1,30 @@
+[id='reference-module-definition']
+= Reference Module Definition
+
+Reference modules provide data that users might want to look up, but do not need to remember.
+
+.Common documentation examples of reference modules
+====
+* A list of commands that users can use with an application
+* A table of configuration files with definitions and usage examples
+* A list of default settings for a product
+====
+
+.Reference modules explained using a real-life example
+====
+For documentation on how to cross the road, you could create these modules:
+
+* Concept modules:
+** What are roads
+** What are crossings
+
+* Procedure modules:
+** How to put one foot in front of another
+** How to use pedestrian traffic lights
+** How to see if the road is clear for crossing
+
+* Reference modules:
+** Crossing signals
+** Common crosswalk pavement markings
+** Crossing laws by country
+====
