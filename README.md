@@ -28,8 +28,9 @@ This repository uses the following directory structure:
 
 ```
 .
-├── README.md (this file)
+├── .travis.yml (YAML configuration file for Travis CI)
 ├── CONTRIBUTING.md (How do I contribute to this project?)
+├── README.md (this file)
 ├── modular-docs-manual/ (Another book)
     ├── README.md (the README file)
     ├── master.adoc (master layout of the book)
