@@ -9,5 +9,5 @@ include::module_guidelines-procedure.adoc[leveloffset=+1]
 
 == Additional Resources
 
-* Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/files/TEMPLATE_PROCEDURE_doing-one-procedure.adoc[procedure module template (adoc file)] for new projects.
+* Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_PROCEDURE_doing-one-procedure.adoc[procedure module template (adoc file)] for new projects.
 * For real-world examples of procedure modules, see <<modular-docs-procedure-examples>>.

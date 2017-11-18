@@ -12,4 +12,4 @@ A reference module lists things, such as a list of commands, or has a very regim
 
 == Additional Resources
 
-Download the reference module link:https://https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/files/TEMPLATE_REFERENCE_reference-template-and-guidelines.adoc[template] for new projects.
+Download the reference module link:https://https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_REFERENCE_reference-template-and-guidelines.adoc[template] for new projects.
