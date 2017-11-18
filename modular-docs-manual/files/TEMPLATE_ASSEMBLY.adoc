@@ -1,0 +1,52 @@
+// Module included in the following assemblies:
+//
+// <List assemblies here, each on a new line>
+
+
+// Include an 'ID' that corresponds to the title of the assembly
+// The ID will be used as an anchor for linking to the title
+// Do not change the ID to make sure existing links keep working
+[#doing-several-tasks-in-sequence_{context}]
+= Doing Several Tasks in Sequence
+
+_Start the title with a verb in the gerund form, such as Creating or Configuring._
+
+// Ideally, base the name of the file on the title to avoid confusion
+// Use a consistent system for filenames and IDs, e.g.:
+//  * Only substitute spaces with underscores
+//  * Don't use any CAPS
+
+_Use this template to document a user story -- any series of tasks that the user must perform in a specific order to accomplish something._
+
+This paragraph explains what the user will accomplish by working through the tasks in sequence. It sets context or explains the benefit the user will gain by performing the tasks that comprise the story. May include more than 1 paragraph, and may include concept modules if needed to fully explain the context, benefits, and other things the user must understand to complete the tasks successfully.
+
+[discrete]
+== Prerequisites
+
+* Sentence or a bulleted list of pre-requisites that must be in place or done before the user starts this task.
+
+* Delete section title and bullets if the task has no required pre-requisites.
+
+* Text can be a link to a pre-requisite task that the user must do before starting this task.
+
+[discrete]
+== Procedure
+
+_Can link to or include task modules, depending on the writer's choice based on information needs. If you link to task modules, add each link as 1 step in a numbered list. The order of included task modules or of the linked steps is important to a repeatable successful outcome. Following is an example of linking to task modules in numbered steps._
+
+. Link to 1st task to perform.
+
+. Format the step line as an unnumbered bullet if the procedure includes only 1 step (exception to numbering the steps).
+
+. Link to 3rd task to perform.
+
+. Link to the Nth task to perform.
+
+[discrete]
+== Additional Resources
+
+* Bulleted list of links to concepts, reference, or other tasks closely related to this user story.
+
+* Include only the most relevant items as links, not every possible related item.
+
+* Delete section title and bullets if no related information is needed.

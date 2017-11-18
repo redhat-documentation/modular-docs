@@ -1,0 +1,54 @@
+// Module included in the following assemblies:
+//
+// <List assemblies here, each on a new line>
+
+
+// Include an 'ID' that corresponds to the title of the assembly
+// The ID will be used as an anchor for linking to the title
+// Do not change the ID to make sure existing links keep working
+[#doing-one-task_{context}]
+= Doing One Task
+
+_Start the title with a verb form, such as Creating or Create._
+
+_A task module is a procedure written with numbered steps -- what a customer needs to do to accomplish a goal successfully._
+
+// Ideally, base the name of the file on the title to avoid confusion
+// Use a consistent system for filenames and IDs, e.g.:
+//  * Only substitute spaces with underscores
+//  * Don't use any CAPS
+
+This paragraph explains why the user performs the task, sets the context of the task, and may explain or list specical considerations specific to this task. Keep the information brief and focused on what is needed for this specific task. Suggested length is 1 to 3 sentences, can be longer if needed.
+
+[discrete]
+== Prerequisites
+
+* Sentence or a bulleted list of pre-requisites that must be in place or done before the user starts this task.
+
+* Delete section title and bullets if the task has no required pre-requisites.
+
+* Text can be a link to a pre-requisite task that the user must do before starting this task.
+
+[discrete]
+== Procedure
+
+_Put steps in a numbered list. The step sequence is important to a repeatable successful outcome._
+
+. Start each step with an active verb, because each step corresponds to one user action.
+
+. Include one command or action per step.
+
+. Format the step line as an unnumbered bullet if the procedure includes only 1 step (exception to numbering the steps).
+
+. Include one command or action per step.
+
+. Include one command or action per step.
+
+[discrete]
+== Additional Resources
+
+* Bulleted list of links to concepts, reference, or other tasks closely related to this task.
+
+* Include only the most relevant items as links, not every possible related item.
+
+* Delete section title and bullets if no related information is needed.
