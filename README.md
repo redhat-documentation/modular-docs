@@ -26,35 +26,26 @@ You can view the latest build of the guide here: https://redhat-documentation.gi
 
 This repository uses the following directory structure:
 
-<pre>
+```
 .
-├── README.md (This file)
+├── README.md (this file)
 ├── CONTRIBUTING.md (How do I contribute to this project?)
-├── files/ (Template files)
-├── images/
-    └── *.png (Image files)
-├── scripts/
-    └── buildGuide.sh (Script to build the books locally)
-├── common-content/
-    └── attributes.adoc (AsciiDoc files)
 ├── modular-docs-manual/ (Another book)
-    ├── README.md (The README file)
-    ├── docinfo.xml (Publican build information)
-    ├── master.adoc (Master layout of included modules for the book)
-    ├── metadata.ini (Pantheon build information)
+    ├── README.md (the README file)
+    ├── master.adoc (master layout of the book)
     ├── content/
         ├── topics/
             └── *.adoc (AsciiDoc files)
         └── modular-doc-manual.adoc
-    ├── images -> ../images/ (Symbolic link)
-    └── common-content -> ../common-content/ (Symbolic link)
-</pre>
+    ├── files/ (template files)
+    ├── images (image files)
+    └── common-content
+        └── attributes.adoc (common attributes)
+```
 
 ## Contributing
 
-We welcome contributions from everyone who feels they have something of value that all of the community can benefit from. Follow these instructions to start contributing:
-
-https://github.com/redhat-documentation/modular-docs/blob/master/CONTRIBUTING.md
+We welcome contributions from everyone who feels they have something of value that all of the community can benefit from. Follow these instructions to start contributing: [CONTRIBUTING](CONTRIBUTING.md).
 
 ## Building the Books Locally
 
@@ -68,21 +59,9 @@ http://asciidoctor.org/docs/#get-started-with-asciidoctor
 
 ### Building the References
 
-The build script in this repository execute a build for each reference:
+To build and view the document, run:
 
-* An HTML version using `asciidoctor`.
-
-The build script provides a link to the resulting guide in the console output.
-
-To build all of the books, navigate to the root of this directory and type the following command:
-
-    scripts/buildGuides.sh
-
-To build a single book, you can pass the book folder name on the above command line, for example:
-
-    scripts/buildGuides.sh modular-docs-manual
-
-You can also build a single book by navigation to the book folder and executing the `buildScript.sh` script, for example:
-
-    cd modular-docs/modular-docs-manual
-    ../scripts/buildGuide.sh
+```
+$ asciidoctor modular-docs-manual/master.adoc
+$ <www-browser-of-choice> modular-docs-manual/master.html
+```
