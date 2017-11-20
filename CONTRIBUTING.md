@@ -45,8 +45,6 @@ Example:
 
     git push origin new_edits
 
-STEP 5 - Create a new merge request from the GitHub web interface.
+STEP 5 - Create a new pull request from the GitHub web interface.
 
-STEP 6 - Send an email to the Modular Documentation Project mailing list (ccs-mod-docs@redhat.com) saying that a merge request was submitted and ask kindly for a review by the project team.
-
-STEP 7 - Everyone on the project team will review the merge request and add comments in GitHub. This review process will be open for one week from the day the merge request was submitted. If the merge request is still being actively discussed beyond the one week timeframe, then the merge request will stay open. Once the merge request discussion is resolved, the merge request will be NACK'd or ACK'd based on the comments given.  If no comments are given after a week, then the merge request will be ACK'd.
+STEP 6 - Everyone on the project team will review the merge request and add comments in GitHub. This review process will be open for one week from the day the merge request was submitted. If the merge request is still being actively discussed beyond the one week timeframe, then the merge request will stay open. Once the merge request discussion is resolved, the merge request will be NACK'd or ACK'd based on the comments given.  If no comments are given after a week, then the merge request will be ACK'd.

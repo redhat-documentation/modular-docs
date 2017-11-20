@@ -6,21 +6,15 @@ To provide documentation teams with a set of resources to assist them as they wr
 
 ## Why Are We Doing This?
 
-To help the documentation teams become more agile with their documentation.
-This agility will help us to better serve our readers with a more purposeful reading experience.
-A modular-based content model sets a foundation for innovation.
-Modular documentation provides a structure for writing and presenting user-story-based documentation.
-User-story-based documentation attempts to address the reader's needs more than focusing on feature-based documentation.
-User-story-based documentation also helps the documentation teams with the amount of documents that they have to maintain, by helping them to focus on what really matters.
+To help the documentation teams become more agile with their documentation. This agility will help us to better serve our readers with a more purposeful reading experience. A modular-based content model sets a foundation for innovation. Modular documentation provides a structure for writing and presenting user-story-based documentation. User-story-based documentation attempts to address the reader's needs more than focusing on feature-based documentation. User-story-based documentation also helps the documentation teams with the amount of documents that they have to maintain, by helping them to focus on what really matters.
 
 ## Any Questions?
 
-Send an email to our mailing list (ccs-mod-docs@redhat.com).
+Submit an issue in this repository.
 
 ## Modular Documentation Reference Guide
 
-The Modular Documentation Reference Guide is one of the deliverables for this project.
-You can view the latest build of the guide here: https://redhat-documentation.github.io/modular-docs/.
+The Modular Documentation Reference Guide is one of the deliverables for this project. You can view the latest build of the guide here: https://redhat-documentation.github.io/modular-docs/.
 
 ## Repository Structure
 
