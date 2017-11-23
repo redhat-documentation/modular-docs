@@ -14,7 +14,7 @@ Submit an issue in this repository.
 
 ## Modular Documentation Reference Guide
 
-The Modular Documentation Reference Guide is one of the deliverables for this project. You can view the latest build of the guide here: https://redhat-documentation.github.io/modular-docs/.
+The Modular Documentation Reference Guide is one of the deliverables for this project. You can view the latest build of the guide here: https://redhat-documentation.github.io/modular-docs/. Build status: [![Build Status](https://travis-ci.org/redhat-documentation/modular-docs.svg?branch=master)](https://travis-ci.org/redhat-documentation/modular-docs)
 
 ## Repository Structure
 
