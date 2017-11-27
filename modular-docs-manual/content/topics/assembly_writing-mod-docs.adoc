@@ -18,7 +18,7 @@ include::assembly_creating_concept_modules.adoc[leveloffset=+2]
 
 include::assembly_creating_procedure_modules.adoc[leveloffset=+2]
 
-include::module_guidelines-reference.adoc[leveloffset=+2]
+include::assembly_creating_reference_modules.adoc[leveloffset=+2]
 
 include::module_anchor-and-file-names-concept.adoc[leveloffset=+2]
 

@@ -1,0 +1,2 @@
+[id='modular-docs-reference-examples']
+= Reference Module Examples

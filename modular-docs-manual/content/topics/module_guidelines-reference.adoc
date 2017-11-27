@@ -1,15 +1,21 @@
 [id='reference-module-guidelines']
 = Reference Module Guidelines
 
-A reference module lists things, such as a list of commands, or has a very regimented structure, such as the consistent structure of man pages. A reference module explains the details that a customer needs to know to do a procedure. A reference module is well-organized if users can scan it quickly to find the details they want.
+The required part of a reference module is the reference data. Optionally, the module can also include an introduction.
 
-//[bhardest] - We can include a diagram here if needed, similar to the concept one.
+[discrete]
+== Writing the Introduction
 
-* A reference module that is a list of things may be made easier to scan if its content is organized alphabetically or formatted as a table. Think of an alphabetical list of commands that can be used with an application, or of an alphabetical list of system components with brief definitions formatted as a 2-column table.
-// [bhardest] - This is a good use of a reference module; however, I've seen many different formats for this type of content in Red Hat product docs. It would help to provide some examples to help writers better visualize the techniques they can use to document these types of things in a clear, well-organized fashion.
+The introduction to a reference module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the reference is useful without having to read the entire module.
 
-* If you have a large volume of the same type of information to document, figure out a consistent structure into which the information details can fit, and then doument each logical unit of information as one reference module. For example, think of man pages, which document very different information details, but which still use consistent titles and formats to present those details in a consistent information structure.
+[discrete]
+== Writing the Reference
 
-== Additional Resources
+A reference module has a very strict structure, often in the form of a list or a table. A well-organized reference module enables users to scan it quickly to find the details they want.
 
-Download the reference module link:https://https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_REFERENCE_reference-template-and-guidelines.adoc[template] for new projects.
+To make the reference data easier to scan, organize it in a logical order (such as alphabetically) or as a table. AsciiDoc markup to consider for reference data:
+
+* link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#lists[Lists] (unordered, labeled)
+* link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#tables[Tables]
+
+If you have a large volume of the same type of information to document, use a structure into which the information details can fit, and then document each logical unit of information as one reference module. For example, think of man pages, which document very different information details, but which still use consistent titles and formats to present those details in a uniform information structure.
