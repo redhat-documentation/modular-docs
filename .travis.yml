@@ -8,7 +8,6 @@ services:
   - docker
 
 before_install:
-  - sudo rm /etc/apt/sources.list.d/mongodb-3.2.list
   - mkdir -p output
   - docker pull asciidoctor/docker-asciidoctor
 
