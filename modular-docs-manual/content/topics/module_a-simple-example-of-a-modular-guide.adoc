@@ -5,14 +5,27 @@ Download and unzip link:https://github.com/redhat-documentation/modular-docs/blo
 
 NOTE: To build the example guide, change into the `simple-mod-guide-repo` directory, issue the *asciidoctor master.adoc* command, and open the resulting `master.html` file in your browser.
 
-`master.adoc`:: File that defines the whole book. It pulls in the `attribute.adoc` file with AsciiDoc attributes, sets the title of the book, and pulls in the assemblies that comprise the book.
+The contents of the directory displayed in a tree-like format:
 
-`docs/`, `docs/modules/`:: Directories that include the actual documentation: assemblies and modules.
+[subs="+quotes"]
+----
+.
+├── *attributes.adoc* _<-- File with attributes for the whole book._
+├── *docs* _<-- Directory with assemblies and modules._
+│   ├── *assembly-1.adoc* _<-- Assembly files with include statements for modules._
+│   ├── *assembly-2.adoc*
+│   └── *modules*
+│       ├── *module-a.adoc* _<-- Module files._
+│       ├── *module-b.adoc*
+│       ├── *module-c.adoc*
+│       └── *module-d.adoc*
+└── *master.adoc* _<-- Master file that defines the whole book._
+----
 
-`docs/assembly-1.adoc`, `docs/assembly-2`:: Simple assembly files with include statements that pull in modules.
+To learn more about how a modular guide works, explore the files and directories in this example directory. For example, note that:
 
-`docs/modules/module-a.adoc`, `docs/modules/module-b.adoc`, ...:: Simple module files. Some of them demonstrate how to reuse a module in multiple assemblies.
-+
-In `module-b.adoc`, note the use of the AsciiDoc conditional (`ifeval`) to reuse the same module with some differences.
+* `master.adoc` pulls in the `attribute.adoc` file with AsciiDoc attributes, sets the title of the book, and pulls in the assemblies that comprise the book.
+* Some of the module files (in the `modules` directory) demonstrate how to reuse a module in multiple assemblies.
+* In `module-b.adoc`, the AsciiDoc conditional `ifeval` enables reusing the same module with some differences.
 
 Feel free to experiment with the example guide: create new assemblies and modules, reuse modules, introduce new AsciiDoc conditionals.
