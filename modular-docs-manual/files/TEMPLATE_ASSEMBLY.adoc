@@ -1,52 +1,48 @@
-// Module included in the following assemblies:
+// This assembly is included in the following assemblies:
 //
 // <List assemblies here, each on a new line>
 
+// For more details on writing an assembly, see section "Forming Assemblies" in the Modular Documentation Reference Guide.
 
-// Include an 'ID' that corresponds to the title of the assembly
-// The ID will be used as an anchor for linking to the title
-// Do not change the ID to make sure existing links keep working
-[#doing-several-tasks-in-sequence_{context}]
-= Doing Several Tasks in Sequence
+// Include an 'ID' that corresponds to the title of the assembly.
+// The ID will be used as an anchor for linking to the title.
+// Do not change the ID to make sure existing links keep working.
+// If the assembly is reused in other assemblies in a guide, include {context} in the ID: [id='a-collection-of-modules-{context}'].
+[id='a-collection-of-modules']
+= A collection of modules
+:context: collection-modules
+// The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 
-_Start the title with a verb in the gerund form, such as Creating or Configuring._
+_If the assembly covers a task, start the title with a verb in the gerund form, such as Creating or Configuring._
 
-// Ideally, base the name of the file on the title to avoid confusion
-// Use a consistent system for filenames and IDs, e.g.:
-//  * Only substitute spaces with underscores
-//  * Don't use any CAPS
+// Ideally, base the name of the file on the title to avoid confusion.
+// Use a consistent system for file names and IDs. For recommendations, see section "Anchor Names and File Names" in the Modular Documentation Reference Guide.
 
-_Use this template to document a user story -- any series of tasks that the user must perform in a specific order to accomplish something._
+This paragraph explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. Can include more than one paragraph. Consider using the information from the user story.
 
-This paragraph explains what the user will accomplish by working through the tasks in sequence. It sets context or explains the benefit the user will gain by performing the tasks that comprise the story. May include more than 1 paragraph, and may include concept modules if needed to fully explain the context, benefits, and other things the user must understand to complete the tasks successfully.
-
-[discrete]
+[id='prerequisites-{context}']
 == Prerequisites
 
-* Sentence or a bulleted list of pre-requisites that must be in place or done before the user starts this task.
+* A bulleted list of conditions that must be satisfied before the user starts following this assembly.
 
-* Delete section title and bullets if the task has no required pre-requisites.
+* You can also link to other modules or assemblies the user must follow before starting this assembly.
 
-* Text can be a link to a pre-requisite task that the user must do before starting this task.
+* Delete the section title and bullets if the assembly has no prerequisites.
 
-[discrete]
-== Procedure
+_The following include statements pull in the module files that comprise the assembly. Include any combination of concept, procedure, or reference modules required to cover the user story. You can also include other assemblies._
 
-_Can link to or include task modules, depending on the writer's choice based on information needs. If you link to task modules, add each link as 1 step in a numbered list. The order of included task modules or of the linked steps is important to a repeatable successful outcome. Following is an example of linking to task modules in numbered steps._
+include::modules/path-to-a-module-file.adoc[leveloffset=+1]
+// [leveloffset=+1] ensures that when a module starts with a level-1 heading (= Heading), the heading will be interpreted as a level-2 heading (== Heading) in the assembly.
 
-. Link to 1st task to perform.
+include::modules/path-to-another-module-file.adoc[leveloffset=+1]
 
-. Format the step line as an unnumbered bullet if the procedure includes only 1 step (exception to numbering the steps).
+include::path-to-an-assembly-file.adoc[leveloffset=+1]
 
-. Link to 3rd task to perform.
-
-. Link to the Nth task to perform.
-
-[discrete]
+[id='additional-resources-{context}']
 == Additional Resources
 
-* Bulleted list of links to concepts, reference, or other tasks closely related to this user story.
+* A bulleted list of links to concept, reference, or procedures modules and assemblies closely related to the user story in this assembly.
 
-* Include only the most relevant items as links, not every possible related item.
+* Include only the most relevant resources, not every possible related resources.
 
-* Delete section title and bullets if no related information is needed.
+* Delete the section title and bullets if no related information is needed.
