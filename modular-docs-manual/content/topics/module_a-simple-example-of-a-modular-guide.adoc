@@ -1,0 +1,31 @@
+[id='a-simple-example-of-a-modular-guide']
+= A Simple Example of a Modular Guide
+
+Download and unzip link:https://github.com/redhat-documentation/modular-docs/blob/master/modular-docs-manual/files/simple-mod-guide-repo.zip[an example modular guide]. The `simple-mod-guide-repo` directory included in the ZIP archive contains a very simple example of a modular guide with assemblies and modules. This section explains the contents of the directory.
+
+NOTE: To build the example guide, change into the `simple-mod-guide-repo` directory, issue the *asciidoctor master.adoc* command, and open the resulting `master.html` file in your browser.
+
+The contents of the directory displayed in a tree-like format:
+
+[subs="+quotes"]
+----
+.
+├── *attributes.adoc* _<-- File with attributes for the whole book._
+├── *docs* _<-- Directory with assemblies and modules._
+│   ├── *assembly-1.adoc* _<-- Assembly files with include statements for modules._
+│   ├── *assembly-2.adoc*
+│   └── *modules*
+│       ├── *module-a.adoc* _<-- Module files._
+│       ├── *module-b.adoc*
+│       ├── *module-c.adoc*
+│       └── *module-d.adoc*
+└── *master.adoc* _<-- Master file that defines the whole book._
+----
+
+To learn more about how a modular guide works, explore the files and directories in this example directory. For example, note that:
+
+* `master.adoc` pulls in the `attribute.adoc` file with AsciiDoc attributes, sets the title of the book, and pulls in the assemblies that comprise the book.
+* Some of the module files (in the `modules` directory) demonstrate how to reuse a module in multiple assemblies.
+* In `module-b.adoc`, the AsciiDoc conditional `ifeval` enables reusing the same module with some differences.
+
+Feel free to experiment with the example guide: create new assemblies and modules, reuse modules, introduce new AsciiDoc conditionals.
