@@ -21,7 +21,7 @@ As opposed to a _use case_, which is a description of interactions between the s
 +
 .Contrasting User Stories and Use Cases
 [grid="rows"]
-[options="header",width=100%,cols="10%,45%a,45%a"]
+[options="header",width=100%,cols="10%s,45%a,45%a"]
 |===
 | | User Story | Use Cases
 | Definitions: | A short description of something the user does to achieve a goal. | A description of interactions between the system and the user, components of the system, or the system and other systems.
