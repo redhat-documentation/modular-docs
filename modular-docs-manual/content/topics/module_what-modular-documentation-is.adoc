@@ -18,5 +18,3 @@ image::modules_assemblies.png[]
 == Additional Resources
 
 * For definitions of the terms we use, including modules, assemblies, and user stories, see <<modular-docs-terms-definitions>>.
-
-* For an explanation of why user-story-based docs are useful, see link:https://mojo.redhat.com/groups/ccs/blog/2017/06/27/from-legacy-docs-to-modular-docs-based-on-user-stories[From Legacy Docs to Modular Docs Based on User Stories] in Mojo.
