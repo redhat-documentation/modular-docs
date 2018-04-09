@@ -8,9 +8,9 @@ To provide documentation teams with a set of resources to assist them as they wr
 
 To help the documentation teams become more agile with their documentation. This agility will help us to better serve our readers with a more purposeful reading experience. A modular-based content model sets a foundation for innovation. Modular documentation provides a structure for writing and presenting user-story-based documentation. User-story-based documentation attempts to address the reader's needs more than focusing on feature-based documentation. User-story-based documentation also helps the documentation teams with the amount of documents that they have to maintain, by helping them to focus on what really matters.
 
-## Any Questions?
+## Any Suggestions or Questions?
 
-Submit an issue in this repository.
+Please submit an [issue](https://github.com/redhat-documentation/modular-docs/issues) to this project.
 
 ## Modular Documentation Reference Guide
 
@@ -48,13 +48,11 @@ When you make changes to these books, it is a good practice to do a local test b
 
 ### Configuring the Build Environment
 
-You can build the book locally using AsciiDoctor.
+You can build the book locally using [AsciiDoctor](http://asciidoctor.org/docs/#get-started-with-asciidoctor).
 
-http://asciidoctor.org/docs/#get-started-with-asciidoctor
+### Building the Modular Documentation Reference Guide
 
-### Building the References
-
-To build and view the document, run:
+To build and view the document locally, run:
 
 ```
 $ asciidoctor modular-docs-manual/master.adoc
