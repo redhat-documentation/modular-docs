@@ -11,7 +11,7 @@
 [id='doing-one-procedure_{context}']
 // The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 = Doing one procedure
-// Start the title with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
+// Start the title of a procedure module with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
 
 This paragraph is the procedure module introduction: a short description of the procedure.
 
