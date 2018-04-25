@@ -26,3 +26,5 @@ include::module_anchor-and-file-names-concept.adoc[leveloffset=+2]
 include::assembly_forming_assemblies.adoc[leveloffset=+1]
 
 include::module_reusing-modules-procedure.adoc[leveloffset=+2]
+
+include::module_nesting-assemblies.adoc[leveloffset=+2]
