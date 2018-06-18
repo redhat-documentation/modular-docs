@@ -1,0 +1,39 @@
+[id='nesting-assemblies']
+= Nesting Assemblies in Assemblies
+
+When you set the `:context:` variable in an assembly, the variable continues to be set to the same value in the rest of document even after the assembly itself ends. This causes problems if you include an assembly in another assembly. 
+
+If there is, for example, an _Additional Resources_ section in the inner, included assembly as well as in the outer, including assembly after the include statements, the ID of the second one gets overwritten with the `:context:` variable of the included assembly. This causes duplicate IDs, which lead to build-time errors like:
+
+----
+asciidoctor: WARNING: assembly_1.adoc: line 19: id assigned to section already in use: additional-resources-2
+----
+
+.Nested Assemblies with a Duplicate ID
+====
+image::nested-assemblies-error.png[alt=Nested Assemblies with a Duplicate ID,width=500]
+====
+
+To solve this problem, restore the `:context:` variable to its previous value when assemblies end:
+
+. Add the following line at the top of your assemblies before `:context:` is defined to save the inherited context:
++
+[source,asciidoc]
+----
+:parent-context: {context}
+----
+
+. Add the following line at the end of your assemblies to restore the saved context:
++
+[source,asciidoc]
+----
+:context: {parent-context}
+----
+
+.Correctly Nested Assemblies
+====
+image::nested-assemblies-correct.png[alt=Correctly Nested Assemblies,width=500]
+====
+
+See also the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_ASSEMBLY_a-collection-of-modules.adoc[assembly template] for an example.
+
