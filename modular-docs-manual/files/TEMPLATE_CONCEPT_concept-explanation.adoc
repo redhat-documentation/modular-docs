@@ -11,8 +11,8 @@
 [id='concept-explanation-{context}']
 // The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 = Concept explanation
-//In the title, include nouns that are used in the body text. This helps readers and search engines find information quickly.
-//Do not start the title with a verb. See also _Wording of headings_ in _The IBM Style Guide_.
+//In the title of concept modules, include nouns or noun phrases that are used in the body text. This helps readers and search engines find the information quickly.
+//Do not start the title of concept modules with a verb. See also _Wording of headings_ in _The IBM Style Guide_.
 
 This paragraph is the concept module introduction and is only optional. Include it to provide a short overview of the module.
 
