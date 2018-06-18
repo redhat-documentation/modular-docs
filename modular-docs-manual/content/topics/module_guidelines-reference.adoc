@@ -1,7 +1,8 @@
 [id='reference-module-guidelines']
 = Reference Module Guidelines
 
-The required part of a reference module is the reference data. Optionally, the module can also include an introduction.
+The required part of a reference module is the reference data.
+A reference module requires a short introduction.
 
 [discrete]
 == Writing the Introduction
