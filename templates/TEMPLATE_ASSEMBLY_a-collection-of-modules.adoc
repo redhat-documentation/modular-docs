@@ -1,0 +1,1 @@
+../modular-docs-manual/files/TEMPLATE_ASSEMBLY_a-collection-of-modules.adoc
