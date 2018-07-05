@@ -3,8 +3,7 @@
 
 In the process of adding content to the modules from your existing feature-based manual, it is likely that there is some existing content that did not fit into any of the user stories that you identified and thus was not pulled out. It is important to identify this content to ensure that it is no longer needed.
 
-[discrete]
-== Procedure
+.Procedure
 
 . Go through your existing feature-based manual and identify any content that you did not add to an assembly or module.
 

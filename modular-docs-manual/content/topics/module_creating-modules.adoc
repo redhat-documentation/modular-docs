@@ -3,15 +3,15 @@
 
 After identifying and creating the assemblies, each assembly should identify the modules that you need to create.
 
-[discrete]
-== Procedure
+.Procedure
 
 . For each assembly that you created, create a module file for each module that is identified in the assembly.
 +
+--
 Each assembly should already have the names of the modules that should be included in the assembly. Now you just need to create the actual files for those modules.
 
 Be sure to follow the conventions for xref:anchor-and-file-names[naming anchors and files]. For example: `con_guided-decision-tables.adoc`
-
+--
 . For each module file that you created, add content.
 +
 --

@@ -15,7 +15,7 @@ $BUILD_PATH fails to validate
 This error is resolved by adding and defining a document variable.
 
 [discrete]
-== Procedure
+.Procedure
 
 . In the module file that will be reused, add the `+++{context}+++` suffix with an underscore to the anchor name in the format `[id='anchor-name_+++{context}'+++]`.
 
@@ -119,6 +119,12 @@ Example:
 For details, see xref:module-A-being-reused_assembly-1-name[].
 ----
 ====
+
+.Additional Resources
+
+* The link:http://asciidoctor.org/docs/user-manual/#include-multiple[Asciidoctor User Manual].
+
+// [sterobin] - I need to rework the two "Practical Examples" below to be stand-alone modules. Good candidates for reuse.
 
 [discrete]
 == Practical Example 1: Reusing Modules in Multiple Assemblies
@@ -248,8 +254,3 @@ or
 ----
 For details, see xref:projects_asset-types[].
 ----
-
-[discrete]
-== Additional Resources
-
-* The link:http://asciidoctor.org/docs/user-manual/#include-multiple[Asciidoctor User Manual].
