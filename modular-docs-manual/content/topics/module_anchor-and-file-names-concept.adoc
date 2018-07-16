@@ -51,6 +51,6 @@ File names:: Give the module file the same name as the anchor used in it (which 
 * `ref_guided-decision-table-columns.adoc`  (Reference module with column types)
 * `assembly_guided-decision-tables.adoc`  (Assembly of guided decision table modules)
 
-== Additional Resources
+.Additional Resources
 
 * The link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual]

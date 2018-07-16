@@ -6,8 +6,8 @@ The required parts of a procedure module are a procedure and its introduction. O
 .Schema of a procedure module
 image::procedure-diagram.png[]
 
-[id='writing-the-introduction']
-.Writing the Introduction
+[discrete]
+== Procedure Introduction
 The introduction is a short description of the procedure. For example, it can be a lead-in sentence or an infinitive phrase (_To extract the certificate: <steps>_). See also _The IBM Style Guide_ footnoteref:[ibm-style-guide,DERESPINIS, Francis, Peter HAYWARD, Jana JENKINS, Amy LAIRD, Leslie McDONALD, Eric RADZINKSI. _The IBM style guide: conventions for writers and editors_. Upper Saddle River, NJ: IBM Press/Pearson, c2012. ISBN 0132101300.] for details on introducing procedures.
 
 The introduction typically provides context for the procedure, such as:
@@ -18,19 +18,20 @@ The introduction typically provides context for the procedure, such as:
 
 Keep the information brief and focused on what the user needs for this specific procedure. Suggested length is 1--3 sentences, but it can be longer.
 
-[id='writing-prerequisites']
-.Writing Prerequisites
+[discrete]
+== Procedure Prerequisites
 Prerequisites are conditions that must be satisfied before the user starts the procedure. If a prerequisite is a procedure or an assembly, include a link to them. See also _The IBM Style Guide_ footnoteref:[ibm-style-guide] for details on writing prerequisites.
 
 Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
 
-[id='writing-the-procedure']
-.Writing the Procedure
+[discrete]
+== Procedure Body
 The procedure consists of one or more steps required to complete the procedure. Each step describes one action.
 
 For single-step procedures, use an unnumbered bullet instead of a numbered list.
 
-.Writing Additional Resources
+[discrete]
+== Procedure Additional Resources
 Additional resources list links to other material closely related to the contents of the procedure module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
 
 Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.

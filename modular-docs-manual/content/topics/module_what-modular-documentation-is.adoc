@@ -14,7 +14,6 @@ At Red Hat, we write modular documentation that is based on _user-stories_. This
 image::modules_assemblies.png[]
 // The image is just a draft, we can create a fancier one later.
 
-[discrete]
-== Additional Resources
+.Additional Resources
 
 * For definitions of the terms we use, including modules, assemblies, and user stories, see <<modular-docs-terms-definitions>>.

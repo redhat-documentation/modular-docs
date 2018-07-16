@@ -3,10 +3,10 @@
 
 If you have a monolithic, feature-based manual, you can convert it to a set of modular content based on user stories. This conversion workflow involves using the customer product lifecycle to define user stories for your product, and creating the assemblies and modules necessary to fit each user story.
 
-The result is documentation that is more relevant for your readers, because it is based on real-world user stories (it tells them how to accomplish their goals), and modular (it can be assembled into whatever sets and formats they might need). 
+The result is documentation that is more relevant for your readers, because it is based on real-world user stories (it tells them how to accomplish their goals), and modular (it can be assembled into whatever sets and formats they might need).
 
 
-== Prerequisites
+.Prerequisites
 
 * You should understand what modular documentation is:
 ** xref:what-modular-documentation-is[What Modular Documentation Is]

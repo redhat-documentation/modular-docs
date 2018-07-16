@@ -3,4 +3,4 @@
 
 A procedure module is a "do" module. It gives the user numbered, step-by-step instructions.
 
-IMPORTANT: A procedure module does not consist solely of a procedure. At the very least, the steps must be preceded by an introduction statement that provides context for the procedure. For details, see <<writing-the-introduction>>.
+IMPORTANT: A procedure module does not consist solely of a procedure. At the very least, the steps must be preceded by an introduction statement that provides context for the procedure. For details, see <<procedure-module-guidelines>>.

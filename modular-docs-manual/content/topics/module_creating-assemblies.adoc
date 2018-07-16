@@ -5,8 +5,7 @@ An assembly is a representation of a user story, so you need to create an assemb
 
 An assembly could represent an article, "chapter" in a book, or even an entire book. However, one of the benefits of modular documentation is that you do not need to worry about how the assembly will ultimately be used -- each assembly represents a user goal, and once you create it, it can be "included" anywhere it is needed (a publication, within another assembly, and so on).
 
-[discrete]
-== Procedure
+.Procedure
 
 . Create an assembly file for each user story that you identified.
 +
