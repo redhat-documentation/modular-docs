@@ -1,4 +1,4 @@
-// Use this file to defione attributes shared by all content in the repo.
+// Use this file to define attributes shared by all content in the repo.
 
 :imagesdir: images
 :toc: left
