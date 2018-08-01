@@ -45,7 +45,7 @@ File names:: Give the module file the same name as the anchor used in it (which 
 +
 [NOTE]
 ====
-These guidelines for file names are _recommended_. Project teams may adapt or deviate from these guidelines if need be.
+Ensure that all members of your team use the same file naming conventions.
 ====
 +
 .Examples
@@ -54,7 +54,7 @@ These guidelines for file names are _recommended_. Project teams may adapt or de
 * `editing-guided-decision-tables.adoc`  (Procedure module for editing)
 * `guided-decision-table-examples.adoc`  (Reference module with examples)
 * `guided-decision-table-columns.adoc`  (Reference module with column types)
-* `guided-decision-tables.adoc`  (Assembly of guided decision table modules)
+* `designing-guided-decision-tables.adoc`  (Assembly of guided decision table modules)
 
 .Additional Resources
 
