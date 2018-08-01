@@ -6,7 +6,7 @@ When you set the `:context:` variable in an assembly, the variable continues to 
 If there is, for example, an _Additional Resources_ section in the inner, included assembly as well as in the outer, including assembly after the include statements, the ID of the second one gets overwritten with the `:context:` variable of the included assembly. This causes duplicate IDs, which lead to build-time errors like:
 
 ----
-asciidoctor: WARNING: assembly_1.adoc: line 19: id assigned to section already in use: additional-resources-2
+asciidoctor: WARNING: 1.adoc: line 19: id assigned to section already in use: additional-resources-2
 ----
 
 .Nested Assemblies with a Duplicate ID

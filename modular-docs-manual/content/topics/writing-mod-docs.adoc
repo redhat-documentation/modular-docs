@@ -14,16 +14,16 @@ Follow these guidelines to create different types of modules:
 
 See <<appendix-examples>> for real-world examples of assemblies, modules, and their individual parts.
 
-include::assembly_creating_concept_modules.adoc[leveloffset=+2]
+include::creating_concept_modules.adoc[leveloffset=+2]
 
-include::assembly_creating_procedure_modules.adoc[leveloffset=+2]
+include::creating_procedure_modules.adoc[leveloffset=+2]
 
-include::assembly_creating_reference_modules.adoc[leveloffset=+2]
+include::creating_reference_modules.adoc[leveloffset=+2]
 
 include::module_anchor-and-file-names-concept.adoc[leveloffset=+2]
 
 
-include::assembly_forming_assemblies.adoc[leveloffset=+1]
+include::forming_assemblies.adoc[leveloffset=+1]
 
 include::module_reusing-modules-procedure.adoc[leveloffset=+2]
 

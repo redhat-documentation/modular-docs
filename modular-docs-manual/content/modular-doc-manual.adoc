@@ -2,18 +2,18 @@
 include::topics/introduction.adoc[leveloffset=+1]
 
 // Chapter 2
-include::topics/assembly_understanding-mod-docs.adoc[leveloffset=+1]
+include::topics/understanding-mod-docs.adoc[leveloffset=+1]
 
 // Chapter 3
-include::topics/assembly_writing-mod-docs.adoc[leveloffset=+1]
+include::topics/writing-mod-docs.adoc[leveloffset=+1]
 
 // Appendices
 [appendix]
 include::topics/module_mod-docs-terms-definitions.adoc[leveloffset=+1]
 
 [appendix]
-include::topics/assembly_mod-docs-examples.adoc[leveloffset=+1]
+include::topics/mod-docs-examples.adoc[leveloffset=+1]
 
 [appendix]
-include::topics/assembly_mod-docs-conversion.adoc[leveloffset=+1]
+include::topics/mod-docs-conversion.adoc[leveloffset=+1]
 
