@@ -30,8 +30,6 @@ List link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-f
 [discrete]
 == Assembly Additional Resources
 
-Additional resources list links to other material closely related to the contents of the assembly: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
+The optional additional resources list links to other material closely related to the contents of the assembly, for example, other documentation resources, instructional videos, or labs.
 
-Focus on relevant resources that are likely to be of immediate interest to the user. Do not list every resource that could conceivably be related.
-
-// [asteflova] This is another candidate for reuse.
+Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.
