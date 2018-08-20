@@ -4,6 +4,25 @@
 The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.
 
 [discrete]
+== Assembly context
+
+The `context` attribute is a keyword that enables module reuse. Every module's ID includes `{context}`, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+
+When a module is *reused*, the context attribute needs to be _redefined_ to avoid duplicate anchor IDs.
+
+For example:
+
+----
+:context: product_config_linux
+include::modules/configuring-the-web-server-for-secure-connections.adoc
+
+...
+
+:context: product_config_windows
+include::modules/configuring-the-web-server-for-secure-connections.adoc
+----
+
+[discrete]
 == Assembly Introduction
 
 The introduction explains what the user will accomplish by working through the assembled modules. It typically provides context for the assembly.
