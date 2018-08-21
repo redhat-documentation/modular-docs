@@ -31,6 +31,13 @@ The procedure consists of one or more steps required to complete the procedure. 
 For single-step procedures, use an unnumbered bullet instead of a numbered list.
 
 [discrete]
+== Procedure Verification Steps
+This section is recommend but optional. Provide the user one or more steps to verify that the procedure provided the intended outcome. This may consist of:
+
+- An example of expected command output or 'pop-up' window the user should receive when the procedure is successful.
+- An 'action' (or 'actions') for the user, such as running a command, to determine the success or failure of the procedure.
+
+[discrete]
 == Procedure Additional Resources
 Additional resources list links to other material closely related to the contents of the procedure module: other documentation resources (such as assemblies or modules), instructional videos, labs, and similar resources.
 
