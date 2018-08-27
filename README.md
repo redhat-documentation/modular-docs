@@ -42,6 +42,10 @@ This repository uses the following directory structure:
 
 We welcome contributions from everyone who feels they have something of value that all of the community can benefit from. Follow these instructions to start contributing: [CONTRIBUTING](CONTRIBUTING.md).
 
+## License
+
+This work is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+
 ## Building the Books Locally
 
 When you make changes to these books, it is a good practice to do a local test build to verify the book builds successfully and renders as you expect before you submit the merge request back to upstream master.
