@@ -3,7 +3,9 @@
 
 To optimize modular documentation, follow these guidelines for naming module anchors and files:
 
-Anchor names:: Provide an anchor in the format `+++[id='anchor-name_{context}']+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:
+Anchor names:: Provide an anchor in the format `+++[id='anchor-name_{context}']+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. 
++
+Give the anchor the same or similar name as the module heading, separated by dashes:
 +
 --
 [source]
@@ -13,6 +15,11 @@ Anchor names:: Provide an anchor in the format `+++[id='anchor-name_{context}']+
 
 First sentence of topic.
 ----
+
+[WARNING]
+====
+The `{context}` attribute must be defined in the assembly to avoid build errors.
+====
 
 .Example 1. Concept Module
 [source]

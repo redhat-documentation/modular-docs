@@ -19,6 +19,7 @@ ifdef::context[:parent-context: {context}]
 //If the assembly covers a task, start the title with a verb in the gerund form, such as Creating or Configuring.
 :context: assembly-keyword
 // The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+// When a module is *reused*, the context attribute needs to be _redefined_ to avoid duplicate anchor IDs.
 
 This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. Can include more than one paragraph. Consider using the information from the user story.
 
