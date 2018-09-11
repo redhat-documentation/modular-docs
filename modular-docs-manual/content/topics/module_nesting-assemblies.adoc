@@ -20,15 +20,15 @@ To solve this problem, restore the `:context:` variable to its previous value wh
 +
 [source,asciidoc]
 ----
-ifdef::context[:parent-context: {context}]
+\ifdef::context[:parent-context: {context}]
 ----
 
 . Add the following lines to the end of your assemblies to restore the saved context, if one already existed:
 +
 [source,asciidoc]
 ----
-ifdef::parent-context[:context: {parent-context}]
-ifndef::parent-context[:!context:]
+\ifdef::parent-context[:context: {parent-context}]
+\ifndef::parent-context[:!context:]
 ----
 
 .Correctly Nested Assemblies
