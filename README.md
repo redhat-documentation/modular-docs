@@ -1,5 +1,19 @@
 # The Modular Documentation Project Source Repository
 
+## Modular Documentation Reference Guide [![Build Status](https://travis-ci.org/redhat-documentation/modular-docs.svg?branch=master)](https://travis-ci.org/redhat-documentation/modular-docs)
+
+The Modular Documentation Reference Guide contains the essential information to start writing documentation in a modular way.
+You can view the latest build of the guide here:
+
+https://redhat-documentation.github.io/modular-docs/
+
+## Modular Documentation Template Files
+
+Another deliverable for this project are the module templates for the various module types.
+All the modular template files for writing new modular content can be found here:
+
+https://github.com/redhat-documentation/modular-docs/tree/master/modular-docs-manual/files
+
 ## What is the Purpose of the Modular Documentation Project?
 
 To provide documentation teams with a set of resources to assist them as they write user-driven content or convert their current documentation framework to a modular-based documentation framework.
@@ -11,10 +25,6 @@ To help the documentation teams become more agile with their documentation. This
 ## Any Suggestions or Questions?
 
 Please submit an [issue](https://github.com/redhat-documentation/modular-docs/issues) to this project.
-
-## Modular Documentation Reference Guide
-
-The Modular Documentation Reference Guide is one of the deliverables for this project. You can view the latest build of the guide here: https://redhat-documentation.github.io/modular-docs/. Build status: [![Build Status](https://travis-ci.org/redhat-documentation/modular-docs.svg?branch=master)](https://travis-ci.org/redhat-documentation/modular-docs)
 
 ## Repository Structure
 
