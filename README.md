@@ -9,7 +9,7 @@ https://redhat-documentation.github.io/modular-docs/
 
 ## Modular Documentation Template Files
 
-Another deliverable for this project are the module templates for the various module types.
+Another deliverable for this project is the module templates for the various module types.
 All the modular template files for writing new modular content can be found here:
 
 https://github.com/redhat-documentation/modular-docs/tree/master/modular-docs-manual/files
