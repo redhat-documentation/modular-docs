@@ -24,6 +24,8 @@ Prerequisites are conditions that must be satisfied before the user starts the p
 
 Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
 
+Use a bulleted list for prerequisites, even if you only have a single prerequisite.
+
 [discrete]
 == Procedure Body
 The procedure consists of one or more steps required to complete the procedure. Each step describes one action.
