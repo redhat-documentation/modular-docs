@@ -14,7 +14,7 @@ If the content does not fit into a user story or assembly, then it stands to rea
 
 .Handling Extraneous Content
 ====
-For example, many feature-based manuals contain detailed sections about how a particular feature works. This type of content, which valuable in certain contexts, is not always necessary for user documentation -- user goals generally involve _doing_ something, not understanding how all the details work. When you encounter this type of content, ask yourself whether a user would need to understand it in order to accomplish any of their goals (planning, installing, configuring, managing, and so on). If the answer is no, then you can probably discard it.
+For example, many feature-based manuals contain detailed sections about how a particular feature works. This type of content, which is valuable in certain contexts, is not always necessary for user documentation -- user goals generally involve _doing_ something, not understanding how all the details work. When you encounter this type of content, ask yourself whether a user would need to understand it to accomplish any of their goals (planning, installing, configuring, managing, and so on). If the answer is no, then you can probably discard it.
 ====
 
 On the other hand, it is also possible that the content is related to a user story that you have not considered. In that case, you should create the necessary assemblies and modules and add them to your modular doc.
