@@ -8,7 +8,7 @@ Modular documentation is documentation based on _modules_, which the writer comb
 Nesting assemblies too deep can create too much complexity, which might make the documentation difficult to use and maintain. If you are worried this might be the case, consider linking to another assembly as an alternative to direct inclusion.
 ====
 
-At Red Hat, we write modular documentation that is based on _user-stories_. This means that each assembly documents a user story.
+At Red Hat, we write modular documentation that is based on _user stories_. This means that each assembly documents a user story.
 
 .Schema of a Module and an Assembly
 image::modules_assemblies.png[]

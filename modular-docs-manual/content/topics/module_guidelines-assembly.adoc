@@ -6,7 +6,7 @@ The required parts of an assembly are the introduction and modules. Optionally, 
 [discrete]
 == Assembly Introduction
 
-The introduction explains what the user will accomplish by working through the assembled modules. It typically provides context for the assembly.
+The introduction explains what the user accomplishes by working through the assembled modules. It typically provides context for the assembly.
 
 Consider rewording the user story to write the assembly introduction, for example:
 

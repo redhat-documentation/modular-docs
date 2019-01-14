@@ -1,7 +1,7 @@
 [id='nesting-assemblies']
 = Nesting Assemblies in Assemblies
 
-When you set the `:context:` variable in an assembly, the variable continues to be set to the same value in the rest of document even after the assembly itself ends. This causes problems if you include an assembly in another assembly. 
+When you set the `:context:` variable in an assembly, the variable continues to be set to the same value in the rest of the document even after the assembly itself ends. This causes problems if you include an assembly in another assembly. 
 
 If there is, for example, an _Additional Resources_ section in the inner, included assembly as well as in the outer, including assembly after the include statements, the ID of the second one gets overwritten with the `:context:` variable of the included assembly. This causes duplicate IDs, which lead to build-time errors like:
 

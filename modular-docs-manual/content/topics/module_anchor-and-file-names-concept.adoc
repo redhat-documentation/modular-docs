@@ -11,7 +11,7 @@ Anchor names:: Provide an anchor in the format `+++[id='anchor-name_{context}']+
 [id='anchor-name_{context}']
 = Module Heading
 
-First sentence of topic.
+The first sentence of the topic.
 ----
 
 .Example 1. Concept Module
