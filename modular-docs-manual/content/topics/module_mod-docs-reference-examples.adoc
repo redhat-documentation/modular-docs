@@ -4,3 +4,7 @@
 link:https://access.redhat.com/documentation/en-us/red_hat_jboss_amq/7.0/html-single/using_amq_interconnect/#managing_network_connections[Managing Listeners]
 
 link:https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/changes-in-ansible-variables-between-version-2-and-3[Changes in Ansible Variables Between Version 2 and 3]
+
+link:https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html-single/using_amq_online_on_openshift_container_platform/#retrieving-address-space-information-messaging[Example commands for retrieving address space information]
+
+* link:https://raw.githubusercontent.com/EnMasseProject/enmasse/master/documentation/modules/ref-retrieving-address-space-information.adoc[Associated AsciiDoc code for Example commands for retrieving address space information]
