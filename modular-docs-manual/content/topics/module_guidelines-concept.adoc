@@ -1,4 +1,4 @@
-[id='concept-module-guidelines']
+[id="concept-module-guidelines"]
 = Concept Module Guidelines
 
 The core requirement for a concept module is explaining the idea, or concept.

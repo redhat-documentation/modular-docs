@@ -1,4 +1,4 @@
-[id='nesting-assemblies']
+[id="nesting-assemblies"]
 = Nesting Assemblies in Assemblies
 
 When you set the `:context:` variable in an assembly, the variable continues to be set to the same value in the rest of the document even after the assembly itself ends. This causes problems if you include an assembly in another assembly. 

@@ -1,4 +1,4 @@
-[id='modular-docs-reference-examples']
+[id="modular-docs-reference-examples"]
 = Reference Module Examples
 
 link:https://access.redhat.com/documentation/en-us/red_hat_jboss_amq/7.0/html-single/using_amq_interconnect/#managing_network_connections[Managing Listeners]

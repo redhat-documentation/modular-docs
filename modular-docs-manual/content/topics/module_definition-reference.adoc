@@ -1,4 +1,4 @@
-[id='reference-module-definition']
+[id="reference-module-definition"]
 = Reference Module Definition
 
 Reference modules provide data that users might want to look up, but do not need to remember.
