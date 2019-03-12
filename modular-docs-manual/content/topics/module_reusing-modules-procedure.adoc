@@ -102,6 +102,7 @@ include::module-A-being-reused.adoc
 = Module A Heading
 ----
 
+////
 .Cross-Referencing Reused Modules
 [NOTE]
 ====
@@ -119,6 +120,7 @@ Example:
 For details, see xref:module-A-being-reused_assembly-1-name[].
 ----
 ====
+////
 
 .Additional Resources
 
