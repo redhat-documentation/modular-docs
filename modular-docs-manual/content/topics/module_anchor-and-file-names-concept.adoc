@@ -3,7 +3,7 @@
 
 To optimize modular documentation, follow these guidelines for naming module anchors and files:
 
-Anchor names:: Provide an anchor in the format `+++[id='anchor-name-{context}']+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. `+++{context}+++` is a variable whose value you define in the assembly. Give the anchor the same or similar name as the module heading. Separate the words in the anchor with dashes:
+Anchor names:: Provide an anchor in the format `+++[id='anchor-name-{context}']+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. `+++{context}+++` is a variable whose value you define in the assembly. Give the anchor the same or similar name as the module heading. Separate the words in the anchor with hyphens:
 +
 --
 [source]
