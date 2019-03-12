@@ -29,6 +29,9 @@ This paragraph is the procedure module introduction: a short description of the 
 
 . Use an unnumbered bullet (*) if the procedure includes only one step.
 
+//.Verification steps
+//(Optional) Provide the user with verification method(s) for the procedure, such as expected output or commands that can be used to check for success or failure.
+
 .Additional resources
 
 * A bulleted list of links to other material closely related to the contents of the procedure module.
