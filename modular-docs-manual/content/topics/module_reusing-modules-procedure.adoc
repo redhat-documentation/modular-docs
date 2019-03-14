@@ -17,7 +17,7 @@ This error is resolved by adding and defining a document variable.
 [discrete]
 .Procedure
 
-. In the module file that will be reused, add the `+++{context}+++` suffix with an underscore to the anchor name in the format `[id='anchor-name_+++{context}'+++]`.
+. In the module file that will be reused, add the `+++{context}+++` suffix with a hyphen to the anchor name in the format `[id='anchor-name-+++{context}'+++]`.
 
 +
 NOTE: Although you can use any document variable that clearly indicates the variable in question, such as `+++{product}+++` or `+++{chapter}+++`, the `+++{context}+++` variable is recommended. This variable indicates more generally that the same module can be reused in the specified "context" of one section of a document or another, regardless of whether that section is product-specific or not, whether it is a whole chapter or a small assembly, or some other limitation.
@@ -26,17 +26,17 @@ NOTE: Although you can use any document variable that clearly indicates the vari
 .Two Modules to Be Reused: Module A and Module B
 [source]
 ----
-[id='module-A-being-reused_{context}']
+[id='module-A-being-reused-{context}']
 = Module A Heading
 ----
 +
 [source]
 ----
-[id='module-B-being-reused_{context}']
+[id='module-B-being-reused-{context}']
 = Module B Heading
 ----
 
- . In the assembly file or the master book file, define the `+++:context:+++` variable, separated by dashes, immediately above any included modules that are being reused, in the format `+++:context:+++ variable-name`. How you define the variable depends on whether the module is included once in multiple assemblies, or is included multiple times in a single assembly.
+ . In the assembly file or the master book file, define the `+++:context:+++` variable immediately above any included modules that are being reused, in the format `+++:context:+++ variable-name`. How you define the variable depends on whether the module is included once in multiple assemblies or is included multiple times in a single assembly. Note that the `+++:context:+++` variable definition uses hyphens to separate its terms.
 +
 Module Included Once in Multiple Assemblies:: If the reused modules are included only once in this assembly and in at least one other assembly, define an assembly-level variable such as `+++:context: assembly-name+++`. This  indicates that the reused module is appearing in the context of that assembly.
 
@@ -98,7 +98,7 @@ include::module-A-being-reused.adoc
 //
 // ...
 
-[id='module-A-being-reused_{context}']
+[id='module-A-being-reused-{context}']
 = Module A Heading
 ----
 
@@ -141,7 +141,7 @@ The module files contain the following content:
 // asset-definitions.adoc
 // business-rules.adoc
 
-[id='projects_{context}']
+[id='projects-{context}']
 = Projects
 ----
 
@@ -153,7 +153,7 @@ The module files contain the following content:
 // asset-definitions.adoc
 // business-rules.adoc
 
-[id='creating-assets_{context}']
+[id='creating-assets-{context}']
 = Creating Assets
 ----
 
@@ -219,7 +219,7 @@ The module file contains the following content:
 .projects.adoc
 [source]
 ----
-[id='projects_{context}']
+[id='projects-{context}']
 = Projects
 ----
 

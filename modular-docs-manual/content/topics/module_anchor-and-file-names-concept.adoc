@@ -3,12 +3,12 @@
 
 To optimize modular documentation, follow these guidelines for naming module anchors and files:
 
-Anchor names:: Provide an anchor in the format `+++[id='anchor-name_{context}']+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. Give the anchor the same or similar name as the module heading, separated by dashes:
+Anchor names:: Provide an anchor in the format `+++[id='anchor-name-{context}']+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. `+++{context}+++` is a variable whose value you define in the assembly. Give the anchor the same or similar name as the module heading. Separate the words in the anchor with hyphens:
 +
 --
 [source]
 ----
-[id='anchor-name_{context}']
+[id='anchor-name-{context}']
 = Module Heading
 
 The first sentence of the topic.
@@ -17,7 +17,7 @@ The first sentence of the topic.
 .Example 1. Concept Module
 [source]
 ----
-[id='guided-decision-tables_{context}']
+[id='guided-decision-tables-{context}']
 = Guided Decision Tables
 
 The guided decision tables feature works similarly to ...
@@ -26,7 +26,7 @@ The guided decision tables feature works similarly to ...
 .Example 2. Procedure Module
 [source]
 ----
-[id='creating-guided-decision-tables_{context}']
+[id='creating-guided-decision-tables-{context}']
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...
