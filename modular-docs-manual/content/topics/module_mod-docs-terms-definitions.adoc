@@ -5,7 +5,7 @@ Assembly:: A collection of several modules combined into a larger piece of text,
 +
 The docs realization of a _user story_.
 
-Module:: An independent, self-contained chunk of information with a well-organized structure. Each module is information that a reader can understand and use by itself. A writer can use a module as a standalone article or as part of a larger body of work (an "Assembly"). A module does not depend on other documents, but it can refer the reader to other documents as additional resources. Because a module is self-contained, it must have a clear title that briefly and clearly summarizes the subject of the module. Moreover, because modules are written as context-free elements independent of other modules, they are re-usable. One module can be part of multiple assemblies.
+Module:: An independent, self-contained chunk of information with a well-organized structure. Each module is information that a reader can understand and use by itself. A writer can use a module as a standalone article or as part of a larger body of work (an "Assembly"). A module does not depend on other documents, but it can refer the reader to other documents as additional resources. Because a module is self-contained, it must have a clear title that briefly and clearly summarizes the subject of the module. Moreover, because modules are written as context-free elements independent of other modules, they are re-usable. One module can be part of multiple assemblies. Do not include xref links in modules.
 +
 Concept Module::: Explains a concept; for example, not action-based.
 Procedure Module::: Describes steps to perform an action.
