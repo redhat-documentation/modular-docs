@@ -1,4 +1,4 @@
-[id='introduction']
+[id="introduction"]
 = Introduction
 
 This manual provides instructions on how to author modularly structured documentation based on user stories. The manual defines used terminology, describes components that form modular documentation, and instructs writers on how to use provided templates to turn user stories into modular documentation.

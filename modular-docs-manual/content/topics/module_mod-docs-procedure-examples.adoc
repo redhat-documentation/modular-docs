@@ -1,4 +1,4 @@
-[id='modular-docs-procedure-examples']
+[id="modular-docs-procedure-examples"]
 = Procedure Module Examples
 
 link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host#sssd-services-on-host-enrolling-to-an-ipa-domain-using-an-sssd-container[Enrolling to an Identity Management Domain Using an SSSD Container]

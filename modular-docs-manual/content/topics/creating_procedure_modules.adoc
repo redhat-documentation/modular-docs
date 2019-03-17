@@ -1,4 +1,4 @@
-[id='creating-procedure-modules']
+[id="creating-procedure-modules"]
 = Creating Procedure Modules
 
 This section explains what a procedure module is and provides recommended practices for writing procedure modules.
