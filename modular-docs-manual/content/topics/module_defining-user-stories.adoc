@@ -1,4 +1,4 @@
-[id='defining-user-stories']
+[id="defining-user-stories"]
 = Defining User Stories for Your Product
 
 User stories provide the context and structure from which you can determine which assemblies and modules to create.

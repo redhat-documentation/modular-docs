@@ -1,4 +1,4 @@
-[id='what-modular-documentation-is-not']
+[id="what-modular-documentation-is-not"]
 = What Modular Documentation Is Not
 
 Legacy (non-modular) documentation split into small, _meaningless_ pieces:: A module must make sense and provide value on its own, even when read separately from the other modules. The templates included in this manual help ensure this.

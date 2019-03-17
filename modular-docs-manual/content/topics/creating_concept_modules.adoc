@@ -1,4 +1,4 @@
-[id='creating-concept-modules']
+[id="creating-concept-modules"]
 = Creating Concept Modules
 
 This section explains what a concept module is and provides recommended practices for writing concept modules.

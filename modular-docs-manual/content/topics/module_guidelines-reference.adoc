@@ -1,4 +1,4 @@
-[id='reference-module-guidelines']
+[id="reference-module-guidelines"]
 = Reference Module Guidelines
 
 The required part of a reference module is the reference data.

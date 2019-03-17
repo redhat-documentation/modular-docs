@@ -1,4 +1,4 @@
-[id='creating-reference-modules']
+[id="creating-reference-modules"]
 = Creating Reference Modules
 
 This section explains what a reference module is and provides recommended practices for writing reference modules.
