@@ -1,0 +1,10 @@
+*.orig
+*.rej
+tmp
+*~
+*.tar.gz
+.directory
+*.html
+/.project
+*/build/*
+*/en-US/build/*

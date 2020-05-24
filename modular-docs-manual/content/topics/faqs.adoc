@@ -1,0 +1,15 @@
+// This assembly is included in the following assemblies:
+//
+// modular-docs-manual/content/modular-doc-manual.adoc
+
+[id="asse-faqs"]
+= FAQs
+:context: faqs
+
+You can use these FAQs to grasp significant issues raised by authors of modular documentation.
+// Use this assembly to introduce topics that are adjacent to the predominantly linear organization of the MDRG guide. For example, this guide's modules on assemblies and procedure modules both discuss prerequisites. This FAQ contains a discussion of prerequisites that discusses prerequisites in general and references both modules.
+
+include::faq-how-do-i-use-prerequisites-in-mod-docs.adoc[leveloffset=+1]
+include::faq-what-are-some-eppo-best-practices.adoc[leveloffset=+1]
+include::faq-how-do-customers-use-modular-documentation.adoc[leveloffset=+1]
+conc_qa-what-are-some-eppo-best-practices

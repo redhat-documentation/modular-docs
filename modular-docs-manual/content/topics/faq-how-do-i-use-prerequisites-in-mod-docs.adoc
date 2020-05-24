@@ -1,0 +1,54 @@
+// Module included in the following assemblies:
+//
+// modular-docs-manual/content/topics/assy_faqs.adoc
+
+[id="conc-qa-how-do-i-use-prerequisites-in-mod-docs_{context}"]
+= How do I use prerequisites in mod docs?
+
+.What is a prerequisite?
+
+Prerequisites are requirements the user or their environment must meet _before_ starting a procedure. A prerequisite can be a _thing_, such as a software version, or an _action_, such as a configuration task.
+
+.Where do I put them?
+
+The mod doc templates for assemblies and procedure modules both have a `.Procedures` section.
+
+xref:module_guidelines-assembly[] states:
+> Optionally, an assembly can also include prerequisites and additional resources.
+> Prerequisites are conditions that must be satisfied before the user can start following the assembly.
+
+Most modular documentation presents top-level assemblies as pages. So a prerequisite in a top-level assembly appears near the top of the page.
+
+xref:module_guidelines-procedure[] advises you:
+> focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
+
+.What are some reasons to put a prerequisite in a top-level assembly?
+- The prerequisite requires significant time, effort, expense, or equipment.
+- You want to avoid surprising or disappointing your users when they are working through your document.
+- The prerequisite belongs in multiple procedure modules.
+- The prerequisite doesn't belong in any particular procedure module.
+
+.What are some reasons to put a prerequisite in a procedure module?
+- The procedure module has a definite prerequisite.
+- You believe the user can meet the prerequisite _while_ they are performing the procedure.
+- If the assembly is long and is xref:faq-how-do-customers-use-documentation[the user is likely to miss seeing the prerequisite] or to forget about it.
+- If you expect someone to reuse the module in other assemblies that don't include the prerequisite.
+
+.Is it okay to repeat prerequisites in assemblies and modules?
+- Yes. Users often find themselves in the middle of documents and aren't aware of its other content.
+
+xref:module_guidelines-procedure[However, in procedure modules,]:
+> focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
+
+.What about prerequisites and Every Page is Page One?
+
+Mark Baker's [_Every Page is Page One_ (EPPO)] is an influential book in the field of technical communications. This [_Modular Documentation Reference Guide_ (MDRG)](https://redhat-documentation.github.io/modular-docs/) and EPPO are both based on the principles of minimalism in technical communications pioneered in John Carroll's _The Nurnberg Funnel_. This guide, MDRG, does not explicitly address EPPO.
+
+That said, Mark Baker has an interesting blog post called link:https://everypageispageone.com/2014/07/14/there-are-no-prerequisites/[There are no Prerequisites].
+
+// .Additional resources
+//
+// * A bulleted list of links to other material closely related to the contents of the concept module.
+// * Currently, modules cannot include xrefs, so you cannot include links to other content in your collection. If you need to link to another assembly, add the xref to the assembly that includes this module.
+// * For more details on writing concept modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+// * Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
