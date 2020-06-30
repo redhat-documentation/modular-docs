@@ -62,7 +62,7 @@ The guided decision tables feature works similarly to ...
 .Example 2. Procedure Module
 [source]
 ----
-[id="pro-creating-guided-decision-tables_{context}"]
+[id="proc-creating-guided-decision-tables_{context}"]
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...
