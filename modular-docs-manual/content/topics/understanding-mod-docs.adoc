@@ -7,4 +7,4 @@ include::module_what-modular-documentation-is.adoc[leveloffset=+1]
 
 include::module_what-modular-documentation-is-not.adoc[leveloffset=+1]
 
-include::module_a-simple-example-of-a-modular-guide.adoc[leveloffset=+1]
+include::module_modular-documentation-repositories.adoc[leveloffset=+1]
