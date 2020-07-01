@@ -87,9 +87,9 @@ variants:
 assemblies:
   - assemblies/*.adoc
 modules:
-  - modules/**/*.adoc
+  - modules/*/*.adoc
 resources:
-  - _images/**/*.png
+  - _images/*/*.png
   - _artifacts/*.adoc
 ----
 +
