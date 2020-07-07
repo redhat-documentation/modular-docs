@@ -4,7 +4,7 @@
 To optimize modular documentation, follow these guidelines for naming files and creating anchors:
 
 .File names
-Assembly and module file names should accurately and closely reflect the title of the assembly or module. File names should have the format `prefix-filename.adoc` or `prefix_filename.adoc` where `prefix` is one of the following module prefixes:
+Create assembly and module file names that accurately and closely reflect the title of the assembly or module. Create file names with the format `prefix-filename.adoc` or `prefix_filename.adoc` where `prefix` is one of the following module prefixes:
 
 * `con`: Concept module prefix
 * `proc`: Procedure module prefix
@@ -13,11 +13,13 @@ Assembly and module file names should accurately and closely reflect the title o
 
 .Examples
 * `con-guided-decision-tables.adoc`  (Concept module)
+* `con_guided-decision-tables.adoc`  (Concept module)
 * `proc-creating-guided-decision-tables.adoc`  (Procedure module for creating)
-* `proc-editing-guided-decision-tables.adoc`  (Procedure module for editing)
+* `proc_creating-guided-decision-tables.adoc`  (Procedure module for creating)
 * `ref-guided-decision-table-examples.adoc`  (Reference module with examples)
-* `ref-guided-decision-table-columns.adoc`  (Reference module with column types)
+* `ref_guided-decision-table-examples.adoc`  (Reference module with examples)
 * `assembly-designing-guided-decision-tables.adoc`  (Assembly of guided decision table modules)
+* `assembly_designing-guided-decision-tables.adoc`  (Assembly of guided decision table modules)
 
 
 [NOTE]
@@ -26,8 +28,6 @@ Do not include special characters in file names. Ensure that all members of your
 ====
 
 These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), you must include one of the following variables in each concept, procedure, and reference module:
-
-NOTE: This is a Pantheon 2 requirement.
 
 [source]
 ----
@@ -39,8 +39,8 @@ NOTE: This is a Pantheon 2 requirement.
 
 
 .Anchors
-At the top of every module, provide an anchor in the format `+++[id="filename_{context}"]+++` where `filename` is the exact name of the file, without the file extension (`.adoc`). Module anchors are necessary so that the module can be identified by Asciidoctor when reused or cross-referenced. The `{context}` variable is intentionally not defined in the module anchor ID. You define a context value in each assembly, in the format `:context: my-context-value`. This enables the context variable in each module to be populated according to the relevant assembly.
---
+At the top of every module, provide an anchor in the format `+++[id="filename_{context}"]+++` where `filename` is the exact name of the file, without the file extension (`.adoc`). Module anchors are necessary so that Asciidoctor can identify the module when the module is reused or cross-referenced. The  `context` variable is defined in each assembly module, for example `:context: my-context-value`. When you build an assembly, the value of the `context` variable replaces `{context}` in each module anchor ID and appears in generated URL.
+
 [source]
 ----
 [id="filename_{context}"]
@@ -53,16 +53,34 @@ The first sentence of the topic.
 [source]
 ----
 [id="con-guided-decision-tables_{context}"]
-
 = Guided Decision Tables
 
 The guided decision tables feature works similarly to ...
 ----
 
-.Example 2. Procedure Module
+.Example 2. Concept Module
+[source]
+----
+[id="con_guided-decision-tables_{context}"]
+= Guided Decision Tables
+
+The guided decision tables feature works similarly to ...
+----
+
+
+.Example 3. Procedure Module
 [source]
 ----
 [id="proc-creating-guided-decision-tables_{context}"]
+= Creating Guided Decision Tables
+
+You can use guided decision tables to ...
+----
+
+.Example 4. Procedure Module
+[source]
+----
+[id="proc_creating-guided-decision-tables_{context}"]
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...
@@ -74,7 +92,7 @@ You can use guided decision tables to ...
 The format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced properly. For details, see xref:reusing-modules[]. Other anchor formats include `+++[[anchor-name]]+++` and `+++[#anchor-name]+++`, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.
 ====
 
---
+
 
 .Additional Resources
 
