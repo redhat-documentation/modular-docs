@@ -17,13 +17,16 @@
 [NOTE]
 The following standard is recommended when the documentation is being maintained without a Content Management System (CMS) capable of managing complex interrelations between modules.
 
-The use of reusable text snippet files (or text fragment files) is discouraged due to the complications that can arise due to the complexity they introduce.
-
-Snippet (fragment) file use should be limited to:
+Use reusable text snippet files (or text fragment files) only for the following:
 
 * Standardized admonitions (such as 'Technology preview' and 'Beta' text).
 * Where there is an existing standard between the upstream and downstream communities.
+* Any content that is used without modification across modules. Ensure that any change to this content must necessarily hold true for each module that includes it.
 
+Follow these rules when creating text snippet files:
+
+* Store the text snippet files in a directory that contains static resources. For example, the `_artifatcs` directory. 
+* Ensure that when you include text snippet files in a module, you do not make the module source difficult to follow.
 
 //.Additional resources
 
