@@ -4,7 +4,7 @@ If your Red Hat product is single-sourced with community, you might be able to u
 
 Most single-sourced repositories need to modify parts of this example repository structure, or disregard it entirely, depending on community needs and objectives. For example, one strategy is to use a community folder where you house all module content and all community build requirements together in a common folder, such that it functions on its own for community builds. The enterprise builds would then pull from this central community folder for the module content using symlinks in the assembly and title folders.
 
-For more information about working with single-sourced community and enterprise repositories, see the following resources:
+For help with community collaboration needs and challenges, see the following resources:
 
 - [Community collaboration guide](https://redhat-documentation.github.io/community-collaboration-guide/)
 - [Creating modular documentation repositories course](https://learning.redhat.com/mod/facetoface/view.php?id=6590)
