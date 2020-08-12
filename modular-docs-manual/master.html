@@ -446,7 +446,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#creating-concept-modules">3.1.1. Creating Concept Modules</a></li>
 <li><a href="#creating-procedure-modules">3.1.2. Creating Procedure Modules</a></li>
 <li><a href="#creating-reference-modules">3.1.3. Creating Reference Modules</a></li>
-<li><a href="#using_text_snippets_or_text_fragments_{context}">3.1.4. Text Snippets or Text Fragments (Pseudo-modules)</a></li>
+<li><a href="#using_text_snippets_or_text_fragments_writing-mod-docs">3.1.4. Text Snippets or Text Fragments (Pseudo-modules)</a></li>
 <li><a href="#anchor-and-file-names">3.1.5. Anchor Names and File Names</a></li>
 </ul>
 </li>
@@ -496,7 +496,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Important</div>
 </td>
 <td class="content">
-As CCS strategic imperatives and Pantheon 2 development continue to evolve, the details and recommendations in this guide might be modified. The Flexible Customer Content (FCC) team recognizes that the fluctuation in recommendations can be frustrating for CCS teams trying to adopt modularization standards and apologizes in advance as the initiative pursues the best possible outcome for CCS documentation.
+As modular documentation imperatives continue to evolve, the details and recommendations in this guide might be modified. The modular documentation team recognizes that the fluctuation in recommendations can be frustrating for contributors trying to adopt modularization standards and apologizes in advance as the initiative pursues the best possible outcome for modularized documentation.
 </td>
 </tr>
 </table>
@@ -577,202 +577,11 @@ As CCS strategic imperatives and Pantheon 2 development continue to evolve, the 
 </div>
 <div class="sect2">
 <h3 id="modular-documentation-repositories"><a class="anchor" href="#modular-documentation-repositories"></a><a class="link" href="#modular-documentation-repositories">2.3. Modular Documentation Repositories</a></h3>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Important</div>
-</td>
-<td class="content">
-As CCS strategic imperatives and Pantheon 2 development continue to evolve, the details and recommendations in this section and possibly other sections in this guide might be modified. The Flexible Customer Content (FCC) team recognizes that the fluctuation in recommendations can be frustrating for CCS teams trying to adopt modularization standards and apologizes in advance as the initiative pursues the best possible outcome for CCS documentation.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Due to many factors that determine documentation repository design for individual products, the modular documentation initiative cannot provide a strict documentation repository template for all documentation teams to follow. Each team faces different implementation challenges, especially when Red Hat enterprise product documentation is single-sourced with corresponding community project documentation.</p>
 </div>
 <div class="paragraph">
-<p>Due to many factors that determine documentation repository design for individual Red Hat products, the Flexible Customer Content (FCC) initiative cannot provide a strict documentation repository template for all CCS teams to follow. Each team faces different implementation challenges, especially when Red Hat product documentation is single sourced with corresponding community project documentation.</p>
-</div>
-<div class="paragraph">
-<p>However, for optimal FCC, Pantheon, and Pantheon 2 compliance, the FCC initiative recommends a general repository structure similar to the following example, where possible:</p>
-</div>
-<div class="listingblock">
-<div class="title">Recommended documentation repository structure (where possible)</div>
-<div class="content">
-<pre class="highlight"><code>├── _artifacts
-├── _images
-├── assemblies
-    ├── _artifacts -&gt; ../_artifacts  // Symlinks can be extracted.
-    ├── _images -&gt; ../_images
-    ├── modules -&gt; ../modules
-    ├── assembly-kogito-configuring.adoc
-    ├── assembly-kogito-creating-running.adoc
-    ├── assembly-kogito-decision-engine.adoc
-    ├── assembly-kogito-developing-decision-services.adoc
-    ├── assembly-kogito-developing-process-services.adoc
-    ├── assembly-kogito-using-dmn.adoc
-    ├── assembly-kogito-using-drl.adoc
-    ├── ...
-├── modules
-    ├── configuration
-        ├── con-data-index-service.adoc
-        ├── con-jobs-service.adoc
-        ├── proc-data-index-service-enable-security.adoc
-        ├── ref-data-index-service-queries.adoc
-        ├── ...
-    ├── creating-running
-        ├── con-kogito-automation.adoc
-        ├── con-kogito-modelers.adoc
-        ├── proc-kogito-app-examples-running.adoc
-        ├── ref-kogito-app-examples.adoc
-        ├── ...
-    ├── decision-services  // Contains modules related to multiple assemblies.
-        ├── con-decision-tables.adoc
-        ├── con-dmn.adoc
-        ├── con-drl.adoc
-        ├── proc-dmn-model-creating.adoc
-        ├── ref-dmn-model-example.adoc
-        ├── ...
-    ├── process-services
-        ├── ...
-    ├── ...
-├── titles-enterprise
-    ├── kogito-configuring
-        ├── _images -&gt; ../../_images
-        ├── assemblies -&gt; ../../assemblies
-        ├── master.adoc
-        └── master-docinfo.xml
-    ├── kogito-creating-running
-        ├── ...
-    ├── kogito-developing-decision-services  // Contains multiple assemblies.
-        ├── ...
-    ├── ...
-├── pantheon2.yml
-└── README.md</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This repository structure contains the following key components:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>_artifacts</code>: Directory with document attribute files and other metadata files. The underscore in the folder name is an optional indication of a non-content folder.</p>
-</li>
-<li>
-<p><code>_images</code>: Directory with image files, optionally divided into sub-directories by subject matter. The underscore in the folder name is an optional indication of a non-content folder.</p>
-</li>
-<li>
-<p><code>assemblies</code>: Directory with assembly files. You collect and compile assemblies into documents (titles) using the <code>titles-enterprise</code> folder.</p>
-</li>
-<li>
-<p><code>modules</code>: Directory with module files, optionally divided into sub-directories by subject matter.</p>
-</li>
-<li>
-<p><code>titles-enterprise</code>: Directory with folders for each enterprise document or <em>title</em> to be built in Pantheon. Each document folder contains a <code>master.adoc</code> file where you include one or more relevant assemblies that are built as part of the document. The <code>master-docinfo.xml</code> file contains metadata that is required by <code>bccutil</code> (and <code>ccutil</code>) when converting to DocBook format. (This metadata file might be deprecated in a future release of <code>bccutil</code> and Pantheon 2.) In repositories that are single sourced with a community project, a separate <code>titles-community</code> folder might be dedicated to community configurations and output, if applicable.</p>
-</li>
-<li>
-<p><code>pantheon2.yml</code>: YAML file with metadata that is required for publishing content on Pantheon 2:</p>
-<div class="listingblock">
-<div class="title">Example <code>pantheon2.yml</code> file</div>
-<div class="content">
-<pre class="highlight"><code class="language-yaml" data-lang="yaml">server: http://localhost:8080
-repository: mod-doc-repo-example
-variants:
-   - name: global-attributes
-     path: _artifacts/document-attributes.adoc
-     canonical: true
-   - name: community-attributes
-     path: _artifacts/document-attributes-kogito-comm.adoc
-   - name: enterprise-attributes
-     path: _artifacts/document-attributes-kogito-ent.adoc
-assemblies:
-  - assemblies/*.adoc
-modules:
-  - modules/**/*.adoc
-resources:
-  - _images/**/*.png
-  - _artifacts/*.adoc</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For information about configuring this file for your specific content, contact a member of the CCS tooling team.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This repository structure offers the following potential advantages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Flexibility in determining publishable titles.</strong> In this structure, the images, artifacts, assemblies, and modules all serve as distinct building blocks that you use to compile a document or <em>title</em>. You can include an image in multiple modules, a module in multiple assemblies, and an assembly in multiple titles. Additionally, just as an assembly can include multiple modules, a title can contain multiple assemblies.</p>
-</li>
-<li>
-<p><strong>More intuitive content reuse.</strong> When you decouple the standalone content components from the publishable titles, you avoid potentially awkward includes when modules or assemblies from one title are reused in another. For example, consider a repository where each publishable title folder contains all modules or assemblies or both directly within it. This creates a dependency for that module or assembly content on that title. As you reuse content across title folders, you end up with includes that direct to various other unrelated titles to retrieve the content. Alternatively, in the recommended repository structure, you can reuse all content independent of the titles in which you include it.</p>
-</li>
-<li>
-<p><strong>Potentially easier collaboration in community and between content repositories.</strong> For repositories that are single sourced with community projects or that need to reuse content between product documentation repositories, this structure enables you to isolate the enterprise title compilation requirements so that the standalone components can be shared more readily. However, single sourcing between community and enterprise content repositories poses other challenges beyond the scope of this document. (See the disadvantages and community considerations sections that follow.)</p>
-</li>
-<li>
-<p><strong>Consistency with Pantheon 2 YAML configurations.</strong> In this structure, the division of modules, assemblies, and other resources is consistent with the division of components in the <code>pantheon2.yml</code> file that is required for documents published on Pantheon 2.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>This repository structure poses the following potential disadvantages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Extensive use of symlinks.</strong> In order to enable titles to be built with distinct assemblies, modules, and images, this repository structure uses many symlinks (symbolic links) for access across directories. You can extract these symlinks with a build script or additional variable configurations (such as <code>imagesdir</code>), but because this example repository is intended for a general CCS audience, it maintains explicit symlinks so that a user can build the repository titles with standard CCS and Asciidoctor tooling. Alternative repository structures that combine all relevant images, modules, and assemblies together in title folders can reduce the number of symlinks, but these alternative structures then forego many of the advantages listed previously.</p>
-</li>
-<li>
-<p><strong>Potential conflicts with community content strategy.</strong> Although this documentation repository structure is typically more collaboration-friendly than other FCC repository alternatives (as described in the previous advantages), the FCC strategy as a whole still might not be well received among all community projects. For example, many community projects prefer Mavenized repositories divided into chapter files instead of module files, all categorized in folders by guides or pages (titles) to be built. A community aversion to modularization in general can require writers to modify this example repository design, to pursue tooling alternatives to accommodate all content needs, or in some cases to abandon single sourcing with community.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>To view this example documentation repository, download the <code>mod-doc-repo-example.zip</code> file from the <a href="https://github.com/redhat-documentation/modular-docs/tree/master/modular-docs-manual/files">modular documentation source repository</a>.</p>
-</div>
-<div class="paragraph">
-<p>To build the example titles, in a command terminal, navigate to <code>~/titles-enterprise/<em>DOC_FOLDER</em></code> and enter one of the following commands:</p>
-</div>
-<div class="listingblock">
-<div class="title">Build with <code>ccutil</code> (deprecated)</div>
-<div class="content">
-<pre class="highlight"><code>$ ccutil compile --lang=en-US --format html-single --open</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Build with <code>bccutil</code> (RHEL 8 or Fedora 30 and later)</div>
-<div class="content">
-<pre class="highlight"><code>$ bccutil compile --lang=en-US --format html-single --open</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Build with Asciidoctor</div>
-<div class="content">
-<pre class="highlight"><code>$ asciidoctor master.adoc
-$ google-chrome master.html</code></pre>
-</div>
-</div>
-<h4 id="_community_considerations_in_modular_documentation_repositories" class="discrete">Community considerations in modular documentation repositories</h4>
-<div class="paragraph">
-<p>For documentation repositories that are single sourced with community projects, many factors and challenges influence repository design. Community projects might require different build chains, different contribution processes, different formatting, or other elements that complicate repository design decisions. For this reason, the FCC recommendations in this section are general guidelines to be followed only where possible, with the assumption that various or all aspects of the recommended repository design might require a different strategy among some communities.</p>
-</div>
-<div class="paragraph">
-<p>For help with community collaboration needs and challenges, see the following resources:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://redhat-documentation.github.io/community-collaboration-guide/#ccg-project-structure">Community Collaboration Guide</a></p>
-</li>
-<li>
-<p><a href="https://learning.redhat.com/mod/facetoface/view.php?id=6590">Creating Modular Documentation Repositories</a> (RHU course)</p>
-</li>
-</ul>
+<p>However, for a general repository structure that the modular documentation initiative recommends for optimal results with modular standards, see the example documentation repository and <code>README</code> file in the <a href="https://github.com/redhat-documentation/modular-docs/tree/mod-doc-repo-example"><code>mod-doc-repo-example</code></a> branch in this repository.</p>
 </div>
 </div>
 </div>
@@ -1133,7 +942,7 @@ A reference module requires a short introduction.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="using_text_snippets_or_text_fragments_{context}"><a class="anchor" href="#using_text_snippets_or_text_fragments_{context}"></a><a class="link" href="#using_text_snippets_or_text_fragments_{context}">3.1.4. Text Snippets or Text Fragments (Pseudo-modules)</a></h4>
+<h4 id="using_text_snippets_or_text_fragments_writing-mod-docs"><a class="anchor" href="#using_text_snippets_or_text_fragments_writing-mod-docs"></a><a class="link" href="#using_text_snippets_or_text_fragments_writing-mod-docs">3.1.4. Text Snippets or Text Fragments (Pseudo-modules)</a></h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1372,7 +1181,7 @@ $BUILD_PATH fails to validate</code></pre>
 <div class="title">Procedure</div>
 <ol class="discrete">
 <li>
-<p>In the module file that will be reused, add the <code>{context}</code> suffix with a hyphen to the anchor name in the format <code>[id="anchor-name_{context}"]</code>.</p>
+<p>In the module file that will be reused, add the <code>{context}</code> suffix with a hyphen to the anchor name in the format <code>[id="anchor-name_writing-mod-docs"]</code>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
