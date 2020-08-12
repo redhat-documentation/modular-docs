@@ -1,0 +1,39 @@
+[id='ref-dmn-designer-nav_{context}']
+= {PRODUCT} DMN modeler navigation and properties
+
+The {PRODUCT} DMN modeler provides the following additional features to help you navigate through the components and properties of decision requirements diagrams (DRDs).
+
+DMN decision and diagram views::
+In the upper-right corner of the DMN modeler, select the *Decision Navigator* view to navigate between the decision components, graphs, and boxed expressions of a selected DRD:
++
+--
+.Decision Navigator view
+image::kogito/dmn/dmn-designer-nav-view.png[]
+////
+//@comment: Included models not yet in Kogito. (Stetson, 5 Mar 2020)
+image::kogito/dmn/dmn-designer-nav-view2.png[]
+
+NOTE: The DRD components from any DMN models included in the DMN file (in the *Included Models* tab) are also listed in the *Decision Components* panel for the DMN file.
+////
+
+In the upper-right corner of the DMN modeler, select the *Preview* icon to view an elevated preview of the DRD:
+
+.Diagram preview
+image::kogito/dmn/dmn-designer-preview.png[]
+--
+
+DRD properties and design::
+In the upper-right corner of the DMN modeler, select the *Properties* icon to modify the identifying information, data types, and appearance of a selected DRD, DRD node, or boxed expression cell:
++
+--
+.DRD node properties
+image::kogito/dmn/dmn-designer-properties.png[]
+
+To view the properties of the entire DRD, click the DRD canvas background instead of a specific node.
+--
+
+DRD search::
+In the upper-right corner of the DMN modeler, use the search bar to search for text that appears in your DRD. The search feature is especially helpful in complex DRDs with many nodes:
++
+.DRD search
+image::kogito/dmn/dmn-designer-search.png[]

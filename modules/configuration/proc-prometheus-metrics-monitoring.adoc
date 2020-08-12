@@ -1,0 +1,141 @@
+[id='proc-prometheus-metrics-monitoring_{context}']
+= Enabling Prometheus metrics monitoring in {PRODUCT}
+
+Prometheus is an open-source systems monitoring toolkit that you can use with {PRODUCT} to collect and store metrics related to the execution of Business Process Model and Notation (BPMN) process models, business rules, and Decision Model and Notation (DMN) decision models. You can access the stored metrics through a REST API call to a configured application endpoint, through the Prometheus expression browser, or using a data-graphing tool such as Grafana.
+
+.Prerequisites
+* Prometheus is installed. For information about downloading and using Prometheus, see the https://prometheus.io/docs/introduction/overview/[Prometheus documentation page].
+
+.Procedure
+. In your {PRODUCT} project, add following dependency to the `pom.xml` file to enable the Prometheus add-on:
++
+.Add dependency for Prometheus add-on
+[source,xml,subs="+quotes"]
+----
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>monitoring-prometheus-addon</artifactId>
+  <version>__KOGITO_VERSION__</version>
+</dependency>
+----
+. In the `src/main/java` folder of your project, create an event listener configuration class for the following Prometheus event listeners for monitoring processes or rules, such as a `ProcessEventListenerConfig` class or a `RuleEventListenerConfig` class:
++
+--
+* Prometheus event listener for processes: `org.kie.addons.monitoring.process.PrometheusProcessEventListener`
+* Prometheus event listener for rules: `org.kie.addons.monitoring.rule.PrometheusMetricsDroolsListener`
+
+.Example process event listener for Prometheus
+[source, java]
+----
+@ApplicationScoped
+public class ProcessEventListenerConfig extends DefaultProcessEventListenerConfig {
+
+    public ProcessEventListenerConfig() {
+        super(new PrometheusProcessEventListener("acme-travels"));
+    }
+}
+----
+
+.Example rule event listener for Prometheus
+[source, java]
+----
+@ApplicationScoped
+public class RuleEventListenerConfig extends DefaultRuleEventListenerConfig {
+
+    public RuleEventListenerConfig() {
+        super(new PrometheusMetricsDroolsListener("acme-travels"));
+    }
+}
+----
+
+The argument `acme-travels` in these listener examples identifies the relevant data when the data is returned from the {PRODUCT} runtime and grouped in Prometheus metrics.
+--
+. In the `prometheus.yaml` file of your Prometheus distribution, add the following settings in the `scrape_configs` section to configure Prometheus to scrape metrics from your {PRODUCT} service:
++
+--
+.Example scrape configurations in `prometheus.yaml` file
+[source,yaml,subs="+quotes"]
+----
+scrape_configs:
+  job_name: 'travels'
+metrics_path: /metrics
+static_configs:
+  - targets: ["localhost:8080"]
+----
+
+Replace the values according to your {PRODUCT} service settings.
+--
+. In a command terminal, navigate to your {PRODUCT} project and run the project using your preferred run mode, such as development mode:
++
+--
+.On Quarkus
+[source]
+----
+mvn clean compile quarkus:dev
+----
+
+.On Sprint Boot
+[source]
+----
+mvn clean compile spring-boot:run
+----
+
+After you start your {PRODUCT} service, Prometheus begins collecting metrics and {PRODUCT} publishes the metrics to the configured REST API endpoint.
+--
+. To verify the metrics configuration, use a REST client or curl utility to send a `GET` request to the configured `/metrics` endpoint, such as `\http://localhost:8080/metrics` in this example:
++
+--
+.Example curl command to return Prometheus metrics
+[source]
+----
+curl -X GET http://localhost:8080/metrics
+----
+
+.Example response
+[source]
+----
+# HELP kie_process_instance_completed_total Completed Process Instances
+# TYPE kie_process_instance_completed_total counter
+# HELP kie_process_instance_started_total Started Process Instances
+# TYPE kie_process_instance_started_total counter
+kie_process_instance_started_total{app_id="acme-travels",process_id="travels",} 1.0
+# HELP kie_work_item_duration_seconds Work Items Duration
+# TYPE kie_work_item_duration_seconds summary
+# HELP drl_match_fired_nanosecond Drools Firing Time
+# TYPE drl_match_fired_nanosecond histogram
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="1000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="2000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="3000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="4000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="5000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="6000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="7000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="8000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="9000000.0",} 1.0
+drl_match_fired_nanosecond_bucket{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",le="+Inf",} 1.0
+drl_match_fired_nanosecond_count{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",} 1.0
+drl_match_fired_nanosecond_sum{identifier="acme-travels",rule_name="Brazilian citizens require visa to Australia",} 789941.0
+# HELP kie_process_instance_sla_violated_total Process Instances SLA Violated
+# TYPE kie_process_instance_sla_violated_total counter
+# HELP kie_process_instance_duration_seconds Process Instances Duration
+# TYPE kie_process_instance_duration_seconds summary
+# HELP kie_process_instance_running_total Running Process Instances
+# TYPE kie_process_instance_running_total gauge
+kie_process_instance_running_total{app_id="acme-travels",process_id="travels",} 1.0
+----
+
+If the metrics are not available at the defined endpoint, review and verify the {PRODUCT} and Prometheus configurations described in this section.
+
+You can also interact with your collected metrics and application targets in the Prometheus expression browser at `http://__HOST:PORT__/graph` and `http://__HOST:PORT__/targets`, or integrate your Prometheus data source with a data-graphing tool such as Grafana:
+
+.Prometheus expression browser with {PRODUCT} service targets
+image::kogito/configuration/prometheus-expression-browser-targets.png[Image of targets in Prometheus expression browser]
+
+.Grafana dashboard with {PRODUCT} service metrics
+image::kogito/configuration/prometheus-grafana-data.png[Image of application metrics in Grafana]
+--
+
+.Additional resources
+* https://prometheus.io/docs/prometheus/latest/getting_started/[Getting Started with Prometheus]
+* https://prometheus.io/docs/visualization/grafana/[Grafana Support for Prometheus]
+* https://grafana.com/docs/grafana/latest/features/datasources/prometheus/[Using Prometheus in Grafana]

@@ -1,0 +1,448 @@
+[id='con-drl-rules-conditions_{context}']
+= Rule conditions in DRL
+
+ifdef::KOGITO-COMM[]
+.Rule
+image::kogito/drl/rule.png[align="center"]
+
+.Conditional element in a rule
+image::kogito/drl/lhs.png[align="center"]
+endif::[]
+
+The `when` part of a DRL rule (also known as the _Left Hand Side (LHS)_ of the rule) contains the conditions that must be met to execute an action. Conditions consist of a series of stated OOPath expressions of patterns and constraints, with optional bindings and supported rule condition elements (keywords), based on the available data objects in the package. OOPath is an object-oriented syntax extension to XPath for navigating through related elements while handling collections and filtering constraints.
+
+For example, in a decision service that raises alerts when the temperature reaches or exceeds 80 degrees, a rule `tooHot` contains the `when` condition `/temperature[value >= 80]`.
+
+NOTE: DRL uses `when` instead of `if` because `if` is typically part of a procedural execution flow during which a condition is checked at a specific point in time. In contrast, `when` indicates that the condition evaluation is not limited to a specific evaluation sequence or point in time, but instead occurs continually at any time. Whenever the condition is met, the actions are executed.
+
+If the `when` section is empty, then the conditions are considered to be true and the actions in the `then` section are executed the first time the rules are fired. This is useful if you want to use rules to set up the {DECISION_ENGINE} state.
+
+The following example rule uses empty conditions to insert a fact every time the rule is executed:
+
+.Example rule without conditions
+[source]
+----
+rule "start-up"
+  when
+    // Empty
+  then   // Actions to be executed once
+    alerts.add( new Alert("INFO", "System started") );
+end
+----
+
+Formally, the core grammar of an OOPath expression is defined in extended Backus-Naur form (EBNF) notation in the following way:
+
+.EBNF notation for OOPath expressions
+[source]
+----
+OOPExpr = [ID ( ":" | ":=" )] ( "/" | "?/" ) OOPSegment { ( "/" | "?/" | "." ) OOPSegment } ;
+OOPSegment = ID ["#" ID] ["[" ( Number | Constraints ) "]"]
+----
+
+== OOPath expressions and constraints
+
+An _OOPath expression_ of a pattern in a DRL rule condition is the segment to be matched by the {DECISION_ENGINE}. An OOPath expression can potentially match each fact that is inserted into the working memory of the {DECISION_ENGINE}. It can also contain constraints to further define the facts to be matched.
+
+In the simplest form, with no constraints, an OOPath expression matches a fact in the given data source. In the following example with a `DataSource<Person>` named `person`, the expression matches against all `Person` objects in the data source of the {DECISION_ENGINE}:
+
+.Example expression for a single fact type
+[source]
+----
+/person
+----
+
+Patterns can also refer to superclasses or even interfaces, potentially matching facts from many different classes. For example, the following pattern matches all `Student` subtypes of the `Person` object:
+
+.Example pattern for subtypes
+[source]
+----
+/person # Student
+----
+
+Square brackets in a pattern enclose the constraints, such as the following constraint on the person's age:
+
+.Example pattern with a constraint
+[source]
+----
+/person[ age == 50 ]
+----
+
+A _constraint_ is an expression that returns `true` or `false`. Constraints in DRL are essentially Java expressions with some enhancements, such as property access, and some differences, such as `equals()` and `!equals()` semantics for `==` and `!=` (instead of the usual `same` and `not same` semantics).
+
+Any JavaBeans property can be accessed directly from pattern constraints. A JavaBeans property is exposed internally using a standard JavaBeans getter that takes no arguments and returns something. For example, the `age` property is written as `age` in DRL instead of the getter `getAge()`:
+
+.DRL constraint syntax with JavaBeans properties
+[source]
+----
+/person[ age == 50 ]
+
+// This is equivalent to the following getter format:
+
+/person[ getAge() == 50 ]
+----
+
+{PRODUCT} uses the standard JDK `Introspector` class to achieve this mapping and follows the standard JavaBeans specification. For optimal {DECISION_ENGINE} performance, use the property access format, such as `age`, instead of using getters explicitly, such as `getAge()`.
+
+[WARNING]
+====
+Do not use property accessors to change the state of the object in a way that might affect the rules because the {DECISION_ENGINE} caches the results of the match between invocations for higher efficiency.
+
+For example, do not use property accessors in the following ways:
+
+[source,java]
+----
+public int getAge() {
+    age++; // Do not do this.
+    return age;
+}
+----
+
+[source,java]
+----
+public int getAge() {
+    Date now = DateUtil.now(); // Do not do this.
+    return DateUtil.differenceInYears(now, birthday);
+}
+----
+
+Instead of following the second example, insert a fact that wraps the current date in the working memory and update that fact between rule executions as needed.
+====
+
+However, if the getter of a property cannot be found, the compiler uses the property name as a fallback method name, without arguments:
+
+.Fallback method if object is not found
+[source]
+----
+/person[ age == 50 ]
+
+// If `Person.getAge()` does not exist, the compiler uses the following syntax:
+
+/person[ age() == 50 ]
+----
+
+You can also nest access properties in patterns, as shown in the following example. Nested properties are indexed by the {DECISION_ENGINE}.
+
+// FIXME: revisit this in the future
+.Example pattern with nested property access
+[source]
+----
+/person[ address.houseNumber == 50 ]
+
+// This is equivalent to the following expression:
+
+/person[ getAddress().getHouseNumber() == 50 ]
+----
+
+// FIXME: revisit this in the future
+// WARNING: In stateful KIE sessions, use nested accessors carefully because the working memory of the {DECISION_ENGINE} is not aware of any of the nested values and does not detect when they change. Either consider the nested values immutable while any of their parent references are inserted into the working memory, or, if you want to modify a nested value, mark all of the outer facts as updated. In the previous example, when the `houseNumber` property changes, any `Person` with that `Address` must be marked as updated.
+
+You can use any Java expression that returns a `boolean` value as a constraint inside the parentheses of a pattern. Java expressions can be mixed with other expression enhancements, such as property access:
+
+.Example pattern with a constraint using property access and Java expression
+[source]
+----
+/person[ age == 50 ]
+----
+
+You can change the evaluation priority by using parentheses, as in any logical or mathematical expression:
+
+.Example evaluation order of constraints
+[source]
+----
+/person[ age > 100 && ( age % 10 == 0 ) ]
+----
+
+You can also reuse Java methods in constraints, as shown in the following example:
+
+.Example constraints with reused Java methods
+[source]
+----
+/person[ Math.round( weight / ( height * height ) ) < 25.0 ]
+----
+
+[WARNING]
+====
+Do not use constraints to change the state of the object in a way that might affect the rules because the {DECISION_ENGINE} caches the results of the match between invocations for higher efficiency. Any method that is executed on a fact in the rule conditions must be a read-only method. Also, the state of a fact should not change between rule invocations unless those facts are marked as updated in the working memory on every change.
+
+For example, do not use a pattern constraint in the following ways:
+
+[source]
+----
+/person[ incrementAndGetAge() == 10 ] // Do not do this.
+----
+
+[source]
+----
+/person[ System.currentTimeMillis() % 1000 == 0 ] // Do not do this.
+----
+====
+
+Standard Java operator precedence applies to constraint operators in DRL, and DRL operators follow standard Java semantics except for the `==` and `!=` operators.
+
+The `==` operator uses null-safe `equals()` semantics instead of the usual `same` semantics. For example, the pattern `/person[ firstName == "John" ]` is similar to `java.util.Objects.equals(person.getFirstName(), "John")`, and because `"John"` is not null, the pattern is also similar to `"John".equals(person.getFirstName())`.
+
+The `!=` operator uses null-safe `!equals()` semantics instead of the usual `not same` semantics. For example, the pattern `/person[ firstName != "John" ]` is similar to `!java.util.Objects.equals(person.getFirstName(), "John")`.
+
+If the field and the value of a constraint are of different types, the {DECISION_ENGINE} uses type coercion to resolve the conflict and reduce compilation errors. For instance, if `"ten"` is provided as a string in a numeric evaluator, a compilation error occurs, whereas `"10"` is coerced to a numeric 10. In coercion, the field type always takes precedence over the value type:
+
+.Example constraint with a value that is coerced
+[source]
+----
+/person[ age == "10" ] // "10" is coerced to 10
+----
+
+For groups of constraints, you can use a delimiting comma `,` to use implicit `and` connective semantics:
+
+.Example patterns with multiple constraints
+[source]
+----
+// Person is at least 50 years old and weighs at least 80 kilograms:
+/person[ age > 50, weight > 80 ]
+
+// Person is at least 50 years old, weighs at least 80 kilograms, and is taller than 2 meters:
+/person[ age > 50, weight > 80, height > 2 ]
+----
+
+NOTE: Although the `&&` and `,` operators have the same semantics, they are resolved with different priorities. The `&&` operator precedes the `||` operator, and both the `&&` and `||` operators together precede the `,` operator. Use the comma operator at the top-level constraint for optimal {DECISION_ENGINE} performance and human readability.
+
+You cannot embed a comma operator in a composite constraint expression, such as in parentheses:
+
+.Example of misused comma in composite constraint expression
+[source]
+----
+// Do not use the following format:
+/person[ ( age > 50, weight > 80 ) || height > 2 ]
+
+// Use the following format instead:
+/person[ ( age > 50 && weight > 80 ) || height > 2 ]
+----
+
+== Bound variables in patterns and constraints
+
+You can bind variables to OOPath expressions of patterns and constraints to refer to matched objects in other portions of a rule. Bound variables can help you define rules more efficiently or more consistently with how you annotate facts in your data model.
+// evacchi: I think the "new" convention is to drop $ sign
+// To differentiate more easily between variables and fields in a rule, use the standard format `$__VARIABLE__` for variables, especially in complex rules. This convention is helpful but not required in DRL.
+
+For example, the following DRL rule uses the variable `$p` for an OOPath expression with the `Person` fact:
+
+.Pattern with a bound variable
+[source]
+----
+rule "simple rule"
+  when
+    $p : /person
+  then
+    System.out.println( "Person " + p );
+end
+----
+
+Similarly, you can also bind variables to nested properties, as shown in the following example:
+
+[source]
+----
+// Two persons of the same age:
+/person[ firstAge : age ]  // Binding
+and
+/person[ age == firstAge ] // Constraint expression
+----
+
+[NOTE]
+====
+Ensure that you separate constraint bindings and constraint expressions for clearer and more efficient rule definitions. Although mixed bindings and expressions are supported, they can complicate patterns and affect evaluation efficiency.
+
+[source]
+----
+// Do not use the following format:
+/person[ age : age * 2 < 100 ]
+
+// Use the following format instead:
+/person[ age * 2 < 100, $age : age ]
+----
+====
+
+
+// evacchi: not sure these are supported in OOPath maybe move it in the Pattern section
+
+// The {DECISION_ENGINE} does not support bindings to the same declaration, but does support _unification_ of arguments across several properties. While positional arguments are always processed with unification, the unification symbol `:=` exists for named arguments.
+
+// The following example patterns unify the `age` property across two `Person` facts:
+
+// .Example pattern with unification
+// [source]
+// ----
+// Person( $age := age )
+// Person( $age := age )
+// ----
+
+// Unification declares a binding for the first occurrence and constrains to the same value of the bound field for sequence occurrences.
+
+== Nested constraints and inline casts
+
+In some cases, you might need to access multiple properties of a nested object, as shown in the following example:
+
+.Example pattern to access multiple properties
+[source]
+----
+/person[ name == "mark", address.city == "london", address.country == "uk" ]
+----
+
+You can group these property accessors to nested objects for more readable rules, as shown in the following example:
+
+.Example pattern with grouped constraints
+[source]
+----
+/person[ name == "mark"]/address[ city == "london", country == "uk" ]
+----
+
+When you work with nested objects, you can use the syntax `__TYPE__#__SUB_TYPE__` to cast to a subtype and make the getters from the parent type available to the subtype. You can use either the object name or fully qualified class name, and you can cast to one or multiple subtypes, as shown in the following examples:
+
+.Example patterns with inline casting to a subtype
+[source]
+----
+// Inline casting with subtype name:
+/person[ name == "mark"]/address#LongAddress[ country == "uk" ]
+
+// Inline casting with fully qualified class name:
+/person[ name == "mark"]/address#org.domain.LongAddress[ country == "uk" ]
+
+// Multiple inline casts:
+/person[ name == "mark" ]/address#LongAddress/country#DetailedCountry[ population > 10000000 ]
+----
+
+These example patterns cast `Address` to `LongAddress`, and additionally to `DetailedCountry` in the last example, making the parent getters available to the subtypes in each case.
+
+// evacchi: not sure this works with oopath
+// You can use the `instanceof` operator to infer the results of the specified type in subsequent uses of that field with the pattern, as shown in the following example:
+
+// [source]
+// ----
+// Person( name == "mark", address instanceof LongAddress, address.country == "uk" )
+// ----
+
+// If an inline cast is not possible (for example, if `instanceof` returns `false`), the evaluation is considered `false`.
+
+== Date literal in constraints
+
+By default, the {DECISION_ENGINE} supports the date format `dd-mmm-yyyy`. You can customize the date format, including a time format mask if needed, by providing an alternative format mask with the system property `drools.dateformat="dd-mmm-yyyy hh:mm"`. You can also customize the date format by changing the language locale with the `drools.defaultlanguage` and `drools.defaultcountry` system properties. For example, the locale of Thailand is set as `drools.defaultlanguage=th` and `drools.defaultcountry=TH`.
+
+.Example pattern with a date literal restriction
+[source]
+----
+/person[ bornBefore < "27-Oct-2009" ]
+----
+
+ifdef::KOGITO-COMM[]
+== Auto-boxing and primitive types
+
+Drools attempts to preserve numbers in their primitive or object wrapper form, so a variable bound to an int primitive when used in a code block or expression will no longer need manual unboxing; unlike early Drools versions where all primitives were autoboxed, requiring manual unboxing.
+A variable bound to an object wrapper will remain as an object; the existing JDK 1.5 and JDK 5 rules to handle auto-boxing and unboxing apply in this case.
+When evaluating field constraints, the system attempts to coerce one of the values into a comparable format; so a primitive is comparable to an object wrapper.
+endif::[]
+
+////
+//@comment evacchi: I am not sure the following sections still apply/work. I would hide for now (evacchi, 2020-03-16)*>
+
+== Other Features
+
+OOPath has several other advanced features. We report them here for completeness
+
+* Can backreference an object of the graph that was traversed before the currently iterated graph. For example, the following OOPath expression matches only the grades that are above the average for the passed exam:
++
+.Constraints with backreferenced object
+[source]
+----
+grade: /student/plan/exams/grades[ result > ../averageResult ]
+----
+* Can recursively be another OOPath expression, as shown in the following example:
++
+.Recursive constraint expression
+[source]
+----
+exam: /student/plan/exams[ /grades[ result > 20 ] ]
+----
+* Can access objects by their index between square brackets `[]`, as shown in the following example. To adhere to Java convention, OOPath indexes are 0-based, while XPath indexes are 1-based.
++
+.Constraints with access to objects by index
+[source]
+----
+grade: /student/plan/exams[0]/grades
+----
+
+
+
+== Object reactivity in OOPath expressions
+
+OOPath expressions can be reactive or non-reactive. The {DECISION_ENGINE} does not react to updates involving a deeply nested object that is traversed during the evaluation of an OOPath expression.
+
+To make these objects reactive to changes, modify the objects to extend the class `org.drools.core.phreak.ReactiveObject`. After you modify an object to extend the `ReactiveObject` class, the domain object invokes the inherited method `notifyModification` to notify the {DECISION_ENGINE} when one of the fields has been updated, as shown in the following example:
+
+.Example object method to notify the {DECISION_ENGINE} that an exam has been moved to a different course
+[source,java]
+----
+public void setCourse(String course) {
+  this.course = course;
+  notifyModification(this);
+}
+----
+
+With the following corresponding OOPath expression, when an exam is moved to a different course, the rule is re-executed and the list of grades matching the rule is recomputed:
+
+.Example OOPath expression from "Big Data" rule
+[source]
+----
+$grade: /student/plan/exams[ course == "Big Data" ]/grades
+----
+
+You can also use the `?/` separator instead of the `/` separator to disable reactivity in only one sub-portion of an OOPath expression, as shown in the following example:
+
+.Example OOPath expression that is partially non-reactive
+[source]
+----
+$grade: /student/plan/exams[ course == "Big Data" ]?/grades
+----
+
+With this example, the {DECISION_ENGINE} reacts to a change made to an exam or if an exam is added to the plan, but not if a new grade is added to an existing exam.
+
+If an OOPath portion is non-reactive, all remaining portions of the OOPath expression also become non-reactive. For example, the following OOPath expression is completely non-reactive:
+
+.Example OOPath expression that is completely non-reactive
+[source]
+----
+$grade: /student?/plan/exams[ course == "Big Data" ]/grades )
+----
+
+For this reason, you cannot use the `?/` separator more than once in the same OOPath expression. For example, the following expression causes a compilation error:
+
+.Example OOPath expression with duplicate non-reactivity markers
+[source]
+----
+$grade: /student/plan?/exams[ course == "Big Data" ]?/grades
+----
+
+Another alternative for enabling OOPath expression reactivity is to use the dedicated implementations for `List` and `Set` interfaces in {PRODUCT}. These implementations are the `ReactiveList` and `ReactiveSet` classes. A `ReactiveCollection` class is also available. The implementations also provide reactive support for performing mutable operations through the `Iterator` and `ListIterator` classes.
+
+The following example class uses these classes to configure OOPath expression reactivity:
+
+.Example Java class to configure OOPath expression reactivity
+[source,java]
+----
+public class School extends AbstractReactiveObject {
+  private String name;
+  private final List<Child> children = new ReactiveList<Child>(); // <1>
+
+  public void setName(String name) {
+      this.name = name;
+      notifyModification(); // <2>
+  }
+
+  public void addChild(Child child) {
+      children.add(child); // <3>
+      // No need to call `notifyModification()` here
+  }
+}
+----
+<1> Uses the `ReactiveList` instance for reactive support over the standard Java `List` instance.
+<2> Uses the required `notifyModification()` method for when a field is changed in reactive support.
+<3> The `children` field is a `ReactiveList` instance, so the `notifyModification()` method call is not required. The notification is handled automatically, like all other mutating operations performed over the `children` field.
+
+////

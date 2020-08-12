@@ -1,0 +1,8 @@
+//:sectnums!:
+ifndef::DOCU_NAME[]
+[appendix]
+[id='versioning-information']
+= Versioning information
+
+Documentation last updated on {REBUILT}.
+endif::DOCU_NAME[]

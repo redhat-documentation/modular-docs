@@ -1,0 +1,203 @@
+[id='ref-bpmn-model-example_{context}']
+= BPMN model example
+
+A typical BPMN business process consists of the following basic components:
+
+* Start events to initiate the process
+* Tasks or other steps that are completed as part of the process
+* Connectors to link the process nodes and create a sequence flow
+* End events to terminate the process
+
+The following example is a real-world BPMN model scenario that demonstrates how you can use process modeling to reach a business goal based on business decisions, tasks, or other services. In this scenario, an order service uses business processes for ordering items, for verifying the order, and for evaluating customer age.
+
+NOTE: This example is based on the `process-quarkus-example` application in the https://github.com/kiegroup/kogito-examples[`kogito-examples`] repository in GitHub. However, this example may differ from the exact example source code as {PRODUCT} continues to be developed. Be sure to explore this and other {PRODUCT} examples in GitHub to help you develop your own applications.
+
+The `orders.bpmn2` process in the example describes the steps that need to be followed when ordering items. The process includes a script task for writing debug information and a call activity for invoking a subprocess, using a custom `Order` data object.
+
+.Example `orders.bpmn2` process
+image::kogito/bpmn/bpmn-model-example-orders.png[Image of `orders.bpmn` example process]
+
+The `Add items` subprocess invokes the following `orderItems.bpmn2` process, which uses a `CalculationService.calculateTotal` custom Java service and a user task to verify the order.
+
+.Example `orderItems.bpmn2` process invoked as a subprocess
+image::kogito/bpmn/bpmn-model-example-order-items.png[Image of `orderItems.bpmn` example process]
+
+The `persons.bpmn2` process invokes a Decision Model and Notation (DMN) model in a business rule task to determine customer age, followed by a user task for special handling requirements for children, if applicable.
+
+.Example `persons.bpmn2` process invoked as a subprocess
+image::kogito/creating-running/kogito-bpmn-example-person.png[Image of `persons.bpmn` example process]
+
+Based on these processes and on application configurations, {PRODUCT} generates a set of REST operations to create new orders, to list and delete active orders, and to determine the age of a specified person.
+
+For example, the following REST operations use the endpoint `/orders` to interact with customer orders. You can use a REST client, curl utility, or the Swagger UI configured for the application at http://localhost:8080/swagger-ui/ to send API requests to interact with the running application.
+
+.Swagger UI to interact with all application endpoints (\http://localhost:8080/swagger-ui/)
+image::kogito/creating-running/kogito-swagger-example-jbpm.png[Image of Swagger UI for example application]
+
+NOTE: For the predefined {PRODUCT} example applications, the Swagger UI for interacting with service endpoints is available only on Quarkus examples that you run in
+ifdef::KOGITO-ENT[]
+development mode.
+endif::[]
+ifdef::KOGITO-COMM[]
+development mode or in native mode.
+endif::[]
+
+.Example POST request body to create an order (JSON)
+[source,json]
+----
+{
+  "approver": "john",
+  "order": {
+    "orderNumber": "12345",
+    "shipped": false
+  }
+}
+----
+
+.Example curl command to create an order
+[source]
+----
+curl -X POST http://localhost:8080/orders -H 'content-type: application/json' -H 'accept: application/json' -d '{"approver" : "john", "order" : {"orderNumber" : "12345", "shipped" : false}}'
+----
+
+The returned order displays an `"id"` field with a generated UUID that you can use to retrieve details about this specific order, if needed.
+
+.Example curl command to view active orders
+[source]
+----
+curl -X GET http://localhost:8080/orders -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+.Example curl command to view order details by returned UUID
+[source]
+----
+curl -X GET http://localhost:8080/orders/6b53c227-6d5e-40b7-8c8c-a541a2a47d58 -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+You use the `"id"` value for the order that was returned when you created the order or when you retrieved active orders.
+
+.Example curl command to cancel the order by returned UUID
+[source]
+----
+curl -X DELETE http://localhost:8080/orders/6b53c227-6d5e-40b7-8c8c-a541a2a47d58 -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+The following is the BPMN source file for the `orders.bpmn2` process model, as an example:
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- origin at X=0.0 Y=0.0 -->
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn20="http://www.omg.org/bpmn20" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xmlns:ns="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_gfw8oEcJEemyodG9iPy-Bw" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.5.0.Final-v20180515-1642-B1" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_OrderItem" isCollection="false" structureRef="org.kie.kogito.examples.demo.Order"/>
+  <bpmn2:itemDefinition id="_approverItem" isCollection="false" structureRef="String"/>
+  <bpmn2:itemDefinition id="__9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderInputXItem" isCollection="false" structureRef="org.kie.kogito.examples.demo.Order"/>
+  <bpmn2:itemDefinition id="__9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderOutputXItem" isCollection="false" structureRef="org.kie.kogito.examples.demo.Order"/>
+  <bpmn2:process id="demo.Orders" drools:packageName="org.kie.kogito.examples" drools:version="1.0" drools:adHoc="false" name="Orders" isExecutable="true">
+    <bpmn2:documentation id="_gfw8oUcJEemyodG9iPy-Bw"><![CDATA[Deals with orders created by customer]]></bpmn2:documentation>
+    <bpmn2:property id="order" itemSubjectRef="_OrderItem" name="order"/>
+    <bpmn2:property id="approver" itemSubjectRef="_approverItem" name="approver"/>
+    <bpmn2:sequenceFlow id="_8216C810-34D8-4BFA-B814-1AA01907810F" sourceRef="_9484CB12-FE52-434C-AE9F-3C3C267D1C96" targetRef="_2D876EF2-93F4-4CBE-959A-04EF7BFA9CED"/>
+    <bpmn2:sequenceFlow id="_58684613-0155-48B2-8746-7675AFF24439" sourceRef="_0617D7DF-047A-4EC4-85E7-E201D640F4F5" targetRef="_9484CB12-FE52-434C-AE9F-3C3C267D1C96">
+      <bpmn2:extensionElements>
+        <drools:metaData name="isAutoConnection.target">
+          <drools:metaValue><![CDATA[true]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_B7B4282B-F317-4BF9-95E9-962B046EE815" sourceRef="_B44545AB-8B78-4FE4-B6B9-1D467954C070" targetRef="_0617D7DF-047A-4EC4-85E7-E201D640F4F5"/>
+    <bpmn2:scriptTask id="_0617D7DF-047A-4EC4-85E7-E201D640F4F5" name="Dump order" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Dump order]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_B7B4282B-F317-4BF9-95E9-962B046EE815</bpmn2:incoming>
+      <bpmn2:outgoing>_58684613-0155-48B2-8746-7675AFF24439</bpmn2:outgoing>
+      <bpmn2:script>System.out.println(&quot;Order has been created &quot; + order + &quot; with assigned approver &quot; + approver.toUpperCase());</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:endEvent id="_2D876EF2-93F4-4CBE-959A-04EF7BFA9CED">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_8216C810-34D8-4BFA-B814-1AA01907810F</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:callActivity id="_9484CB12-FE52-434C-AE9F-3C3C267D1C96" drools:independent="false" drools:waitForCompletion="true" name="Add items" calledElement="demo.orderItems">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Add items]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_58684613-0155-48B2-8746-7675AFF24439</bpmn2:incoming>
+      <bpmn2:outgoing>_8216C810-34D8-4BFA-B814-1AA01907810F</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_gfw8okcJEemyodG9iPy-Bw">
+        <bpmn2:dataInput id="_9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderInputX" drools:dtype="org.kie.kogito.examples.demo.Order" itemSubjectRef="__9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderInputXItem" name="order"/>
+        <bpmn2:dataOutput id="_9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderOutputX" drools:dtype="org.kie.kogito.examples.demo.Order" itemSubjectRef="__9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderOutputXItem" name="order"/>
+        <bpmn2:inputSet id="_gfw8o0cJEemyodG9iPy-Bw">
+          <bpmn2:dataInputRefs>_9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_gfw8pEcJEemyodG9iPy-Bw">
+          <bpmn2:dataOutputRefs>_9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderOutputX</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_gfw8pUcJEemyodG9iPy-Bw">
+        <bpmn2:sourceRef>order</bpmn2:sourceRef>
+        <bpmn2:targetRef>_9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="_gfw8pkcJEemyodG9iPy-Bw">
+        <bpmn2:sourceRef>_9484CB12-FE52-434C-AE9F-3C3C267D1C96_orderOutputX</bpmn2:sourceRef>
+        <bpmn2:targetRef>order</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:callActivity>
+    <bpmn2:startEvent id="_B44545AB-8B78-4FE4-B6B9-1D467954C070">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_B7B4282B-F317-4BF9-95E9-962B046EE815</bpmn2:outgoing>
+    </bpmn2:startEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="_gfw8p0cJEemyodG9iPy-Bw">
+    <bpmndi:BPMNPlane id="_gfw8qEcJEemyodG9iPy-Bw" bpmnElement="demo.Orders">
+      <bpmndi:BPMNShape id="shape__B44545AB-8B78-4FE4-B6B9-1D467954C070" bpmnElement="_B44545AB-8B78-4FE4-B6B9-1D467954C070">
+        <dc:Bounds height="56.0" width="56.0" x="100.0" y="100.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__9484CB12-FE52-434C-AE9F-3C3C267D1C96" bpmnElement="_9484CB12-FE52-434C-AE9F-3C3C267D1C96" isExpanded="true">
+        <dc:Bounds height="101.0" width="153.0" x="458.5" y="78.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="11.0" width="41.0" x="514.0" y="123.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__2D876EF2-93F4-4CBE-959A-04EF7BFA9CED" bpmnElement="_2D876EF2-93F4-4CBE-959A-04EF7BFA9CED">
+        <dc:Bounds height="56.0" width="56.0" x="712.0" y="100.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape__0617D7DF-047A-4EC4-85E7-E201D640F4F5" bpmnElement="_0617D7DF-047A-4EC4-85E7-E201D640F4F5">
+        <dc:Bounds height="102.0" width="154.0" x="236.0" y="77.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="11.0" width="48.0" x="289.0" y="122.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape__B44545AB-8B78-4FE4-B6B9-1D467954C070_to_shape__0617D7DF-047A-4EC4-85E7-E201D640F4F5" bpmnElement="_B7B4282B-F317-4BF9-95E9-962B046EE815" sourceElement="shape__B44545AB-8B78-4FE4-B6B9-1D467954C070" targetElement="shape__0617D7DF-047A-4EC4-85E7-E201D640F4F5">
+        <di:waypoint xsi:type="dc:Point" x="156.0" y="128.0"/>
+        <di:waypoint xsi:type="dc:Point" x="236.0" y="128.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__0617D7DF-047A-4EC4-85E7-E201D640F4F5_to_shape__9484CB12-FE52-434C-AE9F-3C3C267D1C96" bpmnElement="_58684613-0155-48B2-8746-7675AFF24439" sourceElement="shape__0617D7DF-047A-4EC4-85E7-E201D640F4F5" targetElement="shape__9484CB12-FE52-434C-AE9F-3C3C267D1C96">
+        <di:waypoint xsi:type="dc:Point" x="313.0" y="128.0"/>
+        <di:waypoint xsi:type="dc:Point" x="458.5" y="128.5"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__9484CB12-FE52-434C-AE9F-3C3C267D1C96_to_shape__2D876EF2-93F4-4CBE-959A-04EF7BFA9CED" bpmnElement="_8216C810-34D8-4BFA-B814-1AA01907810F" sourceElement="shape__9484CB12-FE52-434C-AE9F-3C3C267D1C96" targetElement="shape__2D876EF2-93F4-4CBE-959A-04EF7BFA9CED">
+        <di:waypoint xsi:type="dc:Point" x="535.0" y="128.5"/>
+        <di:waypoint xsi:type="dc:Point" x="740.0" y="128.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
+----

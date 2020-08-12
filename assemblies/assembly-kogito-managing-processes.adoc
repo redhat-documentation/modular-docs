@@ -1,0 +1,20 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-managing-processes']
+= Managing and monitoring business processes in Business Central
+:context: kogito-managing-and-monitoring-processes
+
+// Purpose statement for the assembly
+As a process administrator, you can use Business Central in {PRODUCT} to manage and monitor process instances and tasks running on a number of projects. From Business Central you can start a new process instance, verify the state of all process instances, and abort processes. You can view the list of jobs and tasks associated with your processes, as well as understand and communicate any process errors.
+
+// Modules - concepts, procedures, refs, etc.
+include::modules/process-services/con-process-definitions-and-instances.adoc[leveloffset=+1]
+include::modules/process-services/proc-starting-process-instance-from-definition.adoc[leveloffset=+2]
+include::modules/process-services/proc-starting-process-instance-from-instances.adoc[leveloffset=+2]
+
+include::modules/process-services/con-process-instance-details.adoc[leveloffset=+1]
+include::modules/process-services/proc-process-instance-filtering.adoc[leveloffset=+2]
+include::modules/process-services/proc-creating-new-process-instance-list.adoc[leveloffset=+2]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

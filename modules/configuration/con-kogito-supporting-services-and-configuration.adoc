@@ -1,0 +1,22 @@
+[id='con-kogito-supporting-services-and-configuration_{context}']
+= {PRODUCT} supporting services and runtime configuration
+
+{PRODUCT} supporting services consist of middleware infrastructure services and other dedicated services that help you build additional functionality in the {PRODUCT} domain-specific services that you create.
+
+{PRODUCT} supports the following key middleware infrastructure services:
+
+* Infinispan persistence
+* Apache Kafka reactive messaging
+
+{PRODUCT} also provides the following dedicated services:
+
+* {PRODUCT} Data Index Service indexing and querying
+* {PRODUCT} Jobs Service job scheduling
+
+The {PRODUCT} runtime supports various configuration options for these supporting services and for other capabilities, such as the following examples:
+
+* Custom event listeners
+* Prometheus metrics monitoring
+* Process instance management
+
+These supporting services, runtime configurations, and {PRODUCT} add-on components enable you to optimize your {PRODUCT} domain-specific services for your business automation requirements.

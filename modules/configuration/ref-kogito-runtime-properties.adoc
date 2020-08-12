@@ -1,0 +1,142 @@
+[id='ref-kogito-runtime-properties_{context}']
+= {PRODUCT} runtime properties quick reference
+
+The following table serves as a quick reference for commonly used runtime configuration properties supported by {PRODUCT}. You can define these properties in the `src/main/resources/application.properties` file of the relevant {PRODUCT} project or by using the `-D` prefix during application start-up.
+
+NOTE: Some of these properties might require accompanying dependencies in the relevant {PRODUCT} project to enable the specified capability. For more information about dependency requirements, review the sections of the {PRODUCT} configuration documentation that relate to that property.
+
+.Common runtime properties in {PRODUCT}
+[cols="15%,45%,40%"]
+|===
+|Relevance |Property |Description
+
+.3+|Events
+|`kogito.events.processinstances.enabled`
+a|Determines whether runtime events are published for process instances, either `enabled` or `disabled`
+
+Default value: `enabled`
+
+Example: `kogito.events.processinstances.enabled`
+
+a|`kogito.events.usertasks.enabled`
+|Determines whether runtime events are published for user task instances, either `enabled` or `disabled`
+
+Default value: `enabled`
+
+Example: `kogito.events.usertasks.enabled`
+
+a|`kogito.messaging.as-cloudevents`
+|Determines whether messages (sent or received through message events) are published in CloudEvents format, either `true` of `false`
+
+Example: `kogito.messaging.as-cloudevents=true`
+
+.3+|Infinispan persistence
+a|`quarkus.infinispan-client.server-list`
+
+For Spring Boot: `infinispan.remote.server-list`
+a|Defines the location where an Infinispan server is running, typically used to connect your application to Infinispan for persistence
+
+Example: `quarkus.infinispan-client.server-list=localhost:11222`
+
+For Spring Boot: `infinispan.remote.server-list=127.0.0.1:11222`
+
+a|`quarkus.infinispan-client.auth-username`
+
+`quarkus.infinispan-client.auth-password`
+|Identifies the Infinispan user name and password to authenticate Infinispan persistence capabilities in the relevant application, if required, such as in the {PRODUCT} Data Index Service
+
+Examples:
+
+`quarkus.infinispan-client.auth-username=admin`
+
+`quarkus.infinispan-client.auth-password=admin123`
+
+|`kogito.persistence.infinispan.template`
+|Defines an optional template name of the Infinispan cache configuration to be used to persist process instance data
+
+Example: `kogito.persistence.infinispan.template=MyTemplate`
+
+|Kafka messaging
+a|Incoming:
+
+`mp.messaging.incoming.__MESSAGE_EVENT_NAME__.connector`
+
+`mp.messaging.incoming.__MESSAGE_EVENT_NAME__.topic`
+
+`mp.messaging.incoming.__MESSAGE_EVENT_NAME__.value.deserializer`
+
+Outgoing:
+
+`mp.messaging.outgoing.__MESSAGE_EVENT_NAME__.connector`
+
+`mp.messaging.outgoing.__MESSAGE_EVENT_NAME__.topic`
+
+`mp.messaging.outgoing.__MESSAGE_EVENT_NAME__.value.serializer`
+
+For Spring Boot: `kafka.bootstrapAddress` (messages defined separately in JavaBeans)
+a|Defines the connector, topic, and deserializer for the incoming and outgoing messages and channels for reactive messaging with Apache Kafka
+
+Examples for incoming:
+
+`mp.messaging.incoming.travellers.connector=smallrye-kafka`
+
+`mp.messaging.incoming.travellers.topic=travellers`
+
+`mp.messaging.incoming.travellers.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer`
+
+Examples for outgoing:
+
+`mp.messaging.outgoing.processedtravellers.connector=smallrye-kafka`
+
+`mp.messaging.outgoing.processedtravellers.topic=processedtravellers`
+
+`mp.messaging.outgoing.processedtravellers.value.serializer=org.apache.kafka.common.serialization.StringSerializer`
+
+For Spring Boot: `kafka.bootstrapAddress=localhost:9092`
+
+.7+|{PRODUCT} Jobs Service
+|`kogito.service.url`
+a|Defines the location where the {PRODUCT} service is deployed, typically used by the Jobs Service to find the source of the jobs
+
+Example: `kogito.service.url=http://localhost:8080`
+
+a|`kogito.jobs-service.url`
+|Defines the callback URL that posts to a running {PRODUCT} Jobs Service
+
+Example: `kogito.jobs-service.url=http://localhost:8085`
+
+|`kogito.jobs-service.persistence`
+a|(Specified in Jobs Service) Identifies the persistence mechanism used by the Jobs Service, either `in-memory` or `infinispan`
+
+Default value: `in-memory`
+
+Example: `kogito.jobs-service.persistence=in-memory`
+
+|`kogito.jobs-service.backoffRetryMillis`
+a|(Specified in Jobs Service) Defines the retry back-off time in milliseconds between job execution attempts, in case the execution fails
+
+Default value: `1000`
+
+Example: `kogito.jobs-service.backoffRetryMillis=1000`
+
+|`kogito.jobs-service.maxIntervalLimitToRetryMillis`
+a|(Specified in Jobs Service) Defines the maximum interval in milliseconds when retrying to execute jobs, in case the execution fails
+
+Default value: `60000`
+
+Example: `kogito.jobs-service.maxIntervalLimitToRetryMillis=60000`
+
+|`mp.messaging.outgoing.kogito-job-service-job-status-events.bootstrap.servers`
+a|(Specified in Jobs Service) Identifies the Kafka bootstrap server address with the port used to publish events
+
+Default value: `localhost:9092`
+
+Example: `mp.messaging.outgoing.kogito-job-service-job-status-events.bootstrap.servers=localhost:9092`
+
+|`mp.messaging.outgoing.kogito-job-service-job-status-events.topic`
+a|(Specified in Jobs Service) Defines the name of the Kafka topic where the events are published
+
+Default value: `kogito-jobs-events`
+
+Example: `mp.messaging.outgoing.kogito-job-service-job-status-events.topic=kogito-jobs-events`
+|===

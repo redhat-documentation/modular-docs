@@ -1,0 +1,69 @@
+[id='con-drl-queries_{context}']
+= Queries in DRL
+
+ifdef::KOGITO-COMM[]
+.Query
+image::kogito/drl/query.png[align="center"]
+endif::[]
+
+Queries in DRL files search the working memory of the {DECISION_ENGINE} for facts related to the rules in the DRL file. You add the query definitions in DRL files and then obtain the matching results in your application code. Queries search for a set of defined conditions and do not require `when` or `then` specifications. Query names are scoped to the rule unit, so each query name must be unique within the same rule unit. In {PRODUCT}, queries are automatically exposed as REST endpoints.
+
+The following example is a query definition for an `Alert` object with a `severity` field set to `HIGH`:
+
+.Example query definition in a DRL file
+[source]
+----
+package com.acme;
+unit MonitoringService;
+
+query highSeverity
+    alerts : /alertData[ severity == "HIGH" ]
+end
+----
+
+{PRODUCT} automatically exposes this query through an endpoint `/high-severity`.
+
+For this example, assume that the `MonitoringService` rule unit class has the following form:
+
+.Example Java rule unit class
+[source,java]
+----
+package com.acme;
+
+import org.kie.kogito.rules.DataSource;
+import org.kie.kogito.rules.DataStream;
+
+public class MonitoringService implements RuleUnitData {
+    private DataStream<Temperature> temperature = DataSource.createStream();
+    private DataStream<Alert> alertData = DataSource.createStream();
+    public DataStream<Temperature> getTemperature() { return temperature; }
+    public DataStream<Alert> getAlertData() { return alertData; }
+}
+----
+
+In this case, you can invoke the query using the following command:
+
+.Example POST request to the `/high-severity` endpoint
+[source]
+----
+$ curl -X POST \
+        -H 'Accept: application/json' \
+        -H 'Content-Type: application/json' \
+        -d '{ "eventData": [ { "type": "temperature", "value" : 20 }, { "type": "temperature", "value" : 100 } ] }' \
+        http://localhost:8080/high-severity
+----
+
+.Example response (JSON)
+[source,json]
+----
+{
+    "alerts" : [
+        {
+            "severity" : "HIGH",
+            "message" : "Temperature exceeds threshold: 100"
+        }
+    ]
+}
+----
+
+This example submits the data to the `eventData` data source and returns the result of the `highSeverity` query as a response.

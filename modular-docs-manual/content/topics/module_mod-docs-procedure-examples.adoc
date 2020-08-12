@@ -1,8 +1,0 @@
-[id="modular-docs-procedure-examples"]
-= Procedure Module Examples
-
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host#sssd-services-on-host-enrolling-to-an-ipa-domain-using-an-sssd-container[Enrolling to an Identity Management Domain Using an SSSD Container]
-
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/uninstalling-sssd-containers#uninstalling-sssd-containers-uninstalling-an-sssd-container-enrolled-in-an-ipa-domain[Uninstalling an SSSD Container Enrolled in an Identity Management Domain]
-
-link:https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/administering-ceph-clusters-that-run-in-containers#purging-clusters-deployed-by-ansible[Purging Clusters Deployed by Ansible]

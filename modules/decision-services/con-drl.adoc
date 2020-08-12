@@ -1,0 +1,51 @@
+[id='con-drl_{context}']
+= Drools Rule Language (DRL)
+
+Drools Rule Language (DRL) is a notation established by the https://www.drools.org/[Drools] open source business automation project for defining and describing business rules. You define DRL rules in `.drl` text files. A DRL file can contain one or more rules that define at a minimum the rule conditions (`when`) and actions (`then`).
+
+DRL files consist of the following components:
+
+.Components in a DRL file
+[source,subs="attributes+"]
+----
+package
+unit
+
+import
+
+declare   // Optional
+
+query  // Optional
+
+rule "rule name"
+    // Attributes
+    when
+        // Conditions
+    then
+        // Actions
+end
+
+rule "rule2 name"
+
+...
+
+----
+
+The following example DRL rule determines the age limit in a loan application decision service:
+
+.Example rule for loan application age limit
+[source]
+----
+rule "Underage"
+  when
+    /applicant[ applicantName : name, age < 21 ]
+    $application : /loanApplication[ applicant == applicantName ]
+  then
+    $application.setApproved( false );
+    $application.setExplanation( "Underage" );
+end
+----
+
+A DRL file can contain single or multiple rules and queries, and can define resource declarations and attributes that are assigned and used by your rules and queries. The components in a DRL file are grouped in a defined rule unit that serves as a unique namespace for each group of rules. The DRL package followed by the rule unit definition must be listed at the top of a DRL file, and the rules are typically listed last. All other DRL components can follow any order.
+
+Each rule must have a unique name within the rule unit. If you use the same rule name more than once in any DRL file in the unit, the rules fail to compile. Rule names generally must follow standard Java identifier conventions. However, you can enclose rule names with double quotation marks (`rule "rule name"`) to  prevent possible compilation errors, especially if you use spaces in rule names.

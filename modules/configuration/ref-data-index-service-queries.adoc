@@ -1,0 +1,413 @@
+[id='ref-data-index-service-queries_{context}']
+= Supported GraphQL queries with the Data Index Service
+
+After you configure and run your {PRODUCT} service and the {PRODUCT} Data Index Service, you can query the available data using the https://github.com/graphql/graphiql[GraphiQL] interface displayed at `http://__HOST__:__PORT__/graphql`, such as `\http://localhost:8080/graphql`.
+
+The {PRODUCT} Data Index Service supports GraphQL queries for process definitions (domain cache) and for process instances and task instances (instance caches).
+
+== GraphQL queries for process definitions (domain cache)
+
+Use the following GraphQL queries to retrieve data about process definitions. These example queries assume that a `Travels` Business Process Model and Notation (BPMN) process model is running or has been executed.
+
+Retrieve data from process definitions::
++
+--
+You can retrieve data about a specified process definition from your {PRODUCT} service.
+
+.Example query
+[source]
+----
+{
+  Travels {
+    visaApplication {
+      duration
+    }
+    flight {
+      flightNumber
+      gate
+    }
+    hotel {
+      name
+      address {
+        city
+        country
+      }
+    }
+    traveller {
+      firstName
+      lastName
+      nationality
+      email
+    }
+  }
+}
+----
+--
+
+Correlate data using the `metadata` parameter::
++
+--
+You can use the `metadata` parameter to correlate data from process definitions (domain cache) with data from process instances and task instances (instance caches). This parameter is added to all root models that are deployed in the Data Index Service and enables you to retrieve and filter query data.
+
+.Example query
+[source]
+----
+{
+  Travels {
+    flight {
+      flightNumber
+      arrival
+      departure
+    }
+    metadata {
+      lastUpdate
+      userTasks {
+        name
+      }
+      processInstances {
+        processId
+      }
+    }
+  }
+}
+----
+--
+
+Filter query results using the `where` and `metadata` parameters::
++
+--
+You can use the `where` parameter with multiple combinations to filter query results based on process definition attributes. The attributes available for search depend on the BPMN process model that is deployed, such as a `Travels` process model in this example.
+
+.Example query
+[source]
+----
+{
+  Travels(where: {traveller: {firstName: {like: "Cri*"}}}) {
+    flight {
+      flightNumber
+      arrival
+      departure
+    }
+    traveller {
+      email
+    }
+  }
+}
+----
+
+NOTE: The `like` operator is case sensitive.
+
+You can also use the `metadata` parameter to filter correlated query results from related process instances or tasks.
+
+.Example query
+[source]
+----
+{
+  Travels(where: {metadata: {processInstances: {id: {equal: "1aee8ab6-d943-4dfb-b6be-8ea8727fcdc5"}}}}) {
+    flight {
+      flightNumber
+      arrival
+      departure
+    }
+  }
+}
+----
+
+.Example query
+[source]
+----
+{
+  Travels(where: {metadata: {userTasks: {id: {equal: "de52e538-581f-42db-be65-09e8739471a6"}}}}) {
+    flight {
+      flightNumber
+      arrival
+      departure
+    }
+  }
+}
+----
+--
+
+Sort query results using the `orderBy` parameter::
++
+--
+You can use the `orderBy` parameter to sort query results based on process definition attributes. You can also specify the direction of sorting in ascending `ASC` order or descending `DESC` order. Multiple attributes are applied to the database query in the order they are specified in the query filter.
+
+.Example query
+[source]
+----
+{
+  Travels(orderBy: {trip: {begin: ASC}}) {
+    flight {
+      flightNumber
+      arrival
+      departure
+    }
+  }
+}
+----
+--
+
+Limit and offset query results using the `pagination` parameter::
++
+--
+You can use the `pagination` parameter to specify a `limit` and `offset` for query results.
+
+.Example query
+[source]
+----
+{
+  Travels(where: {traveller: {firstName: {like: "Cri*"}}}, pagination: {offset: 0, limit: 10}) {
+    flight {
+      flightNumber
+      arrival
+      departure
+    }
+    traveller {
+      email
+    }
+  }
+}
+----
+--
+
+== GraphQL queries for process instances and user task instances (instance caches)
+
+Use the following GraphQL queries to retrieve data about process instances and user task instances.
+
+Retrieve data from process instances::
++
+--
+You can retrieve data about a specified process instance from your process definition.
+
+.Example query
+[source]
+----
+{
+  ProcessInstances {
+    id
+    processId
+    state
+    parentProcessInstanceId
+    rootProcessId
+    rootProcessInstanceId
+    variables
+    nodes {
+      id
+      name
+      type
+    }
+  }
+}
+----
+--
+
+Retrieve data from user task instances::
++
+--
+You can retrieve data from a specified user task instance from the process instance.
+
+.Example query
+[source]
+----
+{
+  UserTaskInstances {
+    id
+    name
+    actualOwner
+    description
+    priority
+    processId
+    processInstanceId
+  }
+}
+----
+--
+
+Filter query results using the `where` parameter::
++
+--
+You can use the `where` parameter with multiple combinations to filter query results based on process or task attributes.
+
+.Example query
+[source]
+----
+{
+  ProcessInstances(where: {state: {equal: ACTIVE}}) {
+    id
+    processId
+    processName
+    start
+    state
+    variables
+  }
+}
+----
+
+.Example query
+[source]
+----
+{
+  ProcessInstances(where: {id: {equal: "d43a56b6-fb11-4066-b689-d70386b9a375"}}) {
+    id
+    processId
+    processName
+    start
+    state
+    variables
+  }
+}
+----
+
+.Example query
+[source]
+----
+{
+  UserTaskInstances(where: {state: {equal: "Ready"}}) {
+    id
+    name
+    actualOwner
+    description
+    priority
+    processId
+    processInstanceId
+  }
+}
+----
+
+By default, every filtered attribute is executed as an `AND` operation in queries. You can modify this behavior by combining filters with an `AND` or `OR` operator.
+
+.Example query
+[source]
+----
+{
+  ProcessInstances(where: {or: {state: {equal: ACTIVE}, rootProcessId: {isNull: false}}}) {
+    id
+    processId
+    processName
+    start
+    end
+    state
+  }
+}
+----
+
+.Example query
+[source]
+----
+{
+  ProcessInstances(where: {and: {processId: {equal: "travels"}, or: {state: {equal: ACTIVE}, rootProcessId: {isNull: false}}}}) {
+    id
+    processId
+    processName
+    start
+    end
+    state
+  }
+}
+----
+
+Depending on the attribute type, the following operators are also available:
+
+* String array argument:
+** `contains` : String
+** `containsAll`: Array of strings
+** `containsAny`: Array of strings
+** `isNull`: Boolean (`true` or `false`)
+
+* String argument:
+** `in`: Array of strings
+** `like`: String
+** `isNull`: Boolean (`true` or `false`)
+** `equal`: String
+
+* ID argument:
+** `in`: Array of strings
+** `equal`: String
+** `isNull`: Boolean (`true` or `false`)
+
+* Boolean argument:
+** `isNull`: Boolean (`true` or `false`)
+** `equal`: Boolean (`true` or `false`)
+
+* Numeric argument:
+** `in`: Array of integers
+** `isNull`: Boolean
+** `equal`: Integer
+** `greaterThan`: Integer
+** `greaterThanEqual`: Integer
+** `lessThan`: Integer
+** `lessThanEqual`: Integer
+** `between`: Numeric range
+** `from`: Integer
+** `to`: Integer
+
+* Date argument:
+** `isNull`: Boolean (`true` or `false`)
+** `equal`: Date time
+** `greaterThan`: Date time
+** `greaterThanEqual`: Date time
+** `lessThan`: Date time
+** `lessThanEqual`: Date time
+** `between`: Date range
+** `from`: Date time
+** `to`: Date time
+--
+
+Sort query results using the `orderBy` parameter::
++
+--
+You can use the `orderBy` parameter to sort query results based on process or task attributes. You can also specify the direction of sorting in ascending `ASC` order or descending `DESC` order. Multiple attributes are applied to the database query in the order they are specified in the query filter.
+
+.Example query
+[source]
+----
+{
+  ProcessInstances(where: {state: {equal: ACTIVE}}, orderBy: {start: ASC}) {
+    id
+    processId
+    processName
+    start
+    end
+    state
+  }
+}
+----
+
+.Example query
+[source]
+----
+{
+  UserTaskInstances(where: {state: {equal: "Ready"}}, orderBy: {name: ASC, actualOwner: DESC}) {
+    id
+    name
+    actualOwner
+    description
+    priority
+    processId
+    processInstanceId
+  }
+}
+----
+--
+
+Limit and offset query results using the `pagination` parameter::
++
+--
+You can use the `pagination` parameter to specify a `limit` and `offset` for query results.
+
+.Example query
+[source]
+----
+{
+  ProcessInstances(where: {state: {equal: ACTIVE}}, orderBy: {start: ASC}, pagination: {limit: 10, offset: 0}) {
+    id
+    processId
+    processName
+    start
+    end
+    state
+  }
+}
+----
+--

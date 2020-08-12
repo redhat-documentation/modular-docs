@@ -1,0 +1,24 @@
+[id='proc-jobs-service-persistence_{context}']
+= Enabling Infinispan persistence in the {PRODUCT} Jobs Service
+
+The {PRODUCT} Jobs Service supports the following persistence mechanisms for job data:
+
+* *In-memory persistence*: (Default) Job data is persisted with the Jobs Service in-memory storage during the Jobs Service runtime. If the Jobs Service is restarted, all job information is lost. If no other persistence configuration is set, the Jobs Service uses this persistence mechanism.
+* *Infinispan persistence*: Job data is persisted using Infinispan storage so that the data is preserved across application restarts. If the Jobs Service is restarted, the service continues to process any previously scheduled jobs.
+
+You can enable Infinispan persistence in the {PRODUCT} Jobs Service during application start-up and in the Jobs Service `application.properties` file.
+
+.Procedure
+Run the Jobs Service with the property `-Dkogito.job-service.persistence=infinispan`:
+
+.Enabling Infinispan persistence during Jobs Service start-up
+[source,subs="+quotes"]
+----
+$ java  \
+    -Dkogito.job-service.persistence=infinispan  \
+    -jar jobs-service-__VERSION__-runner.jar
+----
+
+Alternatively, you can add the same property to the `src/main/resources/application.properties` file in the Jobs Service project.
+
+For more information about Infinispan configuration with Quarkus applications, see https://quarkus.io/guides/infinispan-client[Infinispan client] in the Quarkus documentation.

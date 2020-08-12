@@ -1,0 +1,53 @@
+[id='con-kogito-service-execution_{context}']
+= {PRODUCT} service execution
+
+After you design your {PRODUCT} service, you can build and run your application and then send REST API requests to the application to execute your services. The exact REST API requests that you can use depend on how you set up the application.
+
+For example, consider a {PRODUCT} service that is set up to generate a `/persons` REST API endpoint and determines whether a specified customer is an adult or is underage. In this example, you can send the following `POST` request using a REST client or curl utility to add an adult and execute the service:
+
+.Example POST request body to add an adult (JSON)
+[source,json]
+----
+{
+  "person": {
+    "name": "John Quark",
+    "age": 20
+  }
+}
+----
+
+.Example curl command to add an adult
+[source]
+----
+curl -X POST http://localhost:8080/persons -H 'content-type: application/json' -H 'accept: application/json' -d '{"person": {"name":"John Quark", "age": 20}}'
+----
+
+.Example response (JSON)
+[source,json]
+----
+{
+  "id": "3af806dd-8819-4734-a934-728f4c819682",
+  "person": {
+    "name": "John Quark",
+    "age": 20,
+    "adult": false
+  },
+  "isAdult": true
+}
+----
+
+For information about creating, running, and testing an example application with {PRODUCT} services, see
+ifdef::KOGITO-ENT[]
+{URL_CREATING_RUNNING}[_{CREATING_RUNNING}_].
+endif::[]
+ifdef::KOGITO-COMM[]
+xref:chap-kogito-creating-running[].
+endif::[]
+
+For information about deploying your {PRODUCT} service to {OPENSHIFT}, see
+ifdef::KOGITO-ENT[]
+{URL_DEPLOYING_ON_OPENSHIFT}[_{DEPLOYING_ON_OPENSHIFT}_].
+endif::[]
+ifdef::KOGITO-COMM[]
+xref:chap-kogito-deploying-on-openshift[].
+endif::[]

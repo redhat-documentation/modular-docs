@@ -1,0 +1,18 @@
+[id='ref-kogito-app-examples_{context}']
+= Example applications with {PRODUCT} services
+
+{PRODUCT} includes example applications in the https://github.com/kiegroup/kogito-examples[`kogito-examples`] repository in GitHub. These example applications contain various types of {PRODUCT} services on Quarkus or Spring Boot to help you develop your own applications. The services use one or more Business Process Model and Notation (BPMN) process models, Decision Model and Notation (DMN) decision models, Drools Rule Language (DRL) rule units, XLS spreadsheet decision tables, or Java classes to define the service logic.
+
+For information about each example application and instructions for using them, see the `README` file in the relevant application folder.
+
+NOTE: In the https://github.com/kiegroup/kogito-examples[`{PRODUCT_INIT}-examples`] repository in GitHub, the example applications in the default `stable` branch use the latest version of {PRODUCT}.
+
+The following list describes some of the examples provided with {PRODUCT}:
+
+* `dmn-quarkus-example` and `dmn-springboot-example`: A decision service (on Quarkus or Spring Boot) that uses DMN to determine driver penalty and suspension based on traffic violations
+* `rules-quarkus-helloworld`: A Hello World decision service on Quarkus with a single DRL rule unit
+* `ruleunit-quarkus-example` and `ruleunit-springboot-example`: A decision service (on Quarkus or Spring Boot) that uses DRL with rule units to validate a loan application and that exposes REST operations to view application status
+* `process-quarkus-helloworld`: A Hello World process service on Quarkus with a single BPMN model
+* `process-quarkus-example` and `process-springboot-example`: A process service (on Quarkus or Spring Boot) for ordering items and that exposes REST operations to create new orders or to list and delete active orders
+* `onboarding-example`: A combination of a process service and two decision services that use DMN and DRL for onboarding new employees
+* `kogito-travel-agency`: A combination of process services and decision services that use DRL and XLS for travel booking, intended for deployment on {OPENSHIFT}

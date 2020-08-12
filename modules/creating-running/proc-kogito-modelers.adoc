@@ -1,0 +1,41 @@
+[id='proc-kogito-modelers_{context}']
+= Installing and using the {PRODUCT} Business Modeler Hub
+
+{PRODUCT} provides a https://kiegroup.github.io/kogito-online/#/download[Business Modeler Hub] desktop application with all {PRODUCT} extensions or applications for modeling Business Process Model and Notation (BPMN) process models and Decision Model and Notation (DMN) decision models in {PRODUCT} services. {PRODUCT} currently provides extensions for VSCode (recommended) and GitHub modelers, a desktop application for offline modeling, and an online modeler.
+
+As you develop {PRODUCT} services, you can use the {PRODUCT} Business Modeler Hub to install, launch, or uninstall the available modeling extensions or applications as needed.
+
+.Procedure
+. In a web browser, go to the https://kiegroup.github.io/kogito-online/#/download[Business Modeler Hub] download page, select the relevant *Operating System* option, and click *Download*.
+. Extract the downloaded `business_modeler_hub_preview___RELEASE__` binary file to a local directory.
++
+--
+* On Linux: In a command terminal, navigate to the directory where you downloaded the `business_modeler_hub_preview___RELEASE__` binary file and enter the following command to extract the contents:
++
+.Extract the {PRODUCT} Business Modeler Hub distribution
+[source,subs="attributes+,+quotes"]
+----
+tar -xzpf business_modeler_hub_preview___RELEASE__.tar.gz
+----
+
+* On Windows or Mac: In your file browser, navigate to the directory where you downloaded the `business_modeler_hub_preview___RELEASE__` binary file and extract the ZIP file.
+--
+. In a command terminal, navigate to the extracted `business_modeler_hub_preview___RELEASE__` folder and enter the following command to run the application:
++
+--
+.Run the {PRODUCT} Business Modeler Hub application
+[source,subs="attributes+,+quotes"]
+----
+$ cd __PATH_TO_MODELER_HUB__
+$ ./Business\ Modeler\ Hub\ Preview-__RELEASE__/Business\ Modeler\ Hub\ Preview
+----
+
+The *Business Modeler Hub* opens in a new window:
+
+.{PRODUCT} Business Modeler Hub window
+image::kogito/creating-running/kogito-modeler-hub.png[Image of Business Modeler Hub]
+
+NOTE: If the *Business Modeler Hub* window does not appear, review the `README` documentation in the Business Modeler Hub application folder for any details specific to your operating system.
+
+Use the {PRODUCT} Business Modeler Hub to install, launch, or uninstall the available extensions or applications as needed.
+--

@@ -1,0 +1,234 @@
+[id='con-jobs-service_{context}']
+= {PRODUCT} Jobs Service
+
+{PRODUCT} provides a Jobs Service for scheduling Business Process Model and Notation (BPMN) process events that are configured to be executed at a specified time. These time-based events in a process model are known as _jobs_.
+
+By default, {PRODUCT} services use an in-memory timer service to handle jobs defined in your BPMN process models. This default timer service does not cover long time intervals and is only suitable for short delays defined in the process. For advanced use cases where time intervals can be days or weeks or when additional event handling options are required, you can configure your {PRODUCT} project to use the {PRODUCT} Jobs Service as an external timer service.
+
+The Jobs Service does not execute a job, but triggers a callback that might be an HTTP request on an endpoint specified for the job request or any other configured callback. The Jobs Service receives requests for job scheduling and then sends a request at the time specified on the job request.
+
+.Jobs Service architecture
+image::kogito/configuration/jobs-service-architecture.png[Diagram of the Jobs Service architecture]
+
+NOTE: The {PRODUCT} Jobs Service currently supports only HTTP `POST` requests that are sent to an endpoint specified on the job-scheduling request. The HTTP callback information must be specified in the job-scheduling request.
+
+The main goal of the Jobs Service is to work with only active jobs. The Jobs Service tracks only the jobs that are scheduled and that need to be executed. When a job reaches a final state, the job is removed from the Jobs Service. All job information and transition states are sent to the {PRODUCT} Data Index Service where they can be indexed and made available for GraphQL queries.
+
+The Jobs Service implementation is based on non-blocking APIs and https://smallrye.io/smallrye-reactive-messaging/[Reactive Messaging] on top of Quarkus, which provides effective throughput and resource utilization. The scheduling engine is implemented on top of https://vertx.io/[Vert.x] and the external requests are built using a non-blocking HTTP client based on Vert.x.
+
+== Supported job states in the {PRODUCT} Jobs Service
+
+The {PRODUCT} Jobs Service uses an internal state control mechanism to manage the job scheduling life cycle using the following supported job states:
+
+* *Scheduled*
+* *Executed*
+* *Canceled*
+* *Retry*
+* *Error*
+
+The Jobs Service workflow through these states is illustrated in the following diagram:
+
+.Jobs Service state control workflow
+image::kogito/configuration/jobs-service-state-control.png[Diagram of Jobs Service states]
+
+== Supported job types in the {PRODUCT} Jobs Service
+
+The {PRODUCT} Jobs Service supports the following job types:
+
+* *Time scheduled*: A job that is scheduled at a specified time and executed only once when that point in time is reached. The time must be specified on the job scheduling request and must be in the future.
+* *Periodic scheduled*: A job that is scheduled at a specified time and executed after a specified interval, and then executed repeatedly over a specified period of time until a limit of executions is reached. The execution limit and interval must be specified in the job-scheduling request.
+
+== Supported configuration properties in the {PRODUCT} Jobs Service
+
+The {PRODUCT} Jobs Service supports the following configuration properties. You can set these properties either using the `-D` prefix during Jobs Service start-up or in the `src/main/resources/application.properties` file of the Jobs Service project.
+
+.Supported configuration properties in Jobs Service
+[cols="30%,40%,15%,15%"]
+|===
+|Name |Description |Value |Default
+
+|`kogito.jobs-service.persistence`
+|Identifies the persistence mechanism used by the Jobs Service.
+|`in-memory`, `infinispan`
+|`in-memory`
+
+|`kogito.jobs-service.backoffRetryMillis`
+|Defines the retry back-off time in milliseconds between job execution attempts, in case the execution fails
+|Long type
+|`1000`
+
+|`kogito.jobs-service.maxIntervalLimitToRetryMillis`
+|Defines the maximum interval in milliseconds when retrying to execute jobs, in case the execution fails
+|Long type
+|`60000`
+
+|`mp.messaging.outgoing.kogito-job-service-job-status-events.bootstrap.servers`
+|Identifies the Kafka bootstrap server address with the port used to publish events
+|String
+|`localhost:9092`
+
+|`mp.messaging.outgoing.kogito-job-service-job-status-events.topic`
+|Defines the name of the Kafka topic where the events are published
+|String
+|`kogito-jobs-events`
+|===
+
+////
+// @comment: These endpoints are used internally by Jobs Service and may confuse users who think they need to use them in some way. Excluding for now. (Stetson, 1 Apr 2020)
+### Usage
+
+The basic actions on Job Service are made through REST as follow:
+
+#### Schedule a Job
+
+POST
+
+{url-job-service}{jobs-path}
+
+```
+{
+    "id": "1",
+    "priority": "1",
+    "expirationTime": "2019-11-29T18:16:00Z",
+    "callbackEndpoint": "http://localhost:8080/callback"
+}
+```
+
+Example:
+[subs="attributes"]
+ curl -X POST \
+  {url-job-service}{jobs-path}/ \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"id": "1",
+	"priority": "1",
+	"expirationTime": "2019-11-29T18:16:00Z",
+	"callbackEndpoint": "http://localhost:8080/callback"
+}'
+
+{sp} +
+
+#### Reschedule a Job
+
+POST
+
+{url-job-service}{jobs-path}
+
+```
+{
+	"id": "1",
+	"priority": "1",
+	"expirationTime": "2019-11-29T18:19:00Z",
+	"callbackEndpoint": "http://localhost:8080/callback"
+}
+```
+
+Example:
+[subs="attributes"]
+ curl -X POST \
+  {url-job-service}{jobs-path}/ \
+  -H 'Content-Type: application/json' \
+  -d '{
+	"id": "1",
+	"priority": "1",
+	"expirationTime": "2019-11-29T18:19:00Z",
+	"callbackEndpoint": "http://localhost:8080/callback"
+}'
+
+{sp} +
+
+#### Cancel a scheduled Job
+
+DELETE
+
+{url-job-service}{jobs-path}/1
+
+Example:
+[subs="attributes"]
+ curl -X DELETE {url-job-service}{jobs-path}/1
+
+{sp} +
+
+#### Retrieve a scheduled Job
+
+GET
+
+{url-job-service}{jobs-path}/1
+
+Example:
+[subs="attributes"]
+ curl -X GET {url-job-service}{jobs-path}/1
+
+{sp} +
+
+---
+////
+
+
+////
+//@comment: Excluded for now because underlying details that might confuse the user when trying to understand how to actually use it. (Stetson, 1 Apr 2020)
+# Kogito Job Service add-ons
+
+Addons are specific classes that provides integration with Kogito Job Service to the runtime services.
+This allows to use Job Service as a timer service for process instances.
+Whenever there is a need to schedule timer as part of process instance it will be scheduled in the Job Service and the job service will callback the service upon timer expiration.
+
+The general implementation of the add-on is as follows:
+
+* an implementation of `org.kie.kogito.jobs.JobsService` interface that is used by the service to schedule jobs
+* REST endpoint registered on `/management/jobs` path
+
+## Configuration properties
+
+Regardless of the runtime being used following are two configuration properties that are expected (and by that are mandatory)
+
+[cols="40%,400%,20%"]
+|===
+|Name |Description |Example
+
+|`kogito.service.url`
+|A URL that identifies where the service is deployed to. Used by runtime events to set the source of the event.
+|http://localhost:8080
+
+|`kogito.jobs-service.url`
+|An URL that posts to a running Kogito Job Service, it is expected to be in form `scheme://host:port`
+|http://localhost:8085
+|===
+
+## JobService implementation
+
+A dedicated `org.kie.kogito.jobs.JobsService` implementation is provided based on the runtime being used (either Quarkus or SpringBoot) as it relies on the technology used in these runtime to optimise dependencies and integration.
+
+### Quarkus
+
+For Quarkus based runtimes, there is `org.kie.kogito.jobs.management.quarkus.VertxJobsService` implementation that utilises Vert.x `WebClient` to interact with Job Service over HTTP.
+
+It configures web client by default based on properties found in application.properties.
+Though in case this is not enough it supports to provide custom instance of `io.vertx.ext.web.client.WebClient` type that will be used instead to communicate with Job Service.
+
+### Spring Boot
+
+For Spring Boot based runtimes, there is `org.kie.kogito.jobs.management.springboot.SpringRestJobsService` implementation that utilises Spring `RestTemplate` to interact with Job Service over HTTP.
+
+It configures rest template by default based on properties found in application.properties.
+Though in case this is not enough it supports to provide custom instance of `org.springframework.web.client.RestTemplate` type that will be used instead to communicate with Job Service.
+
+## REST endpoint for callbacks
+
+The REST endpoint that is provided with the add-on is responsible for receiving the callbacks from Job Service at exact time when the timer was scheduled and by that move the process instance execution forward.
+
+The callback URL is given to the Job Service upon scheduling and as such does provide all the information that are required to move the instance
+
+* process id
+* process instance id
+* timer instance id
+
+NOTE: Timer instance id is build out of two parts - actual job id (in UUID format) and a timer id (a timer definition id generated by the process engine).
+An example of a timer instance id is `62cad2e4-d343-46ac-a89c-3e313a30c1ad_1` where `62cad2e4-d343-46ac-a89c-3e313a30c1ad` is the UUID of the job and `1` is the timer definition id.
+Both values are separated with `_`
+
+### API documentation
+
+The current API documentation is based on Swagger, and the service has an embedded UI available at
+{url-job-service}/swagger-ui/[{url-job-service}/swagger-ui]
+////

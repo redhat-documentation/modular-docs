@@ -1,0 +1,29 @@
+[id='proc-jobs-service-messaging_{context}']
+= Enabling Kafka messaging in the {PRODUCT} Jobs Service
+
+The {PRODUCT} Jobs Service supports Apache Kafka messaging to publish events for each job state transition to a defined Kafka topic. Any application can subscribe to this Kafka topic to receive information about jobs and job state transitions. For example, the {PRODUCT} Data Index Service is subscribed to the Jobs Service Kafka topic so that if you configure and run the Jobs Service, the Data Index Service can begin indexing jobs with their current state.
+
+You can enable Kafka messaging in the {PRODUCT} Jobs Service during application start-up and in the Jobs Service `application.properties` file.
+
+.Procedure
+. In the `src/main/resources/application.properties` file in the Jobs Service project, add the following properties to identify the Kafka bootstrap server with the port used to publish events and the Kafka topic where the events are published:
++
+.Defining Kafka server and topic in Jobs Service `application.properties`
+[source,subs="+quotes"]
+----
+mp.messaging.outgoing.kogito-job-service-job-status-events.bootstrap.servers=__SERVER_ADDRESS__
+mp.messaging.outgoing.kogito-job-service-job-status-events.topic=__TOPIC_NAME__
+----
+. Run the Jobs Service with the property `-Dquarkus.profile=events-support`:
++
+--
+.Enabling Kafka messaging during Jobs Service start-up
+[source,subs="+quotes"]
+----
+$ java  \
+    -Dquarkus.profile=events-support  \
+    -jar jobs-service-__VERSION__-runner.jar
+----
+
+Alternatively, you can add the environment variable `QUARKUS_PROFILE=events-support`.
+--

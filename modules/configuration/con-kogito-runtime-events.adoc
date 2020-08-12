@@ -1,0 +1,203 @@
+[id='con-kogito-runtime-events_{context}']
+= {PRODUCT} runtime events
+
+A runtime event is record of a significant change of state in the application domain at a point in time. {PRODUCT} emits runtime events as a result of successfully executed requests, or _units of work_, in a process instance or task instance in a process. {PRODUCT} can use these events to notify third parties about changes to the BPMN process instance and its data.
+
+== Process instance events
+
+For every executed process instance, an event is generated that contains information for that instance, such as the following information:
+
+* Process instance metadata, such as the process definition ID, process instance ID, process instance state, and other identifying information
+* Node instances that have been triggered during the execution
+* Variables used and the current state of variables after the execution
+
+These events provide a complete view of the process instances being executed and can be consumed by an event listener, such as a `ProcessEventListener` configuration.
+
+If multiple processes are executed within a single request (unit of work), each process instance is given a dedicated event.
+
+The following event is an example process instance event generated after the request was executed successfully:
+
+.Example process instance event
+[source,json]
+----
+{
+  "specversion": "0.3",
+  "id": "f52af50c-4fe2-4581-9184-7ad48137fb3f",
+  "source": null,
+  "type": "ProcessInstanceEvent",
+  "time": "2019-08-05T17:47:49.019494+02:00[Europe/Warsaw]",
+  "data": {
+    "id": "c1aced49-399b-4938-9071-b2ffa3fb7045",
+    "parentInstanceId": null,
+    "rootInstanceId": null,
+    "processId": "deals",
+    "processName": "SubmitDeal",
+    "startDate": 1565020069015,
+    "endDate": null,
+    "state": 1,
+    "nodeInstances": [
+      {
+        "id": "a8fe24c4-27a5-4869-85df-16e9f170f2c4",
+        "nodeId": "2",
+        "nodeDefinitionId": "CallActivity_1",
+        "nodeName": "Call a deal",
+        "nodeType": "SubProcessNode",
+        "triggerTime": 1565020069015,
+        "leaveTime": null
+      },
+      {
+        "id": "7a3bf1b1-b167-4928-969d-20bddf16c87a",
+        "nodeId": "1",
+        "nodeDefinitionId": "StartEvent_1",
+        "nodeName": "StartProcess",
+        "nodeType": "StartNode",
+        "triggerTime": 1565020069015,
+        "leaveTime": 1565020069015
+      }
+    ],
+    "variables": {
+      "name": "my fancy deal",
+      "traveller": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "jon.doe@example.com",
+        "nationality": "American",
+        "address": {
+          "street": "main street",
+          "city": "Boston",
+          "zipCode": "10005",
+          "country": "US"
+        }
+      }
+    }
+  },
+  "kogitoProcessinstanceId": "c1aced49-399b-4938-9071-b2ffa3fb7045",
+  "kogitoParentProcessinstanceId": null,
+  "kogitoRootProcessinstanceId": null,
+  "kogitoProcessId": "deals",
+  "kogitoProcessinstanceState": "1"
+}
+----
+
+The event is in https://cloudevents.io/[CloudEvents] format so that it can be consumed efficiently by other entities.
+
+The event data also includes the following extensions to enable event routing based on the event metadata without requiring the body of the event:
+
+* `kogitoProcessinstanceId`
+* `kogitoParentProcessinstanceId`
+* `kogitoRootProcessinstanceId`
+* `kogitoProcessId`
+* `kogitoProcessinstanceState`
+
+== User task instance events
+
+If an executed request (unit of work) in a process instance interacts with a user task, an event is generated for that user task and contains information for the task instance, such as the following information:
+
+* Task metadata, such as the task description, priority, start and complete dates, and other identifying information
+* Task input and output data
+* Task assignments, such as the task owner, potential users and groups, business administrator and business administrator groups, or excluded users
+* Task reference name that should be used to interact with the task using the {PRODUCT} service endpoints
+
+The following event is an example user task instance event generated after the relevant request was executed successfully:
+
+.Example user task instance event
+[source,json]
+----
+{
+  "data": {
+    "adminGroups": [],
+    "adminUsers": [],
+    "excludedUsers": [],
+    "id": "4d899471-19dd-485d-b7f4-b313185d430d",
+    "inputs": {
+      "Locale": "en-UK",
+      "trip": {
+        "begin": "2019-09-22T22:00:00Z[UTC]",
+        "city": "Boston",
+        "country": "US",
+        "end": "2019-09-26T22:00:00Z[UTC]",
+        "visaRequired": true
+      },
+      "TaskName": "VisaApplication",
+      "NodeName": "Apply for visa",
+      "Priority": "1",
+      "Skippable": "true",
+      "traveller": {
+        "address": {
+          "city": "Krakow",
+          "country": "Poland",
+          "street": "Polna",
+          "zipCode": "12345"
+        },
+        "email": "jan.kowalski@email.com",
+        "firstName": "Jan",
+        "lastName": "Kowalski",
+        "nationality": "Polish"
+      }
+    },
+    "outputs": {},
+    "potentialGroups": [],
+    "potentialUsers": [],
+    "processId": "travels",
+    "processInstanceId": "63c297cb-f5ac-4e20-8254-02f37bd72b80",
+    "referenceName": "VisaApplication",
+    "startDate": "2019-09-16T15:22:26.658Z[UTC]",
+    "state": "Ready",
+    "taskName": "Apply for visa",
+    "taskPriority": "1"
+  },
+  "id": "9c340cfa-c9b6-46f2-a048-e1114b077a7f",
+  "kogitoProcessId": "travels",
+  "kogitoProcessinstanceId": "63c297cb-f5ac-4e20-8254-02f37bd72b80",
+  "kogitoUserTaskinstanceId": "4d899471-19dd-485d-b7f4-b313185d430d",
+  "kogitoUserTaskinstanceState": "Ready",
+  "source": "http://localhost:8080/travels",
+  "specversion": "0.3",
+  "time": "2019-09-16T17:22:26.662592+02:00[Europe/Berlin]",
+  "type": "UserTaskInstanceEvent"
+}
+----
+
+The event data also includes the following extensions to enable event routing based on the event metadata without requiring the body of the event:
+
+* `kogitoUserTaskinstanceId`
+* `kogitoUserTaskinstanceState`
+* `kogitoProcessinstanceId`
+* `kogitoProcessId`
+
+== Event publishing
+
+{PRODUCT} generates events only when at least one publisher is configured. A {PRODUCT} service environment can have many event publishers that publish these events into different channels.
+
+By default, {PRODUCT} includes the following message-based event publishers, depending on your application framework:
+
+* *For Quarkus*: https://smallrye.io/smallrye-reactive-messaging/[Reactive Messaging] for sending events using Apache Kafka, Apache Camel, Advanced Message Queuing Protocol (AMQP), or MQ Telemetry Transport (MQTT)
+* *For Spring Boot*: https://spring.io/projects/spring-kafka[Spring for Apache Kafka] for sending events using Kafka
+
+To enable or disable event publishing, you can adjust the following properties in the `src/main/resources/application.properties` file in your {PRODUCT} project:
+
+* `kogito.events.processinstances.enabled`: Enables or disables publishing for process instance events (default: `enabled`)
+* `kogito.events.usertasks.enabled`: Enables or disables publishing for user task instance events (default: `enabled`)
+
+To develop additional event publishers, you can implement the `org.kie.kogito.event.EventPublisher` implementation and include the required annotations for JavaBeans discovery.
+
+////
+//@comment: Excluded for now because not yet supported in Kogito. Will be in its own topic. (Stetson, 1 Apr 2020)
+## Registering work item handlers
+
+To be able to use custom service tasks a work item handler must be registered. Once the work item handler is implemented to can be either packaged in the application itself or as dependency of the application.
+
+`WorkItemHandlerConfig` class should be created to provide custom work item handlers. It must implement `org.kie.kogito.process.WorkItemHandlerConfig` although recommended is to always extend the default implementation (`org.kie.kogito.process.impl.DefaultWorkItemHandlerConfig`) to benefit from the out of the box provided handlers as well.
+
+[source, java]
+----
+@ApplicationScoped
+public class CustomWorkItemHandlerConfig extends DefaultWorkItemHandlerConfig {{
+    register("MyServiceTask", new MyServiceWorkItemHandler());
+}}
+----
+
+NOTE: These classes are meant to be injectable so ensure you properly annotate the class (`@ApplicationScoped`/`@Component`) so they can be found and registered.
+
+You can also take advantage of life cycle method like `@PostConstruct` and `@PreDestroy` to manage your handlers.
+////

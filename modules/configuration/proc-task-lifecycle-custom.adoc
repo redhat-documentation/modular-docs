@@ -1,0 +1,80 @@
+[id='proc-task-lifecycle-custom_{context}']
+= Creating a custom task life cycle and phase
+
+You can extend the user task life cycle and life cycle phases in {PRODUCT} to implement a custom life cycle and phases as needed.
+
+.Procedure
+. To add custom life cycle phases, implement the `org.kie.kogito.process.workitem.LifeCyclePhase` resource in the Java class for your custom life cycle phases.
++
+--
+This resource implements the following key methods:
+
+* `id`: Assigns a unique ID that is used when transitioning through phases
+* `canTransition`: Provides a checkpoint between phases, if this phase can be transitioned from a specified phase
+* `status`: Defines a human-readable status for this phase
+* `isTerminating`: Determines if this phase is a completion stage, and if so, completes the work item and moves on to the next activity in the process
+* `apply`: Enables additional updates to the work item when transitioning through phases
+
+You can implement as many phases as needed or extend existing phases.
+--
+. To add a custom life cycle, implement the `org.kie.kogito.process.workitem.LifeCycle<Map<String, Object>>` resource in the Java class for your custom life cycle.
++
+--
+NOTE: To support user tasks, the parameterized type `LifeCycle` must be `Map<String, Object>`.
+
+This resource implements the following key methods:
+
+* `phaseById`: Retrieves the life cycle phase by ID to verify if the phase is supported by the life cycle implementation
+* `phases`: Returns all supported phases by a specified life cycle implementation
+* `transitionTo`: Provides the main logic to handle phase transition
+* `data`: Returns the current state of data for the work item
+
+The following is an example Java class that extends the `Complete` life cycle phase from a custom life cycle implementation:
+
+.Example Java class to extend the `Complete` life cycle phase
+[source,java]
+----
+package org.acme.travels.usertasks;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.jbpm.process.instance.impl.workitem.Complete;
+import org.kie.kogito.process.workitem.LifeCyclePhase;
+
+public class CompleteStartedOnly extends Complete {
+
+    private List<String> allowedTransitions = Arrays.asList(Start.ID);
+
+    @Override
+    public boolean canTransition(LifeCyclePhase phase) {
+        return allowedTransitions.contains(phase.id());
+    }
+
+}
+----
+--
+
+. After you implement your custom life cycle or life cycle phases, create a Java configuration class to enable the {PROCESS_ENGINE} to use the new life cycle or phase instead of the default life cycle.
++
+--
+In this configuration, you use the `WorkItemHandlerConfig` class as you do for any other work item handler, as shown in the following example:
+
+.Example configuration class for a custom life cycle phase
+[source,java]
+----
+@ApplicationScoped
+public class CustomWorkItemHandlerConfig extends DefaultWorkItemHandlerConfig {
+ {
+  register("Human Task", new HumanTaskWorkItemHandler(new CustomHumanTaskLifeCycle()));
+ }
+}
+----
+
+The work item handler is the same as the default, but instead of the default life cycle, you pass as a constructor argument the custom implementation of the `LifeCycle` interface.
+--
+
+For example {PRODUCT} services with custom task life cycle configurations, see the following example applications in GitHub:
+
+* https://github.com/kiegroup/kogito-examples/tree/stable/kogito-usertasks-custom-lifecycle-quarkus[`kogito-usertasks-custom-lifecycle-quarkus`]: Example on Quarkus
+* https://github.com/kiegroup/kogito-examples/tree/stable/kogito-usertasks-custom-lifecycle-springboot[`kogito-usertasks-custom-lifecycle-springboot`]: Example on Spring Boot

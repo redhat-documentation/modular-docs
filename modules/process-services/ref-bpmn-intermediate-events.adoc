@@ -1,0 +1,131 @@
+[id='ref-bpmn-intermediate-events_{context}']
+= Intermediate events supported in {PRODUCT}
+
+BPMN intermediate events drive the flow of a business process. Intermediate events catch or throw an event during the execution of the business process. You can add these events between start and end events or as a catch event on the boundary of an activity, such as a subprocess or a user task. You can configure boundary catch events as interrupting or non-interrupting events. An interrupting boundary catch event cancels the bound activity whereas a non-interrupting event does not.
+
+An intermediate event handles a particular situation that occurs during process execution. The situation is a trigger for an intermediate event. In a process, you can add an intermediate event with one outgoing flow to an activity boundary.
+
+If the event occurs while the activity is being executed, the event triggers its execution to the outgoing flow. One activity may have multiple boundary intermediate events. Note that depending on the behavior you require from the activity with the boundary intermediate event, you can use either of the following intermediate event types:
+
+* Interrupting: The activity execution is interrupted and the execution of the intermediate event is triggered.
+* Non-interrupting: The intermediate event is triggered and the activity execution continues.
+
+{PRODUCT} currently supports the following intermediate events:
+
+.Supported intermediate events
+[cols="20%,20%,20%,20%,20%", options="header"]
+|===
+|Intermediate event type
+|Catching
+|Boundary
+|
+|Throwing
+
+h|
+h|
+h|Interrupt
+h|Non-interrupt
+h|
+
+|Message
+|image:kogito/bpmn/bpmn-intermediate-message.png[]
+|image:kogito/bpmn/bpmn-intermediate-message.png[]
+|image:kogito/bpmn/bpmn-message-noninterrupt.png[]
+|image:kogito/bpmn/bpmn-message-throwing.png[]
+
+|Timer
+|image:kogito/bpmn/bpmn-intermediate-timer.png[]
+|image:kogito/bpmn/bpmn-intermediate-timer.png[]
+|image:kogito/bpmn/bpmn-timer-noninterrupt.png[]
+|Not applicable
+
+|Signal
+|image:kogito/bpmn/bpmn-intermediate-signal.png[]
+|image:kogito/bpmn/bpmn-intermediate-signal.png[]
+|image:kogito/bpmn/bpmn-signal-noninterrupt.png[]
+|Not applicable
+//image:kogito/bpmn/bpmn-signal-throwing.png[]  (@comment: Use for Throwing here when supported. Stetson, 17 Mar 2020)
+|===
+
+////
+|Error
+|
+|image:kogito/bpmn/bpmn-intermediate-error.png[]
+|
+|
+
+|Conditional
+|image:kogito/bpmn/bpmn-intermediate-conditional.png[]
+|image:kogito/bpmn/bpmn-intermediate-conditional.png[]
+|image:kogito/bpmn/bpmn-conditional-noninterrupt.png[]
+|
+
+|Compensation
+|image:kogito/bpmn/bpmn-intermediate-catch.png[]
+|image:kogito/bpmn/bpmn-intermediate-catch.png[]
+|
+|image:kogito/bpmn/bpmn-intermediate-compensation-throwing.png[]
+
+|Escalation
+|image:kogito/bpmn/bpmn-intermediate-escalation.png[]
+|image:kogito/bpmn/bpmn-intermediate-escalation.png[]
+|image:kogito/bpmn/bpmn-intermediate-escalation-non-interrupting.png[]
+|image:kogito/bpmn/bpmn-intermediate-escalation-throwing.png[]
+////
+
+Message::
++
+--
+A message intermediate event is an intermediate event that enables you to manage a message object. Use one of the following events:
+
+* A throwing message intermediate event produces a message object based on the defined properties.
+* A catching message intermediate event listens for a message object with the defined properties.
+--
+
+Timer::
++
+--
+A timer intermediate event enables you to delay workflow execution or to trigger the workflow execution periodically. It represents a timer that can trigger one or multiple times after a specified period of time. When the timer intermediate event is triggered, the defined timer condition is checked and the outgoing flow is taken.
+
+When you add a timer intermediate event in the process workflow, it has one incoming flow and one outgoing flow. Its execution starts when the incoming flow transfers to the event. When you add a timer intermediate event on an activity boundary, the execution is triggered at the same time as the activity execution.
+
+The timer is canceled if the timer element is canceled, for example, by completing or aborting the enclosing process instance.
+--
+
+Signal::
++
+--
+A signal intermediate event enables you to produce or consume a signal object. Use either of the following options:
+
+* A throwing signal intermediate event produces a signal object based on the defined properties.
+* A catching signal intermediate event listens for a signal object with the defined properties.
+--
+
+////
+.Conditional
+
+A conditional intermediate event is an intermediate event with a boolean condition as its trigger. The event triggers further workflow execution when the condition evaluates to `true` and its outgoing flow is taken.
+
+The event must define the [property]``Expression`` property. When a conditional intermediate event is placed in the process workflow, it has one incoming flow, one outgoing flow, and its execution starts when the incoming flow transfers to the event. When a conditional intermediate event is placed on an activity boundary, the execution is triggered at the same time as the activity execution. Note that if the event is non-interrupting, the event triggers continuously while the condition is ``true``.
+
+
+.Error
+
+An error intermediate event is an intermediate event that can be used only on an activity boundary. It enables the process to react to an error end event in the respective activity.
+The activity must not be atomic. When the activity finishes with an error end event that produces an error object with the respective `ErrorCode` property, the error intermediate event catches the error object and execution continues to its outgoing flow.
+
+
+
+.Compensation
+
+A compensation intermediate event is a boundary event attached to an activity in a transaction subprocess. It can finish with a compensation end event or a cancel end event. The compensation intermediate event must be associated with a flow, which is connected to the compensation activity.
+
+The activity associated with the boundary compensation intermediate event is executed if the transaction subprocess finishes with the compensation end event. The execution continues with the respective flow.
+
+.Escalation
+
+An escalation intermediate event is an intermediate event that enables you to produce or consume an escalation object. Depending on the action the event element should perform, you need to use either of the following options:
+
+* A throwing escalation intermediate event produces an escalation object based on the defined properties.
+* A catching escalation intermediate event listens for an escalation object with the defined properties.
+////

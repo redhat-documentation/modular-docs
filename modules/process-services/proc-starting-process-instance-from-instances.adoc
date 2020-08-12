@@ -1,0 +1,15 @@
+[id='proc-starting-process-instance-from-instances_{context}']
+= Starting a process instance from the process instances page
+
+You can create new process instances or view the list of all the running process instances in *Menu* -> *Manage* -> *Process Instances*.
+
+.Prerequisites
+* A project with a process definition has been deployed in Business Central.
+
+.Procedure
+. In Business Central, go to *Menu* -> *Manage* -> *Process Instances*.
+. Click *New Process Instance* in the upper-right corner and select the process definition for which you want to start a new process instance from the drop-down list.
+. Provide any information required to start a new process instance.
+. Click *Start* to create the process instance.
++
+The new process instance appears in the *Manage Process Instances* list.

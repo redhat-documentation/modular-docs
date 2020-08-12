@@ -1,0 +1,102 @@
+
+:REBUILT: Tuesday, April 21, 2020
+
+:COMMUNITY_VERSION: 0.9
+:ENTERPRISE_VERSION: {COMMUNITY_VERSION}
+:ENTERPRISE_VERSION_LONG: {COMMUNITY_VERSION}.1
+:COMMUNITY_VERSION_LONG: {COMMUNITY_VERSION}.1
+:COMMUNITY_VERSION_FINAL: {COMMUNITY_VERSION_LONG}.Final
+:COMMUNITY_VERSION_BRANCH: 0.9.x
+
+:PRODUCT_FILE: {PRODUCT_INIT}-{ENTERPRISE_VERSION_LONG}
+:PRODUCT_FILE_BA: {PRODUCT_INIT_BA}-{ENTERPRISE_VERSION_LONG}
+
+// For copyright
+:YEAR: 2020
+
+// Maven info, from https://mvnrepository.com (public repo) or https://repository.jboss.org/nexus/index.html#welcome (Nexus repo)
+ifdef::KOGITO-ENT[]
+:MAVEN_ARTIFACT_VERSION: {COMMUNITY_VERSION_FINAL}-redhat-00002
+:BOM_VERSION: {ENTERPRISE_VERSION_LONG}.redhat-00002
+endif::[]
+ifdef::KOGITO-COMM[]
+:MAVEN_ARTIFACT_VERSION: {COMMUNITY_VERSION_FINAL}
+:BOM_VERSION: {COMMUNITY_VERSION_FINAL}
+endif::[]
+
+////
+IMPORTANT: The `{BOM_VERSION}` variable requires additional conditioning in single-sourced content, as shown in this example:
+
+.Example BOM declaration in single-sourced content
+[source,xml,subs="attributes+"]
+----
+ifdef::KOGITO-ENT[]
+  <groupId>com.redhat.ba</groupId>
+  <artifactId>ba-platform-bom</artifactId>
+endif::[]
+ifdef::KOGITO-COMM[]
+  <groupId>org.kie</groupId>
+  <artifactId>kie-platform-bom</artifactId>
+endif::[]
+  <version>{BOM_VERSION}</version>
+----
+////
+
+ifdef::KOGITO-ENT[]
+include::document-attributes-kogito-ent.adoc[]
+endif::KOGITO-ENT[]
+
+ifdef::KOGITO-COMM[]
+include::document-attributes-kogito-comm.adoc[]
+endif::KOGITO-COMM[]
+
+////
+//For source includes
+:kogito-dir: kogito-docs/src/main/asciidoc
+////
+
+// Product and component names
+:PRODUCT_PAM: Red Hat Process Automation Manager
+:PRODUCT_DM: Red Hat Decision Manager
+:PRODUCT_BO: Red Hat Business Optimizer
+:PRODUCT_BA: Red Hat Business Automation
+:PRODUCT_DROOLS: Drools
+:PRODUCT_JBPM: jBPM
+:PRODUCT_OP: OptaPlanner
+
+:DECISION_ENGINE: decision engine
+:DECISION_ENGINE_CAP: Decision engine
+:PROCESS_ENGINE: process engine
+:PROCESS_ENGINE_CAP: process engine
+:PLANNING_ENGINE: planning engine
+:PLANNING_ENGINE_CAP: Planning engine
+:URL_COMPONENT_DECISION_ENGINE: decision-engine
+:URL_COMPONENT_PROCESS_ENGINE: process-engine
+:URL_COMPONENT_PLANNING_ENGINE: planner-engine
+
+// Assembly names (some of these will likely be moved product-specific attrs docs in the future, i.e., document-attributes-dm.adoc and ..-ba.adoc)
+
+:RELEASE_NOTES: Release notes for {PRODUCT} {ENTERPRISE_VERSION}
+:CREATING_RUNNING: Creating and running your first {PRODUCT} services
+:DEPLOYING_ON_OPENSHIFT: Deploying {PRODUCT} services on {OPENSHIFT}
+:DECISION_SERVICES: Developing decision services with {PRODUCT}
+:PROCESS_SERVICES: Developing process services with {PRODUCT}
+:CONFIGURING_KOGITO: Configuring {PRODUCT} supporting services and runtime capabilities
+
+// URL components, for post Dev Preview
+:URL_COMPONENT_FORMAT: html-single
+:URL_BASE_ENTERPRISE: https://access.redhat.com/documentation/en-us/{URL_COMPONENT_PRODUCT}/{ENTERPRISE_VERSION}/{URL_COMPONENT_FORMAT}
+:URL_BASE_BPMSUITE: https://access.redhat.com/documentation/en-us/red-hat-jboss-bpm-suite/{ENTERPRISE_VERSION}/{URL_COMPONENT_FORMAT}
+:URL_BASE_GITHUB_DM: https://github.com/jboss-container-images/rhdm-7-openshift-image/tree/rhdm70-dev
+:URL_BASE_GITHUB_PAM: https://github.com/jboss-container-images/rhpam-7-openshift-image/tree/rhpam70-dev
+
+// URLs for assemblies (some of these will likely be moved product-specific attrs docs in the future, i.e., document-attributes-dm.adoc and ..-ba.adoc)
+
+:URL_RELEASE_NOTES: {URL_BASE_ENTERPRISE}/release_notes_for_{PRODUCT_INIT}_{ENTERPRISE_VERSION}
+:URL_CREATING_RUNNING: {URL_BASE_ENTERPRISE}/creating_and_running_your_first_{PRODUCT_INIT}_services
+:URL_DEPLOYING_ON_OPENSHIFT: {URL_BASE_ENTERPRISE}/deploying_{PRODUCT_INIT}_services_on_{URL_COMPONENT_OPENSHIFT}
+:URL_DECISION_SERVICES: {URL_BASE_ENTERPRISE}/developing_decision_services_with_{PRODUCT_INIT}
+:URL_PROCESS_SERVICES: {URL_BASE_ENTERPRISE}/developing_process_services_with_{PRODUCT_INIT}
+:URL_CONFIGURING_KOGITO: {URL_BASE_ENTERPRISE}/configuring_{PRODUCT_INIT}_supporting_services_and_runtime_capabilities
+
+:ndash: &ndash;

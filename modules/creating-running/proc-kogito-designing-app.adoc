@@ -1,0 +1,516 @@
+[id='proc-kogito-designing-app_{context}']
+= Designing the application logic for a {PRODUCT} service using DMN and BPMN
+
+After you create your {PRODUCT} project, you can create or import Business Process Model and Notation (BPMN) 2.0 business processes, Decision Model and Notation (DMN) decision models, Drools Rule Language (DRL) business rules, XLS or XLSX decision tables, and other assets in the `src/main/resources` folder of your project. You can also include Java classes in the `src/main/java` folder of your project that act as Java services or that provide implementations that you call from your business processes or decisions.
+
+The example for this procedure is a basic {PRODUCT} service that provides a REST endpoint `/persons`. This endpoint is automatically generated based on an example `PersonProcess.bpmn2` business process that employs an example `PersonDecisions.dmn` DMN model to make decisions based on the data being processed.
+
+The business process contains the business logic of the {PRODUCT} service. The process provides the complete set of steps to achieve the business goal. The process is also the entry point to the service that can be consumed by other services.
+
+The business decision contains the decision logic of the {PRODUCT} service. In this example, the decision logic is invoked as part of the business process. You can define business rules and decisions in several ways, such as with DMN models, DRL rules, or XLS or XLSX decision tables. The example for this procedure uses a DMN model.
+
+.Procedure
+. In the Maven project that you generated for your {PRODUCT} service, navigate to the `src/main/java/org/acme` folder and add the following `Person.java` file:
++
+--
+.Example person Java object
+[source,java]
+----
+package org.acme;
+
+import java.io.Serializable;
+
+public class Person {
+
+	private String name;
+	private int age;
+	private boolean adult;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public boolean isAdult() {
+		return adult;
+	}
+
+	public void setAdult(boolean adult) {
+		this.adult = adult;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + ", adult=" + adult + "]";
+	}
+
+}
+----
+This example Java object sets and retrieves a person's name, age, and adult status.
+--
+. Navigate to the `src/main/resources` folder and add the following `PersonDecisions.dmn` DMN decision model:
++
+--
+.Example person DMN decision requirements diagram (DRD)
+image::kogito/creating-running/kogito-dmn-example-person.png[Image of person DMN decision diagram]
+
+.Example DMN boxed expression for Is Adult decision
+image::kogito/creating-running/kogito-dmn-example-person-logic.png[Image of person DMN decision table]
+
+.Example DMN data types
+image::kogito/creating-running/kogito-dmn-example-person-data-types.png[Image of person DMN data types]
+
+This example DMN model consists of a basic DMN input node and a decision node defined by a DMN decision table with a custom structured data type.
+
+In VSCode (recommended), you can add the {PRODUCT} https://github.com/kiegroup/kogito-tooling/releases[VSCode extension] to design the decision requirements diagram (DRD), boxed expression, and data types with the {PRODUCT} DMN modeler.
+
+To create this example DMN model quickly, you can copy the following `PersonDecisions.dmn` file content:
+
+.Example DMN file
+[source,xml]
+----
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_52CEF9FD-9943-4A89-96D5-6F66810CA4C1" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" id="_84B432F5-87E7-43B1-9101-1BAFE3D18FC5" name="PersonDecisions" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_52CEF9FD-9943-4A89-96D5-6F66810CA4C1">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_DEF2C3A7-F3A9-4ABA-8D0A-C823E4EB43AB" name="tPerson" isCollection="false">
+    <dmn:itemComponent id="_DB46DB27-0752-433F-ABE3-FC9E3BDECC97" name="Age" isCollection="false">
+      <dmn:typeRef>number</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_8C6D865F-E9C8-43B0-AB4D-3F2075A4ECA6" name="Name" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_9033704B-4E1C-42D3-AC5E-0D94107303A1" name="Adult" isCollection="false">
+      <dmn:typeRef>boolean</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_F9685B74-0C69-4982-B3B6-B04A14D79EDB" name="Person">
+    <dmn:extensionElements/>
+    <dmn:variable id="_0E345A3C-BB1F-4FB2-B00F-C5691FD1D36C" name="Person" typeRef="tPerson"/>
+  </dmn:inputData>
+  <dmn:decision id="_0D2BD7A9-ACA1-49BE-97AD-19699E0C9852" name="isAdult">
+    <dmn:extensionElements/>
+    <dmn:variable id="_54CD509F-452F-40E5-941C-AFB2667D4D45" name="isAdult" typeRef="boolean"/>
+    <dmn:informationRequirement id="_2F819B03-36B7-4DEB-AED6-2B46AE3ADB75">
+      <dmn:requiredInput href="#_F9685B74-0C69-4982-B3B6-B04A14D79EDB"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_58370567-05DE-4EC0-AC2D-A23803C1EAAE" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_ADEF36CD-286A-454A-ABD8-9CF96014021B">
+        <dmn:inputExpression id="_4930C2E5-7401-46DD-8329-EAC523BFA492" typeRef="number">
+          <dmn:text>Person.Age</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_9867E9A3-CBF6-4D66-9804-D2206F6B4F86" typeRef="boolean"/>
+      <dmn:rule id="_59D6BFF0-35B4-4B7E-8D7B-E31CB0DB8242">
+        <dmn:inputEntry id="_7DC55D63-234F-497B-A12A-93DA358C0136">
+          <dmn:text>&gt; 18</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_B3BB5B97-05B9-464A-AB39-58A33A9C7C00">
+          <dmn:text>true</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_8FCD63FE-8AD8-4F56-AD12-923E87AFD1B1">
+        <dmn:inputEntry id="_B4EF7F13-E486-46CB-B14E-1D21647258D9">
+          <dmn:text>&lt;= 18</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F3A9EC8E-A96B-42A0-BF87-9FB1F2FDB15A">
+          <dmn:text>false</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_58370567-05DE-4EC0-AC2D-A23803C1EAAE">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_F9685B74-0C69-4982-B3B6-B04A14D79EDB" dmnElementRef="_F9685B74-0C69-4982-B3B6-B04A14D79EDB" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="404" y="464" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_0D2BD7A9-ACA1-49BE-97AD-19699E0C9852" dmnElementRef="_0D2BD7A9-ACA1-49BE-97AD-19699E0C9852" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="404" y="311" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_2F819B03-36B7-4DEB-AED6-2B46AE3ADB75" dmnElementRef="_2F819B03-36B7-4DEB-AED6-2B46AE3ADB75">
+        <di:waypoint x="504" y="489"/>
+        <di:waypoint x="404" y="336"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
+----
+
+To create this example DMN model in VSCode using the {PRODUCT} DMN modeler, follow these steps:
+
+.. In the upper-right corner of the DMN modeler, click the *Properties* icon and confirm that the DMN model *Name* is set to `PersonDecisions`.
+.. In the left palette, select *DMN Input Data*, drag the node to the canvas, and double-click the node to name it `Person`.
+.. In the left palette, select *DMN Decision*, drag the node to the canvas, double-click the node to name it `isAdult`, and link to it from the input node.
+.. Select the decision node to display the node options and click the *Edit* icon to open the DMN boxed expression editor to define the decision logic for the node.
+.. Click the undefined expression field and select *Decision Table*.
+.. Click the upper-left corner of the decision table to set the hit policy to *Unique*.
+.. Set the input and output columns so that the input source `Person.Age` with type `number` determines the age limit and the output target `isAdult` with type `boolean` determines adult status:
++
+.Example DMN decision table for `isAdult` decision
+image::kogito/creating-running/kogito-dmn-example-person-logic.png[Image of person DMN decision table]
+.. In the upper tab options, select the *Data Types* tab and add the following `tPerson` structured data type and nested data types:
++
+.Example DMN data types
+image::kogito/creating-running/kogito-dmn-example-person-data-types.png[Image of person DMN data types]
+.. After you define the data types, select the *Editor* tab to return to the DMN modeler canvas.
+.. Select the *Person* input node, click the *Properties* icon, and under *Information item*, set the *Data type* to `tPerson`.
+.. Select the *isAdult* decision node, click the *Properties* icon, and under *Information item*, confirm that the *Data type* is still set to `boolean`. You previously set this data type when you created the decision table.
+.. Save the DMN decision file.
+--
+. In the `src/main/resources` folder, add the following `PersonProcess.bpmn2` BPMN process model:
++
+--
+.Example person BPMN process
+image::kogito/creating-running/kogito-bpmn-example-person.png[Image of person process diagram]
+
+This example process consists of the following basic BPMN components:
+
+* Start event
+* Business rule task
+* Exclusive gateway
+* User task
+* End events
+
+In VSCode (recommended), you can add the {PRODUCT} https://github.com/kiegroup/kogito-tooling/releases[VSCode extension] to model the business process with the {PRODUCT} BPMN modeler.
+
+To create this example process quickly, you can copy the following `PersonProcess.bpmn2` file content:
+
+.Example BPMN file
+[source,xml]
+----
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_J4ElsVJgEDiScotxwBQ14Q" exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_personItem" structureRef="org.acme.Person"/>
+  <bpmn2:itemDefinition id="_isAdultItem" structureRef="Boolean"/>
+  <bpmn2:itemDefinition id="_UserTask_1_SkippableInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_PriorityInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_CommentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_DescriptionInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_CreatedByInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_TaskNameInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_GroupIdInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_ContentInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_NotStartedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_NotCompletedReassignInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_NotStartedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_NotCompletedNotifyInputXItem" structureRef="Object"/>
+  <bpmn2:itemDefinition id="_UserTask_1_personInputXItem" structureRef="org.acme.Person"/>
+  <bpmn2:itemDefinition id="_BusinessRuleTask_1_namespaceInputXItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="_BusinessRuleTask_1_modelInputXItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="_BusinessRuleTask_1_decisionInputXItem" structureRef="java.lang.String"/>
+  <bpmn2:itemDefinition id="_BusinessRuleTask_1_PersonInputXItem" structureRef="org.acme.Person"/>
+  <bpmn2:itemDefinition id="_BusinessRuleTask_1_isAdultOutputXItem" structureRef="Boolean"/>
+  <bpmn2:process id="persons" drools:packageName="org.acme" drools:version="1.0" drools:adHoc="false" name="Person Process" isExecutable="true" processType="Public">
+    <bpmn2:property id="person" itemSubjectRef="_personItem" name="person"/>
+    <bpmn2:property id="isAdult" itemSubjectRef="_isAdultItem" name="isAdult"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_1" targetRef="BusinessRuleTask_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" sourceRef="BusinessRuleTask_1" targetRef="ExclusiveGateway_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" sourceRef="ExclusiveGateway_1" targetRef="UserTask_1">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java">return isAdult == false;</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="SequenceFlow_4" sourceRef="UserTask_1" targetRef="EndEvent_1"/>
+    <bpmn2:sequenceFlow id="SequenceFlow_5" sourceRef="ExclusiveGateway_1" targetRef="EndEvent_2">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java">return isAdult == true;</bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:startEvent id="StartEvent_1" name="StartProcess">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>StartProcess</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:businessRuleTask id="BusinessRuleTask_1" name="Evaluate person" implementation="http://www.jboss.org/drools/dmn">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Evaluate person</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="BusinessRuleTask_1_namespaceInputX" drools:dtype="java.lang.String" itemSubjectRef="_BusinessRuleTask_1_namespaceInputXItem" name="namespace"/>
+        <bpmn2:dataInput id="BusinessRuleTask_1_decisionInputX" drools:dtype="java.lang.String" itemSubjectRef="_BusinessRuleTask_1_decisionInputXItem" name="decision"/>
+        <bpmn2:dataInput id="BusinessRuleTask_1_modelInputX" drools:dtype="java.lang.String" itemSubjectRef="_BusinessRuleTask_1_modelInputXItem" name="model"/>
+        <bpmn2:dataInput id="BusinessRuleTask_1_PersonInputX" drools:dtype="org.acme.Person" itemSubjectRef="_BusinessRuleTask_1_PersonInputXItem" name="Person"/>
+        <bpmn2:dataOutput id="BusinessRuleTask_1_isAdultOutputX" drools:dtype="Boolean" itemSubjectRef="_BusinessRuleTask_1_isAdultOutputXItem" name="isAdult"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>BusinessRuleTask_1_namespaceInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>BusinessRuleTask_1_decisionInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>BusinessRuleTask_1_modelInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>BusinessRuleTask_1_PersonInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet>
+          <bpmn2:dataOutputRefs>BusinessRuleTask_1_isAdultOutputX</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>BusinessRuleTask_1_namespaceInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression">https://kiegroup.org/dmn/_52CEF9FD-9943-4A89-96D5-6F66810CA4C1</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression">BusinessRuleTask_1_namespaceInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>BusinessRuleTask_1_decisionInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression">isAdult</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression">BusinessRuleTask_1_decisionInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>BusinessRuleTask_1_modelInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression">PersonDecisions</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression">BusinessRuleTask_1_modelInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:sourceRef>person</bpmn2:sourceRef>
+        <bpmn2:targetRef>BusinessRuleTask_1_PersonInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation>
+        <bpmn2:sourceRef>BusinessRuleTask_1_isAdultOutputX</bpmn2:sourceRef>
+        <bpmn2:targetRef>isAdult</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:businessRuleTask>
+    <bpmn2:exclusiveGateway id="ExclusiveGateway_1" name="Exclusive Gateway 1" gatewayDirection="Diverging">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Exclusive Gateway 1</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:userTask id="UserTask_1" name="Special handling for children">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>Special handling for children</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_4</bpmn2:outgoing>
+      <bpmn2:ioSpecification>
+        <bpmn2:dataInput id="UserTask_1_TaskNameInputX" drools:dtype="Object" itemSubjectRef="_UserTask_1_TaskNameInputXItem" name="TaskName"/>
+        <bpmn2:dataInput id="UserTask_1_personInputX" drools:dtype="org.acme.Person" itemSubjectRef="_UserTask_1_personInputXItem" name="person"/>
+        <bpmn2:dataInput id="UserTask_1_SkippableInputX" drools:dtype="Object" itemSubjectRef="_UserTask_1_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:dataInput id="UserTask_1_PriorityInputX" drools:dtype="Object" itemSubjectRef="_UserTask_1_PriorityInputXItem" name="Priority"/>
+        <bpmn2:inputSet>
+          <bpmn2:dataInputRefs>UserTask_1_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>UserTask_1_personInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>UserTask_1_SkippableInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>UserTask_1_PriorityInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>UserTask_1_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression">ChildrenHandling</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression">UserTask_1_TaskNameInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:sourceRef>person</bpmn2:sourceRef>
+        <bpmn2:targetRef>UserTask_1_personInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>UserTask_1_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression">true</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression">UserTask_1_SkippableInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation>
+        <bpmn2:targetRef>UserTask_1_PriorityInputX</bpmn2:targetRef>
+        <bpmn2:assignment>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression">1</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression">UserTask_1_PriorityInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:endEvent id="EndEvent_1" name="End Event 1">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>End Event 1</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_4</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:endEvent id="EndEvent_2" name="End Event 2">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue>End Event 2</drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
+    </bpmn2:endEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="persons">
+      <bpmndi:BPMNShape id="shape_EndEvent_2" bpmnElement="EndEvent_2">
+        <dc:Bounds height="56" width="56" x="622" y="201"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_EndEvent_1" bpmnElement="EndEvent_1">
+        <dc:Bounds height="56" width="56" x="622" y="105"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_UserTask_1" bpmnElement="UserTask_1">
+        <dc:Bounds height="78" width="134" x="449" y="94"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_ExclusiveGateway_1" bpmnElement="ExclusiveGateway_1">
+        <dc:Bounds height="56" width="56" x="365" y="105"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_BusinessRuleTask_1" bpmnElement="BusinessRuleTask_1">
+        <dc:Bounds height="71" width="141" x="180" y="97"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_StartEvent_1" bpmnElement="StartEvent_1">
+        <dc:Bounds height="56" width="56" x="80" y="105"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_shape_ExclusiveGateway_1_to_shape_EndEvent_2" bpmnElement="SequenceFlow_5">
+        <di:waypoint x="390" y="155"/>
+        <di:waypoint x="393" y="231"/>
+        <di:waypoint x="622" y="219"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_UserTask_1_to_shape_EndEvent_1" bpmnElement="SequenceFlow_4">
+        <di:waypoint x="583" y="133"/>
+        <di:waypoint x="622" y="123"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_ExclusiveGateway_1_to_shape_UserTask_1" bpmnElement="SequenceFlow_3">
+        <di:waypoint x="415" y="130"/>
+        <di:waypoint x="449" y="133"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_BusinessRuleTask_1_to_shape_ExclusiveGateway_1" bpmnElement="SequenceFlow_2">
+        <di:waypoint x="321" y="132.5"/>
+        <di:waypoint x="365" y="130"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape_StartEvent_1_to_shape_BusinessRuleTask_1" bpmnElement="SequenceFlow_1">
+        <di:waypoint x="116" y="123"/>
+        <di:waypoint x="180" y="132.5"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmn2:relationship type="BPSimData">
+    <bpmn2:extensionElements>
+      <bpsim:BPSimData>
+        <bpsim:Scenario id="default" name="Simulationscenario">
+          <bpsim:ScenarioParameters/>
+          <bpsim:ElementParameters elementRef="UserTask_1">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="BusinessRuleTask_1">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+            <bpsim:ResourceParameters>
+              <bpsim:Availability>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Availability>
+              <bpsim:Quantity>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:Quantity>
+            </bpsim:ResourceParameters>
+            <bpsim:CostParameters>
+              <bpsim:UnitCost>
+                <bpsim:FloatingParameter value="0"/>
+              </bpsim:UnitCost>
+            </bpsim:CostParameters>
+          </bpsim:ElementParameters>
+          <bpsim:ElementParameters elementRef="StartEvent_1">
+            <bpsim:TimeParameters>
+              <bpsim:ProcessingTime>
+                <bpsim:NormalDistribution mean="0" standardDeviation="0"/>
+              </bpsim:ProcessingTime>
+            </bpsim:TimeParameters>
+          </bpsim:ElementParameters>
+        </bpsim:Scenario>
+      </bpsim:BPSimData>
+    </bpmn2:extensionElements>
+    <bpmn2:source>_J4ElsVJgEDiScotxwBQ14Q</bpmn2:source>
+    <bpmn2:target>_J4ElsVJgEDiScotxwBQ14Q</bpmn2:target>
+  </bpmn2:relationship>
+</bpmn2:definitions>
+----
+
+To create this example BPMN process in VSCode using the {PRODUCT} BPMN modeler, follow these steps:
+
+.. In the upper-right corner of the BPMN modeler, click the *Properties* icon and define the following properties:
+* *Process*: Set the following values:
+** *Name*: `Person Process`
+** *ID*: `persons`
+** *Package*: `org.acme`
+* *Process Data*: Add the following process variables:
+** `person` with the type `org.acme.Person` (Use the *Custom* data type option to define the custom type.)
+** `isAdult` with the type `Boolean`
+.. In the left palette, select *Activities* -> *Business Rule*, drag the task to the canvas, and link to it from the start event.
+.. Select the business rule task and define the following properties:
+
+* *General*: Set the rule task *Name* to `Evaluate person`.
+* *Implementation/Execution*: Set the following values:
+** *Rule Language*: `DMN`
+** *Namespace*: The `namespace` property value from the `PersonDecisions.dmn` file that you created previously, such as `\https://kiegroup.org/dmn/_52CEF9FD-9943-4A89-96D5-6F66810CA4C1`
+** *Decision Name*: `isAdult`
+** *DMN Model Name*: `PersonDecisions`
+* *Data Assignments*: Add the following assignments:
+** *Data Input*: Add a data input with the name `Person`, with the type `org.acme.Person`, and with the source `person`.
+** *Data Output*: Add a data output with the name `isAdult`, with the type `Boolean`, and with the source `isAdult`.
+.. In the left palette, select *Gateways* -> *Exclusive*, drag the gateway to the canvas, and link to it from the rule task.
+.. In the left palette, select *Activities* -> *User*, drag the user task to the canvas, and link to it from the exclusive gateway.
+.. Select the user task and define the following properties:
+
+* *General*: Set the user task *Name* to `Special handling for children`.
+* *Implementation/Execution*: Set the *Task Name* to `ChildrenHandling`, and add a data input with the name `person`, the type `org.acme.Person`, and the source `person`.
+.. In the left palette, select *End Events* -> *End*, drag two end events to the canvas, and link to one end event from the user task and to the other end event from the exclusive gateway.
+.. Select the connector that connects the exclusive gateway to the end event and for the *Implementation/Execution* property, set the *Condition Expression* to `Java` and enter the condition `return isAdult == true;`.
+.. Select the connector that connects the exclusive gateway to the user task and for the *Implementation/Execution* property, set the *Condition Expression* to `Java` and enter the condition to `return isAdult == false;`
+.. Save the BPMN process file.
+--

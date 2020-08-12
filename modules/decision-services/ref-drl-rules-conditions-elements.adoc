@@ -1,0 +1,390 @@
+[id='ref-drl-rules-conditions-elements_{context}']
+= Supported rule condition elements in DRL (keywords)
+
+DRL supports the following rule condition elements (keywords) that you can use with the patterns that you define in DRL rule conditions:
+
+`and`::
+Use this to group conditional components into a logical conjunction. Infix and prefix `and` are supported. You can group patterns explicitly with parentheses `()`. By default, all listed patterns are combined with `and` when no conjunction is specified.
++
+--
+ifdef::KOGITO-COMM[]
+.infixAnd
+image::kogito/drl/infixAnd.png[align="center"]
+
+.prefixAnd
+image::kogito/drl/prefixAnd.png[align="center"]
+endif::[]
+
+//@comment evacchi honestly I am not entirely sure all of these work
+.Example patterns with `and`
+[source]
+----
+//Infix `and`:
+colorType: /color/type and /person[ favoriteColor == colorType ]
+
+//Infix `and` with grouping:
+(colorType: /color/type and (/person[ favoriteColor == colorType ] or /person[ favoriteColor == colorType ])
+
+// Prefix `and`:
+(and colorType: /color/type /person[ favoriteColor == colorType ])
+
+// Default implicit `and`:
+colorType: /color/type
+/person[ favoriteColor == colorType ]
+----
+
+[NOTE]
+====
+Do not use a leading declaration binding with the `and` keyword (as you can with `or`, for example). A declaration can only reference a single fact at a time, and if you use a declaration binding with `and`, then when `and` is satisfied, it matches both facts and results in an error.
+
+.Example misuse of `and`
+[source]
+----
+// Causes compile error:
+$person : (/person[ name == "Romeo" ] and /person[ name == "Juliet"])
+----
+====
+--
+
+`or`::
+Use this to group conditional components into a logical disjunction. Infix and prefix `or` are supported. You can group patterns explicitly with parentheses `()`. You can also use pattern binding with `or`, but each pattern must be bound separately.
++
+--
+ifdef::KOGITO-COMM[]
+.infixOr
+image::kogito/drl/infixOr.png[align="center"]
+
+.prefixOr
+image::kogito/drl/prefixOr.png[align="center"]
+endif::[]
+
+//@comment evacchi honestly I am not entirely sure all of these work
+.Example patterns with `or`
+[source]
+----
+//Infix `or`:
+colorType: /color/type or /person[ favoriteColor == colorType]
+
+//Infix `or` with grouping:
+colorType: /color/type or (/person[ favoriteColor == colorType] and /person[ favoriteColor == colorType])
+
+// Prefix `or`:
+(or colorType: /color/type /person[ favoriteColor == colorType])
+----
+
+.Example patterns with `or` and pattern binding
+[source]
+----
+pensioner : ( /person[ sex == "f", age > 60 ] or /person[ sex == "m", age > 65 ] )
+
+(or pensioner : /person[ sex == "f", age > 60 ]
+    pensioner : /person[ sex == "m", age > 65 ])
+----
+
+The behavior of the `or` condition element is different from the connective `||` operator for constraints and restrictions in field constraints. The {DECISION_ENGINE} does not directly interpret the `or` element but uses logical transformations to rewrite a rule with `or` as a number of sub-rules. This process ultimately results in a rule that has a single `or` as the root node and one sub-rule for each of its condition elements. Each sub-rule is activated and executed like any normal rule, with no special behavior or interaction between the sub-rules.
+
+Therefore, consider the `or` condition element a shortcut for generating two or more similar rules that, in turn, can create multiple activations when two or more terms of the disjunction are true.
+--
+
+`exists`::
+Use this to specify facts and constraints that must exist. This option is triggered on only the first match, not subsequent matches. If you use this element with multiple patterns, enclose the patterns with parentheses `()`.
++
+--
+ifdef::KOGITO-COMM[]
+.Exists
+image::kogito/drl/exists.png[align="center"]
+endif::[]
+
+.Example patterns with `exists`
+[source]
+----
+exists /person[ firstName == "John"]
+
+exists (/person[ firstName == "John", age == 42 ])
+
+exists (/person[ firstName == "John" ] and
+        /person[ lastName == "Doe" ])
+----
+--
+
+`not`::
+Use this to specify facts and constraints that must not exist. If you use this element with multiple patterns, enclose the patterns with parentheses `()`.
++
+--
+ifdef::KOGITO-COMM[]
+.Not
+image::kogito/drl/not.png[align="center"]
+endif::[]
+
+.Example patterns with `not`
+[source]
+----
+not /person[ firstName == "John"]
+
+not (/person[ firstName == "John", age == 42 )]
+
+not (/person[ firstName == "John" ] and
+     /person[ lastName == "Doe" ])
+----
+--
+
+`forall`::
+Use this to verify whether all facts that match the first pattern match all the remaining patterns. When a `forall` construct is satisfied, the rule evaluates to `true`. This element is a scope delimiter, so it can use any previously bound variable, but no variable bound inside of it is available for use outside of it.
++
+--
+ifdef::KOGITO-COMM[]
+.Forall
+image::kogito/drl/forall.png[align="center"]
+endif::[]
+
+.Example rule with `forall`
+[source]
+----
+rule "All full-time employees have red ID badges"
+  when
+    forall( $emp : /employee[ type == "fulltime" ]
+                   /employee[ this == $emp, badgeColor = "red" ] )
+  then
+    // True, all full-time employees have red ID badges.
+end
+----
+
+In this example, the rule selects all `employee` objects whose type is `"fulltime"`. For each fact that matches this pattern, the rule evaluates the patterns that follow (badge color) and if they match, the rule evaluates to `true`.
+
+To state that all facts of a given type in the working memory of the {DECISION_ENGINE} must match a set of constraints, you can use `forall` with a single pattern for simplicity.
+
+.Example rule with `forall` and a single pattern
+[source]
+----
+rule "All full-time employees have red ID badges"
+  when
+    forall( /employee[ badgeColor = "red" ] )
+  then
+    // True, all full-time employees have red ID badges.
+end
+----
+
+You can use `forall` constructs with multiple patterns or nest them with other condition elements, such as inside a `not` element construct.
+
+.Example rule with `forall` and multiple patterns
+[source]
+----
+rule "All employees have health and dental care programs"
+  when
+    forall( $emp : /employee
+            /healthCare[ employee == $emp ]
+            /dentalCare[ employee == $emp ]
+          )
+  then
+    // True, all employees have health and dental care.
+end
+----
+
+.Example rule with `forall` and `not`
+[source]
+----
+rule "Not all employees have health and dental care"
+  when
+    not ( forall( $emp : /employee
+            /healthCare[ employee == $emp ]
+            /dentalCare[ employee == $emp ] )
+        )
+  then
+    // True, not all employees have health and dental care.
+end
+----
+
+NOTE: The format `forall( p1 p2 p3 ...)` is equivalent to `not( p1 and not( and p2 p3 ... ) )`.
+
+--
+
+`accumulate`::
+Use this to iterate over a collection of objects, execute custom actions for each of the elements, and return one or more result objects (if the constraints evaluate to `true`). You can use predefined functions in your `accumulate` conditions or implement custom functions as needed. You can also use the abbreviation `acc` for `accumulate` in rule conditions.
++
+--
+Use the following format to define `accumulate` conditions in rules:
+
+.Preferred format for `accumulate`
+[source,subs="+quotes"]
+----
+accumulate( __SOURCE_PATTERN__; __FUNCTIONS__ [;__CONSTRAINTS__] )
+----
+
+ifdef::KOGITO-COMM[]
+.Accumulate
+image::kogito/drl/accumulate.png[align="center"]
+endif::[]
+
+NOTE: Although the {DECISION_ENGINE} supports alternate formats for the `accumulate` element for backward compatibility, this format is preferred for optimal performance in rules and applications.
+
+The {DECISION_ENGINE} supports the following predefined `accumulate` functions. These functions accept any expression as input.
+
+* `average`
+* `min`
+* `max`
+* `count`
+* `sum`
+* `collectList`
+* `collectSet`
+
+In the following example rule, `min`, `max`, and `average` are `accumulate` functions that calculate the minimum, maximum, and average temperature values over all the readings for each sensor:
+
+.Example rule with `accumulate` to calculate temperature values
+[source]
+----
+rule "Raise alarm"
+  when
+    s : /sensor
+    accumulate( /reading( sensor == $s, $temp : temperature );
+                $min : min( $temp ),
+                $max : max( $temp ),
+                $avg : average( $temp );
+                $min < 20, $avg > 70 )
+  then
+    // Raise the alarm.
+end
+----
+
+The following example rule uses the `average` function with `accumulate` to calculate the average profit for all items in an order:
+
+.Example rule with `accumulate` to calculate average profit
+[source]
+----
+rule "Average profit"
+  when
+    $order : /order
+    accumulate( /orderItem( order == $order, $cost : cost, $price : price );
+                $avgProfit : average( 1 - $cost / $price ) )
+  then
+    // Average profit for `$order` is `$avgProfit`.
+end
+----
+
+To use custom, domain-specific functions in `accumulate` conditions, create a Java class that implements the `org.kie.api.runtime.rule.AccumulateFunction` interface. For example, the following Java class defines a custom implementation of an `AverageData` function:
+
+.Example Java class with custom implementation of `average` function
+[source,java]
+----
+// An implementation of an accumulator capable of calculating average values
+
+public class AverageAccumulateFunction implements org.kie.api.runtime.rule.AccumulateFunction<AverageAccumulateFunction.AverageData> {
+
+    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+
+    }
+
+    public void writeExternal(ObjectOutput out) throws IOException {
+
+    }
+
+    public static class AverageData implements Externalizable {
+        public int    count = 0;
+        public double total = 0;
+
+        public AverageData() {}
+
+        public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
+            count   = in.readInt();
+            total   = in.readDouble();
+        }
+
+        public void writeExternal(ObjectOutput out) throws IOException {
+            out.writeInt(count);
+            out.writeDouble(total);
+        }
+
+    }
+
+    /* (non-Javadoc)
+     * @see org.kie.api.runtime.rule.AccumulateFunction#createContext()
+     */
+    public AverageData createContext() {
+        return new AverageData();
+    }
+
+    /* (non-Javadoc)
+     * @see org.kie.api.runtime.rule.AccumulateFunction#init(java.io.Serializable)
+     */
+    public void init(AverageData context) {
+        context.count = 0;
+        context.total = 0;
+    }
+
+    /* (non-Javadoc)
+     * @see org.kie.api.runtime.rule.AccumulateFunction#accumulate(java.io.Serializable, java.lang.Object)
+     */
+    public void accumulate(AverageData context,
+                           Object value) {
+        context.count++;
+        context.total += ((Number) value).doubleValue();
+    }
+
+    /* (non-Javadoc)
+     * @see org.kie.api.runtime.rule.AccumulateFunction#reverse(java.io.Serializable, java.lang.Object)
+     */
+    public void reverse(AverageData context, Object value) {
+        context.count--;
+        context.total -= ((Number) value).doubleValue();
+    }
+
+    /* (non-Javadoc)
+     * @see org.kie.api.runtime.rule.AccumulateFunction#getResult(java.io.Serializable)
+     */
+    public Object getResult(AverageData context) {
+        return new Double( context.count == 0 ? 0 : context.total / context.count );
+    }
+
+    /* (non-Javadoc)
+     * @see org.kie.api.runtime.rule.AccumulateFunction#supportsReverse()
+     */
+    public boolean supportsReverse() {
+        return true;
+    }
+
+    /* (non-Javadoc)
+     * @see org.kie.api.runtime.rule.AccumulateFunction#getResultType()
+     */
+    public Class< ? > getResultType() {
+        return Number.class;
+    }
+
+}
+----
+
+To use the custom function in a DRL rule, import the function using the `import accumulate` statement:
+
+.Format to import a custom function
+[source,subs="+quotes"]
+----
+import accumulate __CLASS_NAME__ __FUNCTION_NAME__
+----
+
+.Example rule with the imported `average` function
+[source]
+----
+import accumulate AverageAccumulateFunction.AverageData average
+
+rule "Average profit"
+  when
+    $order : /order
+    accumulate( /orderItem[ order == $order, $cost : cost, $price : price ];
+                $avgProfit : average( 1 - $cost / $price ) )
+  then
+    // Average profit for `$order` is `$avgProfit`.
+end
+----
+
+ifdef::KOGITO-COMM[]
+[NOTE]
+====
+For backward compatibility, the {DECISION_ENGINE} also supports the configuration of `accumulate` functions through configuration files and system properties, but this is a deprecated method. To configure the `average` function from the previous example using the configuration file or system property, set a property as shown in the following example:
+
+[source]
+----
+drools.accumulate.function.average = AverageAccumulateFunction.AverageData
+----
+
+Note that `drools.accumulate.function` is a required prefix, `average` is how the function is used in the DRL files, and `AverageAccumulateFunction.AverageData` is the fully qualified name of the class that implements the function behavior.
+====
+endif::[]
+--

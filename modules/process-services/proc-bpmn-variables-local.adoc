@@ -1,0 +1,24 @@
+[id='proc-bpmn-variables-local_{context}']
+= Defining local variables in {PRODUCT} processes
+
+Local variables are visible within a specific process component, typically a task. Local variables are initialized when the element context is initialized (when the execution workflow enters the node and execution of the `onEntry` action has finished, if applicable). Local variables are destroyed when the element context is destroyed (when the execution workflow leaves the element).
+
+You can map local variables to global or process variables. This mapping enables you to maintain relative independence from the parent context that accommodates the local variable. This isolation helps prevent technical exceptions.
+
+For tasks, with the exception of script tasks, you define local variables as data input or output assignments under *Assignments* in the task properties. Data input assignments define variables that enter the task and provide the entry data required for the task execution. Data output assignments refer to the context of the task after execution to acquire output data.
+
+User tasks present data related to the actor who is completing the user task. User tasks also require the actor to provide result data related to the execution.
+
+//To request and provide the data, use task forms and map the data in the Data Input Assignment parameter to a variable. Map the data provided by the user in the Data Output Assignment parameter if you want to preserve the data as output.
+
+.Procedure
+. In your VSCode IDE, open the relevant BPMN process file to view the process in the {PRODUCT} BPMN modeler.
+. Select the relevant task (non-script task) and, in the upper-right corner of the modeler, click *Properties*.
+. Under *Assignments*, click the edit icon to open the *Data I/O* window, and click *Add* to begin adding local variables as data input or output:
+
+* *Name*: Enter the name of the data input or output, such as `person` for a local variable with person information as the input and `isAdult` for a local variable with adult status as the output.
+* *Data Type*: Enter a custom or standard data type of the data input or output, such as `org.acme.Person`.
+* *Source* or *Target*: Enter the source object for the data input or the target object for the data output, such as `person` for a Java class with person information.
++
+.Example local variables in BPMN modeler
+image::kogito/bpmn/bpmn-local-variables.png[Image of local variable example]

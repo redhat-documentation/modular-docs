@@ -1,0 +1,116 @@
+[id='ref-bpmn-start-events_{context}']
+= Start events supported in {PRODUCT}
+
+BPMN start events initiate a business process. A start event cannot have an incoming sequence flow and must have only one outgoing sequence flow. You can use start events in top-level processes, embedded subprocess, and callable subprocesses where applicable.
+
+//All start events, with the exception of the `None` start event, are catch events.  For example, a `Signal` start event starts the process only when the referenced signal (event trigger) is received.  You can configure start events in event subprocesses to be interrupting or non-interrupting. An interrupting start event for an event subprocess stops or interrupts the execution of the containing or parent process. A non-interrupting start event does not stop or interrupt the execution of the containing or parent process.
+
+{PRODUCT} currently supports the following start events:
+
+.Supported start events
+[cols="25%,25%,25%,25%" options="header"]
+|===
+|Start event type
+|Top-level processes
+2+|Subprocesses
+
+|
+|
+h|Interrupt
+h|Non-interrupt
+
+|None
+|image:kogito/bpmn/bpmn-start-node.png[]
+|Not applicable
+|Not applicable
+
+|Message
+|image:kogito/bpmn/bpmn-message-node.png[]
+|image:kogito/bpmn/bpmn-message-node.png[]
+|image:kogito/bpmn/bpmn-message-non-interrupt.png[]
+
+|Timer
+|image:kogito/bpmn/bpmn-timer-start.png[]
+|image:kogito/bpmn/bpmn-timer-start.png[]
+|image:kogito/bpmn/bpmn-timer-non-interrupt.png[]
+
+|Signal
+|image:kogito/bpmn/bpmn-signal-start.png[]
+|image:kogito/bpmn/bpmn-signal-start.png[]
+|image:kogito/bpmn/bpmn-signal-non-interrupt.png[]
+|===
+
+////
+|Conditional
+|image:kogito/bpmn/bpmn-conditional-start.png[]
+|image:kogito/bpmn/bpmn-conditional-start.png[]
+|image:kogito/bpmn/bpmn-conditional-non-interrupt.png[]
+
+|Compensation
+|image:kogito/bpmn/bpmn-compensation-start.png[]
+|image:kogito/bpmn/bpmn-compensation-start.png[]
+|
+
+|Error
+|
+|image:kogito/bpmn/bpmn-error-start.png[]
+|
+
+|Escalation
+|image:kogito/bpmn/bpmn-escalation-start.png[]
+|image:kogito/bpmn/bpmn-escalation-start.png[]
+|image:kogito/bpmn/bpmn-escalation-non-interrupt.png[]
+////
+
+None::
++
+--
+The none start event is a start event without a trigger condition. A process or a subprocess can contain at most one none start event, which is triggered on process or subprocess start by default, and the outgoing flow is taken immediately.
+
+When you use a none start event in a subprocess, the execution of the process flow is transferred from the parent process into the subprocess and the none start event is triggered. This means that the token (the current location within the process flow) is passed from the parent process into the subprocess activity and the none start event of the subprocess generates a token of its own.
+--
+
+Message::
++
+--
+A process can contain multiple message start events, which are triggered by a particular message. The process instance with a message start event starts its execution from this event after it has received the respective message. After the message is received, the process is instantiated and its message start event is executed immediately (its outgoing flow is taken).
+
+Because a message can be consumed by an arbitrary number of processes and process elements, including no elements, one message can trigger multiple message start events and therefore instantiate multiple processes.
+--
+
+Timer::
++
+--
+The timer start event is a start event with a timing mechanism that is triggered at the start of the process. A process can contain multiple timer start events.
+
+When you use a timer start event in a subprocess, execution of the process flow is transferred from the parent process into the subprocess and the timer start event is triggered. The token is taken from the parent subprocess activity and the timer start event of the subprocess is triggered and waits for the timer to trigger.
+
+After the time defined by the timer definition is reached, the outgoing flow is taken.
+--
+
+Signal::
++
+--
+The signal start event is triggered by a signal with a particular signal code. The signal start event is triggered when the process instance receives the required signal, and then the signal start event is executed and its outgoing flow is taken. A process can contain multiple signal start events.
+--
+
+////
+.Conditional
+
+The conditional start event is a start event with a Boolean condition definition. The execution is triggered when the condition is first evaluated to `false` and then to ``true``. The process execution starts only if the condition is evaluated to `true` after the start event has been instantiated.
+
+A process can contain multiple conditional start events.
+
+.Compensation
+
+A compensation start event is used to start a compensation event subprocess when using a subprocess as the target activity of a compensation intermediate event.
+
+.Error
+A process or subprocess can contain multiple error start events, which are triggered when an error object with a particular `ErrorRef` property is received.
+The error object can be produced by an error end event. It indicates an incorrect process ending. The process instance with the error start event starts execution after it has received the respective error object. The error start event is executed immediately upon receiving the error object and its outgoing flow is taken.
+
+.Escalation
+
+
+The escalation start event is a start event that is triggered by an escalation with a particular escalation code. Processes can contain multiple escalation start events. The process instance with an escalation start event starts its execution when it receives the defined escalation object. The process is instantiated and the escalation start event is executed immediately and its outgoing flow is taken.
+////

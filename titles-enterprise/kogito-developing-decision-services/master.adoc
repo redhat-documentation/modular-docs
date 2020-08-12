@@ -1,0 +1,24 @@
+// This is a multi-assembly title with its own parent title and introduction to the assemblies that follow.
+
+:KOGITO-ENT:
+include::_artifacts/document-attributes.adoc[]
+
+[id='title-developing-decision-services']
+= Developing decision services in {PRODUCT}
+:doctype: book
+:imagesdir: _images
+:context: developing-decision-services
+
+As a developer of business decisions, you can use {PRODUCT} business automation to develop decision services using Decision Model and Notation (DMN) models, Drools Rule Language (DRL) rules, XLS or XLSX spreadsheet decision tables, or a combination of all three methods.
+
+// Assembly includes
+include::assemblies/assembly-kogito-using-dmn.adoc[]
+include::assemblies/assembly-kogito-using-drl.adoc[]
+include::assemblies/assembly-kogito-using-spreadsheet-decision-tables.adoc[]
+include::assemblies/assembly-kogito-decision-engine.adoc[]
+
+// Versioning info
+include::_artifacts/versioning-information.adoc[]
+
+// Contact information
+include::_artifacts/author-group.adoc[]

@@ -1,0 +1,5 @@
+[id='con-bpmn_{context}']
+= Business Process Model and Notation (BPMN) 2.0
+Business Process Model and Notation (BPMN) 2.0 is a standard established by the Object Management Group (OMG) for describing and modeling business processes. BPMN defines an XML schema that enables BPMN models to be shared between BPMN-compliant platforms and across organizations so that business analysts and business process developers can collaborate in designing and implementing BPMN process services. The BPMN standard is similar to and can be used together with the Decision Model and Notation (DMN) standard for designing and modeling business decisions.
+
+For more information about BPMN, see the Object Management Group (OMG) https://www.omg.org/spec/BPMN/2.0/About-BPMN[Business Process Model and Notation 2.0 specification].

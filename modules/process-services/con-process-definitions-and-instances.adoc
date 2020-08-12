@@ -1,0 +1,42 @@
+[id='con-process-definitions-and-instances_{context}']
+
+= Process definitions and process instances in Business Central
+
+A process definition is a Business Process Model and Notation (BPMN) 2.0 file that serves as a container for a process and its BPMN diagram. The process definition shows all of the available information about the business process, such as any associated subprocesses or the number of users and groups that are participating in the selected definition.
+
+A process definition also defines the `import` entry for imported processes that the process definition uses, and the `relationship` entries.
+
+.BPMN2 source of a process definition
+[source]
+----
+<definitions id="Definition"
+               targetNamespace="http://www.jboss.org/drools"
+               typeLanguage="http://www.java.com/javaTypes"
+               expressionLanguage="http://www.mvel.org/2.0"
+               xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"Rule Task
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+               xmlns:g="http://www.jboss.org/drools/flow/gpd"
+               xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+               xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+               xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+               xmlns:tns="http://www.jboss.org/drools">
+
+    <process>
+      PROCESS
+    </process>
+
+    <bpmndi:BPMNDiagram>
+     BPMN DIAGRAM DEFINITION
+    </bpmndi:BPMNDiagram>
+
+    </definitions>
+----
+
+After you have created, configured, and deployed your project that includes your business processes, you can view the list of all the process definitions in Business Central *Menu* → *Manage* → *Process Definitions*. You can refresh the list of deployed process definitions at any time by clicking the refresh button in the upper-right corner.
+
+The process definition list shows all the available process definitions that are deployed into the platform. Click any of the process definitions listed to show the corresponding process definition details. This displays information about the process definition, such as if there is a sub-process associated with it, or how many users and groups exist in the process definition. The *Diagram* tab in the process definition details page contains the BPMN2-based diagram of the process definition.
+
+Within each selected process definition, you can start a new process instance for the process definition by clicking the *New Process Instance* button in the upper-right corner. Process instances that you start from the available process definitions are listed in *Menu* -> *Manage* -> *Process Instances*.
+
+You can also define the default pagination option for all users under the *Manage* drop-down menu (*Process Definition*, *Process Instances*, *Tasks*, *Jobs*, and *Execution Errors*) and in *Menu* -> *Track* -> *Task Inbox*.

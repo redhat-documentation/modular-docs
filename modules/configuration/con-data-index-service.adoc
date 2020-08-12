@@ -1,0 +1,53 @@
+[id='con-data-index-service_{context}']
+= {PRODUCT} Data Index Service
+
+{PRODUCT} provides a Data Index Service that stores all {PRODUCT} events related to processes, tasks, and domain data. The Data Index Service uses Apache Kafka messaging to consume https://cloudevents.io/[CloudEvents] messages from {PRODUCT} services, and then indexes the returned data for future GraphQL queries and stores the data in the Infinispan persistence store. The Data Index Service is at the core of all {PRODUCT} search, insight, and management capabilities.
+
+.Data Index Service architecture in an example {PRODUCT} service
+image::kogito/configuration/data-index-architecture.jpg[Diagram of an example Kogito service using Data Index Service]
+
+The {PRODUCT} Data Index Service has the following key attributes:
+
+* Distinct focus on domain data
+* Flexible data structure
+* Distributable and cloud-ready format
+* Infinispan-based persistence support
+* Message-based communication with {PRODUCT} runtime (Apache Kafka, cloud events )
+* Powerful querying API using GraphQL
+
+NOTE: The {PRODUCT} Data Index Service is not intended for permanent storage or audit log purposes. The Data Index Service is designed to make business domain data accessible for processes that are currently in progress.
+
+== Data Index Service workflow in {PRODUCT}
+
+The {PRODUCT} Data Index Service is a Quarkus application, based on https://vertx.io/[Vert.x] with https://smallrye.io/smallrye-reactive-messaging/[Reactive Messaging], that exposes a https://graphql.org[GraphQL] endpoint that client applications use to access business domain-specific data and other information about running process instances.
+
+The Data Index Service uses Apache Kafka messaging to consume https://cloudevents.io/[CloudEvents] messages from {PRODUCT} services, and then indexes the returned data for future GraphQL queries. These events contain information about units of work executed for a process.
+
+Indexed data from the Data Index Service is parsed and pushed into the following Infinispan caches:
+
+* *Domain cache*: Generic cache for each process definition where the process instance variables are pushed as the root content. This cache also includes some process instance metadata, which enables data correlation between domain and process instances. Data is transferred in JSON format to an Infinispan server.
+* *Process instance cache*: Cache for each process instance. This cache contains all process instance information, including all metadata and other detailed information such as executed nodes.
+* *User task instance cache*: Cache for each user task instance. This cache contains all task instance information, including all metadata and other detailed information such as data input and output.
+
+The indexing functionality in the Data Index Service is based on https://lucene.apache.org/[Apache Lucene], and storage for the Data Index Service is provided by https://infinispan.org/[Infinispan]. Communication between the Data Index Service and Infinispan is handled through a protobuf (https://developers.google.com/protocol-buffers/[protocol buffers]) schema and generated marshallers.
+
+After the data is indexed and stored in a cache, the Data Index Service inspects the process model to update the GraphQL schema and enable a type-checked query system that consumer clients can use to access the data.
+
+.Infinispan indexing
+[NOTE]
+====
+
+Infinispan also supports data indexing through an embedded Apache Lucene engine. To determine which attributes must be indexed, Inifinispan requires `@Indexed` and `@Field` Hibernate Search parameters that annotate the relevant protobuf file attributes:
+
+.Example indexed model in Infinispan server configuration
+[source]
+----
+/* @Indexed */
+message ProcessInstanceMeta {
+    /* @Field(store = Store.YES) */
+    optional string id = 1;
+}
+----
+
+For more information about Infinispan indexing, see https://infinispan.org/docs/stable/titles/developing/developing.html#enable_indexing[Indexing of protobuf encoded entries] in the Infinispan documentation.
+====

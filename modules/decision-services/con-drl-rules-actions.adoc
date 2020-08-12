@@ -1,0 +1,21 @@
+[id='con-drl-rules-actions_{context}']
+= Rule actions in DRL
+
+The `then` part of the rule (also known as the _Right Hand Side (RHS)_ of the rule) contains the actions to be performed when the conditional part of the rule has been met. Rule actions are typically determined by one or more _data sources_ that you define as part of your DRL rule unit. For example, if a bank requires loan applicants to have over 21 years of age (with a rule condition `/applicant[ applicantName : name, age < 21 ]`) and a loan applicant is under 21 years old, the `then` action of an `"Underage"` rule would be `setApproved( false )` based on a defined data source, declining the loan because the applicant is under age.
+
+The main purpose of rule actions is to to insert, delete, or modify data in the working memory of the {DECISION_ENGINE}. Effective rule actions are small, declarative, and readable. If you need to use imperative or conditional code in rule actions, then divide the rule into multiple smaller and more declarative rules.
+
+.Example rule for loan application age limit
+[source]
+----
+rule "Underage"
+  when
+    /applicant[ applicantName : name, age < 21 ]
+    $application : /loanApplication[ applicant == applicantName ]
+  then
+    $application.setApproved( false );
+    $application.setExplanation( "Underage" );
+end
+----
+
+For more information about using data sources for rule actions, see xref:con-drl-rule-units_drl-rules[].

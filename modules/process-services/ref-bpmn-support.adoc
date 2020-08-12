@@ -1,0 +1,105 @@
+[id='ref-bpmn-support_{context}']
+= BPMN2 support in {PRODUCT}
+
+{PRODUCT} currently supports a subset of the https://www.omg.org/spec/BPMN/2.0/About-BPMN[Business Process Model and Notation 2.0 specification]. Although the {PRODUCT} BPMN modeler displays many BPMN components in the canvas palette, the {PROCESS_ENGINE} (process runtime component) in {PRODUCT} currently executes only the supported subset of components. If you use any BPMN components from the {PRODUCT} BPMN modeler palette that are not supported by the {PROCESS_ENGINE}, your {PRODUCT} project might fail to compile or execute. Additional BPMN components are added to {PRODUCT} runtime support with every release.
+
+The following tables list the components from the BPMN2 specification that are currently supported in {PRODUCT}:
+
+.Support status icons
+[cols="30%,70%" options="header"]
+|===
+|Key
+|Description
+
+a|image:kogito/bpmn/grn_check.png[] | Supported by {PRODUCT} runtime
+a|image:kogito/bpmn/bk_x.png[] | Not supported by {PRODUCT} runtime
+|===
+
+.BPMN2 components
+[cols="25%,25%,30%,20%" options="header"]
+|===
+2+|Component type
+|Component
+|Support status
+
+2.12+|Start events  |None              |image:kogito/bpmn/grn_check.png[]
+                    |Message           |image:kogito/bpmn/grn_check.png[]
+                    |Timer             |image:kogito/bpmn/grn_check.png[]
+                    |Signal            |image:kogito/bpmn/grn_check.png[]
+                    |Error             |image:kogito/bpmn/bk_x.png[]
+                    |Escalation        |image:kogito/bpmn/bk_x.png[]
+                    |Cancel            |image:kogito/bpmn/bk_x.png[]
+                    |Compensation      |image:kogito/bpmn/bk_x.png[]
+                    |Conditional       |image:kogito/bpmn/bk_x.png[]
+                    |Link              |image:kogito/bpmn/bk_x.png[]
+                    |Multiple          |image:kogito/bpmn/bk_x.png[]
+                    |Parallel multiple |image:kogito/bpmn/bk_x.png[]
+1.32+|Intermediate events  .11+|Catching    |Message           |image:kogito/bpmn/grn_check.png[]
+                                            |Timer             |image:kogito/bpmn/grn_check.png[]
+                                            |Signal            |image:kogito/bpmn/grn_check.png[]
+                                            |Error             |image:kogito/bpmn/bk_x.png[]
+                                            |Escalation        |image:kogito/bpmn/bk_x.png[]
+                                            |Cancel            |image:kogito/bpmn/bk_x.png[]
+                                            |Compensation      |image:kogito/bpmn/bk_x.png[]
+                                            |Conditional       |image:kogito/bpmn/bk_x.png[]
+                                            |Link              |image:kogito/bpmn/bk_x.png[]
+                                            |Multiple          |image:kogito/bpmn/bk_x.png[]
+                                            |Parallel multiple |image:kogito/bpmn/bk_x.png[]
+                          .10+|Boundary     |Message           |image:kogito/bpmn/grn_check.png[]
+                                            |Timer             |image:kogito/bpmn/grn_check.png[]
+                                            |Signal            |image:kogito/bpmn/grn_check.png[]
+                                            |Error             |image:kogito/bpmn/bk_x.png[]
+                                            |Escalation        |image:kogito/bpmn/bk_x.png[]
+                                            |Cancel            |image:kogito/bpmn/bk_x.png[]
+                                            |Compensation      |image:kogito/bpmn/bk_x.png[]
+                                            |Conditional       |image:kogito/bpmn/bk_x.png[]
+                                            |Multiple          |image:kogito/bpmn/bk_x.png[]
+                                            |Parallel multiple |image:kogito/bpmn/bk_x.png[]
+                          .11+|Throwing     |Message           |image:kogito/bpmn/grn_check.png[]
+                                            |Timer             |image:kogito/bpmn/bk_x.png[]
+                                            |Signal            |image:kogito/bpmn/bk_x.png[]
+                                            |Error             |image:kogito/bpmn/bk_x.png[]
+                                            |Escalation        |image:kogito/bpmn/bk_x.png[]
+                                            |Cancel            |image:kogito/bpmn/bk_x.png[]
+                                            |Compensation      |image:kogito/bpmn/bk_x.png[]
+                                            |Conditional       |image:kogito/bpmn/bk_x.png[]
+                                            |Link              |image:kogito/bpmn/bk_x.png[]
+                                            |Multiple          |image:kogito/bpmn/bk_x.png[]
+                                            |Parallel multiple |image:kogito/bpmn/bk_x.png[]
+2.9+|End events    |None              |image:kogito/bpmn/grn_check.png[]
+                    |Message           |image:kogito/bpmn/grn_check.png[]
+                    |Error             |image:kogito/bpmn/grn_check.png[]
+                    |Terminate         |image:kogito/bpmn/grn_check.png[]
+                    |Signal            |image:kogito/bpmn/bk_x.png[]
+                    |Escalation        |image:kogito/bpmn/bk_x.png[]
+                    |Cancel            |image:kogito/bpmn/bk_x.png[]
+                    |Compensation      |image:kogito/bpmn/bk_x.png[]
+                    |Multiple          |image:kogito/bpmn/bk_x.png[]
+2.6+|Tasks    |Business rule    |image:kogito/bpmn/grn_check.png[]
+              |Script           |image:kogito/bpmn/grn_check.png[]
+              |User             |image:kogito/bpmn/grn_check.png[]
+              |Service          |image:kogito/bpmn/grn_check.png[]
+              |Send             |image:kogito/bpmn/bk_x.png[]
+              |Receive          |image:kogito/bpmn/bk_x.png[]
+2.4+|Subprocesses   |Embedded           |image:kogito/bpmn/grn_check.png[]
+                    a|Reusable
+                    (call activity)   |image:kogito/bpmn/grn_check.png[]
+                    |Ad hoc             |image:kogito/bpmn/bk_x.png[]
+                    |Event              |image:kogito/bpmn/bk_x.png[]
+2.6+|Gateways   |Inclusive      |image:kogito/bpmn/grn_check.png[]
+                |Exclusive      |image:kogito/bpmn/grn_check.png[]
+                |Parallel       |image:kogito/bpmn/grn_check.png[]
+                |Event-based    |image:kogito/bpmn/grn_check.png[]
+                |Complex        |image:kogito/bpmn/bk_x.png[]
+                |Chaining       |image:kogito/bpmn/bk_x.png[]
+
+2.3+|Connectors   |Sequence flow     |image:kogito/bpmn/grn_check.png[]
+                  |Message flow      |image:kogito/bpmn/bk_x.png[]
+                  |Association       |image:kogito/bpmn/bk_x.png[]
+2.2+|Collaborators    |Lane             |image:kogito/bpmn/bk_x.png[]
+                      |Pool             |image:kogito/bpmn/bk_x.png[]
+2.2+|Artifacts        |Group            |image:kogito/bpmn/bk_x.png[]
+                      |Text annotation  |image:kogito/bpmn/bk_x.png[]
+|===
+
+For more information about BPMN components, see the Object Management Group (OMG) https://www.omg.org/spec/BPMN/2.0/About-BPMN[Business Process Model and Notation 2.0 specification].

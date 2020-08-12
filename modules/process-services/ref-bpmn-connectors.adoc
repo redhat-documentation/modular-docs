@@ -1,0 +1,12 @@
+[id='ref-bpmn-connectors_{context}']
+= Connectors supported in {PRODUCT}
+BPMN connectors create an association between two components in a process. When a connector is directed, the association is sequential and indicates that one of the elements is executed immediately before the other within an instance of the process. Connectors can start and end at the top, bottom, right, or left of the process components being associated. The BPMN2 specification allows you to use your discretion, placing connectors in a way that makes the process behavior easy to follow and understand.
+
+{PRODUCT} currently supports only sequence flow connectors. A sequence flow connects elements of a process and defines the order in which those elements are executed within an instance.
+
+////
+* Sequence flows: Connect elements of a process and define the order in which those elements are executed within an instance.
+* Association flows: Connect the elements of a process without execution semantics. Association flows can be undirected or unidirectional.
+
+NOTE: The new process modeler supports only undirected association flows. The legacy modeler supports one direction and Unidirection flows.
+////

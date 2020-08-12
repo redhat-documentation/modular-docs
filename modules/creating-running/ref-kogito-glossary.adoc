@@ -1,0 +1,294 @@
+[id='ref-kogito-glossary_{context}']
+= {PRODUCT} glossary of terms
+
+This glossary defines terms, concepts, or components that are referenced frequently in {PRODUCT} documentation or that have a unique meaning or function in {PRODUCT}.
+
+BPMN model::
+A definition of a business process workflow based on the https://www.omg.org/spec/BPMN/2.0/About-BPMN[Business Process Model and Notation (BPMN) specification]. BPMN is a standard established by the Object Management Group (OMG) for describing and modeling business processes. BPMN defines an XML schema that enables BPMN models to be shared between BPMN-compliant platforms and across organizations so that business analysts and business process developers can collaborate in designing and implementing BPMN process services. The BPMN standard is similar to and can be used together with the Decision Model and Notation (DMN) standard for designing and modeling business decisions.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_PROCESS_SERVICES}[_{PROCESS_SERVICES}_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:chap-kogito-bpmn-models[]
+endif::[]
+
+business domain API::
+An API that your business develops and implements within business applications that contain {PRODUCT} services.
+
+business models::
+The collection of BPMN process models, DMN decision models, DRL rules, XLS decision tables, and any other assets that define the business logic for a {PRODUCT} service.
+
+CloudEvents format::
+A specification for describing event data in a common way. {PRODUCT} runtime events for messages, processes, tasks, and other application activities are published in https://cloudevents.io/[CloudEvents] format so that they can be consumed efficiently by other entities, such as the {PRODUCT} Data Index Service.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-kogito-runtime-events_kogito-configuring[_{PRODUCT} runtime events_]
+* {URL_CONFIGURING_KOGITO}#con-data-index-service_kogito-configuring[_{PRODUCT} Data Index Service_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-kogito-runtime-events_kogito-configuring[]
+* xref:con-data-index-service_kogito-configuring[]
+endif::[]
+
+decision table::
+A set of business rules defined in a tabular format. Each row in a decision table is a rule, and each column is a condition, an action, or another rule attribute.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_DECISION_SERVICES}#con-decision-tables_decision-tables[_Designing a decision service using spreadsheet decision tables_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-decision-tables_decision-tables[]
+endif::[]
+
+development mode::
+A project build option that provides a fast feedback loop from code changes to a running system using hot reload. Development mode also enables debugging tools such as Swagger in {PRODUCT} runtime services.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CREATING_RUNNING}#proc-kogito-running-app_kogito-creating-running[_Running a {PRODUCT} service_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:proc-kogito-running-app_kogito-creating-running[]
+endif::[]
+* https://quarkus.io/guides/maven-tooling[_Quarkus - Building applications with Maven_]
+
+DRL rule::
+A definition of a business rule in Drools Rule Language (DRL) format. DRL is a notation established by the https://www.drools.org/[Drools] open source business automation project for defining and describing business rules.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_DECISION_SERVICES}#con-drl_drl-rules[_Designing a decision service using DRL rules_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-drl_drl-rules[]
+endif::[]
+
+DRL rule unit::
+A module for rules and a unit of execution. A rule unit collects a set of rules with the declaration of the type of facts that the rules act on. A rule unit also serves as a unique namespace for each group of rules. A single rule base can contain multiple rule units. You typically store all the rules for a unit in the same file as the unit declaration so that the unit is self-contained.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_DECISION_SERVICES}#con-drl-rule-units_drl-rules[_Rule units in DRL_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-drl-rule-units_drl-rules[]
+endif::[]
+
+DMN model::
+A definition of a business decision flow based on the https://www.omg.org/spec/DMN[Decision Model and Notation (DMN) specification]. DMN is a standard established by the Object Management Group (OMG) for describing and modeling operational decisions. DMN defines an XML schema that enables DMN models to be shared between DMN-compliant platforms and across organizations so that business analysts and business rules developers can collaborate in designing and implementing DMN decision services. The DMN standard is similar to and can be used together with the Business Process Model and Notation (BPMN) standard for designing and modeling business processes.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_DECISION_SERVICES}#con-dmn_kogito-dmn-models[_Designing a decision service using DMN models_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-dmn_kogito-dmn-models[]
+endif::[]
+
+event listener::
+A procedure or function in a program that reacts to a specified event, such as a completed node in a process or an executed decision.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#proc-event-listeners-registering_kogito-configuring[_Registering event listeners_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:proc-event-listeners-registering_kogito-configuring[]
+endif::[]
+
+intelligent application::
+An optimized, integrated solution that uses {PRODUCT} services to implement business-domain knowledge.
+
+{PRODUCT} CLI::
+A command-line interface (CLI) that enables you to interact with the {PRODUCT} Operator for deployment tasks. The {PRODUCT} CLI also enables you to deploy {PRODUCT} services from source instead of relying on custom resources and YAML files.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_DEPLOYING_ON_OPENSHIFT}#proc-kogito-deploying-on-ocp-kogito-cli_kogito-deploying-on-openshift[_Deploying {PRODUCT} on {OPENSHIFT} using the {PRODUCT} CLI_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:proc-kogito-deploying-on-ocp-kogito-cli_kogito-deploying-on-openshift[]
+endif::[]
+
+////
+//@comment: Excluding for now due to current build issues with the extension and we aren't using it at this point. (Stetson, 2 Apr 2020)
+{PRODUCT} Quarkus extension::
+An extension required to generate and build a Maven project for {PRODUCT} runtime services on the Quarkus Java framework. You can add the {PRODUCT} extension during project creation using the Quarkus Maven plugin or using the https://code.quarkus.io/[Code with Quarkus] extension manager.
+////
+
+{PRODUCT} Data Index Service::
+A dedicated service in {PRODUCT} that stores all {PRODUCT} events related to processes, tasks, and domain data. The Data Index Service uses Apache Kafka messaging to consume CloudEvents messages from {PRODUCT} services, and then indexes the returned data for future GraphQL queries and stores the data in the Infinispan persistence store. The Data Index Service is at the core of all {PRODUCT} search, insight, and management capabilities.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-data-index-service_kogito-configuring[_{PRODUCT} Data Index Service_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-data-index-service_kogito-configuring[]
+endif::[]
+
+{PRODUCT} domain-specific service::
+A business automation service for your business domain that you create using {PRODUCT}. You define the logic of this service using BPMN process models, DMN decision models, or other business models, and any other supported runtime configurations. In {PRODUCT} documentation, the general term for _{PRODUCT} services_ that you create refers to this type of service.
+
+{PRODUCT} Jobs Service::
+A dedicated service in {PRODUCT} for scheduling BPMN process events that are configured to be executed at a specified time. These time-based events in a process model are known as _jobs_. The Jobs Service does not execute a job, but triggers a callback that might be an HTTP request on a given endpoint specified for the job request or any other configured callback. The Jobs Service receives requests for job scheduling and then sends a request at the time specified on the job request.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-jobs-service_kogito-configuring[_{PRODUCT} Jobs Service_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-jobs-service_kogito-configuring[]
+endif::[]
+
+{PRODUCT} Management Console::
+A user interface for viewing the state of all available {PRODUCT} services and managing process instances.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_PROCESS_SERVICES}#con-management-console_kogito-bpmn-models[_{PRODUCT} Management Console_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-management-console_kogito-bpmn-models[]
+endif::[]
+
+{PRODUCT} Operator::
+An operator that deploys {PRODUCT} services and manages the required {PRODUCT} infrastructure services. The {PRODUCT} Operator uses the https://github.com/operator-framework[Operator Framework] and automates many of the deployment steps for you.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_DEPLOYING_ON_OPENSHIFT}#con-kogito-on-ocp_kogito-deploying-on-openshift[_{PRODUCT} on {OPENSHIFT}_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-kogito-on-ocp_kogito-deploying-on-openshift[]
+endif::[]
+
+{PRODUCT} runtime event::
+A record of a significant change of state in the application domain at a point in time. {PRODUCT} emits runtime events as a result of successfully executed requests, or _units of work_, in a process instance or task instance in a process. {PRODUCT} can use these events to notify third parties about changes to the BPMN process instance and its data.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-kogito-runtime-events_kogito-configuring[_{PRODUCT} runtime events_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-kogito-runtime-events_kogito-configuring[]
+endif::[]
+
+{PRODUCT} runtime persistence::
+An optional capability for preserving {PRODUCT} process data in your services across application restarts. {PRODUCT} persistence is based on https://infinispan.org/[Infinispan] and enables you to configure key-value storage definitions to persist data, such as active process nodes and process instance variables.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-persistence_kogito-configuring[_Persistence in {PRODUCT}_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-persistence_kogito-configuring[]
+endif::[]
+
+{PRODUCT} supporting services::
+The collection of middleware infrastructure services and other dedicated services that help you build additional functionality in the {PRODUCT} domain-specific services that you create. Key middleware infrastructure services in {PRODUCT} include Infinispan persistence and Apache Kafka reactive messaging. Dedicated services provided by {PRODUCT} include the {PRODUCT} Data Index Service and the {PRODUCT} Jobs Service.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-data-index-service_kogito-configuring[_{PRODUCT} Data Index Service_]
+* {URL_CONFIGURING_KOGITO}#con-jobs-service_kogito-configuring[_{PRODUCT} Jobs Service_]
+* {URL_CONFIGURING_KOGITO}#proc-persistence-enabling_kogito-configuring[_Enabling persistence for {PRODUCT} services_]
+* {URL_CONFIGURING_KOGITO}#proc-messaging-enabling_kogito-configuring[_Enabling messaging for {PRODUCT} services_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-data-index-service_kogito-configuring[]
+* xref:con-jobs-service_kogito-configuring[]
+* xref:proc-persistence-enabling_kogito-configuring[]
+* xref:proc-messaging-enabling_kogito-configuring[]
+endif::[]
+
+message event::
+A specified point in a business process where a defined message is used as the input (received) or output (sent) as a result of the process execution. For example, a message event might be an email sent to a specified user after a task is complete.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-kogito-runtime-events_kogito-configuring[_{PRODUCT} runtime events_]
+* {URL_CONFIGURING_KOGITO}#proc-messaging-enabling_kogito-configuring[_Enabling messaging for {PRODUCT} services_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-kogito-runtime-events_kogito-configuring[]
+* xref:proc-messaging-enabling_kogito-configuring[]
+endif::[]
+
+MicroProfile Reactive Messaging::
+A specification for sending and receiving messages within and between microservices using message brokers. {PRODUCT} supports https://github.com/eclipse/microprofile-reactive-messaging[MicroProfile Reactive Messaging] for messaging in {PRODUCT} services, such as message events used as either input or output of business process execution.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#proc-messaging-enabling_kogito-configuring[_Enabling messaging for {PRODUCT} services_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:proc-messaging-enabling_kogito-configuring[]
+endif::[]
+
+middleware infrastructure services::
+The collection of supplemental services in {PRODUCT} that provide capabilities such as persistence, messaging, and security. Key middleware infrastructure services in {PRODUCT} include Infinispan persistence and Apache Kafka reactive messaging.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#proc-persistence-enabling_kogito-configuring[_Enabling persistence for {PRODUCT} services_]
+* {URL_CONFIGURING_KOGITO}#proc-messaging-enabling_kogito-configuring[_Enabling messaging for {PRODUCT} services_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:proc-persistence-enabling_kogito-configuring[]
+* xref:proc-messaging-enabling_kogito-configuring[]
+endif::[]
+
+process definition::
+A model that defines the components, workflow, and functionality for a business process, such as a BPMN model.
+
+process instance::
+An occurrence of a pending, running, or completed business process, based on the process definition.
+
+PROTO file (`.proto`)::
+A data library used for marshalling Java objects in protobuf (https://developers.google.com/protocol-buffers/[protocol buffers]) format. {PRODUCT} runtime persistence and communication with Infinispan are handled through a protobuf schema and generated marshallers.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-persistence_kogito-configuring[_Persistence in {PRODUCT}_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-persistence_kogito-configuring[]
+endif::[]
+
+task life cycle::
+A mechanism that moves a user task or custom task (work item) across various phases, such as *Active* -> *Claim* -> *Complete*. {PRODUCT} provides standard life cycle phases for user tasks and also supports custom life cycles or life cycle phases.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_PROCESS_SERVICES}#con-task-life-cycle_kogito-bpmn-models[_Task life cycle in {PRODUCT} processes_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-task-life-cycle_kogito-bpmn-models[]
+endif::[]
+
+unit of work::
+A component in {PRODUCT} that serves as the basis for {PRODUCT} runtime execution. Units of work capture all steps in a process and are used internally to move a process instance from one state to the next state. After all possible steps in a process are successfully executed, the final state is sent to the {PRODUCT} runtime as a runtime event. {PRODUCT} can then use these events to notify third parties about changes to the BPMN process instance and its data.
++
+.Additional resources
+ifdef::KOGITO-ENT[]
+* {URL_CONFIGURING_KOGITO}#con-kogito-runtime-events_kogito-configuring[_{PRODUCT} runtime events_]
+endif::[]
+ifdef::KOGITO-COMM[]
+* xref:con-kogito-runtime-events_kogito-configuring[]
+endif::[]
+
+
+
+////
+//@comment: Excluding for now due to current lack of support in Kogito. Will add once settled. (Stetson 2 Apr 2020)
+Work item::
+A custom task, typically a custom service task, that you can reuse across multiple business processes.
+
+Work item handler::
+A Java object that contains the implementation logic for a custom task (work item).
+////

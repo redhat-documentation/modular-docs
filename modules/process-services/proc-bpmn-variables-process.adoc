@@ -1,0 +1,15 @@
+[id='proc-bpmn-variables-process_{context}']
+= Defining process variables in {PRODUCT} processes
+
+Process variables are visible within a specific process instance. Process variables are initialized at process creation and destroyed on process completion. You can map process variables to local variables.
+
+.Procedure
+. In your VSCode IDE, open the relevant BPMN process file to view the process in the {PRODUCT} BPMN modeler.
+. Select the background of the BPMN modeler canvas and, in the upper-right corner of the modeler, click *Properties*.
+. Under *Process Data* -> *Process Variables*, click the plus icon to add a new process variable and enter the following values:
+
+* *Name*: Enter the name of the process variable, such as `order` for a process variable with order information shared by all applicable nodes in the process.
+* *Data Type*: Enter a custom or standard data type of the variable, such as `org.acme.Order`.
++
+.Example process variables in BPMN modeler
+image::kogito/bpmn/bpmn-process-variables.png[Image of process variable example]

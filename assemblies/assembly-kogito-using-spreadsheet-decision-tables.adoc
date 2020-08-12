@@ -1,0 +1,17 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-using-spreadsheet-decision-tables']
+= Using spreadsheet decision tables in {PRODUCT} services
+:context: decision-tables
+
+As a developer of business decisions, you can define business rules in a tabular format in spreadsheet decision tables and then include the spreadsheet file in your {PRODUCT} project. These rules are compiled into Drools Rule Language (DRL) for the decision service in your project.
+
+include::modules/decision-services/con-decision-tables.adoc[leveloffset=+1]
+include::modules/decision-services/con-decision-tables-use-case.adoc[leveloffset=+1]
+include::modules/decision-services/proc-decision-tables-creating.adoc[leveloffset=+1]
+include::modules/decision-services/ref-decision-tables-rule-set-entries.adoc[leveloffset=+2]
+include::modules/decision-services/ref-decision-tables-rule-table-entries.adoc[leveloffset=+2]
+include::modules/decision-services/ref-decision-tables-attributes.adoc[leveloffset=+2]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

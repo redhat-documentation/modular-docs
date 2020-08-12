@@ -1,0 +1,38 @@
+[id='proc-kogito-vscode-extension_{context}']
+= Enabling the {PRODUCT} VSCode extension without the {PRODUCT} Business Modeler Hub
+
+Visual Studio Code (VSCode) is the preferred integrated development environment (IDE) for developing {PRODUCT} services. {PRODUCT} provides a https://github.com/kiegroup/kogito-tooling/releases[VSCode extension] that enables you to design Business Process Model and Notation (BPMN) 2.0 business processes and Decision Model and Notation (DMN) decision models directly in VSCode.
+
+For convenience, you can install and launch the VSCode from the https://kiegroup.github.io/kogito-online/#/download[Business Modeler Hub] desktop application, along with all other available {PRODUCT} modelers.
+
+However, if you need to enable the VSCode extension without the {PRODUCT} Business Modeler Hub, follow this procedure to download and install the VSCode extension manually.
+
+.Prerequisites
+* https://code.visualstudio.com/[VSCode] 1.43.0 or later is installed.
+
+.Procedure
+. In the https://github.com/kiegroup/kogito-tooling/releases[`kogito-tooling`] releases page in GitHub, download the latest version of the `vscode_extension_{PRODUCT_INIT}_kie_editors___VERSION__.vsix` file.
+. In your VSCode IDE, go to *Extensions* -> *More actions* -> *Install from VSIX* and select the downloaded extension file.
+. When the {PRODUCT} extension appears in the extension list in VSCode, select it and click *Enable*, if needed.
+. Close your instance of VSCode and re-launch VSCode from a command terminal with the following command and parameters:
++
+--
+.On Linux or Windows
+[source]
+----
+$ code --enable-proposed-api kiegroup.vscode-extension-pack-kogito-kie-editors
+----
+.On Mac
+[source]
+----
+$ code --args --enable-proposed-api kiegroup.vscode-extension-pack-kogito-kie-editors
+----
+
+Use this method to open VSCode each time you develop {PRODUCT} services. This set of parameters enables the Microsoft https://code.visualstudio.com/api/advanced-topics/using-proposed-api[Proposed API] for an optimal user experience with VSCode extensions.
+--
+
+After you enable this VSCode extension, any `.bpmn2` and `.dmn` files that you open in VSCode are automatically displayed as graphical models.
+
+If the {PRODUCT} BPMN or DMN modelers open only the XML source of a BPMN or DMN file and displays an error message, review the reported errors and the model file to ensure that all BPMN or DMN elements are correctly defined.
+
+NOTE: For new BPMN or DMN models, you can also enter `bpmn.new` or `dmn.new` in a web browser to design your BPMN or DMN model in the {PRODUCT} online modeler. When you finish creating your model, you can click *Download* in the online modeler page to import your BPMN or DMN file into your {PRODUCT} project in VSCode.

@@ -1,0 +1,10 @@
+[id='con-process-instance-details_{context}']
+= Process instance management
+
+To view process instances, in Business Central, click *Menu* -> *Manage* -> *Process Instances*. Each row in the *Manage Process Instances* list represents a process instance from a particular process definition. Each execution is differentiated from all the others by the internal state of the information that the process is manipulating. Click on a process instance to view the corresponding tabs with runtime information related to the process.
+
+* *Instance Details*: Provides an overview about what is going on inside the process. It displays the current state of the instance and the current activity that is being executed.
+* *Process Variables*: Displays all of the process variables that are being manipulated by the instance, with the exception of the variables that contain documents. You can edit the process variable value and view its history.
+* *Documents*: Displays process documents if the process contains a variable of the type *org.jbpm.Document*. This enables access, download, and manipulation of the attached documents.
+* *Logs*: Displays process instance logs for the end users.
+* *Diagram*: Tracks the progress of the process instance through the BPMN2 diagram. The node or nodes of the process flow that are in progress are highlighted in red. Reusable subprocesses appear collapsed within the parent process. Double-click on the reusable subprocess node to open its diagram from the parent process diagram.

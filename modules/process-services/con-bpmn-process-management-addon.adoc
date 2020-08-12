@@ -1,0 +1,233 @@
+[id='con-bpmn-process-management-addon_{context}']
+= {PRODUCT} process management add-on
+
+{PRODUCT} provides a `process-management-addon` add-on that enables basic REST operations that you can use to manage process instances. These REST operations are supplemental to any other specific REST operations that you have configured in your application.
+
+To configure process management REST capabilities for your {PRODUCT} services, you can add the process management add-on as a dependency in the `pom.xml` file of your {PRODUCT} project:
+
+.Project dependency to enable process management REST operations
+[source,xml]
+----
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>process-management-addon</artifactId>
+</dependency>
+----
+
+The {PRODUCT} process management add-on provides REST support for the following basic operations:
+
+* *Process instances*: Abort an active process instance
+* *Node instances*:  Cancel or re-trigger a node instance, or trigger a new node instance
+* *Error handling*: Retrieve error details for a process instance, or skip or re-trigger a failed node instance
+
+In addition to exposed REST operations, the process management add-on also provides the following REST exception mappers to generate more meaningful error messages for typical exception types:
+
+* `ProcessInstanceNotFound`
+* `NodeInstanceNotFound`
+* `NodeNotFound`
+* `ProcessInstanceExecutionError`
+* `NotAuthorized`
+* `InvalidTransition` (for work items)
+* `InvalidLifeCyclePhase` (for work items)
+
+These exception mappers produce a valid HTTP error code with JSON payload with the context that caused the exception.
+
+For example, the following is a `ProcessInstanceNotFoundException` error generated at runtime:
+
+.Example error with JSON payload at runtime
+[source,json]
+----
+HTTP code : 404
+
+{
+  "processInstanceId" : "c6862071-0f2e-4f21-9bc8-586245a76c3aa",
+  "message" : "Process instance with id c6862071-0f2e-4f21-9bc8-586245a76c3aa not found"
+}
+----
+
+== REST endpoints for the process management add-on
+
+After you add the `process-management-addon` dependency to your {PRODUCT} project and run your {PRODUCT} services, you can use the following REST endpoints to manage your process and node instances. These REST operations are supplemental to any other specific REST operations that you have configured in your application.
+
+For each endpoint, use a REST client, curl utility, or Swagger UI (if configured for the application) to send requests with the following components:
+
+* *Base URL*: `http://__HOST__:__PORT__/management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__`
+* *Request parameters*:
+** `__PROCESS_ID__`: The string identifier of the process definition, such as `orders`
+** `__PROCESS_INSTANCE_ID__`: The integer identifier of the process instance, such as `ec44f890-d21d-444f-a4ec-cb88589bd79`
+** `__NODE_ID__`: The string identifier of the node, such as `verifyOrders`
+** `__NODE_INSTANCE_ID__`: The integer identifier of the node instance, such as `6e46bec2-0273-46f6-ad7d-2ff156e55a6c`
+* *HTTP headers*:
+** `accept`: `application/json`
+** `content-type`: `application/json`
+* *HTTP methods*: `GET`, `POST`, or `DELETE`
+
+=== Process instances
+
+Use the following REST endpoints from the process management add-on to interact with process instances:
+
+Return active node instances for a process instance::
++
+--
+`[GET] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__/nodeInstances`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodeInstances`
+
+.Example curl request
+[source]
+----
+curl -X GET localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodeInstances -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+.Example response (JSON)
+[source,json]
+----
+{
+  "id": "ec44f890-d21d-444f-a4ec-cb88589bd79a",
+  "name": "Verify order",
+  "nodeInstanceId": "6e46bec2-0273-46f6-ad7d-2ff156e55a6c",
+  "parameters": {
+    "Locale": "en-UK",
+    "TaskName": "Verify order",
+    "NodeName": "Verify order",
+    "Priority": "1",
+    "input1": {
+      "orderNumber": "12345",
+      "shipped": false,
+      "total": 0.8233575052440095
+    },
+    "Skippable": "true",
+    "ActorId": "john"
+  },
+  "phase": "active",
+  "phaseStatus": "Ready",
+  "results": {},
+  "state": 0
+}
+----
+--
+
+Abort a process instance::
++
+--
+`[DELETE] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a`
+
+.Example curl request
+[source]
+----
+curl -X DELETE localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a -H 'content-type: application/json' -H 'accept: application/json'
+----
+--
+
+=== Node instances
+
+Use the following REST endpoints from the process management add-on to interact with node instances:
+
+Cancel a node instance within a process instance::
++
+--
+`[DELETE] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__/nodeInstances/__NODE_INSTANCE_ID__`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodeInstances/6e46bec2-0273-46f6-ad7d-2ff156e55a6c`
+
+.Example curl request
+[source]
+----
+curl -X DELETE localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodeInstances/6e46bec2-0273-46f6-ad7d-2ff156e55a6c -H 'content-type: application/json' -H 'accept: application/json'
+----
+--
+
+Re-trigger a node instance within a process instance::
++
+--
+`[POST] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__/nodeInstances/__NODE_INSTANCE_ID__`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodeInstances/6e46bec2-0273-46f6-ad7d-2ff156e55a6c`
+
+.Example curl request
+[source]
+----
+curl -X POST localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodeInstances/6e46bec2-0273-46f6-ad7d-2ff156e55a6c -H 'content-type: application/json' -H 'accept: application/json'
+----
+--
+
+Trigger a new instance of a node within a process instance::
++
+--
+`[POST] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__/nodes/__NODE_ID__`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodes/verifyOrder`
+
+.Example curl request
+[source]
+----
+curl -X POST localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/nodes/verifyOrder -H 'content-type: application/json' -H 'accept: application/json'
+----
+--
+
+=== Error handling
+
+Use the following REST endpoints from the process management add-on to troubleshoot errors with process and node instances:
+
+NOTE: These endpoints function only when a process instance is in an `ERROR` state.
+
+Return error details for a process instance::
++
+--
+`[GET] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__/error`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/error`
+
+.Example curl request
+[source]
+----
+curl -X GET localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/error -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+.Example response (JSON)
+[source,json]
+----
+{
+  "processInstanceId" : "ec44f890-d21d-444f-a4ec-cb88589bd79a",
+  "message" : "Process instance with id c6862071-0f2e-4f21-9bc8-586245a76c3aa contains no input assignment"
+}
+----
+--
+
+Re-trigger any failed nodes within a process instance::
++
+--
+`[POST] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__/retrigger`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/retrigger`
+
+.Example curl request
+[source]
+----
+curl -X POST localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/retrigger -H 'content-type: application/json' -H 'accept: application/json'
+----
+--
+
+Skip any failed nodes within a process instance::
++
+--
+`[POST] /management/processes/__PROCESS_ID__/instances/__PROCESS_INSTANCE_ID__/skip`
+
+.Example REST endpoint
+`\http://localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/skip`
+
+.Example curl request
+[source]
+----
+curl -X POST localhost:8080/management/processes/orders/instances/ec44f890-d21d-444f-a4ec-cb88589bd79a/skip -H 'content-type: application/json' -H 'accept: application/json'
+----
+--

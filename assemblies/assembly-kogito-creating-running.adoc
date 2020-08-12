@@ -1,0 +1,32 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-creating-running']
+= Creating and running your first {PRODUCT} services
+:context: kogito-creating-running
+
+// Purpose statement for the assembly
+As a developer of business processes and decisions, you can use {PRODUCT} business automation to build cloud-native applications with a domain-specific set of services.
+
+// Modules - concepts, procedures, refs, etc.
+include::modules/creating-running/con-kogito-automation.adoc[leveloffset=+1]
+include::modules/creating-running/con-kogito-quarkus-springboot.adoc[leveloffset=+2]
+include::modules/creating-running/ref-kogito-app-examples.adoc[leveloffset=+1]
+include::modules/creating-running/proc-kogito-app-examples-running.adoc[leveloffset=+2]
+include::modules/creating-running/con-kogito-modelers.adoc[leveloffset=+1]
+include::modules/creating-running/proc-kogito-modelers.adoc[leveloffset=+2]
+include::modules/creating-running/proc-kogito-vscode-extension.adoc[leveloffset=+2]
+include::modules/creating-running/proc-kogito-creating-project.adoc[leveloffset=+1]
+include::modules/creating-running/proc-kogito-designing-app.adoc[leveloffset=+1]
+include::modules/creating-running/proc-kogito-designing-app-rule-units.adoc[leveloffset=+2]
+include::modules/creating-running/proc-kogito-running-app.adoc[leveloffset=+1]
+include::modules/creating-running/proc-kogito-interacting-app.adoc[leveloffset=+1]
+include::modules/creating-running/ref-kogito-glossary.adoc[leveloffset=+1]
+
+== Additional resources
+* {URL_DEPLOYING_ON_OPENSHIFT}[_{DEPLOYING_ON_OPENSHIFT}_]
+* {URL_DECISION_SERVICES}[_{DECISION_SERVICES}_]
+* {URL_PROCESS_SERVICES}[_{PROCESS_SERVICES}_]
+* {URL_CONFIGURING_KOGITO}[_{CONFIGURING_KOGITO}_]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

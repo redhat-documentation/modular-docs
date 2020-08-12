@@ -1,0 +1,182 @@
+[id='proc-kogito-app-examples-running_{context}']
+= Running the {PRODUCT} example applications
+
+To get started quickly with {PRODUCT}, you can run any of the example applications in the https://github.com/kiegroup/kogito-examples[`kogito-examples`] repository in GitHub and experiment with the {PRODUCT} services.
+
+For this procedure, use the https://github.com/kiegroup/kogito-examples/tree/stable/process-quarkus-example[`process-quarkus-example`] or https://github.com/kiegroup/kogito-examples/tree/stable/process-springboot-example[`process-springboot-example`] application. You can follow similar steps with the other {PRODUCT} examples on Quarkus or Spring Boot.
+
+In the `process-quarkus-example` and `process-springboot-example` applications, the `orders.bpmn2` process describes the steps that need to be followed when ordering items. The process includes a script task for writing debug information and a call activity for invoking a subprocess, using a custom `Order` data object.
+
+.Example `orders.bpmn2` process
+image::kogito/creating-running/bpmn-model-example-orders.png[Image of `orders.bpmn` example process]
+
+The `Add items` subprocess invokes the following `orderItems.bpmn2` process, which uses a `CalculationService.calculateTotal` custom Java service and a user task to verify the order.
+
+.Example `orderItems.bpmn2` process invoked as a subprocess
+image::kogito/creating-running/bpmn-model-example-order-items.png[Image of `orderItems.bpmn` example process]
+
+The `persons.bpmn2` process invokes a Drools Rule Languge (DRL) rule unit in a business rule task to determine customer age, followed by a user task for special handling requirements for children, if applicable.
+
+.Example `persons.bpmn2` process invoked as a subprocess
+image::kogito/creating-running/kogito-bpmn-example-person.png[Image of `persons` process diagram]
+
+Based on these processes and on application configurations, this example service exposes REST operations to create new orders, to list and delete active orders, and to determine the age of a specified person.
+
+.Procedure
+. Download the latest https://github.com/kiegroup/kogito-examples/releases[`kogito-examples`] release to a local directory and extract the file.
+. In a command terminal, navigate to the extracted `kogito-examples-__RELEASE__/process-__PLATFORM__-example` folder, and enter one of the following commands to build and run the example.
++
+--
+Quarkus and Spring Boot support the following run modes:
+
+* *Development mode*: For local testing. On Quarkus, development mode also offers live reload of your processes and decisions in your running applications for advanced debugging.
+* *JVM mode*: For compatibility with a Java virtual machine (JVM).
+ifdef::KOGITO-COMM[]
+* *Native mode*: (Quarkus only, requires GraalVM) For direct binary execution as native code.
+endif::[]
+
+The command that you use depends on your preferred run mode and application environment:
+
+* For development mode:
++
+.On Quarkus
+[source]
+----
+mvn clean compile quarkus:dev
+----
++
+.On Sprint Boot
+[source]
+----
+mvn clean compile spring-boot:run
+----
++
+* For JVM mode:
++
+.On Quarkus and Spring Boot
+[source]
+----
+mvn clean package
+java -jar target/sample-kogito-1.0-SNAPSHOT-runner.jar
+----
++
+ifdef::KOGITO-COMM[]
+* For native mode (requires GraalVM):
++
+.On Quarkus only
+[source]
+----
+mvn clean package -Dnative
+./target/sample-kogito-1.0-SNAPSHOT-runner
+----
++
+endif::[]
+--
+. After the {PRODUCT} service is running, use a REST client, curl utility, or the Swagger UI configured for the application at http://localhost:8080/swagger-ui/ to send API requests with the following components:
++
+--
+* *URL*: `\http://localhost:8080/`
+* *HTTP headers*:
+** `accept`: `application/json`
+** `content-type`: `application/json`
+* *HTTP methods*: `GET`, `POST`, or `DELETE`
+
+.Example POST request body to create an order (JSON)
+[source,json]
+----
+{
+  "approver": "john",
+  "order": {
+    "orderNumber": "12345",
+    "shipped": false
+  }
+}
+----
+
+.Example curl command to create an order
+[source]
+----
+curl -X POST http://localhost:8080/orders -H 'content-type: application/json' -H 'accept: application/json' -d '{"approver" : "john", "order" : {"orderNumber" : "12345", "shipped" : false}}'
+----
+
+.Example response (JSON)
+[source,json]
+----
+{
+  "approver": "john",
+  "id": "6b53c227-6d5e-40b7-8c8c-a541a2a47d58",
+  "order": {
+    "orderNumber": "12345",
+    "shipped": false,
+    "total": 0.3845152065899532
+  }
+}
+----
+
+.Swagger UI to interact with all application endpoints (\http://localhost:8080/swagger-ui/)
+image::kogito/creating-running/kogito-swagger-example-jbpm.png[Image of Swagger UI for example application]
+
+NOTE: For the predefined {PRODUCT} example applications, the Swagger UI for interacting with service endpoints is available only on Quarkus examples that you run in
+ifdef::KOGITO-ENT[]
+development mode.
+endif::[]
+ifdef::KOGITO-COMM[]
+development mode or in native mode.
+endif::[]
+
+This example procedure uses the following curl commands for convenience:
+
+* Create an order:
++
+.Example request
+[source]
+----
+curl -X POST http://localhost:8080/orders -H 'content-type: application/json' -H 'accept: application/json' -d '{"approver" : "john", "order" : {"orderNumber" : "12345", "shipped" : false}}'
+----
++
+.Example response
+[source]
+----
+{"approver":"john","id":"6b53c227-6d5e-40b7-8c8c-a541a2a47d58","order":{"orderNumber":"12345","shipped":false,"total":0.3845152065899532}}
+----
++
+The new order has an `"id"` field with a generated UUID that you can use to retrieve details about this specific order, if needed.
+
+* View active orders:
++
+.Example request
+[source]
+----
+curl -X GET http://localhost:8080/orders -H 'content-type: application/json' -H 'accept: application/json'
+----
++
+.Example response
+[source]
+----
+[{"approver":"john","id":"6b53c227-6d5e-40b7-8c8c-a541a2a47d58","order":{"orderNumber":"12345","shipped":false,"total":0.3845152065899532}}]
+----
+
+* View order details using the returned UUID:
++
+.Example request
+[source]
+----
+curl -X GET http://localhost:8080/orders/6b53c227-6d5e-40b7-8c8c-a541a2a47d58 -H 'content-type: application/json' -H 'accept: application/json'
+----
++
+.Example response
+[source]
+----
+{"approver":"john","id":"6b53c227-6d5e-40b7-8c8c-a541a2a47d58","order":{"orderNumber":"12345","shipped":false,"total":0.3845152065899532}}
+----
++
+You use the `"id"` value for the order that was returned when you created the order or when you retrieved active orders.
+
+* Cancel the order using the returned UUID:
++
+.Example request
+[source]
+----
+curl -X DELETE http://localhost:8080/orders/6b53c227-6d5e-40b7-8c8c-a541a2a47d58 -H 'content-type: application/json' -H 'accept: application/json'
+----
+--

@@ -1,0 +1,35 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-configuring']
+= Configuring {PRODUCT} supporting services and runtime capabilities
+:context: kogito-configuring
+
+// Purpose statement for the assembly
+As a developer of business processes and decisions, you can configure {PRODUCT} supporting services and runtime properties for advanced use cases with your {PRODUCT} services.
+
+// Modules - concepts, procedures, refs, etc.
+include::modules/configuration/con-kogito-supporting-services-and-configuration.adoc[leveloffset=+1]
+include::modules/configuration/ref-kogito-runtime-properties.adoc[leveloffset=+1]
+include::modules/configuration/con-kogito-runtime-events.adoc[leveloffset=+1]
+include::modules/configuration/proc-messaging-enabling.adoc[leveloffset=+2]
+include::modules/configuration/proc-event-listeners-registering.adoc[leveloffset=+2]
+include::modules/configuration/proc-prometheus-metrics-monitoring.adoc[leveloffset=+2]
+include::modules/configuration/con-persistence.adoc[leveloffset=+1]
+include::modules/configuration/proc-persistence-enabling.adoc[leveloffset=+2]
+include::modules/configuration/con-data-index-service.adoc[leveloffset=+1]
+include::modules/configuration/proc-data-index-service-using.adoc[leveloffset=+2]
+include::modules/configuration/ref-data-index-service-queries.adoc[leveloffset=+2]
+include::modules/configuration/con-jobs-service.adoc[leveloffset=+1]
+include::modules/configuration/proc-jobs-service-using.adoc[leveloffset=+2]
+include::modules/configuration/proc-jobs-service-persistence.adoc[leveloffset=+2]
+include::modules/configuration/proc-jobs-service-messaging.adoc[leveloffset=+2]
+include::modules/process-services/con-bpmn-process-management-addon.adoc[leveloffset=+1]
+
+== Additional resources
+* {URL_CREATING_RUNNING}[_{CREATING_RUNNING}_]
+* {URL_DEPLOYING_ON_OPENSHIFT}[_{DEPLOYING_ON_OPENSHIFT}_]
+* {URL_DECISION_SERVICES}[_{DECISION_SERVICES}_]
+* {URL_PROCESS_SERVICES}[_{PROCESS_SERVICES}_]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

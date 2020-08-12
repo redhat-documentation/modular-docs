@@ -1,0 +1,15 @@
+// This is a single-assembly title where the included assembly functions as both the title and lone assembly, so no additional title heading or introduction needed.
+
+:KOGITO-ENT:
+include::_artifacts/document-attributes.adoc[]
+:doctype: book
+:imagesdir: _images
+
+// Assembly includes
+include::assemblies/assembly-kogito-creating-running.adoc[]
+
+// Versioning info
+include::_artifacts/versioning-information.adoc[]
+
+// Contact information
+include::_artifacts/author-group.adoc[]

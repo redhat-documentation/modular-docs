@@ -1,0 +1,199 @@
+[id='proc-drl-rules-central-create_{context}']
+= Creating DRL rules for your {PRODUCT} project
+
+You can create and manage DRL rules for your {PRODUCT} project in your integrated development environment (IDE). For {PRODUCT} service, VSCode is the preferred IDE. In each DRL rule file, you define rule conditions, actions, and other components related to the rule, based on the data objects you create or import in the package.
+
+In {PRODUCT}, you typically define DRL rules in rule units. A DRL rule unit is a module for rules and a unit of execution. A rule unit collects a set of rules with the declaration of the type of facts that the rules act on. A rule unit also serves as a unique namespace for each group of rules. A single rule base can contain multiple rule units. You typically store all the rules for a unit in the same file as the unit declaration so that the unit is self-contained.
+
+For this procedure, create the following example DRL type declarations and DRL rule unit to define DRL rules in a decision service for a loan application:
+
+.Example DRL type declarations for a loan application
+[source]
+----
+package org.mortgages;
+
+declare Bankruptcy
+    name: String
+    yearOfOccurrence: int
+end
+
+declare Applicant
+    name: String
+    age: int
+end
+
+declare LoanApplication
+    applicant: String
+    approved: boolean
+    explanation: String
+end
+----
+
+.Example DRL rule unit file for a loan application
+[source]
+----
+package org.mortgages;
+unit MortgageRules;
+
+import org.kie.kogito.rules.DataSource;
+import org.kie.kogito.rules.DataStream;
+
+declare MortgageRules extends RuleUnitData
+  bankruptcy: DataStore<Bankruptcy> = DataSource.createStore()
+  applicant: DataStore<Applicant> = DataSource.createStore()
+  application: DataStore<LoanApplication> = DataSource.createStore()
+end
+
+rule "Bankruptcy history"
+	salience 10
+	when
+    $a : /loanApplication[ applicantName: applicant ]
+    exists (/bankruptcy[ name == applicantName, yearOfOccurrence > 1990 || amountOwed > 100000 ])
+	then
+		$a.setApproved( false );
+		$a.setExplanation( "has been bankrupt" );
+		loanApplication.remove( $a );
+end
+
+rule "Underage"
+	salience 15
+	when
+    /applicant[ applicantName : name, age < 21 ]
+    $application : /loanApplication[ applicant == applicantName ]
+	then
+		$application.setApproved( false );
+		$application.setExplanation( "Underage" );
+		loanApplication.remove( $a );
+end
+----
+
+.Prerequisites
+* You have created a {PRODUCT} project and have included any Java data objects required for your {PRODUCT} service. For information about creating a project, see
+ifdef::KOGITO-ENT[]
+{URL_CREATING_RUNNING}[_{CREATING_RUNNING}_].
+endif::[]
+ifdef::KOGITO-COMM[]
+xref:chap-kogito-creating-running[].
+endif::[]
+
+.Procedure
+. In your VSCode IDE, open your {PRODUCT} project and create a `src/main/resources/org/mortgages` folder. This folder serves as the package for your DRL files in this example.
+. In your new `src/main/resources/org/mortgages` folder, add the following `ApplicationTypes.drl` file to define the fact types for the loan application service:
++
+--
+.Example DRL type declarations for a loan application
+[source]
+----
+package org.mortgages;
+
+declare Bankruptcy
+    name: String
+    yearOfOccurrence: int
+end
+
+declare Applicant
+    name: String
+    age: int
+end
+
+declare LoanApplication
+    applicant: String
+    approved: boolean
+    explanation: String
+end
+----
+
+This DRL file defines the fact types that you can declare in any rule units in the same package for the decision service. Declarations in DRL files define new fact types or metadata for fact types to be used by rules in a DRL files. If you declare these types directly in the DRL rule unit file, you cannot declare them in any other rule units.
+
+This example defines the following fact types:
+
+* `Bankruptcy`: Provides data for bankruptcy status, if applicable
+* `Applicant`: Provides data about the loan applicant
+* `LoanApplication`: Provides data about loan approval status for a specified applicant, with an explanation if needed
+--
+. In the same `src/main/resources/org/mortgages` folder of your {PRODUCT} project, create the following `LoanApplication.drl` file to declare the DRL rule unit and data sources:
++
+--
+.Example DRL file with rule unit and data sources
+[source]
+----
+package org.mortgages;
+unit MortgageRules;
+
+import org.kie.kogito.rules.DataSource;
+import org.kie.kogito.rules.DataStore;
+
+declare MortgageRules extends RuleUnitData
+  bankruptcy: DataStore<Bankruptcy> = DataSource.createStore()
+  applicant: DataStore<Applicant> = DataSource.createStore()
+  application: DataStore<LoanApplication> = DataSource.createStore()
+end
+...
+----
+
+In this example, the rule unit is named `MortgageRules` and the previously defined fact types are declared as `DataStore` data sources.
+
+Data sources are typed sources of data that rule units can subscribe to for updates. You interact with the rule unit through the data sources it exposes. A data source can be a `DataStream` source for append-only storage, a `DataStore` source for writable storage to add or remove data, or a `SingletonStore` source for writable storage to set and clear a single element.
+
+This example uses the `DataStore` data source to enable application data to be added or removed as part of the decision service.
+--
+. To complete the DRL rule unit file, add the following rules for `"Bankruptcy history"` and `"Underage"` logic:
++
+--
+.Example DRL rule unit file for a loan application
+[source]
+----
+package org.mortgages;
+unit MortgageRules;
+
+import org.kie.kogito.rules.DataSource;
+import org.kie.kogito.rules.DataStream;
+
+declare MortgageRules extends RuleUnitData
+  bankruptcy: DataStore<Bankruptcy> = DataSource.createStore()
+  applicant: DataStore<Applicant> = DataSource.createStore()
+  application: DataStore<LoanApplication> = DataSource.createStore()
+end
+
+rule "Bankruptcy history"
+	salience 10
+	when
+    $a : /loanApplication[ applicantName: applicant ]
+    exists (/bankruptcy[ name == applicantName, yearOfOccurrence > 1990 || amountOwed > 100000 ])
+	then
+		$a.setApproved( false );
+		$a.setExplanation( "has been bankrupt" );
+		loanApplication.remove( $a );
+end
+
+rule "Underage"
+	salience 15
+	when
+    /applicant[ applicantName : name, age < 21 ]
+    $application : /loanApplication[ applicant == applicantName ]
+	then
+		$application.setApproved( false );
+		$application.setExplanation( "Underage" );
+		loanApplication.remove( $a );
+end
+----
+
+The example rules consist of the following rule components:
+
+* `rule`: Use this segment to define each rule in the DRL file. Rules consist of a rule name in the format `rule "rule name"`, followed by optional attributes that define rule behavior, such as `salience` or `no-loop`, followed by `when` and `then` definitions. Each rule must have a unique name within the rule package.
++
+In this example, the `"Bankruptcy history"` rule has a defined salience of `10` and the `"Underage"` rule has a defined salience of `15`. These values ensure that the `"Bankruptcy history"` rule is executed first.
+* `when` and `then`: Use the `when` portion to define the condition patterns and constraints in OOPath syntax and use the `then` portion to define the actions to be executed when the conditions are met.
++
+In this example, the `"Bankruptcy history"` rule states that if an applicant has owed more than 100,000 USD of unresolved debt since 1990 (beginning 1991), then the applicant is considered to have been bankrupt and is not approved for a loan. The application is removed from memory.
++
+If the applicant passes the bankruptcy check, then the `"Underage"` rule states that if the applicant is younger than 21 years old, then the applicant is not approved for the loan. The application is removed from memory.
++
+If the applicant passes both checks, then the loan is approved.
+--
+. After you define all components of the data sources and rules, save all DRL files.
+
+.Additional resources
+* xref:con-drl-rule-units_drl-rules[]
+* xref:con-drl-rules-conditions_drl-rules[]
+* xref:con-drl-rules-actions_drl-rules[]

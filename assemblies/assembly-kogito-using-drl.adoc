@@ -1,0 +1,37 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-using-drl']
+= Using DRL rules in {PRODUCT} services
+:context: drl-rules
+
+As a developer of business decisions, you can define business rules using Drools Rule Language (DRL) directly in free-form `.drl` text files. A DRL file can contain one or more rules that define at a minimum the rule conditions (`when`) and actions (`then`).
+
+include::modules/decision-services/con-drl.adoc[leveloffset=+1]
+include::modules/decision-services/con-drl-packages.adoc[leveloffset=+2]
+include::modules/decision-services/con-drl-rule-units.adoc[leveloffset=+2]
+include::modules/decision-services/con-drl-imports.adoc[leveloffset=+2]
+include::modules/decision-services/con-drl-declarations.adoc[leveloffset=+2]
+include::modules/decision-services/con-drl-declarations-without-metadata.adoc[leveloffset=+3]
+include::modules/decision-services/con-drl-declarations-enumerative.adoc[leveloffset=+3]
+include::modules/decision-services/con-drl-declarations-extended.adoc[leveloffset=+3]
+include::modules/decision-services/con-drl-declarations-with-metadata.adoc[leveloffset=+3]
+include::modules/decision-services/ref-drl-declarations-metadata-tags.adoc[leveloffset=+3]
+include::modules/decision-services/con-drl-queries.adoc[leveloffset=+2]
+include::modules/decision-engine/con-property-change-listeners.adoc[leveloffset=+3]
+include::modules/decision-services/ref-rules-attributes.adoc[leveloffset=+2]
+include::modules/decision-services/con-drl-rules-conditions.adoc[leveloffset=+2]
+include::modules/decision-services/ref-drl-operators.adoc[leveloffset=+3]
+include::modules/decision-services/ref-drl-operator-precedence.adoc[leveloffset=+3]
+include::modules/decision-services/ref-drl-rules-conditions-elements.adoc[leveloffset=+3]
+ifdef::KOGITO-COMM[]
+include::modules/decision-services/ref-drl-rules-conditions-elements-diagrams.adoc[leveloffset=+3]
+endif::[]
+include::modules/decision-services/con-drl-rules-actions.adoc[leveloffset=+2]
+include::modules/decision-services/con-drl-rules-comments.adoc[leveloffset=+2]
+include::modules/decision-services/ref-drl-rules-errors.adoc[leveloffset=+2]
+include::modules/decision-services/con-drl-legacy.adoc[leveloffset=+2]
+include::modules/decision-services/proc-drl-rules-create.adoc[leveloffset=+1]
+include::modules/creating-running/con-kogito-service-execution.adoc[leveloffset=+1]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

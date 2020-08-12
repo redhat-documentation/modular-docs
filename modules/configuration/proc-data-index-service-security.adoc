@@ -1,0 +1,58 @@
+[id='proc-data-index-service-security_{context}']
+= Enabling {PRODUCT} Data Index Service security with OpenID Connect
+
+For Quarkus-based {PRODUCT} services, you can use the https://quarkus.io/guides/security-openid-connect[Quarkus OpenID Connect adapter] with the {PRODUCT} Data Index Service to enable security using bearer token authorization. These tokens are issued by OpenID Connect and OAuth 2.0 compliant authorization servers such as https://www.keycloak.org/about.html[Keycloak].
+
+IMPORTANT: This procedure applies only when you are using a locally cloned copy of the https://github.com/kiegroup/kogito-runtimes/data-index[{PRODUCT} Data Index Service] repository in GitHub.
+
+.Prerequisites
+* You have cloned the https://github.com/kiegroup/kogito-runtimes/data-index[{PRODUCT} Data Index Service] repository from GitHub.
+
+.Procedure
+. In a command terminal, navigate to the local clone of the {PRODUCT} Data Index Service repository and enter the following command to run the application with the required security properties:
++
+--
+.Run the Data Index Service with security properties
+[source]
+----
+mvn clean compile quarkus:dev  \
+  -Dquarkus.profile=keycloak  \
+  -Dkogito.protobuf.folder=/home/git/kogito-runtimes/data-index/data-index-service/src/test/resources  \
+  -Dkogito.protobuf.watch=true
+----
+
+The Data Index Service contains a Quarkus profile to encapsulate the security configuration, so if the
+service requires enabled security, you can specify the `quarkus.profile=keycloak` property at build time to enable the needed security. If the `keycloak` Quarkus profile is not added, the OpenID Connect extension is disabled.
+--
+. Navigate to the `src/man/resources/application.properties` file of the Data Index Service project and add the following properties:
++
+--
+.Required security properties in `applications.properties` file
+[source]
+----
+%keycloak.quarkus.oidc.enabled=true
+%keycloak.quarkus.oidc.auth-server-url=http://localhost:8280/auth/realms/kogito
+%keycloak.quarkus.oidc.client-id=kogito-data-index-service
+%keycloak.quarkus.oidc.credentials.secret=secret
+%keycloak.quarkus.http.auth.policy.role-policy1.roles-allowed=confidential
+%keycloak.quarkus.http.auth.permission.roles1.paths=/graphql
+%keycloak.quarkus.http.auth.permission.roles1.policy=role-policy1
+----
+
+Replace any property definitions with those of your specific environment, especially the following properties:
+
+* `quarkus.oidc.auth-server-url`: The base URL of the OpenID Connect (OIDC) server, such as `https://localhost:8280/auth`. All other OIDC server page and service URLs are derived from this URL. If you work with Keycloak OIDC server, ensure that the base URL is in the following format: `https://__HOST__:__PORT__/auth/realms/__KEYCLOAK_REALM__`.
+* `quarkus.oidc.client-id`: The client ID of the application. Each application has a client ID that is used to identify the application.
+* `quarkus.oidc.credentials.secret`: The client secret for the applicaiton.
+--
+. In the same `application.properties`, also configure the resources to be exposed and the required permissions for accessing the resources.
++
+--
+This example configuration enables only users with role `confidential` to access a single `/graphql` endpoint.
+
+For more information about configuring endpoints and permissiones, see https://quarkus.io/guides/security#authorization-of-web-endpoints-using-configuration[Authorization of Web Endpoints using configuration] in the Quarkus documentation.
+
+NOTE: When you configure OpenID Connect security as a service in your application (`quarkus.oidc.application-type=service`), the GraphiQL interface is unavailable. To support the GraphiQL interface, you must configure the application as a web application (`quarkus.oidc.application-type=web-app`).
+
+--
+. Stop and restart the the Data Index Service application to apply the changes.

@@ -1,0 +1,46 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-using-bpmn']
+= Using BPMN models in {PRODUCT} services
+:context: kogito-bpmn-models
+
+// Purpose statement for the assembly
+As a developer of business processes, you can use {PRODUCT} business automation to develop process services using Business Process Model and Notation (BPMN) 2.0 process models. BPMN process models are graphical representations of the steps required to achieve a business goal. You can design your BPMN processes with the {PRODUCT} BPMN modeler in VSCode or import existing BPMN processes into your {PRODUCT} projects for deployment and execution.
+
+For more information about BPMN, see the Object Management Group (OMG) https://www.omg.org/spec/BPMN/2.0/About-BPMN[Business Process Model and Notation 2.0 specification].
+
+// Modules - concepts, procedures, refs, etc.
+include::modules/creating-running/ref-kogito-app-examples.adoc[leveloffset=+1]
+include::modules/process-services/con-bpmn.adoc[leveloffset=+1]
+include::modules/process-services/ref-bpmn-model-example.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-support.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-start-events.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-intermediate-events.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-end-events.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-tasks.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-subprocesses.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-gateways.adoc[leveloffset=+2]
+include::modules/process-services/ref-bpmn-connectors.adoc[leveloffset=+2]
+include::modules/process-services/proc-bpmn-model-creating.adoc[leveloffset=+1]
+include::modules/process-services/con-bpmn-variables.adoc[leveloffset=+1]
+include::modules/process-services/proc-bpmn-variables-global.adoc[leveloffset=+2]
+include::modules/process-services/proc-bpmn-variables-process.adoc[leveloffset=+2]
+include::modules/process-services/proc-bpmn-variables-local.adoc[leveloffset=+2]
+include::modules/configuration/con-persistence.adoc[leveloffset=+1]
+include::modules/configuration/proc-persistence-enabling.adoc[leveloffset=+2]
+include::modules/configuration/proc-messaging-enabling.adoc[leveloffset=+1]
+include::modules/configuration/con-task-life-cycle.adoc[leveloffset=+1]
+include::modules/configuration/proc-task-lifecycle-custom.adoc[leveloffset=+2]
+include::modules/process-services/con-bpmn-process-management-addon.adoc[leveloffset=+1]
+include::modules/process-services/con-management-console.adoc[leveloffset=+1]
+include::modules/process-services/proc-management-console-using.adoc[leveloffset=+2]
+include::modules/creating-running/con-kogito-service-execution.adoc[leveloffset=+1]
+
+== Additional resources
+* {URL_CREATING_RUNNING}[_{CREATING_RUNNING}_]
+* {URL_DEPLOYING_ON_OPENSHIFT}[_{DEPLOYING_ON_OPENSHIFT}_]
+* {URL_DECISION_SERVICES}[_{DECISION_SERVICES}_]
+* {URL_CONFIGURING_KOGITO}[_{CONFIGURING_KOGITO}_]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

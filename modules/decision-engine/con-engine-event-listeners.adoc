@@ -1,0 +1,75 @@
+[id='con-engine-event-listeners_{context}']
+= {DECISION_ENGINE_CAP} event listeners and debug logging
+
+[WARNING]
+====
+The APIs for {DECISION_ENGINE} event listeners in {PRODUCT} are subject to change.
+====
+
+In {PRODUCT}, you can add or remove listeners for {DECISION_ENGINE} events, such as fact insertions and rule executions. With {DECISION_ENGINE} event listeners, you can be notified of {DECISION_ENGINE} activity and separate your logging and auditing work from the core of your application.
+
+The {DECISION_ENGINE} supports the following default event listeners for the agenda and working memory:
+
+* `AgendaEventListener`
+* `WorkingMemoryEventListener`
+
+ifdef::KOGITO-COMM[]
+.WorkingMemoryEventManager
+image::UserGuide/WorkingMemoryEventManager.png[align="center"]
+endif::[]
+
+For each event listener, the {DECISION_ENGINE} also supports the following specific events that you can specify to be monitored:
+
+* `MatchCreatedEvent`
+* `MatchCancelledEvent`
+* `BeforeMatchFiredEvent`
+* `AfterMatchFiredEvent`
+* `AgendaGroupPushedEvent`
+* `AgendaGroupPoppedEvent`
+* `ObjectInsertEvent`
+* `ObjectDeletedEvent`
+* `ObjectUpdatedEvent`
+* `ProcessCompletedEvent`
+* `ProcessNodeLeftEvent`
+* `ProcessNodeTriggeredEvent`
+* `ProcessStartEvent`
+
+For example, the following code uses a `DefaultAgendaEventListener` listener and specifies the `AfterMatchFiredEvent` event to be monitored. The code prints pattern matches after the rules are executed (fired):
+
+.Example code to monitor and print `AfterMatchFiredEvent` events in the agenda
+[source,java]
+----
+public class MyListener extends DefaultAgendaEventListener {
+    public void afterMatchFired(AfterMatchFiredEvent event) {
+        super.afterMatchFired( event );
+        System.out.println( event );
+    }
+}
+
+@ApplicationScoped
+public class RuleEventListenerConfig extends DefaultRuleEventListenerConfig {
+    public RuleEventListenerConfig() {
+        super(new MyListener());
+    }
+}
+----
+
+The {DECISION_ENGINE} also supports the following agenda and working memory event listeners for debug logging:
+
+* `DebugAgendaEventListener`
+* `DebugRuleRuntimeEventListener`
+
+These event listeners implement the same supported event-listener methods and include a debug print statement by default. You can add a specific supported event to be monitored and documented, or monitor all agenda or working memory activity.
+
+For example, the following code uses the `DebugRuleRuntimeEventListener` event listener to monitor and print all working memory events:
+
+.Example code to monitor and print all working memory events
+[source,java]
+----
+@ApplicationScoped
+public class RuleEventListenerConfig extends DefaultRuleEventListenerConfig {
+    public RuleEventListenerConfig() {
+        super(new DebugRuleRuntimeEventListener());
+    }
+}
+----

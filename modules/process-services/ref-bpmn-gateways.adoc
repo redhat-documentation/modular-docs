@@ -1,0 +1,73 @@
+[id='ref-bpmn-gateways_{context}']
+= Gateways supported in {PRODUCT}
+
+BPMN gateways create or synchronize branches in a process workflow using a set of conditions in a gating mechanism. BPMN2 supports _converging gateways_ that merge multiple flows into one flow, and _diverging gateways_ that split one flow into multiple flows. One gateway cannot have multiple incoming and multiple outgoing flows.
+
+In the following business process diagram, the exclusive (XOR) gateway evaluates only the incoming flow whose condition evaluates to true:
+
+.Example process with exclusive gateway
+image::kogito/bpmn/gateway.png[]
+
+In this example, the customer details are verified by a user and the process is assigned to a user for approval. If the request is approved, an approval notification is sent to the user. If the request is rejected, a rejection notification is sent to the user.
+
+{PRODUCT} currently supports the following gateways:
+
+.Supported gateways
+[cols="30%,70%" options="header"]
+|===
+h|Gateway type
+h|Icon
+
+|Exclusive (XOR)
+|image:kogito/bpmn/bpmn-gateway-exclusive.png[]
+
+|Inclusive (OR)
+|image:kogito/bpmn/bpmn-gateway-inclusive.png[]
+
+|Parallel (AND)
+|image:kogito/bpmn/bpmn-gateway-parallel.png[]
+
+|Event (AND)
+|image:kogito/bpmn/bpmn-gateway-event.png[]
+|===
+
+Exclusive::
++
+--
+A diverging exclusive gateway selects only the first incoming flow that evaluates to true and that contains the lowest `priority` number, if applicable. A converging exclusive gateway activates the next node for each triggered incoming flow.
+
+[IMPORTANT]
+====
+Ensure that at least one of the outgoing flows evaluates to true at runtime. If no outgoing flows evaluate to true, the process instance terminates with a runtime exception.
+
+Although priorities are evaluated in {PRODUCT}, the BPMN2 specification does not guarantee the priority order. Avoid depending on the `priority` attribute in your workflow.
+====
+
+A converging exclusive gateway also enables a workflow branch to continue to its outgoing flow as soon as it reaches the gateway. When one of the incoming flows triggers the gateway, the workflow continues to the outgoing flow of the gateway. If a gateway is triggered by more than one incoming flow, the gateway activates the next node for each trigger.
+--
+
+Inclusive::
++
+--
+A diverging inclusive gateway selects the incoming flow and all outgoing flows that evaluate to true. Connections with lower `priority` numbers are triggered before triggering higher `priority` connections. Although priorities are evaluated, the BPMN2 specification does not guarantee the priority order. Avoid depending on the `priority` attribute in your workflow.
+
+[IMPORTANT]
+====
+Ensure that at least one of the outgoing flows evaluates to true at runtime. If no outgoing flows evaluate to true, the process instance terminates with a runtime exception.
+
+Although priorities are evaluated in {PRODUCT}, the BPMN2 specification does not guarantee the priority order. Avoid depending on the `priority` attribute in your workflow.
+====
+A converging inclusive gateway also merges all incoming flows previously created by an inclusive diverging gateway. A converging inclusive gateway acts as a synchronizing entry point for the inclusive gateway branches.
+--
+
+Parallel::
++
+--
+A parallel gateway synchronizes and creates parallel flows. A diverging parallel gateway selects the incoming flow and all outgoing flows simultaneously. A converging parallel gateway waits until all incoming flows have entered and then triggers the outgoing flow.
+--
+
+Event::
++
+--
+An event gateway is only diverging and reacts to possible events, as opposed to the data-based exclusive gateway that reacts to the process data. An event gateway selects the outgoing flow based on the event that occurs, and selects only one outgoing flow at a time. An event gateway might act as a start event, where the process is instantiated only if one of the intermediate events connected to the event-based gateway occurs.
+--

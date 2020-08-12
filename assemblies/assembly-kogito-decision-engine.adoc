@@ -1,0 +1,18 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-decision-engine']
+= {DECISION_ENGINE_CAP} in {PRODUCT}
+:context: kogito-decision-engine
+
+As a developer of business decisions, your understanding of the {DECISION_ENGINE} in {PRODUCT} can help you design more effective business assets and a more scalable decision management architecture. The {DECISION_ENGINE} is the {PRODUCT} component that stores, processes, and evaluates data to execute business rules and to reach the decisions that you define. This document describes basic concepts and functions of the {DECISION_ENGINE} to consider as you create your business rule system and decision services in {PRODUCT}.
+
+include::modules/decision-engine/con-decision-engine.adoc[leveloffset=+1]
+include::modules/decision-engine/con-execution-control.adoc[leveloffset=+1]
+include::modules/decision-engine/con-phreak-algorithm.adoc[leveloffset=+1]
+include::modules/decision-engine/con-phreak-rule-evaluation.adoc[leveloffset=+2]
+include::modules/decision-engine/con-forward-and-backward-chaining.adoc[leveloffset=+3]
+include::modules/decision-engine/con-property-change-listeners.adoc[leveloffset=+2]
+include::modules/decision-engine/con-engine-event-listeners.adoc[leveloffset=+1]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

@@ -1,0 +1,50 @@
+[id='con-bpmn-variables_{context}']
+= Variables in {PRODUCT} processes
+
+Variables in {PRODUCT} processes store data that is used during runtime. The {PRODUCT} BPMN modeler supports three types of variables:
+
+* *Global variables*: Variables that are visible to all process instances and assets in a project. Global variables are typically used by business rules and constraints and are created dynamically by the rules or constraints.
+* *Process variables*: Variables that are visible within a specific process instance. Process variables are initialized at process creation and destroyed on process completion.
+* *Local variables*: Variables that are visible within a specific process component, such as a task. Local variables are initialized when the element context is initialized (when the execution workflow enters the node and execution of the `onEntry` action has finished, if applicable). Local variables are destroyed when the element context is destroyed (when the execution workflow leaves the element).
+
+A BPMN component, such as a process, subprocess, or task, can only access variables in its own context or in its parent context. A component cannot access a variable defined in a child component. When a BPMN component requires access to a variable during runtime, its own context is searched first.
+
+If the variable cannot be found directly in the component context, the immediate parent context is searched. The search continues until the process context is reached, and includes a search of global variables at the project level.
+
+If the variable cannot be found, a read access request returns `null`, a write access produces an error message, and the process continues its execution. Variables are searched for based on their unique ID.
+
+== Variable tags in BPMN process files
+
+For greater control over variable behavior, you can tag process variables and local variables in the BPMN process file. Tags are simple string values that you add as metadata to a specific variable.
+
+You can use multiple tags for a variable where applicable, but use caution and ensure that the tags are logical and do not conflict. For example, avoid tagging a variable as both `internal` and `required`.
+
+By default, if a process variable has no tag assigned to it, {PRODUCT} assigns an `input` and an `output` tag to it.
+
+{PRODUCT} supports the following tags for process variables and local variables:
+
+* `internal`: Sets the variable as internal only for a process instance and hides the variable from the exposed REST model. For example, you can use this tag with intermediate variables that help hold some state during the execution of the process but are not part of the domain.
+* `required`: Sets the variable as a requirement in order to start a process instance. If a process instance starts without the required variable, {PRODUCT} generates a `VariableViolationException` error.
+* `readonly`: Indicates that the variable is for informational purposes only and can be set only once during process instance execution. If the value of a read-only variable is modified at any time, {PRODUCT} generates a `VariableViolationException` error.
+* `input`: Sets the variable as an input of the process and therefore is not exposed in the returned data model. As a result, the value of an input variable is not returned in response to REST requests.
+* `output`: Sets the variable as an output of the process and therefore is not expected for a process start and is included in the returned data model. As a result, the value of an output variable is returned in response to REST requests.
+* `business-relevant`: Indicates that the variable is relevant for a particular item of business value. This tag is helpful for monitoring purposes or for implying that the variable is relevant to another application.
+* `tracked`: Sets a variable to be tracked for changes so that {PRODUCT} generates events anytime the value of this variable is changed. Events are published to the `kogito-variables-events` topic in {PRODUCT}, where you can access the previous and new values.
+
+You define a variable tag directly in the BPMN process file as a `customTags` metadata property with the tag value defined in the format `![CDATA[__TAG_NAME__]]`.
+
+The following snippet from a BPMN file applies the `required` tag to an `approver` process variable:
+
+.Example variable tagged in a BPMN file
+[source,xml]
+----
+<bpmn2:property id="approver" itemSubjectRef="ItemDefinition_9" name="approver">
+  <bpmn2:extensionElements>
+    <tns:metaData name="customTags">
+      <tns:metaValue><![CDATA[required]]></tns:metaValue>
+    </tns:metaData>
+  </bpmn2:extensionElements>
+</bpmn2:property>
+----
+
+You can also define custom variable tags in your BPMN files to make variable data available to {PRODUCT} process event listeners. Custom tags do not influence the {PRODUCT} runtime as the standard variable tags do and are for informational purposes only.

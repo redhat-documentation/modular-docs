@@ -1,0 +1,22 @@
+// This is a multi-assembly title with its own parent title and introduction to the assemblies that follow.
+
+:KOGITO-ENT:
+include::_artifacts/document-attributes.adoc[]
+
+[id='title-developing-process-services']
+= Developing process services in {PRODUCT}
+:doctype: book
+:imagesdir: _images
+:context: developing-process-services
+
+As a developer of business processes, you can use {PRODUCT} to develop process services and case definitions using Business Process Model and Notation (BPMN) 2.0 models. BPMN process models are graphical representations of the steps required to achieve a business goal. For more information about BPMN, see the Object Management Group (OMG) https://www.omg.org/spec/BPMN/2.0/About-BPMN[Business Process Model and Notation 2.0 specification].
+
+// Assembly includes
+include::assemblies/assembly-kogito-using-bpmn.adoc[]
+include::assemblies/assembly-kogito-managing-processes.adoc[]
+
+// Versioning info
+include::_artifacts/versioning-information.adoc[]
+
+// Contact information
+include::_artifacts/author-group.adoc[]

@@ -1,0 +1,27 @@
+
+# Config file for Pantheon v2 uploader
+# IMPORTANT: This file is a placeholder only and might not be accurate. For details about how this file should look for your specific content, contact a member of the CCS tooling team.
+## server: Pantheon server URL
+## repository: A unique name that is visible in the user facing URL
+
+## Note: Due to YAML syntax, any file paths that start with a wildcard must be surrounded in quotation marks, as in the following example:
+# modules:
+#  - '*.adoc'
+
+server: http://localhost:8080
+repository: mod-doc-repo-example
+variants:
+   - name: global-attributes
+     path: _artifacts/document-attributes.adoc
+     canonical: true
+   - name: community-attributes
+     path: _artifacts/document-attributes-kogito-comm.adoc
+   - name: enterprise-attributes
+     path: _artifacts/document-attributes-kogito-ent.adoc
+assemblies:
+  - assemblies/*.adoc
+modules:
+  - modules/**/*.adoc
+resources:
+  - _images/**/*.png
+  - _artifacts/*.adoc

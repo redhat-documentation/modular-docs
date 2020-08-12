@@ -1,0 +1,20 @@
+[id='con-management-console_{context}']
+= {PRODUCT} Management Console
+
+The {PRODUCT} Management Console is a user interface for viewing the state of all available {PRODUCT} services and managing process instances:
+
+.{PRODUCT} Management Console
+image::kogito/bpmn/kogito-management-console.png[Image of Kogito Management Console]
+
+You can use the Management Console to view process, subprocess, and node instance details, abort process instances, and view domain-specific process data.
+
+The Management Console requires your {PRODUCT} services to use the following {PRODUCT} components:
+
+* *{PRODUCT} Data Index Service*: Enables the Management Console to access stored events related to processes and domain data from your {PRODUCT} services. The {PRODUCT} Data Index Service additionally requires Infinispan persistence and Apache Kafka messaging for your {PRODUCT} service. For more information about the Data Index Service, see
+ifdef::KOGITO-ENT[]
+{URL_CONFIGURING_KOGITO}#con-data-index-service_kogito-configuring[_{CONFIGURING_KOGITO}_].
+endif::[]
+ifdef::KOGITO-COMM[]
+xref:con-data-index-service_kogito-configuring[].
+endif::[]
+* *{PRODUCT} process management add-on*: Enables the Management Console to interact with the process data from your {PRODUCT} services through the add-on REST endpoint `/management/processes`. If you do not enable this add-on for your {PRODUCT} service, the Management Console provides read-only access to your service data without the ability to modify instances, such as aborting process instances. For more information about the process management add-on, see xref:con-bpmn-process-management-addon_kogito-bpmn-models[].

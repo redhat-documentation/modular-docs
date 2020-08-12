@@ -1,0 +1,58 @@
+[id='ref-bpmn-subprocesses_{context}']
+= Subprocesses supported in {PRODUCT}
+
+BPMN subprocesses are portions of a parent process that contain process nodes. You can embed part of the parent process within a subprocess. You can also include variable definitions within the subprocess. These variables are accessible to all nodes inside the subprocess.
+
+A subprocess must have one incoming connection and one outgoing connection. If you use a terminate end event inside a subprocess, the entire process instance that contains the subprocess is terminated, not just the subprocess. A subprocess ends when there are no more active elements in it.
+
+A multiple-instance subprocess is instantiated multiple times when its execution is triggered. The instances are created sequentially. A new subprocess instance is created only after the previous instance has finished. A multiple-instance subprocess has one incoming connection and one outgoing connection.
+
+NOTE: Multiple-instance behavior is currently not supported for embedded subprocesses in {PRODUCT}.
+
+{PRODUCT} currently supports the following subprocesses:
+
+* *Embedded subprocess*: Part of the parent process execution and shares its data
+* *Reusable subprocess*: Independent from the parent process
+
+In the following example, the `Place order` subprocess checks whether sufficient stock is available to place the order and updates the stock information if the order can be placed. The customer is then notified through the main process based on whether the order was placed.
+
+.Example subprocess
+image::kogito/bpmn/subprocess.png[]
+
+Embedded subprocess::
++
+--
+An embedded subprocess encapsulates a part of the process. This subprocess must contain a start event and at least one end event. You can define local subprocess variables that are accessible to all elements inside this container.
+
+NOTE: Multiple-instance behavior is currently not supported for embedded subprocesses in {PRODUCT}.
+
+--
+
+Reusable subprocess::
++
+--
+A reusable subprocess is an independent process included within a parent process. This subprocess typically appears collapsed within the process process.
+--
+
+////
+.AdHoc subprocess
+
+An ad hoc subprocess or process contains a number of embedded inner activities and is intended to be executed with a more flexible ordering compared to the typical routing of processes. Unlike regular processes, an ad hoc subprocess does not contain a complete, structured BPMN2 diagram description, for example, from start event to end event. Instead, the ad hoc subprocess contains only activities, sequence flows, gateways, and intermediate events. An ad hoc subprocess can also contain data objects and data associations. The activities within the ad hoc subprocesses are not required to have incoming and outgoing sequence flows. However, you can specify sequence flows between some of the contained activities. When used, sequence flows provide the same ordering constraints as in a regular process. To have any meaning, intermediate events must have outgoing sequence flows and they can be triggered multiple times while the ad hoc subprocess is active.
+
+
+.Event subprocess
+
+
+An event subprocess becomes active when its start event is triggered. It can interrupt the parent process context or run in parallel with it.
+
+With no outgoing or incoming connections, only an event or a timer can trigger the subprocess. The subprocess is not part of the regular control flow.
+Although self-contained, it is executed in the context of the bounding process.
+
+Use an event subprocess within a process flow to handle events that happen outside of the main process flow.
+For example, while booking a flight, two events may occur:
+
+* Cancel booking (interrupting)
+* Check booking status (non-interrupting)
+
+You can model both of these events using the event subprocess.
+////

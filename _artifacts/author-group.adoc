@@ -1,0 +1,8 @@
+//:sectnums!:
+ifndef::DOCU_NAME[]
+[appendix]
+[id='author-group']
+= Contact information
+
+{CONTACT}
+endif::DOCU_NAME[]

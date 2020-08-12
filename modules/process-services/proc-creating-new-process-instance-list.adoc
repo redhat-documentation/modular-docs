@@ -1,0 +1,15 @@
+[id='proc-creating-new-process-instance-list_{context}']
+= Creating a custom process instance list
+
+You can view the list of all the running process instances in *Menu* -> *Manage* -> *Process Instances* in Business Central. From this page, you can manage the instances during run time and monitor their execution. You can customize which columns are displayed, the number of rows displayed per page, and filter the results. You can also create a custom process instance list.
+
+.Prerequisites
+* A project with a process definition has been deployed in Business Central.
+
+.Procedure
+. In Business Central, go to *Menu* -> *Manage* -> *Process Instances*.
+. In the *Manage Process Instances* page, click the advanced filters icon on the left to open the list of process instance *Advanced Filters* options.
+. In the *Advanced Filters* panel, enter the name and description of the filter that you want to use for your custom process instance list, and click *Add New*.
+. From the list of filter values, select the parameters and values to configure the custom process instance list, and click *Save*.
++
+A new filter is created and immediately applied to the process instances list. The filter is also saved in the *Saved Filters* list. You can access saved filters by clicking the star icon on the left side of the *Manage Process Instances* page.

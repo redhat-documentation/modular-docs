@@ -1,0 +1,63 @@
+[id='proc-persistence-enabling_{context}']
+= Enabling Infinispan persistence for {PRODUCT} services
+
+You can enable persistence for your {PRODUCT} services to persist data, such as active process nodes and process instance variables, so that the data is preserved across application restarts. {PRODUCT} persistence is based on https://infinispan.org/[Infinispan], so you must have a an Infinispan server installed and running in order to enable persistence.
+
+.Prerequisites
+* https://infinispan.org/[Infinispan server] 10.0 or later is installed and running. For information about Infinispan installation and configuration, see the https://infinispan.org/documentation/[Infinispan documentation].
+
+.Procedure
+. Add the following dependencies to the `pom.xml` file of your {PRODUCT} project:
++
+--
+.On Quarkus
+[source,xml,subs="attributes+,+quotes"]
+----
+<dependency>
+  <groupId>io.quarkus</groupId>
+  <artifactId>quarkus-infinispan-client</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>infinispan-persistence-addon</artifactId>
+  <version>__{PRODUCT_INIT_CAP}_VERSION__</version>
+</dependency>
+----
+
+.On Spring Boot
+[source,xml,subs="attributes+,+quotes"]
+----
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>infinispan-persistence-addon</artifactId>
+  <version>__{PRODUCT_INIT_CAP}_VERSION__</version>
+</dependency>
+<dependency>
+  <groupId>org.infinispan</groupId>
+  <artifactId>infinispan-spring-boot-starter-remote</artifactId>
+  <version>__INFINISPAN_SPRING_BOOT_VERSION__</version>
+</dependency>
+----
+--
+. Add following property to the `src/main/resources/application.properties` file in your {PRODUCT} project to configure the connection to the Infinispan server.
++
+--
+Replace the server host and port information according to your Infinispan server installation.
+
+.On Quarkus
+[source]
+----
+quarkus.infinispan-client.server-list=localhost:11222
+----
+
+.On Spring Boot
+[source, plain]
+----
+infinispan.remote.server-list=127.0.0.1:11222
+----
+--
+
+For example {PRODUCT} services with Infinispan persistence, see the following example applications in GitHub:
+
+* https://github.com/kiegroup/kogito-examples/tree/stable/process-infinispan-persistence-quarkus[`process-infinispan-persistence-quarkus`]: Example on Quarkus
+* https://github.com/kiegroup/kogito-examples/tree/stable/process-infinispan-persistence-springboot[`process-infinispan-persistence-springboot`]: Example on Spring Boot

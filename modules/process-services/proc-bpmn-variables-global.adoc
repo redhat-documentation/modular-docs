@@ -1,0 +1,19 @@
+[id='proc-bpmn-variables-global_{context}']
+= Defining global variables in {PRODUCT} processes
+
+Global variables are visible to all process instances and assets in a project, and pass information to the {PROCESS_ENGINE}. Global variables are typically used by business rules and constraints and are created dynamically by the rules or constraints. Every global variable defines its unique ID and item subject reference. The ID serves as the variable name and must be unique within the process definition. The item subject reference defines the data type that the variable stores.
+
+IMPORTANT: Business rules are evaluated at the moment the fact is inserted. Therefore, if you are using a global variable to constrain a fact pattern and the global is not set, the system returns a `NullPointerException`.
+
+Values of global variables can typically be changed during an assignment, which is a mapping between a process variable and an activity variable. The global variable is then associated with the local activity context, local activity variable, or by a direct call to the variable from a child context.
+
+.Procedure
+. In your VSCode IDE, open the relevant BPMN process file to view the process in the {PRODUCT} BPMN modeler.
+. Select the background of the BPMN modeler canvas and, in the upper-right corner of the modeler, click *Properties*.
+. Under *Process* -> *Global Variables*, click the plus icon to add a new global variable and enter the following values:
+
+* *Name*: Enter the name of the global variable, such as `person` for a global variable with person information shared by all assets.
+* *Data Type*: Enter a custom or standard data type of the variable, such as `org.acme.Person`.
++
+.Example global variable in BPMN modeler
+image::kogito/bpmn/bpmn-global-variables.png[Image of global variable example]

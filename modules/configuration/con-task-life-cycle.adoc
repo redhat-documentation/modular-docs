@@ -1,0 +1,156 @@
+[id='con-task-life-cycle_{context}']
+= Task life cycle in {PRODUCT} processes
+
+In {PRODUCT} business processes, tasks are implemented as work items and their execution is defined by work item handlers. User tasks in particular are a core construct in {PRODUCT} processes. When a user task is reached in a process, the task progresses through phases of a defined life cycle until it reaches an end state.
+
+{PRODUCT} supports the following default phases in a work item (task) life cycle:
+
+* *Active*: Indicates initial state when the work item is activated
+* *Abort*: Indicates abnormal completion of the work item
+* *Complete*: Indicates normal completion of the work item
+* *Claim*: Assigns the work item to a specific actor, restricting access to anyone else
+* *Release*: Unassigns the work item from a specific actor, releasing it to any other potential user or group to work on it (by claiming or completing)
+* *Skip*: Skips the work item
+
+With {PRODUCT}, you can also add custom life cycles and life cycle phases to meet your business needs.
+
+A life cycle moves a work item across various phases that are not defined by the `WorkItem` interface and defines the behavior of a work item at runtime. You typically add a life cycle on top of the `WorkItemHandler` interface so that the life cycle is pluggable with more flexible runtime characteristics.
+
+The `WorkItemHandler` interface provides the option to move between task phases, as shown in the following method example:
+
+.WorkItemHandler support for moving between task phases
+[source, java]
+----
+public void transitionToPhase(WorkItem workItem, WorkItemManager manager, Transition<?> transition)
+----
+
+NOTE: This method is a default method that does nothing when not implemented. This functionality maintains backward compatibility with existing work item handler implementations.
+
+You typically implement the `transitionToPhase` method as shown in the following example:
+
+.Example implementation of transitionToPhase method
+[source, java]
+----
+@Override
+public void transitionToPhase(WorkItem workItem, WorkItemManager manager, Transition<?> transition) {
+
+    lifeCycle.transitionTo(workItem, manager, (Transition<Map<String, Object>>) transition);
+}
+----
+
+The `lifeCycle` element is an implementation of `org.kie.{PRODUCT_INIT}.process.workitem.LifeCycle<T>` that defines the execution semantics.
+
+== User task authorization
+
+The `org.jbpm.process.instance.impl.humantask.BaseHumanTaskLifeCycle` implementation in {PRODUCT} ensures that a user task is worked on by authorized users, based on the user or group assignments that you provide.
+
+You can use the following parameters to provide assignments for authorized users or groups in the relevant BPMN process model. All of the listed parameters support expressions.
+
+.Parameters for authorized users or groups
+[cols="35%,35%,30%"]
+|===
+|Parameter name |Description |Example value
+
+|`ActorId`
+|Comma-separated list of authorized users
+|`John,Mary,#{actor}`
+
+|`GroupId`
+|Comma-separated list of authorized groups of users
+|`mangers,#{mygroup}`
+
+|`BusinessAdministratorId`
+|Comma-separated list of authorized administrators
+|`administrator,#{adminuser}`
+
+|`BusinessAdministratorGroupId`
+|Comma-separated list of groups of administrators
+|`admins,#{admingroup}`
+
+|`ExcludedOwnerId`
+|Comma-separated list of unauthorized users who cannot work on this task
+|`paul,#{lastactor}`
+|===
+
+NOTE: Authorization is only enforced when the method that calls the work item life cycle methods uses a security context. This security behavior is dependent on the API that you use.
+
+== API interaction with task life cycle phases
+
+The following example API interacts with user tasks (work items) using life cycle phases:
+
+.Example API to interact with task life cycle phases
+[source, java]
+----
+// Start process instance
+ProcessInstance<?> processInstance = approvalsProcess.createInstance(m);
+processInstance.start();
+
+// Set up security policy with identity information
+StaticIdentityProvider identity = new StaticIdentityProvider("admin", Collections.singletonList("managers"));
+SecurityPolicy policy = SecurityPolicy.of(identity);
+
+// Get list of work items, taking security restrictions into account
+List<WorkItem> workItems = processInstance.workItems(policy);
+
+// Work on a task
+final String wiId = workItems.get(0).getId();
+processInstance.transitionWorkItem(wiId,
+                                   new HumanTaskTransition(Claim.ID, null, policy));
+
+processInstance.transitionWorkItem(wiId,
+                                   new HumanTaskTransition(Complete.ID, Collections.singletonMap("approved", false), policy));
+----
+
+When you interact with user tasks through a REST API, you can also provide the following query parameters for user and group information:
+
+.Query parameters for user or group information in REST APIs
+[cols="20%,60%,20%"]
+|===
+|Parameter name |Description |Multi-value support
+
+|`user`
+|User name to be used for the user task authorization check
+|No
+
+|`group`
+|Zero or more group names to be used for the user task authorization check
+|Yes
+|===
+
+For example, the following REST endpoints interact with user tasks in an `orderItems.bpmn2` process for verifying customer orders:
+
+.Example GET request to retrieve open tasks using the process UUID
+[source]
+----
+curl -X GET http://localhost:8080/orderItems/66c11e3e-c211-4cee-9a07-848b5e861bc5/tasks
+----
+
+.Example response
+[source]
+----
+{"62f1c985-d31c-4ead-9906-2fe8d05937f0":"Verify order"}
+----
+
+.Example GET request to retrieve task details by process and task UUID
+[source,subs="+quotes"]
+----
+curl -X GET http://localhost:8080/orderItems/66c11e3e-c211-4cee-9a07-848b5e861bc5/Verify_order/62f1c985-d31c-4ead-9906-2fe8d05937f0
+----
+
+.Example response
+[source]
+----
+{"id":"62f1c985-d31c-4ead-9906-2fe8d05937f0","input1":{"orderNumber":"12345","shipped":false,"total":0.537941914075738},"name":"Verify order"}
+----
+
+.Example POST request to complete the task and define the authorized group and user
+[source]
+----
+curl -X POST http://localhost:8080/orderItems/66c11e3e-c211-4cee-9a07-848b5e861bc5/Verify_order/62f1c985-d31c-4ead-9906-2fe8d05937f0?group=managers&user=john -H "accept: application/json" -H "content-type: application/json"
+----
+
+.Example response
+[source]
+----
+{"id":"66c11e3e-c211-4cee-9a07-848b5e861bc5","order":{"orderNumber":"12345","shipped":false,"total":0.537941914075738}}
+----

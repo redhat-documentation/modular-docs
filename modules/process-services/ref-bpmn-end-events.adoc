@@ -1,0 +1,77 @@
+[id='ref-bpmn-end-events_{context}']
+= End events supported in {PRODUCT}
+
+BPMN end events terminate a business process. An end event has one or more incoming sequence flows and typically has no outgoing flows. A business process can contain multiple end events. All end events, with the exception of the none and terminate end events, are throw events. A process must contain at least one end event.
+
+During runtime, an end event finishes the process workflow. The end event can finish only the workflow that reached it, or all workflows in the process instance, depending on the end event type.
+
+{PRODUCT} currently supports the following end events:
+
+.Supported end events
+[cols="30%,70%" options="header"]
+
+|===
+h|End event type
+h|Icon
+
+|None
+|image:kogito/bpmn/bpmn-end-node.png[]
+
+|Message
+|image:kogito/bpmn/bpmn-end-message.png[]
+
+|Error
+|image:kogito/bpmn/bpmn-end-error.png[]
+
+|Terminate
+|image:kogito/bpmn/bpmn-end-terminate.png[]
+|===
+
+////
+|Compensation
+|image:kogito/bpmn/bpmn-end-compensation.png[]
+
+|Escalation
+|image:kogito/bpmn/bpmn-end-escalation.png[]
+
+|Signal
+|image:kogito/bpmn/bpmn-end-signal.png[]
+////
+
+None::
++
+--
+The none end event specifies that no other special behavior is associated with the end of the process.
+--
+
+Message::
++
+--
+When a flow enters a message end event, the flow finishes and the end event produces a message as defined in its properties.
+--
+
+Error::
++
+--
+The throwing error end event finishes the incoming workflow (consumes the incoming token) and produces an error object. Any other running workflows in the process or subprocess remain uninfluenced.
+--
+
+Terminate::
++
+--
+The terminate end event finishes all execution flows in the specified process instance. Activities being executed are canceled. If a terminate end event is reached in a subprocess, the entire process instance is terminated.
+--
+
+////
+.Signal
+
+A throwing signal end event is used to finish a process or subprocess flow. When the execution flow enters the element, the execution flow finishes and produces a signal identified by its `SignalRef` property.
+
+.Compensation
+
+A compensation end event is used to finish a transaction subprocess and trigger the compensation defined by the compensation intermediate event attached to the boundary of the subprocess activities.
+
+.Escalation
+
+The escalation end event finishes the incoming workflow, which means consumes the incoming token, and produces an escalation signal as defined in its properties, triggering the escalation process.
+////

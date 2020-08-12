@@ -1,0 +1,57 @@
+[id='con-kogito-automation_{context}']
+= {PRODUCT} business automation
+
+{PRODUCT} is a cloud-native business automation technology for building cloud-ready business applications. The name _Kogito_ derives from the Latin "Cogito", as in "Cogito, ergo sum" ("I think, therefore I am"), and is pronounced `[ˈkoː.d͡ʒi.to]` (_KO-jee-to_). The letter _K_ has reference to Kubernetes, the base for {OPENSHIFT} as the target cloud platform for {PRODUCT}, and to the Knowledge Is Everything (KIE) open source business automation project from which {PRODUCT} originates.
+
+{PRODUCT} is designed specifically to excel in a hybrid cloud environment and to be adaptable to your domain and tooling needs. The core objective of {PRODUCT} is to help you mold a set of business processes and decisions into your own domain-specific cloud-native set of services.
+
+.Business processes and decisions to cloud services
+image::kogito/creating-running/kogito-assets-to-cloud.png[Image of business assets moving to cloud services]
+
+When you are using {PRODUCT}, you are building a cloud-native application as a set of independent domain-specific services, collaborating to achieve some business value. The processes and decisions that you use to describe the target behavior are executed as part of the services that you create. The resulting services are highly distributed and scalable with no centralized orchestration service, and the runtime that your service uses is optimized for what your service needs.
+
+// @comment: Excluding for simplicity for now (Stetson, 18 Feb 2020)
+//If you need long-lived processes, you can persist the runtime state externally in a data grid such as Infinispan. Each {PRODUCT} service also produces events that can be consumed by other services. For example, if you use Apache Kafka, events can be aggregated and indexed in a data index service, offering advanced query capabilities through GraphQL.
+
+{PRODUCT} includes components that are based on well-known business automation KIE projects, specifically https://drools.org[Drools], https://jbpm.org[jBPM], and https://optaplanner.org[OptaPlanner], to offer dependable, open source solutions for business rules, business processes, and constraint solving.
+
+== Cloud-first priority
+
+{PRODUCT} is designed to run and scale on a cloud infrastructure. You can use {PRODUCT} with the latest cloud-based technologies, such as Quarkus, Knative, and Apache Kafka, to get fast boot times and instant scaling on container application platforms, such as {OPENSHIFT}.
+
+.Technologies used with {PRODUCT}
+image::kogito/creating-running/kogito-related-technolgies.png[Image of cloud-based technologies]
+
+For example, {PRODUCT} is compatible with the following technologies:
+
+* *{OPENSHIFT}*, based on Kubernetes, is the target platform for building and managing containerized applications.
+* *Quarkus* is the new native Java stack for Kubernetes that you can use when you build applications with {PRODUCT} services.
+* *Spring Boot* is also supported with {PRODUCT} if you need to use the Spring Framework with {PRODUCT}.
+ifdef::KOGITO-COMM[]
+* *GraalVM* with Quarkus enables you to use native compilation with {PRODUCT}, resulting in fast start-up times and minimal footprint. For example, a native {PRODUCT} service starts in about 0.003ms, about 100 times faster than a non-native start-up. Fast start-up is almost a necessity in a cloud ecosystem, especially if you need small serverless applications.
+endif::[]
+* *Knative* enables you to build serverless applications with {PRODUCT} that you can scale up or down (to zero) as needed.
+* *Prometheus* and *Grafana* are compatible with {PRODUCT} services for monitoring and analytics with optional extensions.
+* *Kafka*, *Infinispan*, and *Keycloak* are also some of the middleware technologies that {PRODUCT} supports for messaging, persistence, and security.
+
+== Domain-specific flexibility
+
+{PRODUCT} adapts to your business domain instead of forcing you to modify your domain to work with {PRODUCT}. You can expose your {PRODUCT} services with domain-specific APIs, based on the processes and decisions that you have defined. Domain-specific APIs for {PRODUCT} services do not require third-party or internal APIs.
+
+For example, a process for onboarding employees could generate remote REST API endpoints that you can use to onboard new employees or get information on their status, all using domain-specific JSON data.
+
+.Example custom API endpoints in Swagger
+image::kogito/creating-running/kogito-domain-api-endpoints-example.png[Image of REST API endpoints in Swagger UI]
+
+You can also expose domain-specific data through events or in a data index so that the data can be consumed and queried by other services.
+
+== Developer-centered experience
+
+Another focus of {PRODUCT} is optimal developer experience. You can use much or all of your existing tooling and workflow to develop, build, and deploy {PRODUCT} services, whether locally for testing or into the cloud. Quarkus offers development mode features to help with local testing, such as live reload of your processes and decisions in your running applications for advanced debugging.
+
+{PRODUCT} tooling is embeddable so that you can continue using the worklfow you already use for cloud-native services. For example, the {PRODUCT} https://github.com/kiegroup/kogito-tooling/releases[VSCode extension] enables you to edit your Business Process Model and Notation (BPMN) 2.0 business processes and Decision Model and Notation (DMN) decision models directly in your VSCode IDE, next to your other application code.
+
+.Building a {PRODUCT} process service in VSCode
+image::kogito/creating-running/kogito-run-quarkus-devmode-demo.gif[Demo of {PRODUCT} BPMN2 extension in VSCode]
+
+To deploy your services into the cloud, you can use the {PRODUCT} Operator, which guides you through every step. The {PRODUCT} Operator uses the https://github.com/operator-framework[Operator Framework] to automate and manage many of the deployment steps for you. For example, when you give the operator a link to the Git repository that contains your application, the operator can automatically configure the components required to build your project from source and deploy the resulting services. {PRODUCT} also offers a command-line interface (CLI) to simplify some of these deployment tasks.

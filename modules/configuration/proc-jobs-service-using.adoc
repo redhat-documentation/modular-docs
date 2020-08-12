@@ -1,0 +1,93 @@
+[id='proc-jobs-service-using_{context}']
+= Using the {PRODUCT} Jobs Service as a timer service
+
+By default, {PRODUCT} services use an in-memory timer service to handle time-based events (jobs) defined in your Business Process Model and Notation (BPMN) process models. This default timer service does not cover long time intervals and is only suitable for short delays defined in the process.
+
+For advanced use cases where time intervals can be days or weeks or when additional event handling options are required, you can configure your {PRODUCT} project to use the {PRODUCT} Jobs Service as an external timer service. Whenever you need to schedule a timer as part of process instance, the timer is scheduled in the Jobs Service and the Jobs Service calls back to the {PRODUCT} service upon timer expiration.
+
+The {PRODUCT} Jobs Service also supports Infinispan persistence that you can enable when you run the Jobs Service so that job data is preserved across application restarts.
+
+.Procedure
+. Go to the https://repository.jboss.org/org/kie/kogito/jobs-service/[`jobs-service`] artifacts page, select the latest release of the Jobs Service, and download the `jobs-service-__VERSION__-runner.jar` file to a local directory.
+. In a command terminal, navigate to the directory location of the downloaded `jobs-service-__VERSION__-runner.jar` file and enter the following command to run the Jobs Service with Infinispan persistence enabled:
++
+--
+.Running the Jobs Service with Infinispan persistence enabled
+[source,subs="+quotes"]
+----
+$ java  \
+    -Dkogito.job-service.persistence=infinispan  \
+    -jar jobs-service-__VERSION__-runner.jar
+----
+
+Infinispan persistence enables the job data to be preserved across application restarts. If you do not use Infinispan persistence, the Jobs Service uses the default in-memory storage and all job information is lost between application restarts.
+
+To change the logging level of the Jobs Service, such as for debugging, you can specify the following start-up properties:
+
+.Modifying Jobs Service logging level for debugging
+[source,subs="+quotes"]
+----
+$ java  \
+  -Dquarkus.log.console.level=DEBUG -Dquarkus.log.category.\"org.kie.kogito\".min-level=DEBUG  \
+  -Dquarkus.log.category.\"org.kie.kogito\".level=DEBUG  \
+  -jar jobs-service-__VERSION__-runner.jar
+----
+--
+. In your {PRODUCT} project, add the following dependency to the `pom.xml` file to enable the Jobs Service add-on:
++
+--
+.On Quarkus
+[source, xml]
+----
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>jobs-management-quarkus-addon</artifactId>
+</dependency>
+----
+
+.On Spring Boot
+[source, xml]
+----
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>jobs-management-springboot-addon</artifactId>
+</dependency>
+----
+--
+. In your {PRODUCT} project, add the following properties to the `src/main/resources/application.properties` to define the locations of the Jobs Service and the callback to be used when the timer expires:
++
+.Configure {PRODUCT} service properties for Jobs Service
+[source]
+----
+kogito.jobs-service.url=http://localhost:8085
+kogito.service.url=http://localhost:8080
+----
+. In a command terminal, navigate to your {PRODUCT} project and run the project using your preferred run mode, such as development mode:
++
+--
+.On Quarkus
+[source]
+----
+mvn clean compile quarkus:dev
+----
+
+.On Sprint Boot
+[source]
+----
+mvn clean compile spring-boot:run
+----
+
+With the Jobs Service and your {PRODUCT} project both configured and running, the Jobs Service can receive any job-scheduling requests to function as the external timer service.
+
+By default, the implementation of the Jobs Service uses the following basic components:
+
+* An implementation of the `org.kie.kogito.jobs.JobsService` interface that is used by the service to schedule jobs
+* A REST endpoint registered at the path `/management/jobs`
+
+If the default REST clients used by the Jobs Service add-on do not meet your needs, you can configure custom REST clients using the relevant service implementors. The REST client depends on the application type:
+
+* On Quarkus, the Jobs Service uses a Vert.x web client: `io.vertx.ext.web.client.WebClient`
+* On Spring Boot, the Jobs Service uses a rest template: `org.springframework.web.client.RestTemplate`
+
+In both cases, you produce an instance of the client to enable detailed setup of the client.
+--

@@ -1,0 +1,37 @@
+ifdef::context[:parent-context: {context}]
+
+[id='assembly-kogito-using-dmn']
+= Using DMN models in {PRODUCT} services
+:context: kogito-dmn-models
+
+As a developer of business decisions, you can use Decision Model and Notation (DMN) to model a decision service graphically in a decision requirements diagram (DRD). This diagram consists of one or more decision requirements graphs (DRGs) that trace business decisions from start to finish, with each decision node using logic defined in DMN boxed expressions such as decision tables.
+
+{PRODUCT} provides design and runtime support for DMN 1.2 models at conformance level 3, and runtime-only support for DMN 1.1 and 1.3 models at conformance level 3. You can design your DMN models with the {PRODUCT} DMN modeler in VSCode or import existing DMN models into your {PRODUCT} projects for deployment and execution. Any DMN 1.1 models that you import into your {PRODUCT} project, open in the DMN modeler, and save are converted to DMN 1.2 models. DMN 1.3 models are not supported in the {PRODUCT} DMN modeler.
+
+For more information about DMN, see the Object Management Group (OMG) https://www.omg.org/spec/DMN[Decision Model and Notation specification].
+
+include::modules/decision-services/con-dmn.adoc[leveloffset=+1]
+include::modules/decision-services/con-dmn-conformance-levels.adoc[leveloffset=+2]
+include::modules/decision-services/ref-dmn-drd-components.adoc[leveloffset=+2]
+include::modules/decision-services/con-dmn-feel.adoc[leveloffset=+2]
+include::modules/decision-services/con-dmn-names.adoc[leveloffset=+3]
+include::modules/decision-services/ref-dmn-data-types.adoc[leveloffset=+3]
+include::modules/decision-services/con-dmn-boxed-expressions.adoc[leveloffset=+2]
+include::modules/decision-services/con-dmn-decision-tables.adoc[leveloffset=+3]
+include::modules/decision-services/con-dmn-decision-tables-hit-policies.adoc[leveloffset=+4]
+include::modules/decision-services/con-dmn-literal-expressions.adoc[leveloffset=+3]
+include::modules/decision-services/con-dmn-context-expressions.adoc[leveloffset=+3]
+include::modules/decision-services/con-dmn-relation-expressions.adoc[leveloffset=+3]
+include::modules/decision-services/con-dmn-function-expressions.adoc[leveloffset=+3]
+include::modules/decision-services/con-dmn-invocation-expressions.adoc[leveloffset=+3]
+include::modules/decision-services/con-dmn-list-expressions.adoc[leveloffset=+3]
+include::modules/decision-services/ref-dmn-model-example.adoc[leveloffset=+2]
+include::modules/decision-services/proc-dmn-model-creating.adoc[leveloffset=+1]
+include::modules/decision-services/proc-dmn-logic-defining.adoc[leveloffset=+2]
+include::modules/decision-services/proc-dmn-data-types-defining.adoc[leveloffset=+2]
+include::modules/decision-services/con-dmn-documentation.adoc[leveloffset=+2]
+include::modules/decision-services/ref-dmn-designer-nav.adoc[leveloffset=+2]
+include::modules/creating-running/con-kogito-service-execution.adoc[leveloffset=+1]
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]

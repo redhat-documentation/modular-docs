@@ -1,0 +1,38 @@
+[id='proc-process-instance-filtering_{context}']
+= Process instance filtering
+
+For process instances in *Menu* -> *Manage* -> *Process Instances*, you can use the *Filters* and *Advanced Filters* panels to sort process instances as needed.
+
+.Procedure
+. In Business Central, go to *Menu* -> *Manage* -> *Process Instances*.
+. On the *Manage Process Instances* page, click the *Filters* icon on the left of the page to select the filters that you want to use:
++
+* *State*: Filter process instances based on their state (*Active*, *Aborted*, *Completed*, *Pending*, and *Suspended*).
+* *Errors*: Filter process instances that contain at least one or no errors.
+* *Filter By*: Filter process instances based on the following attributes:
+** *Id*: Filter by process instance ID.
++
+Input: `Numeric`
+
+** *Initiator*: Filter by the user ID of the process instance initiator.
++
+The user ID is a unique value, and depends on the ID management system.
++
+Input: `String`
+
+** *Correlation key*: Filter by correlation key.
++
+Input: `String`
+
+** *Description*: Filter by process instance description.
++
+Input: `String`
+* *Name*: Filter process instances based on process definition name.
+* *Definition ID*: The ID of the instance definition.
+* *Deployment ID*: The ID of the instance deployment.
+* *SLA Compliance*: SLA compliance status (*Aborted*, *Met*, *N/A*, *Pending*, and *Violated*).
+* *Parent Process ID*: The ID of the parent process.
+* *Start Date*: Filter process instances based on their creation date.
+* *Last update*: Filter process instances based on their last modified date.
+
+You can also use the *Advanced Filters* option to create custom filters in Business Central.

@@ -1,0 +1,44 @@
+[id='ref-decision-authoring-assets_{context}']
+= Decision-authoring assets in {PRODUCT}
+
+{PRODUCT} supports several assets that you can use to define business decisions for your decision service. Each decision-authoring asset has different advantages, and you might prefer to use one or a combination of multiple assets depending on your goals and needs.
+
+The following table highlights the main decision-authoring assets supported in {PRODUCT} projects to help you decide or confirm the best method for defining decisions in your decision service.
+
+.Decision-authoring assets supported in {PRODUCT}
+[cols="20%,40%,20%,20%", options="header"]
+|===
+|Asset
+|Highlights
+|Authoring tools
+|Documentation
+
+|Decision Model and Notation (DMN) models
+a|
+* Are decision models based on a notation standard defined by the Object Management Group (OMG)
+* Use graphical decision requirements diagrams (DRDs) with one or more decision requirements graphs (DRGs) to trace business decision flows
+* Use an XML schema that allows the DMN models to be shared between DMN-compliant platforms
+* Support Friendly Enough Expression Language (FEEL) to define decision logic in DMN decision tables and other DMN boxed expressions
+* Can be integrated efficiently with Business Process Model and Notation (BPMN) process models
+* Are optimal for creating comprehensive, illustrative, and stable decision flows
+|{PRODUCT} DMN modeler in VSCode or other DMN-compliant editor
+|xref:con-dmn_kogito-dmn-models[]
+
+|DRL rules
+a|
+* Are individual rules that you define directly in `.drl` text files
+* Provide the most flexibility for defining rules and other technicalities of rule behavior
+* Are optimal for creating rules that require advanced DRL options, such as rule units
+* Have strict syntax requirements for rules to be compiled properly
+|Any integrated development environment (IDE)
+|xref:con-drl_drl-rules[]
+
+|Spreadsheet decision tables
+a|
+* Are tabular sets of rules that you define in `.xls` or `.xlsx` spreadsheet files
+* Support template keys and values for creating rule templates
+* Are optimal for business environments that already rely on decision tables for rules
+* Have strict syntax requirements for rules to be compiled properly when used in {PRODUCT}
+|Spreadsheet editor
+|xref:con-decision-tables_decision-tables[]
+|===

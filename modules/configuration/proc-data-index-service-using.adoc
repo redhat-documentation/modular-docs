@@ -1,0 +1,97 @@
+[id='proc-data-index-service-using_{context}']
+= Using the {PRODUCT} Data Index Service to query application data
+
+{PRODUCT} provides a Data Index Service that stores all {PRODUCT} events related to processes, tasks, and domain data. The Data Index Service uses Kafka messaging to consume https://cloudevents.io/[CloudEvents] messages from {PRODUCT} services, and then indexes the returned data for future GraphQL queries and stores the data in the Infinispan persistence store. The Data Index Service is at the core of all {PRODUCT} search, insight, and management capabilities.
+
+You can use the {PRODUCT} Data Index Service to index, store, and query process data in your {PRODUCT} services.
+
+.Prerequisites
+* https://infinispan.org/[Infinispan server] 10.0 or later is installed and running. For information about Infinispan installation and configuration, see the https://infinispan.org/documentation/[Infinispan documentation].
+* https://kafka.apache.org/[Apache Kafka] is installed, including required topics, and the Kafka messaging server is running. For information about Kafka installation and configuration, see the https://kafka.apache.org/documentation/[Apache Kafka documentation].
++
+--
+For a list of configuration options for setting up the Kafka consumer, see https://kafka.apache.org/documentation/#consumerconfigs[Consumer Configs] in the Kafka documentation.
+
+For more information about using Kafka messaging on Quarkus, see https://quarkus.io/guides/kafka[Using Apache Kafka with reactive messaging] in the Quarkus documentation.
+--
+
+.Procedure
+. Configure your {PRODUCT} project to enable Infinispan persistence and Apache Kafka messaging.
++
+--
+For instructions on enabling persistence, see xref:proc-persistence-enabling_kogito-configuring[].
+
+For instructions on enabling messaging, see xref:proc-messaging-enabling_kogito-configuring[].
+--
+. Go to the https://repository.jboss.org/org/kie/kogito/data-index-service/[`data-index-service`] artifacts page, select the latest release of the Data Index Service, and download the `data-index-service-__VERSION__-runner.jar` file to a local directory.
+. In a command terminal, navigate to the directory location of the downloaded `data-index-service-__VERSION__-runner.jar` file and enter the following command to run the Data Index Service with the required Infinispan credentials:
++
+--
+.Running the Data Index Service
+[source,subs="+quotes"]
+----
+$ java  \
+  -Dquarkus.infinispan-client.auth-username=__INFINISPAN_USER_NAME__ \
+  -Dquarkus.infinispan-client.auth-password=__INFINISPAN_PASSWORD__ \
+  -jar data-index-service-__VERSION__-runner.jar
+----
+
+For more information about Infinispan authentication on Quarkus, see https://quarkus.io/guides/infinispan-client[Infinispan client] in the Quarkus documentation.
+
+To change the logging level of the Data Index Service, such as for debugging, you can specify the following start-up properties as needed when you run the Data Index Service:
+
+.Modifying Data Index Service logging level for debugging
+[source,subs="+quotes"]
+----
+$ java  \
+  -Dquarkus.log.console.level=DEBUG -Dquarkus.log.category.\"org.kie.kogito\".min-level=DEBUG  \
+  -Dquarkus.log.category.\"org.kie.kogito\".level=DEBUG  \
+  -jar data-index-service-__VERSION__-runner.jar
+----
+--
+. In a separate command terminal window, navigate to your {PRODUCT} project and run the project using your preferred run mode, such as development mode:
++
+--
+.On Quarkus
+[source]
+----
+mvn clean compile quarkus:dev
+----
+
+.On Sprint Boot
+[source]
+----
+mvn clean compile spring-boot:run
+----
+
+With the Data Index Service and your {PRODUCT} project both configured and running, the Data Index Service starts consuming messages from the defined Kafka topics, such as `kogito-processinstances-events`.
+--
+. In a web browser, navigate to the `http://__HOST__:__PORT__` location configured for your running {PRODUCT} service, such as `\http://localhost:8080/`, to explore the exposed data model.
++
+--
+To query the available data using the https://github.com/graphql/graphiql[GraphiQL] interface, navigate to `http://__HOST__:__PORT__/graphql`, such as `\http://localhost:8080/graphql` in this example, and begin executing supported queries to interact with your application data.
+
+.Example query for process instance data
+[source]
+----
+{ ProcessInstances {
+  id,
+  processId,
+  processName,
+  state,
+  nodes {
+    name,
+    type,
+    enter,
+    exit
+  }
+} }
+----
+
+.Example response
+image::kogito/openshift/kogito-data-index-graphiql-process-instances.png[Image of GraphQL query and response for process instances]
+
+For available query types, click *Docs* in the upper-right corner of the GraphiQL interface.
+
+For more information about supported queries with the Data Index Service, see xref:ref-data-index-service-queries_kogito-configuring[].
+--

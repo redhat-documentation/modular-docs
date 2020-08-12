@@ -1,0 +1,37 @@
+[id='ref-performance-tuning-decision-engine_{context}']
+= Performance tuning considerations with the {DECISION_ENGINE}
+
+The following key concepts or suggested practices can help you optimize {DECISION_ENGINE} performance. These concepts are summarized in this section as a convenience and are explained in more detail in the cross-referenced documentation, where applicable. This section will expand or change as needed with new releases of {PRODUCT}.
+
+Use sequential mode for stateless KIE sessions that do not require important {DECISION_ENGINE} updates::
+Sequential mode is an advanced rule base configuration in the {DECISION_ENGINE} that enables the {DECISION_ENGINE} to evaluate rules one time in the order that they are listed in the {DECISION_ENGINE} agenda without regard to changes in the working memory. As a result, rule execution may be faster in sequential mode, but important updates may not be applied to your rules. Sequential mode applies to stateless KIE sessions only.
++
+--
+To enable sequential mode, set the system property `drools.sequential` to `true`.
+
+For more information about sequential mode or other options for enabling it, see xref:con-phreak-sequential-mode_decision-engine[].
+--
+
+Use simple operations with event listeners::
+Limit the number of event listeners and the type of operations they perform. Use event listeners for simple operations, such as debug logging and setting properties. Complicated operations, such as network calls, in listeners can impede rule execution. After you finish working with a KIE session, remove the attached event listeners so that the session can be cleaned, as shown in the following example:
++
+--
+.Example event listener removed after use
+[source,java]
+----
+Listener listener = ...;
+StatelessKnowledgeSession ksession = createSession();
+try {
+    ksession.insert(fact);
+    ksession.fireAllRules();
+    ...
+} finally {
+    if (session != null) {
+        ksession.detachListener(listener);
+        ksession.dispose();
+    }
+}
+----
+
+For information about built-in event listeners and debug logging in the {DECISION_ENGINE}, see xref:con-engine-event-listeners_decision-engine[].
+--

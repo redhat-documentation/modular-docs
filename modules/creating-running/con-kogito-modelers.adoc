@@ -1,0 +1,17 @@
+[id='con-kogito-modelers_{context}']
+= {PRODUCT} BPMN and DMN modelers
+
+{PRODUCT} provides the following extensions or applications that you can use to design Business Process Model and Notation (BPMN) process models and Decision Model and Notation (DMN) decision models for your {PRODUCT} services using graphical modelers.
+
+For convenience, all {PRODUCT} BPMN and DMN modelers are available in the https://kiegroup.github.io/kogito-online/#/download[Business Modeler Hub] desktop application.
+
+* *{PRODUCT} VSCode extension*: (Recommended) Enables you to view and design BPMN and DMN models in Visual Studio Code. The VSCode extension in the {PRODUCT} Business Modeler Hub requires VSCode 1.43.0 or later.
++
+To enable the {PRODUCT} VSCode extension without the {PRODUCT} Business Modeler Hub, you can download the `vscode_extension_kogito_kie_editors___VERSION__.vsix` file from the https://github.com/kiegroup/kogito-tooling/releases[`kogito-tooling`] releases page in GitHub and go to *Extensions* -> *More actions* -> *Install from VSIX* in VSCode to install the extension.
+* *{PRODUCT} GitHub Chrome extension*: Enables you to view and design BPMN and DMN models in GitHub repositories in Google Chrome.
++
+To enable the {PRODUCT} GitHub Chrome extension without the {PRODUCT} Business Modeler Hub, you can download and extract the `chrome_extension_kogito_kie_editors___VERSION__.zip` file from the https://github.com/kiegroup/kogito-tooling/releases[`kogito-tooling`] releases page in GitHub, and then in the upper-right corner in Chrome, go to *Customize and control* -> *Settings* -> *Extensions* -> *Load unpacked* and open the extracted `dist` folder.
+* *Business Modeler desktop application*: Enables you to view and design BPMN and DMN models locally.
++
+To run the {PRODUCT} Business Modeler desktop application without the {PRODUCT} Business Modeler Hub, you can download and extract the `business_modeler_preview___RELEASE__.zip` file from the https://github.com/kiegroup/kogito-tooling/releases[`kogito-tooling`] releases page in GitHub, and then follow the instructions in the application `README` file to run the application on your specific operating system.
+* *Business Modeler online viewer*: Enables you to view and design BPMN and DMN models online at `https://kiegroup.github.io/kogito-online/`. The online modeler supports the `.new` format, so you can also enter `bpmn.new` or `dmn.new` in a web browser to start designing a new BPMN or DMN model in the online modeler.

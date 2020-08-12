@@ -1,0 +1,140 @@
+[id='proc-kogito-interacting-app_{context}']
+= Interacting with a running {PRODUCT} service
+
+After your {PRODUCT} service is running, you can send REST API requests to interact with your application and execute your services according to how you set up the application.
+
+This example tests the `/persons` REST API endpoint that is automatically generated based on the `PersonProcess.bpmn2` business process, according to the decisions in the `PersonDecisions.dmn` file (or the rules in the `PersonRules.drl` file if you used a DRL rule unit).
+
+For this example, use a REST client, curl utility, or the Swagger UI configured for the application at http://localhost:8080/swagger-ui/ to send API requests with the following components:
+
+* *URL*: `\http://localhost:8080/persons`
+* *HTTP headers*:
+** `accept`: `application/json`
+** `content-type`: `application/json`
+* *HTTP methods*: `GET`, `POST`, or `DELETE`
+
+.Example POST request body to add an adult (JSON)
+[source,json]
+----
+{
+  "person": {
+    "name": "John Quark",
+    "age": 20
+  }
+}
+----
+
+.Example curl command to add an adult
+[source]
+----
+curl -X POST http://localhost:8080/persons -H 'content-type: application/json' -H 'accept: application/json' -d '{"person": {"name":"John Quark", "age": 20}}'
+----
+
+.Example response (JSON)
+[source,json]
+----
+{
+  "id": "3af806dd-8819-4734-a934-728f4c819682",
+  "person": {
+    "name": "John Quark",
+    "age": 20,
+    "adult": false
+  },
+  "isAdult": true
+}
+----
+
+.Swagger UI to interact with all application endpoints (\http://localhost:8080/swagger-ui/)
+image::kogito/creating-running/kogito-swagger-example.png[Image of Swagger UI for example application]
+
+This example procedure uses curl commands for convenience.
+
+.Procedure
+In a command terminal window that is separate from your running application, navigate to the project that contains your {PRODUCT} service and use any of the following curl commands with JSON requests to interact with your running service:
+
+NOTE: On Spring Boot, you might need to modify how your application exposes API endpoints in order for these example requests to function. For more information, see the `README` file included in the example Spring Boot project that you created for this tutorial.
+
+* Add an adult person:
++
+--
+.Example request
+[source]
+----
+curl -X POST http://localhost:8080/persons -H 'content-type: application/json' -H 'accept: application/json' -d '{"person": {"name":"John Quark", "age": 20}}'
+----
+
+.Example response
+[source]
+----
+{"id":"3af806dd-8819-4734-a934-728f4c819682","person":{"name":"John Quark","age":20,"adult":false},"isAdult":true}
+----
+--
+* Add an underage person:
++
+--
+.Example request
+[source]
+----
+curl -X POST http://localhost:8080/persons -H 'content-type: application/json' -H 'accept: application/json' -d '{"person": {"name":"Jenny Quark", "age": 15}}'
+----
+
+.Example response
+[source]
+----
+{"id":"8eef502b-012b-4628-acb7-73418a089c08","person":{"name":"Jenny Quark","age":15,"adult":false},"isAdult":false}
+----
+--
+* View active process instances:
++
+--
+.Example request
+[source]
+----
+curl -X GET http://localhost:8080/persons -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+.Example response
+[source]
+----
+[{"id":"8eef502b-012b-4628-acb7-73418a089c08","person":{"name":"Jenny Quark","age":15,"adult":false},"isAdult":false}]
+----
+--
+* View process instance details using the returned process UUID:
++
+--
+.Example request
+[source]
+----
+curl -X GET http://localhost:8080/persons/8eef502b-012b-4628-acb7-73418a089c08/tasks -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+.Example response (JSON)
+[source]
+----
+{"cdec4241-d676-47de-8c55-4ee4f9598bac":"ChildrenHandling"}
+----
+--
+* View task instance details using the returned process and task UUIDs:
++
+--
+.Example request
+[source]
+----
+curl -X GET http://localhost:8080/persons/8eef502b-012b-4628-acb7-73418a089c08/ChildrenHandling/cdec4241-d676-47de-8c55-4ee4f9598bac -H 'content-type: application/json' -H 'accept: application/json'
+----
+
+.Example response
+[source]
+----
+{"person":{"name":"Jenny Quark","age":15,"adult":false},"name":"ChildrenHandling","id":"cdec4241-d676-47de-8c55-4ee4f9598bac"}
+----
+--
+* Complete the evaluation using the returned UUIDs:
++
+--
+.Example request
+[source]
+----
+curl -X POST http://localhost:8080/persons/8eef502b-012b-4628-acb7-73418a089c08/ChildrenHandling/cdec4241-d676-47de-8c55-4ee4f9598bac -H 'content-type: application/json' -H 'accept: application/json' -d '{}'
+----
+--

@@ -1,0 +1,127 @@
+[id='proc-management-console-using_{context}']
+= Using the {PRODUCT} Management Console to manage process instances
+
+You can use the {PRODUCT} Management Console to view and manage process instance details from your {PRODUCT} services. You can run the Management Console for local {PRODUCT} services or add it to your {PRODUCT} infrastructure on {OPENSHIFT}.
+
+.Prerequisites
+* A {PRODUCT} Data Index Service instance is configured and running for your {PRODUCT} service. The Data Index Service enables the Management Console to access stored process data. The Data Index Service additionally requires Infinispan persistence and Apache Kafka messaging for your {PRODUCT} service. For information about the Data Index Service, see
+ifdef::KOGITO-ENT[]
+{URL_CONFIGURING_KOGITO}#con-data-index-service_kogito-configuring[_{CONFIGURING_KOGITO}_].
+endif::[]
+ifdef::KOGITO-COMM[]
+xref:con-data-index-service_kogito-configuring[].
+endif::[]
+* The `pom.xml` file of your {PRODUCT} project contains the following dependency for the process management add-on. This add-on enables the Management Console to interact with the process data through the add-on REST endpoint `/management/processes`. For more information about the process management add-on, see xref:con-bpmn-process-management-addon_kogito-bpmn-models[].
++
+.Project dependency to enable process management REST operations
+[source,xml]
+----
+<dependency>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>process-management-addon</artifactId>
+</dependency>
+----
+* The `application.properties` file of your {PRODUCT} project contains the following system properties for the location where the {PRODUCT} service is deployed, such as `\http://localhost:8080`, and for Quarkus Cross-Origin Resource Sharing (CORS) support. These properties enable the Management Console to generate the URLs to execute the REST operations from the process management add-on.
++
+.Application properties for REST URLs
+[source,subs="+quotes"]
+----
+kogito.service.url=http://__HOST__:__PORT__
+quarkus.http.cors=true
+----
+
+.Procedure
+. Go to the https://repository.jboss.org/org/kie/kogito/management-console/[`management-console`] artifacts page, select the latest release of the {PRODUCT} Management Console, and download the `management-console-__VERSION__-runner.jar` file to a local directory.
+. In a command terminal, navigate to the directory location of the downloaded `management-console-__VERSION__-runner.jar` file and enter the following command to run the Management Console:
++
+--
+.Running the Management Console
+[source,subs="+quotes"]
+----
+$ java -Dquarkus.http.port=8280 -jar management-console-__VERSION__-runner.jar
+----
+
+[NOTE]
+====
+The default port for the Management Console is 8080, but this example specifies port 8280 to avoid conflicts with the example {PRODUCT} service running at port 8080.
+
+Also, the Management Console uses the default Data Index Service port 8180. If you modified this port in your Data Index Service instance, you must also modify the port in the Management Console properties by using the start-up property `-Dkogito.dataindex.http.url=http://__HOST__:__PORT__` when you run the Management Console.
+====
+
+To change the logging level of the Management Console, such as for debugging, you can specify the following start-up properties:
+
+.Modifying Management Console logging level for debugging
+[source,subs="+quotes"]
+----
+$ java  \
+  -Dquarkus.log.console.level=DEBUG -Dquarkus.log.category.\"org.kie.kogito\".min-level=DEBUG  \
+  -Dquarkus.log.category.\"org.kie.kogito\".level=DEBUG  \
+  -Dquarkus.http.port=8280  \
+  -jar management-console-__VERSION__-runner.jar
+----
+
+In an OpenShift environment, you can use the {PRODUCT} command-line interface (CLI) or the OpenShift web console to add the Management Console to your {PRODUCT} infrastructure:
+
+.Adding the Management Console to your OpenShift infrastructure using the {PRODUCT} CLI
+[source]
+----
+kogito install management-console
+----
+
+.{PRODUCT} Management Console instance on OpenShift web console
+image::kogito/openshift/kogito-management-console-instance.png[Image of Kogito Management Console instance on OpenShift]
+--
+. In a web browser, navigate to `http://localhost:8280` to open the Management Console. If you modified the configured Management Console port, use the modified location.
++
+--
+On OpenShift, navigate to the route URL for the Management Console instance.
+
+.{PRODUCT} Management Console
+image::kogito/bpmn/kogito-management-console.png[Image of Kogito Management Console]
+
+In this example, the Management Console displays data for the `kogito-travel-agency` example application in the https://github.com/kiegroup/kogito-examples[`kogito-examples`] repository in GitHub.
+--
+. In the Management Console, use the following pages from the left menu to interact with your process instances and data:
++
+--
+* *Process Instances*: Use this page to view and filter process and subprocess instances by status or business key. You can select a specific process instance name to view process details or abort the process, or select the check box for all relevant instances to perform a bulk abort operation.
++
+NOTE: The only bulk operation currently supported is *Abort*.
+
++
+.Expanded process with subprocesses
+image::kogito/bpmn/kogito-management-console-subprocesses.png[Image of expanded process with subprocesses in Management Console]
++
+.Details for a selected process instance
+image::kogito/bpmn/kogito-management-console-process-details.png[Image of process details in Management Console]
++
+For process instances in an error state, you can select the *Error* icon to view error details and skip or retry the process instance. You can also select the process instance name to view the exact node instance in the process *Timeline* where the error occurred and skip or retry the specific node instance.
++
+.Skip or retry a process instance with an error
+image::kogito/bpmn/kogito-management-console-process-error.png[Image of process with error in Management Console]
++
+.Node instance with an error in a selected process
+image::kogito/bpmn/kogito-management-console-node-error.png[Image of node with error in Management Console]
++
+.Skip or retry a node instance with an error
+image::kogito/bpmn/kogito-management-console-node-error-skip.png[Image of skipping a node instance in error state in Management Console]
++
+As a shortcut to view the process or application UI that triggered a process instance, you can select the *Endpoint* for the specified process instance:
++
+.Process instance endpoint
+image::kogito/bpmn/kogito-management-console-process-endpoint.png[Image of process instance endpoint in Management Console]
+
+* *Domain Explorer*: Use this page to view data that is generated from your process instances in the available {PRODUCT} services, or _domains_, such as the `Travels` and `VisaApplications` domains in this example. You can also refine which columns for the listed domain data are displayed based on available attributes, such as the `approved`, `country`, or `nationality` attributes in this example.
++
+.Domain explorer with available domains
+image::kogito/bpmn/kogito-management-console-domain-explorer.png[Image of domain explorer in Management Console]
++
+.VisaApplications domain data
+image::kogito/bpmn/kogito-management-console-domain-explorer-visas.png[Image of VisaApplications domain data in Management Console]
++
+.Attributes for refining VisaApplications domain data columns
+image::kogito/bpmn/kogito-management-console-domain-explorer-visas-attributes.png[Image of attributes for VisaApplications domain data in Management Console]
++
+.Refined columns for VisaApplications domain data
+image::kogito/bpmn/kogito-management-console-domain-explorer-visas-sorted-data.png[Image of sorted data for VisaApplications domain in Management Console]
+--

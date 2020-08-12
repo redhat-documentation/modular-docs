@@ -1,0 +1,8 @@
+<productname>{PRODUCT}</productname>
+<productnumber>{ENTERPRISE_VERSION}</productnumber>
+<subtitle>
+</subtitle>
+<abstract>
+	<para>This document describes how to configure {PRODUCT} supporting services and runtime capabilities for advanced use cases with your {PRODUCT} services.</para>
+</abstract>
+<xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />

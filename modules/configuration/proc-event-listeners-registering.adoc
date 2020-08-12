@@ -1,0 +1,45 @@
+[id='proc-event-listeners-registering_{context}']
+= Registering event listeners
+
+You can register custom event listeners to detect and publish events that are not published by {PRODUCT} by default. Your custom event listener configuration must implement the relevant implementation for either processes or rules.
+
+.Procedure
+. Create an event listener configuration class for either process or rule events, such as a `ProcessEventListenerConfig` class or a `RuleEventListenerConfig` class.
+. In your event listener configuration class, extend the default implementation of the configuration class as part of your listener definition:
++
+--
+* Implementation for process events: `org.kie.kogito.process.impl.DefaultProcessEventListenerConfig`
+* Implementation for rule events: `org.drools.core.config.DefaultRuleEventListenerConfig`
+
+.Example process event listener with extended default implementation
+[source, java]
+----
+@ApplicationScoped
+public class ProcessEventListenerConfig extends DefaultProcessEventListenerConfig {
+
+    public ProcessEventListenerConfig() {
+        super(new CustomProcessEventListener());
+    }
+}
+----
+
+.Example rule event listener with extended default implementation
+[source, java]
+----
+@ApplicationScoped
+public class RuleEventListenerConfig extends DefaultRuleEventListenerConfig {
+
+    public RuleEventListenerConfig() {
+        super(new CustomRuleEventListener());
+    }
+}
+----
+
+NOTE: These configuration classes must be injectable, so ensure that you properly annotate the classes, such as with the annotations `@ApplicationScoped` or `@Component`, so that they can be found and registered.
+
+Alternatively, you can implement the relevant event listener interface instead of extending the default implementation, but this approach excludes other listeners provided by {PRODUCT}.
+
+* Interface for process events: `org.kie.kogito.process.ProcessEventListenerConfig`
+* Interface for rule events: `org.kie.kogito.rules.RuleEventListenerConfig`
+--
+. After the event listener is configured, package the listener configuration class in the `src/main/java` folder of the relevant application or add it as dependency in the `pom.xml` file of the application to make the listener available.

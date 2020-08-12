@@ -1,0 +1,261 @@
+[id='ref-bpmn-tasks_{context}']
+= Tasks supported in {PRODUCT}
+
+BPMN tasks identify actions to be completed in a business process model and are the smallest unit of work in a process flow.
+
+{PRODUCT} currently supports the following tasks:
+
+.Supported tasks
+[cols="40%,60%", options="header"]
+|===
+| Task type
+| Task node
+
+| Business rule task
+| image:kogito/bpmn/bpmn-business-rule-task.png[]
+
+| Script task
+| image:kogito/bpmn/bpmn-script-task.png[]
+
+| User task
+| image:kogito/bpmn/bpmn-user-task.png[]
+
+| Service task
+| image:kogito/bpmn/bpmn-service-task.png[]
+|===
+
+////
+//@comment: Currently unavailable in VSCode. (Stetson, 26 Mar 2020)
+In addition, the BPMN2 specification provides the ability to create custom tasks. The following predefined custom tasks are included with {PRODUCT}:
+
+* Rest service tasks: Used to invoke a remote RESTful service
+* Email service tasks: Used to send an email
+* Log service tasks: Used to log a message
+* Java service tasks: Used to call Java code
+* WebService service tasks: Used to invoke a remote WebService call
+* DecisionTask tasks: Used to execute a DMN diagram
+////
+
+Business rule task::
++
+--
+A business rule task specifies a business decision to be executed either through a Decision Model and Notation (DMN) model or a Drools Rule Language (DRL) rule unit.
+
+When a process reaches a business rule task defined by a DMN model, the {PROCESS_ENGINE} executes the DMN model decision with the inputs provided.
+
+When a process reaches a business rule task defined by a DRL rule unit, the {PROCESS_ENGINE} begins executing the rules in the designated rule unit group. When there are no more active rules in the rule unit, the execution continues to the next element. During the rule unit execution, new activations in the rule unit are added to the {DECISION_ENGINE} agenda because these activations are changed by other rules.
+
+In the {PRODUCT} BPMN modeler, you can modify the following properties for a selected business rule task:
+
+.Business rule task properties
+[cols="30%,70%", options="header"]
+|===
+|Label
+|Description
+
+| *Name*
+| Identifies the name of the task.
+
+| *Documentation*
+| Describes the task. The text in this field is included in the process documentation, if applicable.
+
+| *Rule Language*
+| Determines whether the task invokes a decision from a Decision Model and Notation (DMN) model or a Drools Rule Language (DRL) rule unit.
+
+| *Rule Flow Group* (for DRL)
+| Defines the DRL rule unit in the format `unit:__PACKAGE_NAME__.__UNIT_NAME__`, such as `unit:org.acme.PersonRules`. This rule unit syntax specifies that you are using a rule unit instead of a traditional rule flow group.
+
+| *Namespace*, *Decision Name*, *DMN Model Name* (for DMN)
+| Identifies the relevant DMN model as found in the DMN model file.
+
+| *On Entry Action*
+| Defines a Java, JavaScript, or MVEL script that directs an action at the start of the task.
+
+| *On Exit Action*
+| Defines a Java, JavaScript, or MVEL script that directs an action at the end of the task.
+
+| *Is Async*
+|  Determines whether this task is invoked asynchronously. Make tasks asynchronous if they cannot be executed instantaneously, for example, a task performed by an outside service.
+
+| *Adhoc Autostart*
+| Determines whether this is an ad hoc task that is started automatically. This option enables the task to automatically start when the process or case instance is created instead of being started by a start task.
+
+| *SLA Due Date*
+| Specifies the date when the service level agreement (SLA) expires.
+
+| *Assignments*
+| Defines data input and output for the task. Click to open the *Data I/O* window and add data input and output as required.
+|===
+--
+
+Script task::
++
+--
+A script task represents a script to be executed during the process execution. The associated script can access process variables and global variables. When a script task is reached during execution, the script is executed and the outgoing flow is taken.
+
+Review the following list of suggestions before using a script task:
+
+* Avoid low-level implementation details in the process. Although you can use a script task to manipulate variables, consider using a service task when modeling more complex operations.
+* Ensure that the script is executed immediately. If the script is not intended to be executed immediately, consider using an asynchronous service task.
+* Avoid contacting external services through a script task. Use a service task to model communication with an external service.
+* Ensure scripts do not generate exceptions. Runtime exceptions should be caught and managed inside the script or transformed into signals or errors that can then be handled inside the process.
+
+In the {PRODUCT} BPMN modeler, you can modify the following properties for a selected script task:
+
+.Script task properties
+[cols="30%,70%", options="header"]
+|===
+|Label
+|Description
+
+| *Name*
+| Identifies the name of the task.
+
+| *Documentation*
+| Describes the task. The text in this field is included in the process documentation, if applicable.
+
+| *Script*
+| Defines a Java, JavaScript, or MVEL script to be executed by the task and specifies the script type.
+
+| *Is Async*
+|  Determines whether this task is invoked asynchronously. Make tasks asynchronous if they cannot be executed instantaneously, for example, a task performed by an outside service.
+
+| *Adhoc Autostart*
+| Determines whether this is an ad hoc task that is started automatically. This option enables the task to automatically start when the process or case instance is created instead of being started by a start task.
+|===
+--
+
+User task::
++
+--
+A user task is an activity in the process workflow that cannot be performed automatically by the system and therefore requires the intervention of a human user, or _actor_.
+
+On execution, the user task element is instantiated as a task that appears in the list of tasks of one or more actors. If a user task element defines the `Groups` property, the task is displayed in task lists of all users that are members of the group. Any user who is a member of the group can claim the task. After a user task is claimed, the task disappears from the task list of the other users.
+
+In the {PRODUCT} BPMN modeler, you can modify the following properties for a selected user task:
+
+.User task properties
+[cols="30%,70%", options="header"]
+|===
+|Label
+|Description
+
+| *Name*
+| Identifies the name of the task.
+
+| *Documentation*
+| Describes the task. The text in this field is included in the process documentation, if applicable.
+
+| *Task Name*
+| Identifies the name of the task as it is displayed to human user (actor).
+
+| *Subject*
+| Defines the subject for the task.
+
+| *Actors*
+| Specifies the authorized human users (actors) who can complete the user task. Click *Add* to add a row and then select an actor from the list or click *New* to add a new actor.
+
+| *Groups*
+| Specifies the authorized group of human users (actors) who can complete the user task. Click *Add* to add a row and then select a group from the list or click *New* to add a new group. Any actor in the group can complete the user task.
+
+| *Assignments*
+| Defines data input and output for the task. Click to open the *Data I/O* window and add data input and output as required.
+
+| *Reassignments*
+| Specifies a different actor to complete the task.
+
+| *Notifications*
+| Defines notifications associated with the task.
+
+| *Is Async*
+|  Determines whether this task is invoked asynchronously. Make tasks asynchronous if they cannot be executed instantaneously, for example, a task performed by an outside service.
+
+| *Skippable*
+| Determines whether the task is optional and can be skipped.
+
+| *Priority*
+| Defines a priority for the task.
+
+| *Description*
+| Describes the task as it is displayed to a human user (actor).
+
+| *Created By*
+| Specifies the human user (actor) who created the task. Click *Add* to add a row and then select a user from the list or click *New* to add a new user.
+
+| *Adhoc Autostart*
+| Determines whether this is an ad hoc task that is started automatically. This option enables the task to automatically start when the process or case instance is created instead of being started by a start task.
+
+| *Multiple Instance*
+| Determines whether this task has multiple instances.
+
+| *On Entry Action*
+| Defines a Java, JavaScript, or MVEL script that directs an action at the start of the task.
+
+| *On Exit Action*
+| Defines a Java, JavaScript, or MVEL script that directs an action at the end of the task.
+
+| *Content*
+| Defines the content of the script.
+
+| *SLA Due Date*
+| Specifies the date when the service level agreement (SLA) expires.
+|===
+--
+
+Service task::
++
+--
+A service task is an activity that is completed automatically by an external software service and does not require human interaction.
+
+In the {PRODUCT} BPMN modeler, you can modify the following properties for a selected service task:
+
+.Service task properties
+[cols="30%,70%", options="header"]
+|===
+|Label
+|Description
+
+| *Name*
+| Identifies the name of the task.
+
+| *Documentation*
+| Describes the task. The text in this field is included in the process documentation, if applicable.
+
+| *Implementation*
+| Determines whether the task is implemented in Java or is a web service.
+
+| *Interface*
+| Defines the class used to implement the script, for example, `org.xyz.HelloWorld`.
+
+| *Operation*
+| Defines the method called by the interface, for example, `sayHello()`.
+
+| *Assignments*
+| Defines data input and output for the task. Click to open the *Data I/O* window and add data input and output as required.
+
+| *Adhoc Autostart*
+| Determines whether this is an ad hoc task that is started automatically. This option enables the task to automatically start when the process or case instance is created instead of being started by a start task.
+
+| *Is Async*
+|  Determines whether this task is invoked asynchronously. Make tasks asynchronous if they cannot be executed instantaneously, for example, a task performed by an outside service.
+
+| *Multiple Instance*
+| Determines whether this task has multiple instances.
+
+| *On Entry Action*
+| Defines a Java, JavaScript, or MVEL script that directs an action at the start of the task.
+
+| *On Exit Action*
+| Defines a Java, JavaScript, or MVEL script that directs an action at the end of the task.
+
+| *SLA Due Date*
+| Specifies the date when the service level agreement (SLA) expires.
+|===
+--
+
+////
+.None task
+None tasks are completed on activation. This is a conceptual model only. A none task is never actually executed by an IT system.
+
+image::kogito/bpmn/bpmn-none-task.png[]
+////

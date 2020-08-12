@@ -1,8 +1,0 @@
-[id="modular-docs-assembly-examples"]
-= Assembly Examples
-
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host[Configuring the SSSD Container to Provide Identity and Authentication Services on Atomic Host]
-
-link:https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/ceph_file_system_guide/deploying-ceph-file-systems[Deploying Ceph File Systems]
-
-link:https://access.redhat.com/documentation/en-us/red_hat_mobile_application_platform/4.2/html/mbaas_administration_and_installation_guide/backing-up-an-mbaas[Backing up an MBaaS]

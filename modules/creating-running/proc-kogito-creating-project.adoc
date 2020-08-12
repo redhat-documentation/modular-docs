@@ -1,0 +1,38 @@
+[id='proc-kogito-creating-project_{context}']
+= Creating a Maven project for a {PRODUCT} service
+
+Before you can begin developing {PRODUCT} services, you need to create a Maven project where you can build your {PRODUCT} assets and any other related resources for your application.
+
+.Procedure
+. In a command terminal, navigate to a local folder where you want to store the new {PRODUCT} project.
+. Run the following command to generate a project within a defined folder:
++
+--
+.On Quarkus
+[source]
+----
+mvn archetype:generate \
+    -DarchetypeGroupId=org.kie.kogito \
+    -DarchetypeArtifactId=kogito-quarkus-archetype \
+    -DgroupId=org.acme -DartifactId=sample-kogito \
+    -Dversion=1.0-SNAPSHOT
+----
+////
+@comment: The following standard command for Quarkus isn't working currently but may be restored for Dev Preview
+
+mvn io.quarkus:quarkus-maven-plugin:create -DprojectGroupId=com.company -DprojectArtifactId=sample-kogito -Dextensions="kogito"
+////
+
+.On Spring Boot
+[source]
+----
+mvn archetype:generate \
+    -DarchetypeGroupId=org.kie.kogito \
+    -DarchetypeArtifactId=kogito-springboot-archetype \
+    -DgroupId=org.acme -DartifactId=sample-kogito \
+    -Dversion=1.0-SNAPSHOT
+----
+
+This command generates a `sample-kogito` Maven project and imports the {PRODUCT} extension for all required dependencies and configurations to prepare your application for business automation.
+--
+. Open or import the project in your VSCode IDE to view the contents.
