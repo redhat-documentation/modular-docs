@@ -11,12 +11,11 @@ However, for optimal FCC, Pantheon, and Pantheon 2 compliance, the modular docum
 ├── _artifacts
 ├── _images
 ├── assemblies
-    ├── modules -> ../modules
+    ├── modules -> ../modules  // Symlinks can be extracted by script if needed.
     ├── assembly-kogito-configuring.adoc
     ├── assembly-kogito-creating-running.adoc
     ├── assembly-kogito-decision-engine.adoc
-    ├── assembly-kogito-developing-decision-services.adoc
-    ├── assembly-kogito-developing-process-services.adoc
+    ├── assembly-kogito-using-bpmn.adoc
     ├── assembly-kogito-using-dmn.adoc
     ├── assembly-kogito-using-drl.adoc
     ├── ...
@@ -47,7 +46,7 @@ However, for optimal FCC, Pantheon, and Pantheon 2 compliance, the modular docum
     ├── // See README file
 ├── titles-enterprise
     ├── kogito-configuring
-        ├── _artifacts -> ../_artifacts  // Symlinks can be extracted.
+        ├── _artifacts -> ../_artifacts
         ├── _images -> ../../_images
         ├── assemblies -> ../../assemblies
         ├── master.adoc
@@ -70,29 +69,29 @@ This repository structure contains the following key components:
 - `titles-community`: (Optional) Directory with community-specific build-chain components, if applicable, to build community titles from the central module or assembly content. This folder is left empty in this example repository because community options and variants are expansive and highly specific to each project and product. For more information, see the `README` file in the [`titles-community`](https://github.com/redhat-documentation/modular-docs/tree/mod-doc-repo-example/titles-community) folder.
 - `titles-enterprise`: Directory with folders for each enterprise document or _title_ to be built in Pantheon. Each document folder contains a `master.adoc` file where you include one or more relevant assemblies that are built as part of the document. The `master-docinfo.xml` file contains metadata that is required by `bccutil` (and `ccutil`) when converting to DocBook format. (This metadata file might be deprecated in a future release of `bccutil` and Pantheon 2.) In repositories that are single-sourced with a community project, a separate `titles-community` folder might be dedicated to community configurations and output, if applicable.
 - `pantheon2.yml`: YAML file with metadata that is required for publishing content on Pantheon 2:
-+
-**Example `pantheon2.yml` file**
-```
-server: http://localhost:8080
-repository: mod-doc-repo-example
-variants:
-   - name: global-attributes
-     path: _artifacts/document-attributes.adoc
-     canonical: true
-   - name: community-attributes
-     path: _artifacts/document-attributes-kogito-comm.adoc
-   - name: enterprise-attributes
-     path: _artifacts/document-attributes-kogito-ent.adoc
-assemblies:
-  - assemblies/*.adoc
-modules:
-  - modules/*/*.adoc
-resources:
-  - _images/*/*.png
-  - _artifacts/*.adoc
-```
-+
-For information about configuring this file for your specific content, contact a member of the CCS tooling team.
+
+    **Example `pantheon2.yml` file**
+    ```
+    server: http://localhost:8080
+    repository: mod-doc-repo-example
+    variants:
+       - name: global-attributes
+         path: _artifacts/document-attributes.adoc
+         canonical: true
+       - name: community-attributes
+         path: _artifacts/document-attributes-kogito-comm.adoc
+       - name: enterprise-attributes
+         path: _artifacts/document-attributes-kogito-ent.adoc
+    assemblies:
+      - assemblies/*.adoc
+    modules:
+      - modules/*/*.adoc
+    resources:
+      - _images/*/*.png
+      - _artifacts/*.adoc
+    ```
+    
+    For information about configuring this file for your specific content, contact a member of the CCS tooling team.
 
 This repository structure offers the following advantages:
 
