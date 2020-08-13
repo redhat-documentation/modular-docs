@@ -1,6 +1,6 @@
 [id="modular-documentation-repositories"]
 = Modular Documentation Repositories
 
-Due to many factors that determine documentation repository design for individual products, the modular documentation initiative cannot provide a strict documentation repository template for all documentation teams to follow. Each team faces different implementation challenges, especially when Red Hat enterprise product documentation is single-sourced with corresponding community project documentation.
+Due to many factors that determine repository design for individual products, these modular documentation guidelines do not provide a strict documentation repository template.
 
 However, for a general repository structure that the modular documentation initiative recommends for optimal results with modular standards, see the example documentation repository and `README` file in the https://github.com/redhat-documentation/modular-docs/tree/mod-doc-repo-example[`mod-doc-repo-example`] branch in this repository.
