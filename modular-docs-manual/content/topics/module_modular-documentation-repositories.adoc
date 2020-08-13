@@ -1,0 +1,6 @@
+[id="modular-documentation-repositories"]
+= Modular Documentation Repositories
+
+Due to many factors that determine repository design for individual products, these modular documentation guidelines do not provide a strict documentation repository template.
+
+For a general repository structure used by documentation teams at Red Hat, see the example documentation repository and `README` file in the https://github.com/redhat-documentation/modular-docs/tree/mod-doc-repo-example[`mod-doc-repo-example`] branch in this repository.
