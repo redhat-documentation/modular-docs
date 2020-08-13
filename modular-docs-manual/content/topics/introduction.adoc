@@ -3,4 +3,4 @@
 
 This manual provides instructions on how to author modularly structured documentation based on user stories. The manual defines used terminology, describes components that form modular documentation, and instructs writers on how to use provided templates to turn user stories into modular documentation.
 
-IMPORTANT: As modular documentation imperatives continue to evolve, the details and recommendations in this guide might be modified. The modular documentation team recognizes that the fluctuation in recommendations can be frustrating for contributors trying to adopt modularization standards and apologizes in advance as the initiative pursues the best possible outcome for modularized documentation.
+IMPORTANT: As modular documentation imperatives continue to evolve, the details and recommendations in this guide might be modified.
