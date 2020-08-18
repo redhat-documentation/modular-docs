@@ -1,8 +1,4 @@
 [id="introduction_{context}"]
 = Introduction to Modular Documentation
 
-This guide provides instructions on how to author modularly structured user stories. It defines terminology, describes components that form modular documentation, and provides instructions on how to use the provided modularization templates to create user stories. Most of the information included in this guide is generic. However, some instructions are required for documents that will be published on the Pantheon version 2 (V2) documentation management system. This requirement is noted where applicable.
-
-Pantheon V2 is an open-source modular documentation management system being developed by Red Hat. The engineering team is building the ability to import modular content written in AsciiDoc from one or more Git repositories, assign metadata to it to enhance search-engine optimization, and publish that content to one or more targets.
-
-The Pantheon community is still new but growing, and through ongoing development Red Hat aims to provide a solution that not only powers its own product documentation teams, but also offers greater flexibility to open source communities to create modular content that addresses individual use cases and can be drawn and combined from multiple sources.
+This manual provides instructions on how to author modularly structured documentation based on user stories. The manual defines used terminology, describes components that form modular documentation, and instructs writers on how to use provided templates to turn user stories into modular documentation.

@@ -27,7 +27,7 @@ Create assembly and module file names that accurately and closely reflect the ti
 Do not include special characters in file names. Ensure that all members of your team use the same file naming conventions.
 ====
 
-These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), you must include one of the following variables in each concept, procedure, and reference module:
+These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), include one of the following variables in each concept, procedure, and reference module:
 
 [source]
 ----
@@ -35,8 +35,6 @@ These file naming guidelines are optional but highly recommended. However, if yo
 :system-module-type: PROCEDURE
 :system-module-type: REFERENCE
 ----
-
-NOTE: This is a requirement if you will publish on Pantheon V2. For more information, see xref:introduction_{context}[].
 
 .Anchors
 At the top of every module, provide an anchor in the format `+++[id="filename_{context}"]+++` where `filename` is the exact name of the file, without the file extension (`.adoc`). Module anchors are necessary so that Asciidoctor can identify the module when the module is reused or cross-referenced. The  `context` variable is defined in each assembly module, for example `:context: my-context-value`. When you build an assembly, the value of the `context` variable replaces `{context}` in each module anchor ID and appears in generated URL.
