@@ -1,0 +1,32 @@
+
+ifdef::context[:parent-context: {context}]
+
+
+[id="a-collection-of-modules"]
+
+= A collection of modules
+
+:context: assembly-keyword
+
+[role="system:abstract"]
+This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. The `[role="system:abstract"]` tag defines the first paragraph of the introduction for search metadata.
+
+.Prerequisites (optional)
+
+* A bulleted list of conditions that must be satisfied before the user starts following this assembly.
+* You can also link to other modules or assemblies the user must follow before starting this assembly.
+* Delete the section title and bullets if the assembly has no prerequisites.
+
+include::modules/TEMPLATE_CONCEPT_explaining_a_concept.adoc[leveloffset=+1]
+
+include::modules/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[leveloffset=+1]
+
+== Additional resources (or Next steps) (optional)
+
+* A bulleted list of links to other material closely related to the contents of the assembly, including xref links to other assemblies in your collection.
+* For more details on writing assemblies, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+* Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+
+
+ifdef::parent-context[:context: {parent-context}]
+ifndef::parent-context[:!context:]
