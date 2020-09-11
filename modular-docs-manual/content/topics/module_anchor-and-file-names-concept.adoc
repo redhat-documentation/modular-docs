@@ -1,14 +1,47 @@
-[id="anchor-and-file-names"]
-= Anchor Names and File Names
+[id="module_anchor-and-file-names-concept"]
+= File Names and Anchors
 
-To optimize modular documentation, follow these guidelines for naming module anchors and files:
+To optimize modular documentation, follow these guidelines for naming files and creating anchors:
 
-Anchor names:: Provide an anchor in the format `+++[id="anchor-name_{context}"]+++` for every module so that it can be identified by Asciidoctor when reused or cross-referenced. `+++{context}+++` is a variable whose value you define in the assembly. Give the anchor the same or similar name as the module heading. Separate the words in the anchor with hyphens and use an underscore to separate the `+++{context}+++` part:
-+
---
+.File names
+Create assembly and module file names that accurately and closely reflect the title of the assembly or module. Create file names with the format `prefix-filename.adoc` or `prefix_filename.adoc` where `prefix` is one of the following module prefixes:
+
+* `con`: Concept module prefix
+* `proc`: Procedure module prefix
+* `ref`: Reference module prefix
+* `assembly`: Assembly module prefix
+
+.Examples
+* `con-guided-decision-tables.adoc`  (Concept module)
+* `con_guided-decision-tables.adoc`  (Concept module)
+* `proc-creating-guided-decision-tables.adoc`  (Procedure module for creating)
+* `proc_creating-guided-decision-tables.adoc`  (Procedure module for creating)
+* `ref-guided-decision-table-examples.adoc`  (Reference module with examples)
+* `ref_guided-decision-table-examples.adoc`  (Reference module with examples)
+* `assembly-designing-guided-decision-tables.adoc`  (Assembly of guided decision table modules)
+* `assembly_designing-guided-decision-tables.adoc`  (Assembly of guided decision table modules)
+
+
+[NOTE]
+====
+Do not include special characters in file names. Ensure that all members of your team use the same file naming conventions.
+====
+
+These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), include one of the following variables in each concept, procedure, and reference module:
+
 [source]
 ----
-[id="anchor-name_{context}"]
+:system-module-type: CONCEPT
+:system-module-type: PROCEDURE
+:system-module-type: REFERENCE
+----
+
+.Anchors
+At the top of every module, provide an anchor in the format `+++[id="filename_{context}"]+++` where `filename` is the exact name of the file, without the file extension (`.adoc`). Module anchors are necessary so that Asciidoctor can identify the module when the module is reused or cross-referenced. The  `context` variable is defined in each assembly module, for example `:context: my-context-value`. When you build an assembly, the value of the `context` variable replaces `{context}` in each module anchor ID and appears in generated URL.
+
+[source]
+----
+[id="filename_{context}"]
 = Module Heading
 
 The first sentence of the topic.
@@ -17,16 +50,35 @@ The first sentence of the topic.
 .Example 1. Concept Module
 [source]
 ----
-[id="guided-decision-tables_{context}"]
+[id="con-guided-decision-tables_{context}"]
 = Guided Decision Tables
 
 The guided decision tables feature works similarly to ...
 ----
 
-.Example 2. Procedure Module
+.Example 2. Concept Module
 [source]
 ----
-[id="creating-guided-decision-tables_{context}"]
+[id="con_guided-decision-tables_{context}"]
+= Guided Decision Tables
+
+The guided decision tables feature works similarly to ...
+----
+
+
+.Example 3. Procedure Module
+[source]
+----
+[id="proc-creating-guided-decision-tables_{context}"]
+= Creating Guided Decision Tables
+
+You can use guided decision tables to ...
+----
+
+.Example 4. Procedure Module
+[source]
+----
+[id="proc_creating-guided-decision-tables_{context}"]
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...
@@ -38,26 +90,8 @@ You can use guided decision tables to ...
 The format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced properly. For details, see xref:reusing-modules[]. Other anchor formats include `+++[[anchor-name]]+++` and `+++[#anchor-name]+++`, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.
 ====
 
-NOTE: The underscore is recommended as the separator for `+++{context}+++`, because this facilitates tooling to distinguish the context part from the base anchor ID.
 
-For more information about Asciidoc anchors, see the link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual].
---
-
-File names:: Give the module file the same name as the anchor used in it (which is the same as or similar to the module heading). Assembly and module file names should accurately and closely reflect the title of the assembly or module.
-+
-[NOTE]
-====
-Ensure that all members of your team use the same file naming conventions.
-====
-+
-.Examples
-* `guided-decision-tables.adoc`  (Concept module)
-* `creating-guided-decision-tables.adoc`  (Procedure module for creating)
-* `editing-guided-decision-tables.adoc`  (Procedure module for editing)
-* `guided-decision-table-examples.adoc`  (Reference module with examples)
-* `guided-decision-table-columns.adoc`  (Reference module with column types)
-* `designing-guided-decision-tables.adoc`  (Assembly of guided decision table modules)
 
 .Additional Resources
 
-* The link:http://asciidoctor.org/docs/user-manual/#anchordef[Asciidoctor User Manual]
+* link:https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual]
