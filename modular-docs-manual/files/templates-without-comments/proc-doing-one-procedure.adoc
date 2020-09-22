@@ -24,7 +24,7 @@ The `[role="system:abstract"]` tag defines the first paragraph of the module for
 
 [role="system:additional-resources"]
 .Additional resources
-// An optional bulleted list of links to other material closely related to the contents of the concept module.
+// An optional bulleted list of links to other material closely related to the contents of the procedure module.
 
 * link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide]
 * link:https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual]
