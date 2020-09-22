@@ -21,12 +21,12 @@ include::modules/TEMPLATE_CONCEPT_explaining_a_concept.adoc[leveloffset=+1]
 
 include::modules/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[leveloffset=+1]
 
-== Additional resources (or Next steps) (optional)
+[role="system:additional-resources"]
+== Additional resources
+// An optional bulleted list of links to other material closely related to the contents of the concept module.
 
-* A bulleted list of links to other material closely related to the contents of the assembly, including xref links to other assemblies in your collection.
-* For more details on writing assemblies, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
-* Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
-
+* link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide]
+* link:https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual]
 
 ifdef::parent-context[:context: {parent-context}]
 ifndef::parent-context[:!context:]
