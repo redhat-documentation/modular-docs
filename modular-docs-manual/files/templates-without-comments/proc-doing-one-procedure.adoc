@@ -3,9 +3,9 @@
 
 = Doing one procedure
 
-[role="system:abstract"]
+[role="_abstract"]
 A short introductory paragraph that provides an overview of the module is required. Procedure modules should include both what users will do and why users want to do it.
-The `[role="system:abstract"]` tag defines the first paragraph of the module for search metadata.
+The `[role="_abstract"]` tag defines the first paragraph of the module for search metadata.
 
 
 .Prerequisites (optional)
@@ -22,7 +22,15 @@ The `[role="system:abstract"]` tag defines the first paragraph of the module for
 
 . Use an unnumbered bullet (*) if the procedure includes only one step.
 
-[role="system:additional-resources"]
+.Verification steps (Optional, delete if not applicable)
+
+. Start each step with an active verb.
+
+. Include one command or action per step.
+
+. Use an unnumbered bullet (*) if the procedure includes only one step.
+
+[role="_additional-resources"]
 .Additional resources
 // An optional bulleted list of links to other material closely related to the contents of the procedure module.
 

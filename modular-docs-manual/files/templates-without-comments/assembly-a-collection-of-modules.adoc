@@ -1,15 +1,13 @@
 
 ifdef::context[:parent-context: {context}]
 
-
-[id="a-collection-of-modules"]
-
-= A collection of modules
+[id="assembly-my-user-story_{context}"]
+= My user story
 
 :context: assembly-keyword
 
-[role="system:abstract"]
-This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. The `[role="system:abstract"]` tag defines the first paragraph of the introduction for search metadata.
+[role="_abstract"]
+This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. The `[role="_abstract"]` tag defines the first paragraph of the introduction for search metadata.
 
 .Prerequisites (optional)
 
@@ -19,10 +17,10 @@ This paragraph is the assembly introduction. It explains what the user will acco
 
 include::modules/TEMPLATE_CONCEPT_explaining_a_concept.adoc[leveloffset=+1]
 
-include::modules/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[leveloffset=+1]
+include::modules/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[leveloffset=+2]
 
-[role="system:additional-resources"]
-== Additional resources
+[role="_additional-resources"]
+== Additional resources (or Next steps)
 // An optional bulleted list of links to other material closely related to the contents of the assembly.
 
 * link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide]

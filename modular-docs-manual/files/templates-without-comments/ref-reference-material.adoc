@@ -2,9 +2,9 @@
 
 = Reference material
 
-[role="system:abstract"]
+[role="_abstract"]
 A short introductory paragraph that provides an overview of the module is required.
-The `[role="system:abstract"]` tag defines the first paragraph of the module for search metadata.
+The `[role="_abstract"]` tag defines the first paragraph of the module for search metadata.
 
 A reference module provide data that users might want to look up. A reference module does not contain procedures or detailed concept information. It has a very strict structure, often in the form of a list or a table. A well-organized reference module enables users to scan it quickly to find the details they want.
 AsciiDoc markup to consider for reference data:
