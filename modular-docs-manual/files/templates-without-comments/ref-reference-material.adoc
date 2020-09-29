@@ -1,4 +1,4 @@
-[id="ref-reference_{context}"]
+[id="ref-reference-material_{context}"]
 
 = Reference material
 
