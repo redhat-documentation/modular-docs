@@ -16,7 +16,9 @@ Consider rewording the user story to write the assembly introduction, for exampl
 [discrete]
 == Assembly Prerequisites
 
-Prerequisites are conditions that must be satisfied before the user can start following the assembly.
+Prerequisites are conditions that must be satisfied before the user can start following the assembly and are applicable to all the modules in the assembly.
+
+Use the second level heading syntax for the Prerequisites section in the assembly so that it is displayed in the table of contents and is consistent with the Additional resources or Next steps sections in the assembly.
 
 // [bhardest] - We have a lot of xref-ing in these guidelines. A better approach might be to create a "snippets" .adoc file with snippets of common content (for example, the content about writing prerequisites, which applies to multiple sections). Then we can just include the relevant content from the snippets file wherever it's needed.
 // [asteflova] - Let's do this after we finish reviewing the guidelines for procedures and assemblies.
