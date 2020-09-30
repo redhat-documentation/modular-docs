@@ -27,10 +27,10 @@ A short introductory paragraph that provides an overview of the module is requir
 The `[role="_abstract"]` tag defines the first paragraph of the module for search metadata.
 
 .Prerequisites
-//Prerequisites are optional. Delete if your assembly has no prerequisites.
 
-* X is installed. For information about installing X, see <link>.
-* You can log in to X with administrator privileges.
+* A bulleted list of conditions that must be satisfied before the user starts following this module.
+* You can also link to other modules or assemblies the user must follow before starting this module.
+* Delete the section title and bullets if the module has no prerequisites.
 
 .Procedure
 
