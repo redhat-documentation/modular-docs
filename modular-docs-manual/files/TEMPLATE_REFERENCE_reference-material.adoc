@@ -2,16 +2,23 @@
 //
 // <List assemblies here, each on a new line>
 
-// Base the file name and the ID on the module title. For example:
-// * file name: ref-my-reference-a.adoc
-// * ID: [id="ref-my-reference-a_{context}"]
-// * Title: = My reference A
+////
+Base the file name and the ID on the module title. For example:
+* file name: ref-my-reference-a.adoc
+* ID: [id="ref-my-reference-a_{context}"]
+* Title: = My reference A
 
-// The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+////
+
 [id="ref-reference-material_{context}"]
-// The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+////
+The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide
+////
 = Reference material
-//In the title of a reference module, include nouns that are used in the body text. For example, "Keyboard shortcuts for ___" or "Command options for ___." This helps readers and search engines find the information quickly.
+////
+In the title of a reference module, include nouns that are used in the body text. For example, "Keyboard shortcuts for ___" or "Command options for ___." This helps readers and search engines find the information quickly.
+////
 
 [role="_abstract"]
 A short introductory paragraph that provides an overview of the module is required.

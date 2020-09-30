@@ -2,16 +2,25 @@
 //
 // <List assemblies here, each on a new line>
 
-// Base the file name and the ID on the module title. For example:
-// * file name: proc-doing-procedure-a.adoc
-// * ID: [id="doing-procedure-a_{context}"]
-// * Title: = Doing procedure A
+////
+Base the file name and the ID on the module title. For example:
+* file name: proc-doing-procedure-a.adoc
+* ID: [id="doing-procedure-a_{context}"]
+* Title: = Doing procedure A
+////
+ The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+////
 
-// The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 [id="proc-doing-one-procedure_{context}"]
-// The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+
+////
+The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+////
+
 = Doing one procedure
-// Start the title of a procedure module with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
+////
+Start the title of a procedure module with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
+////
 
 [role="_abstract"]
 A short introductory paragraph that provides an overview of the module is required. Procedure modules should include both what users will do and why users want to do it.
@@ -32,7 +41,9 @@ The `[role="_abstract"]` tag defines the first paragraph of the module for searc
 . Use an unnumbered bullet (*) if the procedure includes only one step.
 
 .Verification steps
-//Optional. Delete if not applicable. Provide the user with verification methods for the procedure, such as expected output or commands that can be used to check for success or failure.
+////
+Optional. Delete if not applicable. Provide the user with verification methods for the procedure, such as expected output or commands that can be used to check for success or failure.
+////
 
 . Start each step with an active verb.
 
@@ -43,7 +54,9 @@ The `[role="_abstract"]` tag defines the first paragraph of the module for searc
 
 [role="_additional-resources"]
 .Additional resources
-//Optional
+////
+Optional. Delete if not used.
+////
 * A bulleted list of links to other material closely related to the contents of the procedure module.
 * Currently, modules cannot include xrefs, so you cannot include links to other content in your collection. If you need to link to another assembly, add the xref to the assembly that includes this module.
 * For more details on writing procedure modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
