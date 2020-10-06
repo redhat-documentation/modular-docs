@@ -10,13 +10,13 @@ Base the file name and the ID on the module title. For example:
 ////
 
 ////
-The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
  ////
 
 [id="con-my-concept-module-a_{context}"]
 
 ////
-The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 ////
 
 = My concept module A
@@ -25,7 +25,7 @@ In the title of concept modules, include nouns or noun phrases that are used in 
 ////
 
 [role="_abstract"]
-A short introductory paragraph that provides an overview of the module is required.
+Provide a short introductory paragraph that gives an overview of the module.
 It provides an overview of the module. The `[role="_abstract"]` tag defines the first paragraph of the module for search metadata.
 
 The contents of a concept module give the user descriptions and explanations needed to understand and use a product.

@@ -8,13 +8,13 @@ Base the file name and the ID on the module title. For example:
 * ID: [id="doing-procedure-a_{context}"]
 * Title: = Doing procedure A
 ////
- The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+ The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
 [id="proc-doing-one-procedure_{context}"]
 
 ////
-The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 ////
 
 = Doing one procedure
@@ -23,7 +23,7 @@ Start the title of a procedure module with a verb, such as Creating or Create. S
 ////
 
 [role="_abstract"]
-A short introductory paragraph that provides an overview of the module is required. Procedure modules should include both what users will do and why users want to do it.
+Provide a short introductory paragraph that gives an overview of the module. Procedure modules should include  the steps that users perform and address user motivation.
 The `[role="_abstract"]` tag defines the first paragraph of the module for search metadata.
 
 .Prerequisites
@@ -36,13 +36,15 @@ The `[role="_abstract"]` tag defines the first paragraph of the module for searc
 
 . Start each step with an active verb.
 
-. Include one command or action per step.
+. Include one command or action for each step with the exception of simple follow-step, for example:
+.. Do this thing and then select *Next*.
+.. Do this other thing and then select *Next*.
 
 . Use an unnumbered bullet (*) if the procedure includes only one step.
 
 .Verification steps
 ////
-Optional. Delete if not applicable. Provide the user with verification methods for the procedure, such as expected output or commands that can be used to check for success or failure.
+Delete this section if it does not apply to your module. Provide the user with verification methods for the procedure, such as expected output or commands that confirm success or failure.
 ////
 
 . Start each step with an active verb.

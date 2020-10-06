@@ -16,7 +16,7 @@ ifdef::context[:parent-context: {context}]
 * ID: [id="assembly-my-user-story_{context}"]
 * Title: = My user story
 
-The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken. Include {context} in the ID so the assembly can be reused.
+The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken. Include {context} in the ID so the assembly can be reused.
 ////
 
 [id="assembly-my-user-story_{context}"]
@@ -28,7 +28,7 @@ If the assembly covers a task, start the title with a verb in the gerund form, s
 :context: assembly-keyword
 
 ////
-The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 ////
 
 [role="_abstract"]
