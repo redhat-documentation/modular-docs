@@ -11,7 +11,7 @@ Base the file name and the ID on the module title. For example:
 
 ////
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
- ////
+////
 
 [id="con-my-concept-module-a_{context}"]
 
