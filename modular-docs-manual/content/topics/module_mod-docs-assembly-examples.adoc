@@ -1,8 +1,8 @@
 [id="modular-docs-assembly-examples"]
 = Assembly Examples
 
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/configuring-the-sssd-container-to-provide-identity-and-authentication-services-on-atomic-host[Configuring the SSSD Container to Provide Identity and Authentication Services on Atomic Host]
+link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/packaging_and_deploying_a_red_hat_process_automation_manager_project/index[Packaging and deploying a Red Hat Process Automation Manager project]
 
-link:https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/ceph_file_system_guide/deploying-ceph-file-systems[Deploying Ceph File Systems]
+link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/designing_a_decision_service_using_spreadsheet_decision_tables/index[Designing a decision service using spreadsheet decision tables]
 
-link:https://access.redhat.com/documentation/en-us/red_hat_mobile_application_platform/4.2/html/mbaas_administration_and_installation_guide/backing-up-an-mbaas[Backing up an MBaaS]
+link:https://access.redhat.com/documentation/en-us/red_hat_build_of_quarkus/1.3/html-single/getting_started_with_red_hat_build_of_quarkus/index[Getting started with Red Hat Build of Quarkus]
