@@ -14,7 +14,7 @@ Base the file name and the ID on the module title. For example:
 [id="proc-doing-one-procedure_{context}"]
 
 ////
-The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID so you can include it multiple times in the same guide.
+The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 ////
 
 = Doing one procedure
@@ -23,7 +23,7 @@ Start the title of a procedure module with a verb, such as Creating or Create. S
 ////
 
 [role="_abstract"]
-Write a introductory paragraph that provides an overview of the module. Procedure modules should include the steps that users perform and address user motivation. The text that immediately follows the `[role="_abstract"]` tag is used for search metadata.
+Write a short introductory paragraph that provides an overview of the module. Procedure modules should include  the steps that users perform and address user motivation.The text that immediately follows the `[role="_abstract"]` tag is used for search metadata.
 
 .Prerequisites
 
@@ -48,11 +48,9 @@ Delete this section if it does not apply to your module. Provide the user with v
 
 . Start each step with an active verb.
 
-. Include one non-trivial command or action for each step:
-.. Do this thing and then click *Next*.
-.. Do this other thing.
+. Include one command or action per step.
 
-. Use an unordered list item (*) if the procedure includes only one step.
+. Use an unnumbered bullet (*) if the procedure includes only one step.
 
 
 [role="_additional-resources"]
