@@ -28,11 +28,11 @@ If the assembly covers a task, start the title with a verb in the gerund form, s
 :context: assembly-keyword
 
 ////
-The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID so you can include it multiple times in the same guide.
 ////
 
 [role="_abstract"]
-This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. The `[role="_abstract"]` tag defines the first paragraph of the introduction for search metadata.
+This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. The text that immediately follows the `[role="_abstract"]` tag is used for search metadata.
 
 .Prerequisites
 
