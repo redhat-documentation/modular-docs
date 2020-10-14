@@ -7,8 +7,8 @@ Base the file name and the ID on the module title. For example:
 * file name: proc-doing-procedure-a.adoc
 * ID: [id="doing-procedure-a_{context}"]
 * Title: = Doing procedure A
-////
- The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+
+The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
 [id="proc-doing-one-procedure_{context}"]
