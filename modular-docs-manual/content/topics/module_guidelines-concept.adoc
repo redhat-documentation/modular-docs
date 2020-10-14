@@ -33,6 +33,37 @@ Do not include any instructions to perform an action, such as executing a comman
 Action items belong in procedure modules.
 See also link:http://www.informationmapping.com/fspro2013-tutorial/infotypes/infotype2.html[The Six Information Types] at _informationmapping.com_ for ways to present different types of conceptual information: principle, concept, structure, process, fact.
 
+If the concept module is large and complex, either split the concept module into multiple standalone concept modules or use subheadings in the module to structure the content for improved reader navigation. If you use subheadings in a concept module, you can use the `[discrete]` tag to exclude the heading from the table of contents, if needed. However, in many cases, subheadings are helpful to include in the table of contents.
+
+The following examples illustrate a discrete and a standard subheading:
+
+.Example discrete subheading excluded from table of contents
+[source]
+----
+= My concept module
+
+Concept introduction and body
+
+[discrete]
+== My concept module subheading
+
+More concept body content
+----
+
+.Example subheading included in table of contents
+[source]
+----
+= My concept module
+
+Concept introduction and body
+
+== My concept module subheading
+
+More concept body content
+----
+
+NOTE: You can use subheadings in concept or reference modules, but not in procedure modules.
+
 [discrete]
 == Concept Additional Resources
 
