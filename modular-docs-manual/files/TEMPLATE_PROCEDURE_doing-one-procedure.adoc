@@ -2,18 +2,28 @@
 //
 // <List assemblies here, each on a new line>
 
-// Base the file name and the ID on the module title. For example:
-// * file name: doing-procedure-a.adoc
-// * ID: [id="doing-procedure-a"]
-// * Title: = Doing procedure A
+////
+Base the file name and the ID on the module title. For example:
+* file name: proc-doing-procedure-a.adoc
+* ID: [id="doing-procedure-a_{context}"]
+* Title: = Doing procedure A
+////
+ The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+////
 
-// The ID is used as an anchor for linking to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
-[id="doing-one-procedure_{context}"]
-// The `context` attribute enables module reuse. Every module's ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+[id="proc-doing-one-procedure_{context}"]
+
+////
+The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+////
+
 = Doing one procedure
-// Start the title of a procedure module with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
+////
+Start the title of a procedure module with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
+////
 
-This paragraph is the procedure module introduction: a short description of the procedure.
+[role="_abstract"]
+Write a short introductory paragraph that provides an overview of the module. Procedure modules should include  the steps that users perform and address user motivation.The text that immediately follows the `[role="_abstract"]` tag is used for search metadata.
 
 .Prerequisites
 
@@ -25,15 +35,29 @@ This paragraph is the procedure module introduction: a short description of the 
 
 . Start each step with an active verb.
 
+. Include one command or action for each step with the exception of simple follow-step, for example:
+.. Do this thing and then select *Next*.
+.. Do this other thing and then select *Next*.
+
+. Use an unnumbered bullet (*) if the procedure includes only one step.
+
+.Verification steps
+////
+Delete this section if it does not apply to your module. Provide the user with verification methods for the procedure, such as expected output or commands that confirm success or failure.
+////
+
+. Start each step with an active verb.
+
 . Include one command or action per step.
 
 . Use an unnumbered bullet (*) if the procedure includes only one step.
 
-//.Verification steps
-//(Optional) Provide the user with verification method(s) for the procedure, such as expected output or commands that can be used to check for success or failure.
 
+[role="_additional-resources"]
 .Additional resources
-
+////
+Optional. Delete if not used.
+////
 * A bulleted list of links to other material closely related to the contents of the procedure module.
 * Currently, modules cannot include xrefs, so you cannot include links to other content in your collection. If you need to link to another assembly, add the xref to the assembly that includes this module.
 * For more details on writing procedure modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
