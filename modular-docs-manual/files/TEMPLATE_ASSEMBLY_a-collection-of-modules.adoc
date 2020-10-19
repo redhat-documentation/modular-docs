@@ -34,7 +34,7 @@ The `context` attribute enables module reuse. Every module ID includes {context}
 [role="_abstract"]
 This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on. The text that immediately follows the `[role="_abstract"]` tag is used for search metadata.
 
-.Prerequisites
+== Prerequisites
 
 * A bulleted list of conditions that must be satisfied before the user starts following this assembly.
 * You can also link to other modules or assemblies the user must follow before starting this assembly.
