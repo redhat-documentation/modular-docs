@@ -20,3 +20,34 @@ To make the reference data easier to scan, organize it in a logical order (such 
 * link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#tables[Tables]
 
 If you have a large volume of the same type of information to document, use a structure into which the information details can fit, and then document each logical unit of information as one reference module. For example, think of man pages, which document very different information details, but which still use consistent titles and formats to present those details in a uniform information structure.
+
+If the reference module is large and complex, consider splitting the reference module into multiple standalone reference modules. If you cannot split the module into meaningful standalone modules, consider using subheadings in the module to structure the content for improved reader navigation. If you use subheadings in a reference module, you can add the `[discrete]` tag to exclude each subheading from the table of contents, if needed. However, in many cases, subheadings are helpful to include in the table of contents to improve content searchability.
+
+The following examples illustrate a discrete and a standard subheading:
+
+.Example discrete subheading excluded from table of contents
+[source]
+----
+= My reference module
+
+Reference introduction and body
+
+[discrete]
+== My reference module subheading
+
+More reference body content
+----
+
+.Example subheading included in table of contents
+[source]
+----
+= My reference module
+
+Reference introduction and body
+
+== My reference module subheading
+
+More reference body content
+----
+
+NOTE: You can use subheadings in concept or reference modules, but not in procedure modules.
