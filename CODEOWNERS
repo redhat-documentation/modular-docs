@@ -1,0 +1,6 @@
+# Set the FFC Review Board team to own the entire repo
+# (so that we can request (and require) PR reviews before merging).
+* @redhat-documentation/fcc-review-board
+
+# Additional (more granular) ownership rules:
+
