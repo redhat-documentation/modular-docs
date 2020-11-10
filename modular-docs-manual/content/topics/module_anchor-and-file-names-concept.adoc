@@ -31,9 +31,9 @@ These file naming guidelines are optional but highly recommended. However, if yo
 
 [source]
 ----
-:system-module-type: CONCEPT
-:system-module-type: PROCEDURE
-:system-module-type: REFERENCE
+:_module-type: CONCEPT
+:_module-type: PROCEDURE
+:_module-type: REFERENCE
 ----
 
 .Anchors
