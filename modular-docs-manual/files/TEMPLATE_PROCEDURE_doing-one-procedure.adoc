@@ -41,7 +41,7 @@ Write a short introductory paragraph that provides an overview of the module. Pr
 
 . Use an unnumbered bullet (*) if the procedure includes only one step.
 
-.Verification steps
+.Verification
 ////
 Delete this section if it does not apply to your module. Provide the user with verification methods for the procedure, such as expected output or commands that confirm success or failure.
 ////
