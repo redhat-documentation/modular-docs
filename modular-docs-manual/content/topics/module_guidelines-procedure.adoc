@@ -32,12 +32,14 @@ The procedure consists of one or more steps required to complete the procedure. 
 
 For single-step procedures, use an unnumbered bullet instead of a numbered list.
 
+NOTE: Not all numbered lists in documentation are procedures. You can also use numbered lists in any module type for non-procedural sequences, such as a process flow of system actions.
+
 [discrete]
-== Procedure verification steps
+== Procedure Verification
 This section is optional. Provide the user with one or more steps to verify that the procedure provided the intended outcome. This may consist of:
 
-- An example of expected command output or 'pop-up' window the user should receive when the procedure is successful.
-- An 'action' (or 'actions') for the user, such as running a command, to determine the success or failure of the procedure.
+* An example of expected command output or pop-up window the user should receive when the procedure is successful
+* An action (or actions) for the user, such as running a command, to determine the success or failure of the procedure
 
 [discrete]
 == Procedure Additional Resources
