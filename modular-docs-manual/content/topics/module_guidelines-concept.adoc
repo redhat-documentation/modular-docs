@@ -29,7 +29,7 @@ The concept body describes the subject of the concept module.
 Apart from paragraphs, you can use other AsciiDoc elements, such as lists, tables, or examples.
 Consider including graphics or diagrams to speed up the understanding of the concept.
 
-Do not include any instructions to perform an action, such as executing a command.
+Avoid including instructions to perform an action, such as executing a command.
 Action items belong in procedure modules.
 See also link:http://www.informationmapping.com/fspro2013-tutorial/infotypes/infotype2.html[The Six Information Types] at _informationmapping.com_ for ways to present different types of conceptual information: principle, concept, structure, process, fact.
 
