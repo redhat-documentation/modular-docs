@@ -31,7 +31,8 @@ The contents of a concept module give the user descriptions and explanations nee
 
 * Look at nouns and noun phrases in related procedure modules and assemblies to find the concepts to explain to users.
 * Explain only things that are visible to users. Even if a concept is interesting, it probably does not require explanation if it is not visible to users.
-* Avoid including instructions to perform an action, such as executing a command. Action items belong in procedure modules.
+* Avoid including action items. Action items belong in procedure modules. However, in some cases a concept or reference can include suggested actions when those actions are simple, are highly dependent on the context of the module, and have no place in any procedure module. In such cases, ensure that the heading of the concept or reference remains a noun phrase and not a gerund.
+
 
 [role="_additional-resources"]
 .Additional resources
