@@ -3,6 +3,11 @@
 
 When you create content in modules, you can use the same module multiple times in an assembly without having to replicate information in multiple source files. However, in order to facilitate module reuse, you must embed a document attribute variable in the anchor name for the module and then define that variable in the assembly each time the reused module appears. If the variable is not embedded and assigned, an error appears at build time reporting the duplicated anchor ID.
 
+[NOTE]
+====
+To determine which assemblies include a specific file, you can use your code editor to search the doc repo for instances of the file name. The search results will list every `include:` statement that specifies the file. 
+====
+
 .Error at Build Time When Anchor Has No Variable
 ====
 [source]
@@ -93,10 +98,6 @@ include::module-A-being-reused.adoc
 +
 [source]
 ----
-// Module included in the following assemblies:
-//
-// ...
-
 [id="module-A-being-reused_{context}"]
 = Module A Heading
 ----
@@ -137,11 +138,6 @@ The module files contain the following content:
 .projects.adoc
 [source]
 ----
-// Module included in the following assemblies:
-//
-// asset-definitions.adoc
-// business-rules.adoc
-
 [id="projects_{context}"]
 = Projects
 ----
@@ -149,11 +145,6 @@ The module files contain the following content:
 .creating-assets.adoc
 [source]
 ----
-// Module included in the following assemblies:
-//
-// asset-definitions.adoc
-// business-rules.adoc
-
 [id="creating-assets_{context}"]
 = Creating Assets
 ----
