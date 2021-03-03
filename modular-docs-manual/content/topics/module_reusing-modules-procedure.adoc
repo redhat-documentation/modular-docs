@@ -88,18 +88,6 @@ include::module-A-being-reused.adoc
 ----
 
 +
-. Return to the reused module file, and at the top of the file add a comment that identifies which assemblies the module has been added to. This helps to track reused modules in the future.
-
-+
-[source]
-----
-// Module included in the following assemblies:
-//
-// ...
-
-[id="module-A-being-reused_{context}"]
-= Module A Heading
-----
 
 ////
 .Cross-Referencing Reused Modules
@@ -137,11 +125,6 @@ The module files contain the following content:
 .projects.adoc
 [source]
 ----
-// Module included in the following assemblies:
-//
-// asset-definitions.adoc
-// business-rules.adoc
-
 [id="projects_{context}"]
 = Projects
 ----
@@ -149,11 +132,6 @@ The module files contain the following content:
 .creating-assets.adoc
 [source]
 ----
-// Module included in the following assemblies:
-//
-// asset-definitions.adoc
-// business-rules.adoc
-
 [id="creating-assets_{context}"]
 = Creating Assets
 ----
