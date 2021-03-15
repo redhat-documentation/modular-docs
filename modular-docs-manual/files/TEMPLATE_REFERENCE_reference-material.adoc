@@ -1,4 +1,11 @@
 ////
+Pantheon v2 extracts some information from variables defined in the document content. These variables must be defined at the header level (not at the body level); otherwise, Pantheon v2 cannot extract them.
+
+As of this writing, the only such variable is `:_module-type:`, but future development may introduce other such variables as well.
+////
+:_module-type: ASSEMBLY
+
+////
 Base the file name and the ID on the module title. For example:
 * file name: ref-my-reference-a.adoc
 * ID: [id="ref-my-reference-a_{context}"]
