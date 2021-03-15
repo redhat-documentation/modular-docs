@@ -7,6 +7,13 @@ See also the complementary step on the last line of this file.
 ifdef::context[:parent-context: {context}]
 
 ////
+Pantheon v2 extracts some information from variables defined in the document content. These variables must be defined at the header level (not at the body level); otherwise, Pantheon v2 cannot extract them.
+
+As of this writing, the only such variable is `:_module-type:`, but future development may introduce other such variables as well.
+////
+:_module-type: ASSEMBLY
+
+////
  Base the file name and the ID on the assembly title. For example:
 * file name: assembly-my-user-story.adoc
 * ID: [id="assembly-my-user-story_{context}"]
