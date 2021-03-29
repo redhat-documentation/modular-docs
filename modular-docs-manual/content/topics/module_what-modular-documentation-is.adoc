@@ -3,6 +3,8 @@
 
 Modular documentation is documentation based on _modules_, which the writer combines into _assemblies_. An assembly can also include other assemblies.
 
+NOTE: A module cannot contain another module.
+
 [IMPORTANT]
 ====
 Nesting assemblies too deep can create too much complexity, which might make the documentation difficult to use and maintain. If you are worried this might be the case, consider linking to another assembly as an alternative to direct inclusion.
