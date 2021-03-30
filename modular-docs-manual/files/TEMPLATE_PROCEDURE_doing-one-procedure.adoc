@@ -54,6 +54,6 @@ Delete this section if it does not apply to your module. Provide the user with v
 ////
 Optional. Delete if not used.
 ////
-* A bulleted list of links to other material closely related to the contents of the procedure module.
+* A bulleted list of links or xrefs to other material closely related to the contents of the procedure module.
 * For more details on writing procedure modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
 * Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
