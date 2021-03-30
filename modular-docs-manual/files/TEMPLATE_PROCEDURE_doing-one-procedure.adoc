@@ -1,25 +1,25 @@
 ////
 Base the file name and the ID on the module title. For example:
 * file name: proc-doing-procedure-a.adoc
-* ID: [id="doing-procedure-a_{context}"]
+* ID: [id="proc-doing-procedure-a_{context}"]
 * Title: = Doing procedure A
 
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
-[id="proc-doing-one-procedure_{context}"]
+[id="proc-doing-procedure-a_{context}"]
 
 ////
 The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 ////
 
-= Doing one procedure
+= Doing procedure A
 ////
 Start the title of a procedure module with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
 ////
 
 [role="_abstract"]
-Write a short introductory paragraph that provides an overview of the module. Procedure modules should include  the steps that users perform and address user motivation.The text that immediately follows the `[role="_abstract"]` tag is used for search metadata.
+Write a short introductory paragraph that provides an overview of the module. Procedure modules should include  the steps that users perform and address user motivation. The text that immediately follows the `[role="_abstract"]` tag up to a line break is used for search metadata.
 
 .Prerequisites
 
