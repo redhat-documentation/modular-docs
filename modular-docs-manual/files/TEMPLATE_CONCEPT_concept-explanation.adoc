@@ -6,6 +6,13 @@ Base the file name and the ID on the module title. For example:
 ////
 
 ////
+Indicate the module type in one of the following
+ways:
+Add the prefix con- or con_ to the file name.
+Add :_module-type: CONCEPT before the module ID. 
+////
+
+////
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
