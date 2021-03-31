@@ -2,7 +2,7 @@
 
 = Text Snippets or Text Fragments
 
-A text snippet or text fragment is a small section of text that is stored in an Asciidoc file. Text snippets contain context that is resused, for example:
+A text snippet or text fragment is a small section of text that is stored in an Asciidoc file. Text snippets contain content that is resused in multiple modules or assemblies, for example:
 
 * A step or series of steps in a procedure
 * A disclaimer, for example for technology preview or beta releases
