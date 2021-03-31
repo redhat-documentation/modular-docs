@@ -7,7 +7,7 @@ A text snippet or text fragment is a small section of text that is stored in an 
 * A step or series of steps in a procedure
 * A disclaimer, for example for technology preview or beta releases
 
-NOTE: A text snippet is not a module. The Asciidoc file that contains the text snippet cannot contain any other information. A module cannot contain and include statement for another module.
+NOTE: A text snippet is not a module. The Asciidoc file that contains the text snippet cannot contain any other information. A module cannot contain an include statement for another module.
 
 .Procedure
 . Create the text snippet Asciidoc file and store it in your snippets folder.
