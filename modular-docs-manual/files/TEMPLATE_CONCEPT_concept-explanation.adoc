@@ -34,6 +34,6 @@ The contents of a concept module give the user descriptions and explanations nee
 ////
 Optional. Delete if not used.
 ////
-* A bulleted list of links or xrefs to other material closely related to the contents of the concept module.
+* A bulleted list of links to other closely-related material. These links can include `link:` and `xref:` macros.
 * For more details on writing concept modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
 * Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
