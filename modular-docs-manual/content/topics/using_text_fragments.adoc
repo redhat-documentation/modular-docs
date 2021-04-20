@@ -7,7 +7,7 @@ A text fragment is a small section of text that is stored in an AsciiDoc file. T
 * A step or series of steps in a procedure
 * A disclaimer, for example, for technology preview or beta releases
 
-NOTE: A text fragment is not a module and cannot contain an include statement for a module.
+NOTE: A text fragment is not a module.
 
 .Procedure
 . Create the text fragment AsciiDoc file.
