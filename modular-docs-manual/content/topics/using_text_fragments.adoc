@@ -1,5 +1,4 @@
 [id="using_text_fragments_{context}"]
-
 = Text Fragments
 
 A text fragment is a small section of text that is stored in an Asciidoc file. Text fragments contain content that is resused in multiple modules or assemblies, for example:
