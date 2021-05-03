@@ -7,6 +7,15 @@ Base the file name and the ID on the module title. For example:
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
+////
+Indicate the module type in one of the following
+ways:
+Add the prefix proc- or proc_ to the file name.
+Add the following attribute before the module ID:
+:_module-type: PROCEDURE
+////
+
+
 [id="proc-doing-one-procedure_{context}"]
 
 ////

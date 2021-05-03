@@ -27,7 +27,7 @@ Create assembly and module file names that accurately and closely reflect the ti
 Do not include special characters in file names. Ensure that all members of your team use the same file naming conventions.
 ====
 
-These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), include one of the following variables in each concept, procedure, and reference module:
+These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), include one of the following variables in each concept, procedure, and reference module before the module ID:
 
 [source]
 ----
