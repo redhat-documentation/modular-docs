@@ -11,7 +11,8 @@ The ID is an anchor that links to the module. Avoid changing it after the module
 Indicate the module type in one of the following
 ways:
 Add the prefix proc- or proc_ to the file name.
-Add `:_module-type: PROCEDURE` before the module ID.
+Add the following attribute before the module ID:
+:_module-type: PROCEDURE
 ////
 
 
