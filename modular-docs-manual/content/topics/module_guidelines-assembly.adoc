@@ -27,7 +27,7 @@ Use the second level heading syntax for the Prerequisites section in the assembl
 [discrete]
 == Assembly Modules
 
-List link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include files] to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly.
+List link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include files] to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly. A `leveloffset` can provide a method of introducing hierarchy, such as `module-file.adoc[leveloffset=+2]`.
 
 [discrete]
 == Assembly Additional Resources
