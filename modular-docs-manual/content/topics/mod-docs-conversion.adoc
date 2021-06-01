@@ -5,7 +5,6 @@ If you have a monolithic, feature-based manual, you can convert it to a set of m
 
 The result is documentation that is more relevant for your readers, because it is based on real-world user stories (it tells them how to accomplish their goals), and modular (it can be assembled into whatever sets and formats they might need).
 
-
 .Prerequisites
 
 * You should understand what modular documentation is:
