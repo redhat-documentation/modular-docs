@@ -19,7 +19,9 @@ Start the title of a procedure module with a verb, such as Creating or Create. S
 ////
 
 [role="_abstract"]
-Write a short introductory paragraph that provides an overview of the module. Procedure modules should include  the steps that users perform and address user motivation. The text that immediately follows the `[role="_abstract"]` tag up to a line break is used for search metadata.
+Write a short introductory paragraph that provides an overview of the module.
+
+Procedure modules should include the steps that users perform and address user motivation.
 
 .Prerequisites
 

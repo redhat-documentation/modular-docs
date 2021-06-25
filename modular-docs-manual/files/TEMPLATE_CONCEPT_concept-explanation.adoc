@@ -21,7 +21,7 @@ In the title of concept modules, include nouns or noun phrases that are used in 
 ////
 
 [role="_abstract"]
-Write a short introductory paragraph that provides an overview of the module. The text that immediately follows the `[role="_abstract"]` tag up to a line break is used for search metadata.
+Write a short introductory paragraph that provides an overview of the module. 
 
 The contents of a concept module give the user descriptions and explanations needed to understand and use a product.
 
