@@ -36,7 +36,7 @@ file2.adoc[leveloffset=+2]
 file3.adoc[leveloffset=+3]
 ----
 
-NOTE: All module and assembly titles must use the H1 heading designation (`=`).
+All module and assembly titles must use the H1 heading designation, such as `= My heading`.
 
 [discrete]
 == Assembly Additional Resources
