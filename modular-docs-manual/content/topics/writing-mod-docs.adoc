@@ -13,6 +13,8 @@ Follow these guidelines to create different types of modules:
 * xref:creating-procedure-modules[Procedure Module]
 * xref:reference-module-guidelines[Reference Module]
 
+A module should not contain another module. However a module can contain a text snippet. For information about text snippets, see xref:using-text-snippets[Using Text Snippets].
+
 See <<appendix-examples>> for real-world examples of assemblies, modules, and their individual parts.
 
 include::creating_concept_modules.adoc[leveloffset=+2]
@@ -21,7 +23,7 @@ include::creating_procedure_modules.adoc[leveloffset=+2]
 
 include::creating_reference_modules.adoc[leveloffset=+2]
 
-include::using_text_snippets_or_text_fragments.adoc[leveloffset=+2]
+include::using-text-snippets.adoc[leveloffset=+2]
 
 include::module_anchor-and-file-names-concept.adoc[leveloffset=+2]
 
