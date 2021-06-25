@@ -23,7 +23,7 @@ include::creating_procedure_modules.adoc[leveloffset=+2]
 
 include::creating_reference_modules.adoc[leveloffset=+2]
 
-include::using_text_snippets.adoc[leveloffset=+2]
+include::using-text-snippets.adoc[leveloffset=+2]
 
 include::module_anchor-and-file-names-concept.adoc[leveloffset=+2]
 
