@@ -27,7 +27,16 @@ Use the second level heading syntax for the Prerequisites section in the assembl
 [discrete]
 == Assembly Modules
 
-List link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include files] to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly. You can use a `leveloffset` attribute to set the hierarchy of the module relative to the assembly. In most cases, create modules whose title is an H1 and include those modules by using the format `module-file.adoc[leveloffset=+1]`. Otherwise, if necessary, you can use other `leveloffset` values, such as `module-file.adoc[leveloffset=+2]`, to modify the structure of your module content.
+To include modules in an assembly, use the Asciidoc  link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include directive]. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly. Use the `leveloffset` attribute to set the hierarchy of the module relative to the assembly, as shown in the following example:
+
+.Level offset for module files
+----
+file1.adoc[leveloffset=+1]
+file2.adoc[leveloffset=+2]
+file3.adoc[leveloffset=+3]
+----
+
+NOTE: All module and assembly titles must use the H1 heading designation (`=`).
 
 [discrete]
 == Assembly Additional Resources
