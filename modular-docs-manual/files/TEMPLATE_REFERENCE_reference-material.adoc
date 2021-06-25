@@ -7,10 +7,12 @@ Base the file name and the ID on the module title. For example:
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
-[id="ref-my-reference-a_{context}"]
+[id="ref-reference-material_{context}"]
+
 ////
 The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide
 ////
+
 = Reference material
 ////
 In the title of a reference module, include nouns that are used in the body text. For example, "Keyboard shortcuts for ___" or "Command options for ___." This helps readers and search engines find the information quickly.
@@ -45,7 +47,6 @@ Term 2:: Definition
 ////
 Optional. Delete if not used.
 ////
-* A bulleted list of links to other material closely related to the contents of the concept module.
-* Currently, modules cannot include xrefs, so you cannot include links to other content in your collection. If you need to link to another assembly, add the xref to the assembly that includes this module.
+* A bulleted list of links to other closely-related material. These links can include `link:` and `xref:` macros.
 * For more details on writing reference modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
 * Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].

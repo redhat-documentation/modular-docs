@@ -24,7 +24,7 @@ Prerequisites are conditions that must be satisfied before the user starts the p
 
 Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
 
-Use a bulleted list for prerequisites, even if you only have a single prerequisite.
+Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if you only have a single prerequisite.
 
 [discrete]
 == Procedure Body
@@ -45,7 +45,5 @@ This section is optional. Provide the user with one or more steps to verify that
 == Procedure Additional Resources
 
 The optional additional resources list links to other material closely related to the contents of the procedure module, for example, other documentation resources, instructional videos, or labs.
-Because of current tooling limitations, you cannot include xref links to other content in your collection in the procedure module.
-You can include xref links in the assembly that contains the procedure.
 
 Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.
