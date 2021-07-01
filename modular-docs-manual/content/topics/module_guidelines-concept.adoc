@@ -29,12 +29,8 @@ The concept body describes the subject of the concept module.
 Apart from paragraphs, you can use other AsciiDoc elements, such as lists, tables, or examples.
 Consider including graphics or diagrams to speed up the understanding of the concept.
 
-<<<<<<< HEAD
-Avoid including action items. Action items belong in procedure modules. However, in some cases a concept or reference module can include suggested actions when those actions are simple, are highly dependent on the context of the module, and have no place in any procedure module. In such cases, ensure that the heading of the concept or reference remains a noun phrase and not a gerund. For example, see link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.9/html-single/developing_decision_services_in_red_hat_process_automation_manager/index#bound_variables_in_patterns_and_constraints[Bound variables in patterns and constraints] and the sections that follow it. These concept and reference modules contain actions that are not suitable for standalone procedure modules but are relevant actions to understand in the context of the concept or reference being described.
-=======
 Avoid including instructions to perform an action. Action items belong in procedure modules. However, in some cases a concept or reference module can include suggested actions when those actions are simple, are highly dependent on the context of the module, and have no place in any procedure module. In such cases, ensure that the heading of the concept or reference remains a noun phrase and not a gerund. For example, see link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.9/html-single/developing_decision_services_in_red_hat_process_automation_manager/index#bound_variables_in_patterns_and_constraints[
 "Bound variables in patterns and constraints"] and the sections that follow it. These concept and reference modules contain actions that are not suitable for standalone procedure modules but are relevant actions to understand in the context of the concept or reference being described.
->>>>>>> issue119 fixed typo
 
 See also link:http://www.informationmapping.com/fspro2013-tutorial/infotypes/infotype2.html[The Six Information Types] at _informationmapping.com_ for ways to present different types of conceptual information: principle, concept, structure, process, fact.
 
