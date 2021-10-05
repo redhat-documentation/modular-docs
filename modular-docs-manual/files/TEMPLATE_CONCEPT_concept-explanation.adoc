@@ -29,7 +29,7 @@ In the title of concept modules, include nouns or noun phrases that are used in 
 ////
 
 [role="_abstract"]
-Write a short introductory paragraph that provides an overview of the module. 
+Write a short introductory paragraph that provides an overview of the module.
 
 The contents of a concept module give the user descriptions and explanations needed to understand and use a product.
 
@@ -37,6 +37,16 @@ The contents of a concept module give the user descriptions and explanations nee
 * Explain only things that are visible to users. Even if a concept is interesting, it probably does not require explanation if it is not visible to users.
 * Avoid including action items. Action items belong in procedure modules. However, in some cases a concept or reference can include suggested actions when those actions are simple, are highly dependent on the context of the module, and have no place in any procedure module. In such cases, ensure that the heading of the concept or reference remains a noun phrase and not a gerund.
 
+
+////
+Include titles and alternative text descriptions for images.
+Alternative text should provide a textual, complete description of the image as a full sentence.
+Images should never be the sole means of conveying information and should only supplement the text.
+Avoid screenshots or other images that might quickly go out of date and that create a maintenance burden on documentation.
+Provide text equivalents for every diagram, image, or other non-text element. Avoid using images of text instead of actual text.
+////
+//.Image title
+//image::image-file.png[A textual representation of the essential information conveyed by the image.]
 
 [role="_additional-resources"]
 .Additional resources
