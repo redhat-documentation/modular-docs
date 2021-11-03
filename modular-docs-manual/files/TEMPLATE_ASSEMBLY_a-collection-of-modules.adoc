@@ -11,7 +11,17 @@ ifdef::context[:parent-context: {context}]
 * file name: assembly-my-user-story.adoc
 * ID: [id="assembly-my-user-story_{context}"]
 * Title: = My user story
+////
 
+////
+Indicate the content type in one of the following
+ways:
+Add the prefix assembly- or assembly_ to the file name.
+Add the following attribute before the module ID:
+:_content-type: ASSEMBLY
+////
+
+////
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken. Include {context} in the ID so the assembly can be reused.
 ////
 

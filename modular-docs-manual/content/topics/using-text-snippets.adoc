@@ -13,6 +13,14 @@ NOTE: A text snippet is not a module.
 . Create the text snippet AsciiDoc file.
 +
 NOTE: Consider storing snippet files in a separate snippets folder.
+
+. Add a variable to the snippet files that that identifies its content type:
++
+[source]
+----
+:_content-type: SNIPPET
+----
+
 . Add an `include::` statement to the file that you want to add the snippet to, for example:
 +
 [source]
