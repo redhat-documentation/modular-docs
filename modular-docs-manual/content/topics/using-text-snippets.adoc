@@ -14,7 +14,7 @@ NOTE: A text snippet is not a module.
 +
 NOTE: Consider storing snippet files in a separate snippets folder.
 
-. Add a variable to the snippet files that that identifies its content type:
+. Add a variable to the snippet files that identifies its content type:
 +
 [source]
 ----
