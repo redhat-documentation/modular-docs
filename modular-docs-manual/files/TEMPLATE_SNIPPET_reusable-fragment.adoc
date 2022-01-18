@@ -1,0 +1,41 @@
+////
+Base the file name on the snippet title. For example:
+* file name: snip-my-snippet-a.adoc
+* Title: .My snippet A
+
+A snippet is not a module. Consider storing snippet files in a separate snippets folder.
+
+Indicate the content type in one of the following ways:
+Add the prefix snip- or snip_ to the file name.
+Add the following attribute before the title:
+:_content-type: SNIPPET
+////
+
+.My snippet A
+////
+The title is optional in a snippet. Use the block title syntax, such as .My snippet A, rather than a numbered heading, such as = My snippet A.
+
+In the title of snippets, include nouns or noun phrases that are used in the body text. This helps readers and search engines find the information quickly. Do not start the title of snippets with a verb. See also _Wording of headings_ in _The IBM Style Guide_.
+
+Do not specify an ID for the snippet title.
+////
+
+A text snippet is a small fragment of text that is stored in an AsciiDoc file. Text snippets contain content that is reused in multiple modules or assemblies, for example:
+
+* A step or series of steps in a procedure
+* A disclaimer, for example, for technology preview or beta releases
+
+[NOTE]
+--
+Additional guidance or advice that improves product configuration, performance, or supportability.
+--
+
+[IMPORTANT]
+--
+Advisory information essential to the completion of a task. Users must not disregard this information.
+--
+
+[WARNING]
+--
+Information about potential system damage, data loss, or a support-related issue if the user disregards this admonition. Explain the problem, cause, and offer a solution that works. If available, offer information to avoid the problem in the future or state where to find more information.
+--
