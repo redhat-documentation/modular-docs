@@ -2,12 +2,12 @@
 
 = Text Snippets
 
-A text snippet is a small section of text that is stored in an AsciiDoc file. Text snippets contain content that is resused in multiple modules or assemblies, for example:
+A text snippet is a small section of text that is stored in an AsciiDoc file. Text snippets contain content that is reused in multiple modules or assemblies, for example:
 
 * A step or series of steps in a procedure
 * A disclaimer, for example, for technology preview or beta releases
 
-NOTE: A text snippet is not a module.
+NOTE: A text snippet is not a module, but it is the only content in an AsciiDoc file.
 
 .Procedure
 . Create the text snippet AsciiDoc file.
