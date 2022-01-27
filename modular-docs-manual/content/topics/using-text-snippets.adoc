@@ -17,5 +17,5 @@ NOTE: Consider storing snippet files in a separate snippets folder.
 +
 [source]
 ----
-include::snippets/beta-note.adoc
+include::snippets/beta-note.adoc[]
 ----
