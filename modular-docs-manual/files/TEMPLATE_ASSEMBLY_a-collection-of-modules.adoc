@@ -49,6 +49,8 @@ include::modules/TEMPLATE_CONCEPT_explaining_a_concept.adoc[leveloffset=+1]
 ////
 
 include::modules/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[leveloffset=+2]
+// Add a blank line after each 'include::' statement.
+
 include::modules/TEMPLATE_PROCEDURE_reference-material.adoc[leveloffset=2]
 
 [role="_additional-resources"]
