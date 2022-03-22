@@ -3,7 +3,17 @@ Base the file name and the ID on the module title. For example:
 * file name: ref-my-reference-a.adoc
 * ID: [id="ref-my-reference-a_{context}"]
 * Title: = My reference A
+////
 
+////
+Indicate the module type in one of the following
+ways:
+Add the prefix ref- or ref_ to the file name.
+Add the following attribute before the module ID:
+:_content-type: REFERENCE
+////
+
+////
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
