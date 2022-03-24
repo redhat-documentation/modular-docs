@@ -2,19 +2,39 @@
 
 = Text Snippets
 
-A text snippet is a small section of text that is stored in an AsciiDoc file. Text snippets contain content that is reused in multiple modules or assemblies, for example:
+A text snippet is a section of text that is stored in an AsciiDoc file. Text snippets contain content that is reused in multiple modules or assemblies.
 
+NOTE: A text snippet is not a module. It cannot include structural elements of a module such as an anchor ID or an H1 heading.
+
+.Examples of snippets:
+* One or more paragraphs of text
 * A step or series of steps in a procedure
-* A disclaimer, for example, for technology preview or beta releases
-
-NOTE: A text snippet is not a module, but it is the only content in an AsciiDoc file.
+* A table or list
+* A note, for example a disclaimer for technology preview or beta releases
++
+.Types of notes
+[cols="25%,275%", options="header"]
+|====
+|Note type|Suggested content
+|NOTE|Additional guidance or advice that improves product configuration, performance, or supportability.
+|IMPORTANT|Advisory information essential to the completion of a task. Users must not disregard this information.
+|WARNING|Information about potential system damage, data loss, or a support-related issue if the user disregards this admonition. Explain the problem, cause, and offer a solution that works. If available, offer information to avoid the problem in the future or state where to find more information.
+|====
 
 .Procedure
 . Create the text snippet AsciiDoc file.
 +
 NOTE: Consider storing snippet files in a separate snippets folder.
 
-. Add a variable to the snippet files that identifies its content type:
+. Indicate that the file is a snippet in one of the following ways:
++
+* Prefix the file name with `snip-` or `snip_`:
++
+[source]
+----
+snip-beta-note.adoc
+----
+* Add a variable to the snippet file that identifies its content type:
 +
 [source]
 ----
@@ -25,5 +45,5 @@ NOTE: Consider storing snippet files in a separate snippets folder.
 +
 [source]
 ----
-\include::snippets/beta-note.adoc[]
+\include::snippets/snip-beta-note.adoc[]
 ----
