@@ -28,6 +28,7 @@ The `context` attribute enables module reuse. Every module ID includes {context}
 In the title of a reference module, include nouns that are used in the body text. For example, "Keyboard shortcuts for ___" or "Command options for ___." This helps readers and search engines find the information quickly.
 ////
 
+[role="_abstract"]
 Write a short introductory paragraph that provides an overview of the module.
 
 A reference module provides data that users might want to look up, but do not need to remember. It has a very strict structure, often in the form of a list or a table.
