@@ -37,7 +37,6 @@ If the assembly covers a task, start the title with a verb in the gerund form, s
 The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID so you can include it multiple times in the same guide.
 ////
 
-[role="_abstract"]
 This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on.
 
 == Prerequisites
