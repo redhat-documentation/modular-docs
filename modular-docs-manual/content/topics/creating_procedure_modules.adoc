@@ -1,14 +1,15 @@
-[id="proc-creating-procedure-modules_{context}"]
+[id="con-creating-procedure-modules_{context}"]
+
 = Procedure modules
 Procedure modules explain how to do something. A procedure module contains numbered, step-by-step instructions to help the user accomplish a single task. Sometimes those tasks include sub steps. Procedure modules must include a title, a brief introduction, and one or more steps in the form of imperative statements. Procedure modules can also contain prerequisites, verification steps, and additional resources or next steps.
 
 .Schema of a procedure module
 image::procedure-diagram.png[]
 
-.Procedure Title
-The title of a procedure module is a verb or a gerund phrase, for example *Deploy OpenShift Container Platform* or *Deploying OpenShift Container Platform*.
+.Procedure title
+// The title of a procedure module is a gerund phrase, for example *Deploying OpenShift Container Platform*.
 
-.Procedure Introduction
+.Procedure introduction
 The procedure introduction is a short paragraph that provides an overview of the module. The introduction includes what the module will help the user do and why it will be beneficial to the user. It includes key words that relate to the module to maximize search engine optimization in the first paragraph of the introduction.
 
 The introduction typically provides context for the procedure, such as:
@@ -16,7 +17,7 @@ The introduction typically provides context for the procedure, such as:
 * Why and where the user performs the procedure
 * Special considerations specific to the procedure
 
-.Procedure Prerequisites
+.Procedure prerequisites
 This section is optional. Prerequisites are a bulleted list of conditions that must be satisfied before the user starts the procedure. Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if you only have a single prerequisite.
 
 Prerequisites can be full sentences or sentence fragments, however prerequisite list items are parallel.

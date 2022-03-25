@@ -17,7 +17,7 @@ The ID is an anchor that links to the module. Avoid changing it after the module
 
 = Doing procedure A
 ////
-Start the title of a procedure module with a verb or a gerund, such as Create or Creating.
+Start the title of a procedure module with a gerund, such as Creating, Installing, or Deploying.
 ////
 
 [role="_abstract"]
@@ -49,13 +49,15 @@ Delete the .Prerequisites section title and bullets if the module has no prerequ
 ////
 Delete this section if it does not apply to your module. Provide the user with verification methods for the procedure, such as expected output or commands that confirm success or failure.
 ////
+. Provide example of expected command output or a pop-up window that the user receives when the procedure is successful.
 
-. Start each step with an active verb.
+. List actions for the user to complete, such as running a command, to determine the success or failure of the procedure
+
+. Make each step an instruction.
 
 . Include one command or action per step.
 
 . Use an unnumbered bullet (*) if the verification includes only one step.
-
 
 [role="_additional-resources"]
 .Additional resources
