@@ -7,7 +7,7 @@ Procedure modules explain how to do something. A procedure module contains numbe
 image::procedure-diagram.png[]
 
 .Procedure title
-// The title of a procedure module is a gerund phrase, for example *Deploying OpenShift Container Platform*.
+// The title of a procedure module is a gerund phrase, such as *Deploying OpenShift Container Platform*.
 
 .Procedure introduction
 The procedure introduction is a short paragraph that provides an overview of the module. The introduction includes what the module will help the user do and why it will be beneficial to the user. It includes key words that relate to the module to maximize search engine optimization in the first paragraph of the introduction.
@@ -36,6 +36,6 @@ This section is optional. It provides the user with one or more steps to verify 
 * Actions for the user to complete, such as running a command, to determine the success or failure of the procedure
 
 .Procedure additional resources
-This section is optional. The additional resources list links to other material closely related to the contents of the procedure module, for example other documentation resources, instructional videos, or labs.
+This section is optional. The additional resources list links to other material closely related to the contents of the procedure module, such as other documentation resources, instructional videos, or labs.
 
 Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness. If a resource applies to all of the modules in a user story, consider listing the resource in the Additional resources section of the assembly file. If you do this, consider including the resource in the procedure module as a comment.
