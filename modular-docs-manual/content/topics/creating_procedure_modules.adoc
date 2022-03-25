@@ -1,13 +1,40 @@
-[id="creating-procedure-modules"]
-= Creating Procedure Modules
+[id="proc-creating-procedure-modules_{context}"]
+= Procedure modules
+Procedure modules explain how to do something. A procedure module contains numbered, step-by-step instructions to help the user accomplish a single task. Sometimes those tasks include sub steps. Procedure modules must include a title, a brief introduction, and one or more steps in the form of imperative statements. Procedure modules can also contain prerequisites, verification steps, and additional resources or next steps.
 
-This section explains what a procedure module is and provides recommended practices for writing procedure modules.
+.Schema of a procedure module
+image::procedure-diagram.png[]
 
-include::module_definition-procedure.adoc[leveloffset=+1]
+.Procedure Title
+The title of a procedure module is a verb or a gerund phrase, for example *Deploy OpenShift Container Platform* or *Deploying OpenShift Container Platform*.
 
-include::module_guidelines-procedure.adoc[leveloffset=+1]
+.Procedure Introduction
+The procedure introduction is a short paragraph that provides an overview of the module. The introduction includes what the module will help the user do and why it will be beneficial to the user. It includes key words that relate to the module to maximize search engine optimization in the first paragraph of the introduction.
 
-== Additional Resources
+The introduction typically provides context for the procedure, such as:
 
-* Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_PROCEDURE_doing-one-procedure.adoc[procedure module template (adoc file)] for new projects.
-* For real-world examples of procedure modules, see <<modular-docs-procedure-examples>>.
+* Why and where the user performs the procedure
+* Special considerations specific to the procedure
+
+.Procedure Prerequisites
+This section is optional. Prerequisites are a bulleted list of conditions that must be satisfied before the user starts the procedure. Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if you only have a single prerequisite.
+
+Prerequisites can be full sentences or sentence fragments, however prerequisite list items are parallel.
+
+Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites. If a prerequisite applies to all of the procedures in a user story, consider listing the prerequisite in the assembly file. If you do this, consider including the prerequisite in the procedure module as a comment.
+
+.Procedure steps
+The procedure consists of one or more steps required to complete the procedure. Each step describes one action. For single-step procedures, use an unnumbered bullet instead of a numbered list.
+
+NOTE: Not all numbered lists in documentation are procedures. You can also use numbered lists in any module type for non-procedural sequences, such as a process flow of system actions.
+
+.Procedure verification
+This section is optional. It provides the user with one or more steps to verify that the procedure provided the intended outcome, for example:
+
+* An example of expected command output or a pop-up window that the user receives when the procedure is successful
+* Actions for the user to complete, such as running a command, to determine the success or failure of the procedure
+
+.Procedure additional resources
+This section is optional. The additional resources list links to other material closely related to the contents of the procedure module, for example other documentation resources, instructional videos, or labs.
+
+Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness. If a resource applies to all of the modules in a user story, consider listing the resource in the Additional resources section of the assembly file. If you do this, consider including the resource in the procedure module as a comment.

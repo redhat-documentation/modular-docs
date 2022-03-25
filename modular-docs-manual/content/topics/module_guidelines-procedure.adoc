@@ -1,49 +1,43 @@
-[id="procedure-module-guidelines"]
-= Procedure Module Guidelines
+[id="con-procedure-module-guidelines_{context}"]
 
-The required parts of a procedure module are a procedure and its introduction. Optionally, the module can also include prerequisites and additional resources.
+= Procedure module guidelines
+
+Procedure modules explain how to do something. They must include a title, a brief introduction, and one or more imperative statements. Procedure modules can also contain prerequisites, verification steps, and additional resources or next steps.
 
 .Schema of a procedure module
 image::procedure-diagram.png[]
 
-[discrete]
-== Procedure Introduction
-The introduction is a short description of the procedure. For example, it can be a lead-in sentence or an infinitive phrase (_To extract the certificate: <steps>_). See also _The IBM Style Guide_ footnoteref:[ibm-style-guide,DERESPINIS, Francis, Peter HAYWARD, Jana JENKINS, Amy LAIRD, Leslie McDONALD, Eric RADZINKSI. _The IBM style guide: conventions for writers and editors_. Upper Saddle River, NJ: IBM Press/Pearson, c2012. ISBN 0132101300.] for details on introducing procedures.
+.Procedure Title
+Start the title of a procedure module with a verb or a gerund, such as Create or Creating.
+
+.Procedure Introduction
+The procedure introduction is a short paragraph that provides an overview of the module. The introduction should include what the module will help the user do and why it will be beneficial to the user. Include key words that relate to the module to maximize search engine optimization in the first paragraph of the introduction.
 
 The introduction typically provides context for the procedure, such as:
 
-* Who is the user performing the procedure
 * Why and where the user performs the procedure
 * Special considerations specific to the procedure
 
-Keep the information brief and focused on what the user needs for this specific procedure. Suggested length is 1--3 sentences, but it can be longer.
+.Procedure Prerequisites
+This section is optional. Prerequisites are a bulleted list of conditions that must be satisfied before the user starts the procedure. Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if you only have a single prerequisite.
 
-[discrete]
-== Procedure Prerequisites
-Prerequisites are conditions that must be satisfied before the user starts the procedure. If a prerequisite is a procedure or an assembly, include a link to them. See also _The IBM Style Guide_ footnoteref:[ibm-style-guide] for details on writing prerequisites.
+Prerequisites can be full sentences or sentence fragments, however prerequisite list items should be parallel.
 
-Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
+Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites. If a prerequisite applies to all of the procedures in a user story, consider listing the prerequisite in the assembly file. If you do this, consider including the prerequisite in the procedure module as a comment.
 
-Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if you only have a single prerequisite.
-
-[discrete]
-== Procedure Body
-The procedure consists of one or more steps required to complete the procedure. Each step describes one action.
-
-For single-step procedures, use an unnumbered bullet instead of a numbered list.
+.Procedure steps
+The procedure consists of one or more steps required to complete the procedure. Each step describes one action. For single-step procedures, use an unnumbered bullet instead of a numbered list.
 
 NOTE: Not all numbered lists in documentation are procedures. You can also use numbered lists in any module type for non-procedural sequences, such as a process flow of system actions.
 
 [discrete]
-== Procedure Verification
-This section is optional. Provide the user with one or more steps to verify that the procedure provided the intended outcome. This may consist of:
+.Procedure Verification
+This section is optional. Provide the user with one or more steps to verify that the procedure provided the intended outcome, for example:
 
-* An example of expected command output or pop-up window the user should receive when the procedure is successful
-* An action (or actions) for the user, such as running a command, to determine the success or failure of the procedure
+* An example of expected command output or pop-up window that the user should receive when the procedure is successful
+* Actions for the user to complete, such as running a command, to determine the success or failure of the procedure
 
-[discrete]
-== Procedure Additional Resources
+.Procedure Additional Resources
+This section is optional. The additional resources list links to other material closely related to the contents of the procedure module, for example other documentation resources, instructional videos, or labs.
 
-The optional additional resources list links to other material closely related to the contents of the procedure module, for example, other documentation resources, instructional videos, or labs.
-
-Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.
+Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness. If a resource applies to all of the modules in a user story, consider listing the resource in the Additional resources section of the assembly file. If you do this, consider including the resource in the procedure module as a comment.
