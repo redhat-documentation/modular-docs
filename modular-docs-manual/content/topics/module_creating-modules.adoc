@@ -1,5 +1,5 @@
 [id="creating-modules"]
-= Creating Modules
+= Creating modules
 
 After identifying and creating the assemblies, each assembly should identify the modules that you need to create.
 

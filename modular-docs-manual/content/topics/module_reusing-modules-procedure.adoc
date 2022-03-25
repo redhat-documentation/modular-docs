@@ -1,14 +1,14 @@
 [id="reusing-modules"]
-= Reusing Modules in Assemblies
+= Reusing modules in assemblies
 
 When you create content in modules, you can use the same module multiple times in an assembly without having to replicate information in multiple source files. However, in order to facilitate module reuse, you must embed a document attribute variable in the anchor name for the module and then define that variable in the assembly each time the reused module appears. If the variable is not embedded and assigned, an error appears at build time reporting the duplicated anchor ID.
 
 [NOTE]
 ====
-To determine which assemblies include a specific file, you can use your code editor to search the doc repo for instances of the file name. The search results will list every `include:` statement that specifies the file. 
+To determine which assemblies include a specific file, you can use your code editor to search the doc repo for instances of the file name. The search results will list every `include:` statement that specifies the file.
 ====
 
-.Error at Build Time When Anchor Has No Variable
+.Error at build time when anchor has no variable
 ====
 [source]
 ----
@@ -27,7 +27,7 @@ This error is resolved by adding and defining a document variable.
 NOTE: Although you can use any document variable that clearly indicates the variable in question, such as `+++{product}+++` or `+++{chapter}+++`, the `+++{context}+++` variable is recommended. This variable indicates more generally that the same module can be reused in the specified "context" of one section of a document or another, regardless of whether that section is product-specific or not, whether it is a whole chapter or a small assembly, or some other limitation.
 
 +
-.Two Modules to Be Reused: Module A and Module B
+.Two modules to be reused: Module A and Module B
 [source]
 ----
 [id="module-A-being-reused_{context}"]
@@ -42,7 +42,7 @@ NOTE: Although you can use any document variable that clearly indicates the vari
 
  . In the assembly file or the master book file, define the `+++:context:+++` variable immediately above any included modules that are being reused, in the format `+++:context:+++ variable-name`. How you define the variable depends on whether the module is included once in multiple assemblies or is included multiple times in a single assembly. Note that the `+++:context:+++` variable definition uses hyphens to separate its terms.
 +
-Module Included Once in Multiple Assemblies:: If the reused modules are included only once in this assembly and in at least one other assembly, define an assembly-level variable such as `+++:context: assembly-name+++`. This  indicates that the reused module is appearing in the context of that assembly.
+Module included once in multiple assemblies:: If the reused modules are included only once in this assembly and in at least one other assembly, define an assembly-level variable such as `+++:context: assembly-name+++`. This  indicates that the reused module is appearing in the context of that assembly.
 
 +
 .Assembly 1
@@ -75,7 +75,7 @@ include::module-B-being-reused.adoc
 ----
 
 +
-Module Included Multiple Times in a Single Assembly:: If a module is included multiple times in the same assembly, define a variable specific to a section or a chapter of that assembly, such as `+++:context: section-name+++`. This  indicates that the reused module is appearing in the context of that section of the assembly.
+Module included multiple times in a single assembly:: If a module is included multiple times in the same assembly, define a variable specific to a section or a chapter of that assembly, such as `+++:context: section-name+++`. This  indicates that the reused module is appearing in the context of that section of the assembly.
 
 +
 .Assembly
@@ -129,7 +129,7 @@ For details, see xref:module-A-being-reused_assembly-1-name[].
 // [sterobin] - I need to rework the two "Practical Examples" below to be stand-alone modules. Good candidates for reuse.
 
 [discrete]
-== Practical Example 1: Reusing Modules in Multiple Assemblies
+== Practical example 1: reusing modules in multiple assemblies
 
 You want to reuse the "Creating Assets" procedure module and the "Projects" concept module in two assemblies: an "Asset Definitions" assembly and a "Business Rules" assembly.
 
@@ -202,7 +202,7 @@ For details, see xref:creating-assets_business-rules[].
 ----
 
 [discrete]
-== Practical Example 2: Reusing a Module in a Single Assembly
+== Practical example 2: reusing a module in a single assembly
 
 You want to reuse the "Projects" concept module twice in the "Business Rules" assembly.
 

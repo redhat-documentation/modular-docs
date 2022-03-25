@@ -1,5 +1,5 @@
 [id="modular-docs-terms-definitions"]
-= Modular Documentation Terms and Definitions
+= Modular documentation terms and definitions
 
 Assembly:: A collection of several modules combined into a larger piece of text, preceded by an introduction that explains the purpose of the assembly.
 +
@@ -7,17 +7,17 @@ The docs realization of a _user story_.
 
 Module:: An independent, self-contained chunk of information with a well-organized structure. Each module is information that a reader can understand and use by itself. A writer can use a module as a standalone article or as part of a larger body of work (an "Assembly"). A module does not depend on other documents, but it can refer the reader to other documents as additional resources. Because a module is self-contained, it must have a clear title that briefly and clearly summarizes the subject of the module. Moreover, because modules are written as context-free elements independent of other modules, they are re-usable. One module can be part of multiple assemblies.
 +
-Concept Module::: Explains a concept; for example, not action-based.
-Procedure Module::: Describes steps to perform an action.
+Concept module::: Explains a concept; for example, not action-based.
+Procedure module::: Describes steps to perform an action.
 Reference Module::: Presents detailed reference material, for example, command syntax.
 
-User Story:: A short description of something the user does to achieve a goal.
+User story:: A short description of something the user does to achieve a goal.
 +
 Example: As an administrator, I want to set up authentication to a critical system in my infrastructure, such as a gateway VPN, or accounting system to only allow users authenticated via strong authentication methods, for example two-factor authentication.
 +
 As opposed to a _use case_, which is a description of interactions between the system and the user or other systems.
 +
-.Contrasting User Stories and Use Cases
+.Contrasting user stories and use cases
 [grid="rows"]
 [options="header",width=100%,cols="10%s,45%a,45%a"]
 |===
@@ -52,6 +52,6 @@ If your team does not have user stories, do not write them yourselves. Instead, 
 
 User story-based docs:: Docs developed to support a user story. For our purposes, user-story-based docs are the same as use-case-based docs.
 
-Modular docs:: Documents structured into modules and assemblies.
+Modular documentation:: Documents structured into modules and assemblies.
 
 NOTE: We do not use the terms _topic_ or _topic-based documentation_ because they are too ambiguous. A _topic_ can mean a piece of documentation, a user story, or a short chunk of content. Therefore, topic-based can mean a number of things.

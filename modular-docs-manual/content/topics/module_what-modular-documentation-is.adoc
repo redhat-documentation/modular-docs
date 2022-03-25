@@ -1,5 +1,5 @@
 [id="what-modular-documentation-is"]
-= What Modular Documentation Is
+= What modular documentation is
 
 Modular documentation is documentation based on _modules_, which the writer combines into _assemblies_. An assembly can also include other assemblies. A module should not contain another module.
 

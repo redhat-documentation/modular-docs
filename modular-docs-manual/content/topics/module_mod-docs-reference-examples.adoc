@@ -1,5 +1,5 @@
 [id="modular-docs-reference-examples"]
-= Reference Module Examples
+= Reference module examples
 
 
 link:https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/changes-in-ansible-variables-between-version-2-and-3-container[Changes in Ansible Variables Between Version 2 and 3]

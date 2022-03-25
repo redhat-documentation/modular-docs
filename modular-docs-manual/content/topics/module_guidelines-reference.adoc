@@ -1,16 +1,16 @@
 [id="reference-module-guidelines"]
-= Reference Module Guidelines
+= Reference module guidelines
 
 The required part of a reference module is the reference data.
 A reference module requires a short introduction.
 
 [discrete]
-== Reference Introduction
+== Reference introduction
 
 The introduction to a reference module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the reference is useful without having to read the entire module.
 
 [discrete]
-== Reference Body
+== Reference body
 
 A reference module has a very strict structure, often in the form of a list or a table. A well-organized reference module enables users to scan it quickly to find the details they want.
 

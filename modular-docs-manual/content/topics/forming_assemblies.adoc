@@ -1,5 +1,5 @@
 [id="forming-assemblies"]
-= Forming Assemblies
+= Forming assemblies
 
 This section explains what an assembly is and provides recommended practices for forming assemblies.
 
