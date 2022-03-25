@@ -1,5 +1,5 @@
 [id="creating-concept-modules"]
-= Creating Concept Modules
+= Creating concept modules
 
 This section explains what a concept module is and provides recommended practices for writing concept modules.
 
@@ -7,7 +7,7 @@ include::module_definition-concept.adoc[leveloffset=+1]
 
 include::module_guidelines-concept.adoc[leveloffset=+1]
 
-== Additional Resources
+== Additional resources
 
 * Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_CONCEPT_concept-explanation.adoc[concept module template (adoc file)] for new projects.
 * For real-world examples of concept modules, see <<modular-docs-concept-examples>>.

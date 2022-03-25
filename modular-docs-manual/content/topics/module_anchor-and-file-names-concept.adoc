@@ -1,5 +1,5 @@
 [id="module_anchor-and-file-names-concept"]
-= File Names and Anchors
+= File names and anchors
 
 To optimize modular documentation, follow these guidelines for naming files and creating anchors:
 
@@ -47,7 +47,7 @@ At the top of every module, provide an anchor in the format `+++[id="filename_{c
 The first sentence of the topic.
 ----
 
-.Example 1. Concept Module
+.Example 1. Concept module
 [source]
 ----
 [id="con-guided-decision-tables_{context}"]
@@ -56,7 +56,7 @@ The first sentence of the topic.
 The guided decision tables feature works similarly to ...
 ----
 
-.Example 2. Concept Module
+.Example 2. Concept module
 [source]
 ----
 [id="con_guided-decision-tables_{context}"]
@@ -66,7 +66,7 @@ The guided decision tables feature works similarly to ...
 ----
 
 
-.Example 3. Procedure Module
+.Example 3. Procedure module
 [source]
 ----
 [id="proc-creating-guided-decision-tables_{context}"]
@@ -75,7 +75,7 @@ The guided decision tables feature works similarly to ...
 You can use guided decision tables to ...
 ----
 
-.Example 4. Procedure Module
+.Example 4. Procedure module
 [source]
 ----
 [id="proc_creating-guided-decision-tables_{context}"]
@@ -92,6 +92,6 @@ The anchor format defined here is recommended because it is the most stable and 
 
 
 
-.Additional Resources
+.Additional resources
 
 * link:https://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual]

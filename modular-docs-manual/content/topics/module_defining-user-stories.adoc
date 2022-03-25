@@ -1,5 +1,5 @@
 [id="defining-user-stories"]
-= Defining User Stories for Your Product
+= Defining user stories for your product
 
 User stories provide the context and structure from which you can determine which assemblies and modules to create.
 
@@ -83,7 +83,7 @@ These will become the procedure modules for the assembly.
 +
 These will become reference modules.
 
-.Breaking Down User Stories
+.Breaking down user stories
 ====
 * As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
 ** As a system administrator, I want to enable _PRODUCT_ to make and accept connections so that remote peers can exchange data with _PRODUCT_.

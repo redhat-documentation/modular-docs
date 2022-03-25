@@ -122,7 +122,7 @@ For details, see xref:module-A-being-reused_assembly-1-name[].
 ====
 ////
 
-.Additional Resources
+.Additional resources
 
 * The link:http://asciidoctor.org/docs/user-manual/#include-multiple[Asciidoctor User Manual].
 

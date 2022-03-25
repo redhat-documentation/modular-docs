@@ -1,5 +1,5 @@
 [id="concept-module-guidelines"]
-= Concept Module Guidelines
+= Concept module guidelines
 
 The core requirement for a concept module is explaining the idea, or concept.
 A concept module requires a short introduction and optionally, can also include additional resources.
@@ -11,7 +11,7 @@ Even if a concept is interesting, it probably does not require an explanation if
 image::concept-diagram.png[]
 
 [discrete]
-== Concept Introduction
+== Concept introduction
 
 The introduction to a concept module is a single, concise paragraph that provides a short overview of the module.
 A short description makes the module more usable because users can quickly determine whether the concept is useful without having to read the entire module.
@@ -22,7 +22,7 @@ The introduction typically answers the following questions:
 * Why should the user care about the concept?
 
 [discrete]
-== Concept Body
+== Concept body
 
 The concept body describes the subject of the concept module.
 
@@ -66,7 +66,7 @@ More concept body content
 NOTE: You can use subheadings in concept or reference modules, but not in procedure modules.
 
 [discrete]
-== Concept Additional Resources
+== Concept additional resources
 
 The optional additional resources list links to other material closely related to the contents of the concept module, for example, other documentation resources.
 

@@ -1,5 +1,5 @@
 [id="appendix-examples"]
-= Module and Assembly Examples
+= Module and assembly examples
 
 include::module_mod-docs-concept-examples.adoc[leveloffset=+1]
 

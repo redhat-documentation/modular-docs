@@ -1,4 +1,4 @@
 [id="assembly-definition"]
-= Assembly Definition
+= Assembly definition
 
 An assembly is a collection of modules that describes how to accomplish a user story. See also <<understanding-mod-docs>>.

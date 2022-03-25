@@ -1,5 +1,5 @@
 [id="reference-module-definition"]
-= Reference Module Definition
+= Reference module definition
 
 Reference modules provide data that users might want to look up, but do not need to remember.
 

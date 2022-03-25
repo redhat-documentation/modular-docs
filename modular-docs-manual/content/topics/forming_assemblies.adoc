@@ -7,7 +7,7 @@ include::module_definition-assembly.adoc[leveloffset=+1]
 
 include::module_guidelines-assembly.adoc[leveloffset=+1]
 
-== Additional Resources
+== Additional resources
 
 * Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_ASSEMBLY_a-collection-of-modules.adoc[assembly template (adoc file)] for new projects.
 * For real-world examples of assemblies, see <<modular-docs-assembly-examples>>.
