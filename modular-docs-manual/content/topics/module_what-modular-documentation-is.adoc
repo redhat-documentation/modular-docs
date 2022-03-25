@@ -10,7 +10,7 @@ Nesting assemblies too deep can create too much complexity, which might make the
 
 At Red Hat, we write modular documentation that is based on _user stories_. This means that each assembly documents a user story.
 
-.Schema of a Module and an Assembly
+.Schema of a module and an assembly
 image::modules_assemblies.png[]
 // The image is just a draft, we can create a fancier one later.
 
