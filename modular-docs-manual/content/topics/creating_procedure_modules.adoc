@@ -20,7 +20,7 @@ The introduction typically provides context for the procedure, such as:
 .Procedure prerequisites
 This section is optional. Prerequisites are a bulleted list of conditions that must be satisfied before the user starts the procedure. Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if you only have a single prerequisite.
 
-Prerequisites can be full sentences or sentence fragments, however prerequisite list items are parallel.
+Prerequisites can be full sentences or sentence fragments; however, prerequisite list items must be parallel.
 
 Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites. If a prerequisite applies to all of the procedures in a user story, consider listing the prerequisite in the assembly file. If you do this, consider including the prerequisite in the procedure module as a comment.
 
