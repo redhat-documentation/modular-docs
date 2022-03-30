@@ -26,7 +26,7 @@ Write a short introductory paragraph that provides an overview of the module. Th
 .Prerequisites
 
 * A bulleted list of conditions that must be satisfied before the user starts the steps in this module.
-* Prerequisites can be full sentences or sentence fragments/
+* Prerequisites can be full sentences or sentence fragments; however, prerequisite list items must be parallel.
 
 ////
 If you have only one prerequisite, list it as a single bullet point.
