@@ -10,7 +10,7 @@ Add the prefix proc- or proc_ to the file name.
 Add the following attribute before the module ID:
 :_content-type: PROCEDURE
 
-The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
+The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken. The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
 ////
 
 [id="proc-doing-procedure-a_{context}"]
