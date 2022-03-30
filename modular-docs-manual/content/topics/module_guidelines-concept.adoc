@@ -70,4 +70,4 @@ NOTE: You can use subheadings in concept or reference modules, but not in proced
 
 The optional additional resources list links to other material closely related to the contents of the concept module, for example, other documentation resources.
 
-Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.
+Focus on relevant resources that might interest the user. Do not list resources for completeness.

@@ -51,7 +51,7 @@ Delete this section if it does not apply to your module. Provide the user with v
 ////
 . Provide an example of expected command output or a pop-up window that the user receives when the procedure is successful.
 
-. List actions for the user to complete, such as running a command, to determine the success or failure of the procedure.
+. List actions for the user to complete, such as entering a command, to determine the success or failure of the procedure.
 
 . Make each step an instruction.
 
