@@ -1,5 +1,5 @@
 [id="auditing"]
-= Auditing Your feature-based manual
+= Auditing your feature-based manual
 
 In the process of adding content to the modules from your existing feature-based manual, it is likely that there is some existing content that did not fit into any of the user stories that you identified and thus was not pulled out. It is important to identify this content to ensure that it is no longer needed.
 
