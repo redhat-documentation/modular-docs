@@ -28,6 +28,8 @@ The ID is an anchor that links to the module. Avoid changing it after the module
 [id="assembly-my-user-story_{context}"]
 = My user story
 ////
+Be sure to include a line break between the title and the :context: variable and the :context: variable and the assembly introduction.
+
 If the assembly covers a task, start the title with a verb in the gerund form, such as Creating or Configuring.
 ////
 
