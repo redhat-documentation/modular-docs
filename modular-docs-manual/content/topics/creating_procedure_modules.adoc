@@ -1,7 +1,7 @@
 [id="con-creating-procedure-modules_{context}"]
 
 = Procedure modules
-Procedure modules explain how to do something. A procedure module contains numbered, step-by-step instructions to help the user accomplish a single task. Sometimes those tasks include sub steps. Procedure modules must include a title, a brief introduction, and one or more steps in the form of imperative statements. Procedure modules can also contain prerequisites, verification steps, and additional resources or next steps.
+Procedure modules explain how to do something. A procedure module contains numbered, step-by-step instructions to help the user accomplish a single task. Sometimes those tasks include substeps. Procedure modules must include a title, a brief introduction, and one or more steps in the form of imperative statements. Procedure modules can also contain prerequisites, verification steps, and additional resources or next steps.
 
 .Schema of a procedure module
 image::procedure-diagram.png[]
@@ -10,7 +10,7 @@ image::procedure-diagram.png[]
 // The title of a procedure module is a gerund phrase, such as *Deploying OpenShift Container Platform*.
 
 .Procedure introduction
-The procedure introduction is a short paragraph that provides an overview of the module. The introduction includes what the module will help the user do and why it will be beneficial to the user. It includes key words that relate to the module to maximize search engine optimization in the first paragraph of the introduction.
+The procedure introduction is a short paragraph that provides an overview of the module. The introduction includes what the module will help the user do and why it will be beneficial to the user. It includes key words that relate to the module to maximize search engine optimization.
 
 The introduction typically provides context for the procedure, such as:
 

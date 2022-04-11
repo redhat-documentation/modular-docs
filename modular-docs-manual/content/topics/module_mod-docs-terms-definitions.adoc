@@ -13,7 +13,7 @@ Reference Module::: Presents detailed reference material, for example, command s
 
 User Story:: A short description of something the user does to achieve a goal.
 +
-Example: As an administrator, I want to set up authentication to a critical system in my infrastructure, such as a gateway VPN, or accounting system to only allow users authenticated via strong authentication methods, such as two-factor authentication.
+Example: As an administrator, I want to set up authentication to a critical system in my infrastructure, such as a gateway VPN, or accounting system to only allow users authenticated through strong authentication methods, such as two-factor authentication.
 +
 As opposed to a _use case_, which is a description of interactions between the system and the user or other systems.
 +
