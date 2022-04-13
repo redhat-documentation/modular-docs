@@ -1,6 +1,6 @@
 [id="using-text-snippets"]
 
-= Text Snippets
+= Text snippets
 
 A text snippet is a small section of text that is stored in an AsciiDoc file. Text snippets contain content that is reused in multiple modules or assemblies, for example:
 

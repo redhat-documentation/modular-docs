@@ -1,5 +1,5 @@
 [id="modular-documentation-repositories"]
-= Modular Documentation Repositories
+= Modular documentation repositories
 
 Due to many factors that determine repository design for individual products, these modular documentation guidelines do not provide a strict documentation repository template.
 

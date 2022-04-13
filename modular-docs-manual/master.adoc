@@ -4,6 +4,6 @@ include::common-content/attributes.adoc[]
 
 
 // Book Title
-= Modular Documentation Reference Guide
+= Modular documentation reference guide
 
 include::content/modular-doc-manual.adoc[]

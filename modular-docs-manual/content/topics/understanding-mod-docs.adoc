@@ -1,5 +1,5 @@
 [id="understanding-mod-docs"]
-= Understanding Modular Documentation
+= Understanding modular documentation
 
 This chapter explains what modular documentation is and what it is not.
 

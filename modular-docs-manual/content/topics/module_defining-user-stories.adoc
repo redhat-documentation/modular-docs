@@ -1,5 +1,5 @@
 [id="defining-user-stories"]
-= Defining User Stories for Your Product
+= Defining user stories for your product
 
 User stories provide the context and structure from which you can determine which assemblies and modules to create.
 
@@ -22,7 +22,7 @@ For more information, see xref:customer-product-lifecycle[Overview of the Custom
 
 For example, here is a top-level user story for the _Configure and Verify_ phase of the customer product lifecycle:
 
-.Creating Top-Level User Stories
+.Creating top-level user stories
 ====
 * [Phase] Configure and Verify -- [Top-level user story] As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
 ====
@@ -37,7 +37,7 @@ Each top-level user story represents a "phase" of the customer lifecycle. You sh
 
 For example, for the _Configure and Verify_ phase, users would need to know how to configure and set up each component or feature of the product to work in their environment. You could break it down like this:
 
-.Creating Second-Level User Stories
+.Creating second-level user stories
 ====
 * As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
 ** As a system administrator, I want to enable _PRODUCT_ to make and accept connections so that remote peers can exchange data with _PRODUCT_.
@@ -57,7 +57,7 @@ Be careful not to go too deep, however. At this stage, you are not defining ever
 
 For example, under the "Configuring Product X" example in the previous step, the logging user story does not need any additional user stories -- the goal cannot be reduced any further than it already is. On the other hand, the adding security settings user story might be able to go a bit deeper. Security is a goal in and of itself (users want their applications to be secure), but there are more specific goals users might have within it:
 
-.Creating Additional User Stories
+.Creating additional user stories
 ====
 * As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
 ** As a system administrator, I want to enable _PRODUCT_ to make and accept connections so that remote peers can exchange data with _PRODUCT_.
@@ -83,7 +83,7 @@ These will become the procedure modules for the assembly.
 +
 These will become reference modules.
 
-.Breaking Down User Stories
+.Breaking down user stories
 ====
 * As a system administrator, I want to configure _PRODUCT_ so that it is ready for production.
 ** As a system administrator, I want to enable _PRODUCT_ to make and accept connections so that remote peers can exchange data with _PRODUCT_.

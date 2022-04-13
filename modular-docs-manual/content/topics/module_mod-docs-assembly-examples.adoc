@@ -1,5 +1,5 @@
 [id="modular-docs-assembly-examples"]
-= Assembly Examples
+= Assembly examples
 
 link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/packaging_and_deploying_a_red_hat_process_automation_manager_project/index[Packaging and deploying a Red Hat Process Automation Manager project]
 

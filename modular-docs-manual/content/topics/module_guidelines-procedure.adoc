@@ -1,5 +1,5 @@
 [id="procedure-module-guidelines"]
-= Procedure Module Guidelines
+= Procedure module guidelines
 
 The required parts of a procedure module are a procedure and its introduction. Optionally, the module can also include prerequisites and additional resources.
 
@@ -7,7 +7,7 @@ The required parts of a procedure module are a procedure and its introduction. O
 image::procedure-diagram.png[]
 
 [discrete]
-== Procedure Introduction
+== Procedure introduction
 The introduction is a short description of the procedure. For example, it can be a lead-in sentence or an infinitive phrase (_To extract the certificate: <steps>_). See also _The IBM Style Guide_ footnoteref:[ibm-style-guide,DERESPINIS, Francis, Peter HAYWARD, Jana JENKINS, Amy LAIRD, Leslie McDONALD, Eric RADZINKSI. _The IBM style guide: conventions for writers and editors_. Upper Saddle River, NJ: IBM Press/Pearson, c2012. ISBN 0132101300.] for details on introducing procedures.
 
 The introduction typically provides context for the procedure, such as:
@@ -19,7 +19,7 @@ The introduction typically provides context for the procedure, such as:
 Keep the information brief and focused on what the user needs for this specific procedure. Suggested length is 1--3 sentences, but it can be longer.
 
 [discrete]
-== Procedure Prerequisites
+== Procedure prerequisites
 Prerequisites are conditions that must be satisfied before the user starts the procedure. If a prerequisite is a procedure or an assembly, include a link to them. See also _The IBM Style Guide_ footnoteref:[ibm-style-guide] for details on writing prerequisites.
 
 Focus on relevant prerequisites that users might not otherwise be aware of. Do not list obvious prerequisites.
@@ -27,7 +27,7 @@ Focus on relevant prerequisites that users might not otherwise be aware of. Do n
 Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if you only have a single prerequisite.
 
 [discrete]
-== Procedure Body
+== Procedure body
 The procedure consists of one or more steps required to complete the procedure. Each step describes one action.
 
 For single-step procedures, use an unnumbered bullet instead of a numbered list.
@@ -35,14 +35,14 @@ For single-step procedures, use an unnumbered bullet instead of a numbered list.
 NOTE: Not all numbered lists in documentation are procedures. You can also use numbered lists in any module type for non-procedural sequences, such as a process flow of system actions.
 
 [discrete]
-== Procedure Verification
+== Procedure verification
 This section is optional. Provide the user with one or more steps to verify that the procedure provided the intended outcome. This may consist of:
 
 * An example of expected command output or pop-up window the user should receive when the procedure is successful
 * An action (or actions) for the user, such as running a command, to determine the success or failure of the procedure
 
 [discrete]
-== Procedure Additional Resources
+== Procedure additional resources
 
 The optional additional resources list links to other material closely related to the contents of the procedure module, for example, other documentation resources, instructional videos, or labs.
 

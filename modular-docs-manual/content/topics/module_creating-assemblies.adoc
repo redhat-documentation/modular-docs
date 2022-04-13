@@ -1,5 +1,5 @@
 [id="creating-assemblies"]
-= Creating Assemblies
+= Creating assemblies
 
 An assembly is a representation of a user story, so you need to create an assembly for each user story that you defined.
 

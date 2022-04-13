@@ -1,5 +1,5 @@
 [id="what-modular-documentation-is-not"]
-= What Modular Documentation Is Not
+= What modular documentation is not
 
 Legacy (non-modular) documentation split into small, _meaningless_ pieces:: A module must make sense and provide value on its own, even when read separately from the other modules. The templates included in this manual help ensure this.
 A collection of modules that have no relationship to one another:: An unorganized set of modules is confusing to users. That is why we combine modules into:

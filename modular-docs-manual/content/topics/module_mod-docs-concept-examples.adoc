@@ -1,5 +1,5 @@
 [id="modular-docs-concept-examples"]
-= Concept Module Examples
+= Concept module examples
 
 link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/creating_red_hat_process_automation_manager_business_applications_with_spring_boot/index#bus_app_business-applications[Red Hat Process Automation Manager business applications]
 

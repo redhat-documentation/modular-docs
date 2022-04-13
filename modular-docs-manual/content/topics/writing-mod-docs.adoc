@@ -1,11 +1,11 @@
 [id="writing-mod-docs"]
-= Writing Modular Documentation
+= Writing modular documentation
 :context: writing-mod-docs
 
 Assemblies can include various types of modules. Use the instructions in the following sections to create modules and combine them into assemblies.
 
 
-== Creating Modules
+== Creating modules
 
 Follow these guidelines to create different types of modules:
 
