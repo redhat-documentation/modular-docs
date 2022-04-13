@@ -3,47 +3,41 @@ Base the file name and the ID on the module title. For example:
 * file name: proc-doing-procedure-a.adoc
 * ID: [id="proc-doing-procedure-a_{context}"]
 * Title: = Doing procedure A
-////
 
-////
 Indicate the module type in one of the following
 ways:
 Add the prefix proc- or proc_ to the file name.
 Add the following attribute before the module ID:
 :_content-type: PROCEDURE
-////
 
-////
-The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
+The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken. The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in an assembly file.
 ////
 
 [id="proc-doing-procedure-a_{context}"]
 
-////
-The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
-////
-
 = Doing procedure A
 ////
-Start the title of a procedure module with a verb, such as Creating or Create. See also _Wording of headings_ in _The IBM Style Guide_.
-
-Be sure to include a line break between the title and the module introduction.
+Start the title of a procedure module with a gerund, such as Creating, Installing, or Deploying.
 ////
 
 [role="_abstract"]
-Write a short introductory paragraph that provides an overview of the module.
-
-Procedure modules should include the steps that users perform and address user motivation.
+Write a short introductory paragraph that provides an overview of the module. The introduction should include what the module will help the user do and why it will be beneficial to the user. Include key words that relate to the module to maximize search engine optimization.
 
 .Prerequisites
 
-* A bulleted list of conditions that must be satisfied before the user starts following this module.
-* You can also link to other modules or assemblies the user must follow before starting this module.
-* Delete the section title and bullets if the module has no prerequisites.
+* A bulleted list of conditions that must be satisfied before the user starts the steps in this module.
+* Prerequisites can be full sentences or sentence fragments; however, prerequisite list items must be parallel.
+
+////
+If you have only one prerequisite, list it as a single bullet point.
+Do not write prerequisites in the imperative.
+You can include links to more information about the prerequisites.
+Delete the .Prerequisites section title and bullets if the module has no prerequisites.
+////
 
 .Procedure
 
-. Start each step with an active verb.
+. Make each step an instruction.
 
 . Include one command or action for each step with the exception of simple follow-step, for example:
 .. Do this thing and then select *Next*.
@@ -55,13 +49,15 @@ Procedure modules should include the steps that users perform and address user m
 ////
 Delete this section if it does not apply to your module. Provide the user with verification methods for the procedure, such as expected output or commands that confirm success or failure.
 ////
+. Provide an example of expected command output or a pop-up window that the user receives when the procedure is successful.
 
-. Start each step with an active verb.
+. List actions for the user to complete, such as entering a command, to determine the success or failure of the procedure.
+
+. Make each step an instruction.
 
 . Include one command or action per step.
 
-. Use an unnumbered bullet (*) if the procedure includes only one step.
-
+. Use an unnumbered bullet (*) if the verification includes only one step.
 
 [role="_additional-resources"]
 .Additional resources
