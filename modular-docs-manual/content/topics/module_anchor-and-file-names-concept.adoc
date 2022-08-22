@@ -31,9 +31,11 @@ These file naming guidelines are optional but highly recommended. However, if yo
 
 [source]
 ----
-:_module-type: CONCEPT
-:_module-type: PROCEDURE
-:_module-type: REFERENCE
+:_content-type: ASSEMBLY
+:_content-type: PROCEDURE
+:_content-type: CONCEPT
+:_content-type: REFERENCE
+:_content-type: SNIPPET
 ----
 
 .Anchors
