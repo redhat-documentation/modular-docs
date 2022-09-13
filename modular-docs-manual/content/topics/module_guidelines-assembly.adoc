@@ -4,6 +4,11 @@
 The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.
 
 [discrete]
+== Assembly title
+
+The title of an assembly is a gerund phrase, such as *Encrypting block devices using LUKS*.
+
+[discrete]
 == Assembly introduction
 
 The introduction explains what the user accomplishes by working through the assembled modules. It typically provides context for the assembly.
