@@ -6,7 +6,7 @@ The required parts of an assembly are the introduction and modules. Optionally, 
 [discrete]
 == Assembly title
 
-The title of an assembly is a gerund phrase, such as *Encrypting block devices using LUKS*.
+If the assembly covers a task, start the title with a verb in the gerund form, such as Creating or Configuring, for example: _Encrypting block devices using LUKS_.
 
 [discrete]
 == Assembly introduction
