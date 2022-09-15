@@ -6,7 +6,7 @@ The required parts of an assembly are the introduction and modules. Optionally, 
 [discrete]
 == Assembly title
 
-If the assembly describes a task and includes one or more procedure modules, start the title with a verb in the gerund form, such as Creating or Configuring, for example  _Encrypting block devices using LUKS_. If the assembly does not include any procedure modules, use a noun phrase, for example _Red Hat Process Automation Manager API reference_.
+If the assembly describes a task and includes one or more procedure modules, start the title with a verb in the gerund form, such as Creating or Configuring, for example _Encrypting block devices using LUKS_. If the assembly does not include any procedure modules, use a noun phrase, for example _Red Hat Process Automation Manager API reference_.
 
 [discrete]
 == Assembly introduction
