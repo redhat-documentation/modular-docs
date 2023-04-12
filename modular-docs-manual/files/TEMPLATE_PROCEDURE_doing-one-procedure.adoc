@@ -13,7 +13,7 @@ Add the following attribute before the module ID:
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken. The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in an assembly file.
 ////
 
-[id="proc-doing-procedure-a_{context}"]
+[id="doing-procedure-a_{context}"]
 
 = Doing procedure A
 ////

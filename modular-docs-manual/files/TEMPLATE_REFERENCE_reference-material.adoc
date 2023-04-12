@@ -17,7 +17,7 @@ Add the following attribute before the module ID:
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken.
 ////
 
-[id="ref-reference-material_{context}"]
+[id="reference-material_{context}"]
 
 ////
 The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID even if it is reused multiple times in a guide.
