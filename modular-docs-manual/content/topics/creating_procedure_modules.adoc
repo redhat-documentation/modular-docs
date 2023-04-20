@@ -42,7 +42,7 @@ This section is optional. The additional resources list links to other material 
 Focus on relevant resources that might interest the user. Do not list resources for completeness. If a resource applies to all of the modules in a user story, consider listing the resource in the Additional resources section of the assembly file. If you do this, consider including the resource in the procedure module as a comment.
 
 .Procedure next steps
-This section is optional. You can use it for pointing the reader to instructions covering tasks that might follow after the current procedure. Place this section after the Additional resources section with the *Next steps* heading. Alternatively, if the user should perform the next steps before the verification steps, place the section in between the Procedure section and the Verification steps section.
+This section is optional. You can use it for pointing the reader to tasks that might follow after the current procedure. Place this section after the *Additional resources* section and use the *Next steps* heading. Alternatively, if the user needs to perform the next steps before the verification steps, place the section between the *Procedure* section and the *Verification* section.
 
 == Additional resources
 
