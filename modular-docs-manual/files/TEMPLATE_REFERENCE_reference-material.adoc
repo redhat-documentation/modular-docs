@@ -1,7 +1,7 @@
 ////
 Base the file name and the ID on the module title. For example:
-* file name: ref-my-reference-a.adoc
-* ID: [id="ref-my-reference-a_{context}"]
+* file name: ref_my-reference-a.adoc
+* ID: [id="my-reference-a_{context}"]
 * Title: = My reference A
 ////
 

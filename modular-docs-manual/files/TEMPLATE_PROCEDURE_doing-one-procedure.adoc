@@ -1,7 +1,7 @@
 ////
 Base the file name and the ID on the module title. For example:
-* file name: proc-doing-procedure-a.adoc
-* ID: [id="proc-doing-procedure-a_{context}"]
+* file name: proc_doing-procedure-a.adoc
+* ID: [id="doing-procedure-a_{context}"]
 * Title: = Doing procedure A
 
 Indicate the module type in one of the following
