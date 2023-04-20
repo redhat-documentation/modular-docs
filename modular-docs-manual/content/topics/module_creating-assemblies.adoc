@@ -10,7 +10,7 @@ An assembly could represent an article, "chapter" in a book, or even an entire b
 . Create an assembly file for each user story that you identified.
 +
 --
-Be sure to follow the conventions for xref:anchor-and-file-names[naming anchors and files]. For example: `guided-decision-tables.adoc`
+Follow the conventions for xref:module_anchor-and-file-names-concept[naming anchors and files]. For example: `assembly_designing-guided-decision-tables.adoc`
 --
 
 . For each top-level assembly file that you created, fill in the content.

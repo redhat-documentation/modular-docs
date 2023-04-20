@@ -10,7 +10,7 @@ After identifying and creating the assemblies, each assembly should identify the
 --
 Each assembly should already have the names of the modules that should be included in the assembly. Now you just need to create the actual files for those modules.
 
-Be sure to follow the conventions for xref:anchor-and-file-names[naming anchors and files]. For example: `guided-decision-tables.adoc`
+Follow the conventions for xref:module_anchor-and-file-names-concept[naming anchors and files]. For example: `proc_creating-guided-decision-tables.adoc`
 --
 . For each module file that you created, add content.
 +
