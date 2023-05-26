@@ -39,7 +39,7 @@ These file naming guidelines are optional but highly recommended. However, if yo
 ----
 
 .Anchors
-At the top of every module, provide an anchor in the format `+++[id="filename_{context}"]+++` where `filename` is the exact name of the file, without the file extension (`.adoc`). Module anchors are necessary so that Asciidoctor can identify the module when the module is reused or cross-referenced. The  `context` variable is defined in each assembly module, such as `:context: my-context-value`. When you build an assembly, the value of the `context` variable replaces `context` in each module anchor ID and is displayed in the generated URL.
+At the top of every module, provide an anchor in the format `+++[id="filename_{context}"]+++` where `filename` is the exact name of the file, without the file extension (`.adoc`) and a module prefix. Module anchors are necessary so that Asciidoctor can identify the module when the module is reused or cross-referenced. The `context` variable is defined in each assembly module, such as `:context: my-context-value`. When you build an assembly, the value of the `context` variable replaces `context` in each module anchor ID and is displayed in the generated URL.
 
 [source]
 ----
@@ -52,35 +52,16 @@ The first sentence of the topic.
 .Example 1. Concept module
 [source]
 ----
-[id="con-guided-decision-tables_{context}"]
+[id="guided-decision-tables_{context}"]
 = Guided Decision Tables
 
 The guided decision tables feature works similarly to ...
 ----
 
-.Example 2. Concept module
+.Example 2. Procedure module
 [source]
 ----
-[id="con_guided-decision-tables_{context}"]
-= Guided Decision Tables
-
-The guided decision tables feature works similarly to ...
-----
-
-
-.Example 3. Procedure module
-[source]
-----
-[id="proc-creating-guided-decision-tables_{context}"]
-= Creating Guided Decision Tables
-
-You can use guided decision tables to ...
-----
-
-.Example 4. Procedure module
-[source]
-----
-[id="proc_creating-guided-decision-tables_{context}"]
+[id="creating-guided-decision-tables_{context}"]
 = Creating Guided Decision Tables
 
 You can use guided decision tables to ...
