@@ -1,6 +1,6 @@
 # The Modular Documentation Project Source Repository
 
-## Modular Documentation Reference Guide [![Build Status](https://travis-ci.org/redhat-documentation/modular-docs.svg?branch=master)](https://travis-ci.org/redhat-documentation/modular-docs)
+## Modular Documentation Reference Guide ![Build Status](https://github.com/redhat-documentation/modular-docs/actions/workflows/deploy-site.yml/badge.svg)
 
 The Modular Documentation Reference Guide contains the essential information to start writing documentation in a modular way.
 You can view the latest build of the guide here:
