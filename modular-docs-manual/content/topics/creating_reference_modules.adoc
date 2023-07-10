@@ -1,5 +1,5 @@
 [id="creating-reference-modules"]
-= Creating Reference Modules
+= Reference modules
 
 This section explains what a reference module is and provides recommended practices for writing reference modules.
 
@@ -7,7 +7,7 @@ include::module_definition-reference.adoc[leveloffset=+1]
 
 include::module_guidelines-reference.adoc[leveloffset=+1]
 
-== Additional Resources
+== Additional resources
 
 * Download the link:https://raw.githubusercontent.com/redhat-documentation/modular-docs/master/modular-docs-manual/files/TEMPLATE_REFERENCE_reference-material.adoc[reference module template (adoc file)] for new projects.
 * For real-world examples of reference modules, see <<modular-docs-reference-examples>>.

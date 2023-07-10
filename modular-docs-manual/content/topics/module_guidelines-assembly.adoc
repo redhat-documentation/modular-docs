@@ -1,10 +1,15 @@
 [id="assembly-guidelines"]
-= Assembly Guidelines
+= Assembly guidelines
 
 The required parts of an assembly are the introduction and modules. Optionally, an assembly can also include prerequisites and additional resources.
 
 [discrete]
-== Assembly Introduction
+== Assembly title
+
+If the assembly describes a task and includes one or more procedure modules, start the title with a verb in the gerund form, such as Creating or Configuring, for example _Encrypting block devices using LUKS_. If the assembly does not include any procedure modules, use a noun phrase, for example _Red Hat Process Automation Manager API reference_.
+
+[discrete]
+== Assembly introduction
 
 The introduction explains what the user accomplishes by working through the assembled modules. It typically provides context for the assembly.
 
@@ -14,22 +19,36 @@ Consider rewording the user story to write the assembly introduction, for exampl
 * Assembly introduction: As a system administrator, you can use SSSD in a container to provide external identity, authentication, and authorization services for the Atomic Host system. This enables users from external identity sources to authenticate to the Atomic Host.
 
 [discrete]
-== Assembly Prerequisites
+== Assembly prerequisites
 
-Prerequisites are conditions that must be satisfied before the user can start following the assembly.
+Prerequisites are conditions that must be satisfied before the user can start following the assembly and are applicable to all the modules in the assembly.
+
+Use the second level heading syntax for the Prerequisites section in the assembly so that it is displayed in the table of contents and is consistent with the Additional resources or Next steps sections in the assembly.
 
 // [bhardest] - We have a lot of xref-ing in these guidelines. A better approach might be to create a "snippets" .adoc file with snippets of common content (for example, the content about writing prerequisites, which applies to multiple sections). Then we can just include the relevant content from the snippets file wherever it's needed.
 // [asteflova] - Let's do this after we finish reviewing the guidelines for procedures and assemblies.
 // [sterobin] - I removed the cross-ref to the procedure "Writing prerequisites" for now because it provided no value and the id for that linked section needed to be removed anyway (should only be linking to modules, not module sub-headings). This clearly now provides little information, but based on the above comments, we should be looking into a better structure all around in this doc for describing the prereq, intro, body components that apply universally.
 
 [discrete]
-== Assembly Modules
+== Assembly modules
 
-List link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include files] to include the required modules. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly.
+To include modules in an assembly, use the Asciidoc  link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include directive]. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly. Use the `leveloffset` attribute to set the hierarchy of the module relative to the assembly, as shown in the following example:
+
+.Level offset for module files
+----
+file1.adoc[leveloffset=+1]
+file2.adoc[leveloffset=+2]
+file3.adoc[leveloffset=+3]
+----
+
+All module and assembly titles must use the H1 heading designation, such as `= My heading`.
 
 [discrete]
-== Assembly Additional Resources
 
-The optional additional resources list links to other material closely related to the contents of the assembly, for example, other documentation resources, instructional videos, or labs.
 
-Focus on relevant resources that are likely to be of immediate interest to the user. Do not list resources for completeness.
+== Next steps and Additional resources
+These sections are optional. If you use both *Next steps* and *Additional resources*, list *Next steps* first. The listed resources link to other material closely related to the contents of the module, such as other documentation resources, instructional videos, or labs.
+
+Focus on relevant resources that might interest the user. Do not list resources for completeness. If a resource applies to all of the modules in a user story, consider listing the resource in the Additional resources section of the assembly file. If you do this, consider including the resource in the procedure module as a comment.
+
+NOTE: If you use *Next steps* or *Additional resources* in an assembly file, check whether the last module in the assembly also has *Next steps* or *Additional resources*. If so, view the rendered HTML and consider rewriting or reorganizing the assembly.
