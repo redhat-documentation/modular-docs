@@ -1,5 +1,5 @@
 [id="creating-concept-modules"]
-= Creating concept modules 
+= Concept modules 
 
 This section explains what a concept module is and provides recommended practices for writing concept modules.
 
