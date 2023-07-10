@@ -1,5 +1,5 @@
 [id="creating-reference-modules"]
-= Creating reference modules
+= Reference modules
 
 This section explains what a reference module is and provides recommended practices for writing reference modules.
 
