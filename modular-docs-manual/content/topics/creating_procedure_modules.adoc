@@ -2,7 +2,16 @@
 
 = Procedure modules
 
-Procedure modules explain how to do something. A procedure module contains numbered, step-by-step instructions to help the user accomplish a single task. Sometimes those tasks include substeps. Procedure modules must include a title, a brief introduction, and one or more steps in the form of imperative statements. Procedure modules can also contain prerequisites, verification steps, next steps, and additional resources.
+Procedure modules explain how to do something. A procedure module contains numbered, step-by-step instructions to help users accomplish a single task. Sometimes those tasks include substeps. Procedure modules must include a title, a brief introduction, and one or more steps in the form of imperative statements. Procedure modules can also contain the following sections:
+
+* Limitations
+* Prerequisites
+* Verification or Verification steps
+* Troubleshooting
+* Next steps
+* Additional resources
+
+Do not change or embellish these subheadings. Unless absolutely necessary, do not create additional subheadings.
 
 .Schema of a procedure module
 image::procedure-diagram.png[]
@@ -17,6 +26,9 @@ The introduction typically provides context for the procedure, such as:
 
 * Why and where the user performs the procedure
 * Special considerations specific to the procedure
+
+.Limitations
+This section is optional and not used often. If there are any limitations that the affect the procedure, list them in this section.
 
 .Prerequisites
 This section is optional. Prerequisites are a bulleted list of conditions that must be satisfied before the user starts the procedure. Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if your procedure only has a single prerequisite.
@@ -35,6 +47,9 @@ This section is optional. It provides the user with one or more steps to verify 
 
 * An example of expected command output or a pop-up window that the user receives when the procedure is successful
 * Actions for the user to complete, such as entering a command, to determine the success or failure of the procedure
+
+.Troubleshooting
+This section is optional and not used often. List any actions that can help with troubleshooting the procedure. This subsection should be short. Consider whether the information might be better in a separate troubleshooting procedure or as part of a reference module that contains other troubleshooting sections.
 
 .Next steps and Additional resources
 These sections are optional. If you use both *Next steps* and *Additional resources*, list *Next steps* first. The listed resources link to other material closely related to the contents of the module, such as other documentation resources, instructional videos, or labs.
