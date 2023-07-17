@@ -38,7 +38,7 @@ snip-beta-note.adoc
 +
 [source]
 ----
-:_content-type: SNIPPET
+:_mod-docs-content-type: SNIPPET
 ----
 
 . Add an `include::` statement to the file that you want to add the snippet to, for example:
