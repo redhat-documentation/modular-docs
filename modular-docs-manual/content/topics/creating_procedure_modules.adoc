@@ -29,7 +29,7 @@ The introduction typically provides context for the procedure, such as:
 
 [id="limitations"]
 .Limitations
-This section is optional and not used often. If there are any limitations that affect procedure, list them in this section. Use a bulleted list for limitations and the plural heading *Limitations*, even if your procedure only has a single limitation.
+This section is optional and not used often. If there are any limitations that affect the procedure, list them in this section. Use a bulleted list for limitations and the plural heading *Limitations*, even if your procedure only has a single limitation.
 
 [id="prerequisites"]
 .Prerequisites
