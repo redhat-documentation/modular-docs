@@ -31,11 +31,11 @@ These file naming guidelines are optional but highly recommended. However, if yo
 
 [source]
 ----
-:_content-type: ASSEMBLY
-:_content-type: PROCEDURE
-:_content-type: CONCEPT
-:_content-type: REFERENCE
-:_content-type: SNIPPET
+:_mod-docs-content-type: ASSEMBLY
+:_mod-docs-content-type: PROCEDURE
+:_mod-docs-content-type: CONCEPT
+:_mod-docs-content-type: REFERENCE
+:_mod-docs-content-type: SNIPPET
 ----
 
 .Anchors

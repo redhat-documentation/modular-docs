@@ -10,7 +10,7 @@ Indicate the module type in one of the following
 ways:
 Add the prefix con- or con_ to the file name.
 Add the following attribute before the module ID:
-:_content-type: CONCEPT
+:_mod-docs-content-type: CONCEPT
 ////
 
 ////
