@@ -66,13 +66,18 @@ include::modules/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[leveloffset=+2]
 include::modules/TEMPLATE_PROCEDURE_reference-material.adoc[leveloffset=2]
 
 [role="_additional-resources"]
-== Additional resources (or Next steps)
-////
-Optional. Delete if not used.
-////
-* A bulleted list of links to other closely-related material. These links can include `link:` and `xref:` macros.
-* For more details on writing assemblies, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
-* Use a consistent system for file names, IDs, and titles. For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+== Next steps
+
+* This section is optional.
+* Provide a bulleted list of links that contain instructions that might be useful to the user after they complete this procedure.
+* Use an unnumbered bullet (*) if the list includes only one step.
+
+[role="_additional-resources"]
+== Additional resources
+
+* This section is optional.
+* Provide a bulleted list of links to other closely-related material. These links can include `link:` and `xref:` macros.
+* Use an unnumbered bullet (*) if the list includes only one step.
 
 ////
 Restore the context to what it was before this assembly.

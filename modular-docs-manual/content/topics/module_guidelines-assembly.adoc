@@ -44,8 +44,11 @@ file3.adoc[leveloffset=+3]
 All module and assembly titles must use the H1 heading designation, such as `= My heading`.
 
 [discrete]
-== Assembly additional resources
 
-The optional additional resources list links to other material closely related to the contents of the assembly, for example, other documentation resources, instructional videos, or labs.
 
-Focus on relevant resources that might interest the user. Do not list resources for completeness.
+== Next steps and Additional resources
+These sections are optional. If you use both *Next steps* and *Additional resources*, list *Next steps* first. The listed resources link to other material closely related to the contents of the module, such as other documentation resources, instructional videos, or labs.
+
+Focus on relevant resources that might interest the user. Do not list resources for completeness. If a resource applies to all of the modules in a user story, consider listing the resource in the Additional resources section of the assembly file. If you do this, consider including the resource in the procedure module as a comment.
+
+NOTE: If you use *Next steps* or *Additional resources* in an assembly file, check whether the last module in the assembly also has *Next steps* or *Additional resources*. If so, view the rendered HTML and consider rewriting or reorganizing the assembly.
