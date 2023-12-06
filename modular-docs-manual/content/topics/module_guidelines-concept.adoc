@@ -21,6 +21,8 @@ The introduction typically answers the following questions:
 * What is the concept?
 * Why should the user care about the concept?
 
+For details and examples, see the link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions] section in the Red&nbsp;Hat supplementary style guide.
+
 [discrete]
 == Concept body
 

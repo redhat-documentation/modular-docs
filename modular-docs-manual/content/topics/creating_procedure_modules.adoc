@@ -27,6 +27,8 @@ The introduction typically provides context for the procedure, such as:
 * Why and where the user performs the procedure
 * Special considerations specific to the procedure
 
+For details and examples, see the link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions] section in the Red&nbsp;Hat supplementary style guide.
+
 [id="limitations"]
 .Limitations
 This section is optional and not used often. If there are any limitations that affect the procedure, list them in this section. Use a bulleted list for limitations and the plural heading *Limitations*, even if your procedure only has a single limitation.
