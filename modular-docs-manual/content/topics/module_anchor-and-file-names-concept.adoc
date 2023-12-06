@@ -68,9 +68,8 @@ You can use guided decision tables to…
 ----
 
 [NOTE]
-.Note on other anchor formats (not recommended)
 ====
-The anchor format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced correctly. For details, see xref:reusing-modules[]. Other anchor formats include `+++[[anchor-name]]+++` and `+++[#anchor-name]+++`, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.
+The previously defined anchor format is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced correctly. For details, see xref:reusing-modules[Reusing modules in assemblies]. Other anchor formats include `+++[[anchor-name]]+++` and `+++[#anchor-name]+++`, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.
 ====
 
 
