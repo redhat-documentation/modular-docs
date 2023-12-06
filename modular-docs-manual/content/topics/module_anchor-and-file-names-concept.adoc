@@ -44,7 +44,7 @@ At the top of every module, provide an anchor in the format `+++[id="filename_{c
 [source]
 ----
 [id="filename_{context}"]
-= Module Heading
+= Module heading
 
 The first sentence of the topic.
 ----
@@ -53,7 +53,7 @@ The first sentence of the topic.
 [source]
 ----
 [id="guided-decision-tables_{context}"]
-= Guided Decision Tables
+= Guided decision tables
 
 The guided decision tables feature works similarly to ...
 ----
@@ -62,7 +62,7 @@ The guided decision tables feature works similarly to ...
 [source]
 ----
 [id="creating-guided-decision-tables_{context}"]
-= Creating Guided Decision Tables
+= Creating guided decision tables
 
 You can use guided decision tables to ...
 ----
