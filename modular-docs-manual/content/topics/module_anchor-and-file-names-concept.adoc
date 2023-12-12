@@ -29,7 +29,7 @@ Do not include special characters in file names. Ensure that all members of your
 
 These file naming guidelines are optional but highly recommended. However, if your team does not include the module prefixes in file names followed by either a hyphen (-) or an underscore (_), include one of the following variables in each file before the anchor ID:
 
-[source]
+[source,asciidoc]
 ----
 :_mod-docs-content-type: ASSEMBLY
 :_mod-docs-content-type: PROCEDURE
@@ -41,36 +41,35 @@ These file naming guidelines are optional but highly recommended. However, if yo
 .Anchors
 At the top of every module, provide an anchor in the format `+++[id="filename_{context}"]+++` where `filename` is the exact name of the file, without the file extension (`.adoc`) and a module prefix. Module anchors are necessary so that Asciidoctor can identify the module when the module is reused or cross-referenced. The `context` variable is defined in each assembly module, such as `:context: my-context-value`. When you build an assembly, the value of the `context` variable replaces `context` in each module anchor ID and is displayed in the generated URL.
 
-[source]
+[source,asciidoc]
 ----
 [id="filename_{context}"]
-= Module Heading
+= Module heading
 
 The first sentence of the topic.
 ----
 
 .Example 1. Concept module
-[source]
+[source,asciidoc]
 ----
 [id="guided-decision-tables_{context}"]
-= Guided Decision Tables
+= Guided decision tables
 
-The guided decision tables feature works similarly to ...
+The guided decision tables feature works similarly to…
 ----
 
 .Example 2. Procedure module
-[source]
+[source,asciidoc]
 ----
 [id="creating-guided-decision-tables_{context}"]
-= Creating Guided Decision Tables
+= Creating guided decision tables
 
-You can use guided decision tables to ...
+You can use guided decision tables to…
 ----
 
 [NOTE]
-.Note on other anchor formats (not recommended)
 ====
-The anchor format defined here is recommended because it is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced correctly. For details, see xref:reusing-modules[]. Other anchor formats include `+++[[anchor-name]]+++` and `+++[#anchor-name]+++`, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.
+The previously defined anchor format is the most stable and versatile of anchor formats, and supports variables that enable topics to be reused and cross-referenced correctly. For details, see xref:reusing-modules[Reusing modules in assemblies]. Other anchor formats include `+++[[anchor-name]]+++` and `+++[#anchor-name]+++`, but these formats either do not support variables for content reuse or do not support certain character types, such as periods. These limitations cause errors at build time.
 ====
 
 
