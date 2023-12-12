@@ -18,6 +18,8 @@ Consider rewording the user story to write the assembly introduction, for exampl
 * User story: As an administrator, I want to provide external identity, authentication and authorization services for my Atomic Host, so that users from external identity sources can access the Atomic Host.
 * Assembly introduction: As a system administrator, you can use SSSD in a container to provide external identity, authentication, and authorization services for the Atomic Host system. This enables users from external identity sources to authenticate to the Atomic Host.
 
+For details and examples, see the link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions] section in the Red&nbsp;Hat supplementary style guide.
+
 [discrete]
 == Assembly prerequisites
 

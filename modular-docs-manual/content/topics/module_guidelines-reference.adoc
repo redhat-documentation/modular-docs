@@ -9,6 +9,8 @@ A reference module requires a short introduction.
 
 The introduction to a reference module is a single, concise paragraph that provides a short overview of the module. A short description makes the module more usable because users can quickly determine whether the reference is useful without having to read the entire module.
 
+For details and examples, see the link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions] section in the Red&nbsp;Hat supplementary style guide.
+
 [discrete]
 == Reference body
 
