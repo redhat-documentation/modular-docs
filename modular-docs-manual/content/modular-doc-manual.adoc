@@ -2,9 +2,12 @@
 include::topics/introduction.adoc[leveloffset=+1]
 
 // Chapter 2
-include::topics/understanding-mod-docs.adoc[leveloffset=+1]
+include::topics/whats-new.adoc[leveloffset=+1]
 
 // Chapter 3
+include::topics/understanding-mod-docs.adoc[leveloffset=+1]
+
+// Chapter 4
 include::topics/writing-mod-docs.adoc[leveloffset=+1]
 
 // Appendices

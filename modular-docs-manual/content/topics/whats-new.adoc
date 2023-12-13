@@ -1,0 +1,17 @@
+[id="whats-new_{context}"]
+= What's new
+
+The following list summarizes significant changes to the modular documentation standard over time.
+
+For a complete list of changes, see link:https://github.com/redhat-documentation/modular-docs/pulls?q=is%3Apr+is%3Aclosed[the merged pull requests].
+
+// Release notes template:
+// == <year>: <month>
+//
+// * <Brief description of change. Include an inline link to the relevant section of the guide.>
+// link:<URL of the GitHub issue associated with this change>
+
+== 2023: August
+
+* Updated the name of the content type attribute in the templates from `:_content-type:` to `:_mod-docs-content-type:`.
+link:https://github.com/redhat-documentation/modular-docs/issues/203[#203]
