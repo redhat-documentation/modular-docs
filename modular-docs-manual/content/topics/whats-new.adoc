@@ -11,7 +11,24 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 // * <Brief description of change. Include an inline link to the relevant section of the guide.>
 // link:<URL of the GitHub issue associated with this change>
 
+== 2023: December
+
+* Added the *What's new* section to the link:https://redhat-documentation.github.io/modular-docs/[Modular documentation reference guide].
+link:https://github.com/redhat-documentation/modular-docs/pull/214[#214]
+* Added references to the *link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions]* section in the Red&nbsp;Hat SSG where describing the introduction of an assembly or a module.
+link:https://github.com/redhat-documentation/modular-docs/pull/216/files[#216]
+
+== 2023: September
+
+* Added guidance for solving the problem when *both* your assembly and the last module included in that assembly contain an *Additional resources* section to the modular documentation assembly template.
+link:https://github.com/redhat-documentation/modular-docs/pull/210/files[#210]
+
 == 2023: August
 
-* Updated the name of the content type attribute in the templates from `:_content-type:` to `:_mod-docs-content-type:`.
+* Updated the name of the *content type attribute* in the templates from `:_content-type:` to `:_mod-docs-content-type:`.
 link:https://github.com/redhat-documentation/modular-docs/issues/203[#203]
+
+== 2023: May
+
+* Removed the *module prefixes* (`proc_`, `con_`, and `ref_`) from anchors (IDs) both in the reference guide and the module templates.
+link:https://github.com/redhat-documentation/modular-docs/pull/201[#201]
