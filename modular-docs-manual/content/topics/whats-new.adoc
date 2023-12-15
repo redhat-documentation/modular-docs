@@ -13,15 +13,15 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 
 == 2023: December
 
-* Added the *What's new* section to the link:https://redhat-documentation.github.io/modular-docs/[Modular documentation reference guide].
+* Added the *What's new* section to the Modular documentation reference guide.
 link:https://github.com/redhat-documentation/modular-docs/pull/214[#214]
-* Added references to the *link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions]* section in the Red&nbsp;Hat SSG where describing the introduction of an assembly or a module.
-link:https://github.com/redhat-documentation/modular-docs/pull/216/files[#216]
+* Added references to the *link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions]* section in the Red&nbsp;Hat SSG to provide detailed guidelines for the introduction of an assembly or a module.
+link:https://github.com/redhat-documentation/modular-docs/pull/216/[#216]
 
 == 2023: September
 
 * Added guidance for solving the problem when *both* your assembly and the last module included in that assembly contain an *Additional resources* section to the modular documentation assembly template.
-link:https://github.com/redhat-documentation/modular-docs/pull/210/files[#210]
+link:https://github.com/redhat-documentation/modular-docs/pull/210[#210]
 
 == 2023: August
 
@@ -32,3 +32,26 @@ link:https://github.com/redhat-documentation/modular-docs/issues/203[#203]
 
 * Removed the *module prefixes* (`proc_`, `con_`, and `ref_`) from anchors (IDs) both in the reference guide and the module templates.
 link:https://github.com/redhat-documentation/modular-docs/pull/201[#201]
+
+== 2022: September
+
+* Added a guidance for *assembly titles*.
+link:https://github.com/redhat-documentation/modular-docs/pull/192[#192]
+
+== 2022: August
+
+* Updated the name of the *content type attribute* in the templates from `:_module-type:` to `:_content-type:`.
+link:https://github.com/redhat-documentation/modular-docs/pull/191[#191]
+
+== 2022: April
+
+* Updated headings in the reference guide and in the templates from title case to *sentence case*.
+link:https://github.com/redhat-documentation/modular-docs/pull/189[#189]
+* Removed the `*[role="_abstract"]*` tag from the templates.
+link:https://github.com/redhat-documentation/modular-docs/issues/184[#184]
+
+== 2022: March
+
+* Added an *assembly attribute* to identify assemblies and improved the guidance for *snippets*.
+link:https://github.com/redhat-documentation/modular-docs/pull/176[#176] and link:https://github.com/redhat-documentation/modular-docs/pull/178[#178]
+
