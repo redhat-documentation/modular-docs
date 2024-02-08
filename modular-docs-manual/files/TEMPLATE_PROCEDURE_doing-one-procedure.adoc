@@ -18,6 +18,8 @@ The ID is an anchor that links to the module. Avoid changing it after the module
 = Doing procedure A
 ////
 Start the title of a procedure module with a gerund, such as Creating, Installing, or Deploying.
+
+Be sure to include a line break between the title and the module introduction.
 ////
 
 Write a short introductory paragraph that provides an overview of the module. The introduction should include what the module will help the user do and why it will be beneficial to the user. Include key words that relate to the module to maximize search engine optimization.
