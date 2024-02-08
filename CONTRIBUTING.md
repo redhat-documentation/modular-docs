@@ -6,13 +6,24 @@ Send an email to the Modular Documentation Project mailing list (ccs-mod-docs@re
 
 ## Configuring a Local Copy of the GitHub Project
 
-STEP 1 - Clone the GitHub project locally:
+STEP 1 - Fork your own copy of redhat-documentation/modular-docs:
+![image](https://github.com/redhat-documentation/modular-docs/assets/350907/e27b585e-f7f8-4b29-a62a-a0dbd025cebc)
 
-    git clone git@github.com:redhat-documentation/modular-docs.git
+STEP 2 - Go to your fork and copy the SSH link.
+![image](https://github.com/redhat-documentation/modular-docs/assets/350907/829fb743-104a-4db1-848e-8a7cd4994376)
 
-STEP 2 - Verify the GitHub project status:
+STEP 3 - In a terminal, clone your fork:
+
+    git clone git@github.com:_<username>_/modular-docs.git
+
+STEP 4 - Copy the SSH link of redhat-documentation/modular-docs, not your fork, and set it as your upstream remote:
 
     cd modular-docs
+    git remote add upstream git@github.com:redhat-documentation/modular-docs.git
+
+STEP 5 - Verify that you have two remotes, `origin` and `upstream` and check the status of your project:
+
+    git remote -v
     git status
 
 ## Contributing Changes
