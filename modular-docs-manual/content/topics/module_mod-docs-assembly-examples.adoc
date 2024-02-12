@@ -1,8 +1,9 @@
 [id="modular-docs-assembly-examples"]
 = Assembly examples
 
+link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/securing_networks/assembly_using-secure-communications-between-two-systems-with-openssh_securing-networks[Using secure communications between two systems with OpenSSH]
+
 link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/packaging_and_deploying_a_red_hat_process_automation_manager_project/index[Packaging and deploying a Red Hat Process Automation Manager project]
 
 link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/designing_a_decision_service_using_spreadsheet_decision_tables/index[Designing a decision service using spreadsheet decision tables]
 
-link:https://access.redhat.com/documentation/en-us/red_hat_build_of_quarkus/quarkus-3.2/guide/00b48021-40c0-40d8-95e6-64292948cf6f[Getting started with Red Hat Build of Quarkus]
