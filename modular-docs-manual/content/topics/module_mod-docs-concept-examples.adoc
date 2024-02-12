@@ -1,8 +1,8 @@
 [id="modular-docs-concept-examples"]
 = Concept module examples
 
-link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/creating_red_hat_process_automation_manager_business_applications_with_spring_boot/index#bus_app_business-applications[Red Hat Process Automation Manager business applications]
+link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html/creating_red_hat_process_automation_manager_business_applications_with_spring_boot/bus_app_business-applications[Red Hat Process Automation Manager business applications]
 
-link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html-single/architecture/index#cicd_gitops_methodology[The GitOps methodology and practice]
+link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html/architecture/cicd_gitops#cicd_gitops_methodology[The GitOps methodology and practice]
 
-link:https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html-single/using_amq_online_on_openshift_container_platform/index#con-intro-roles-using-messaging[AMQ Online user roles]
+link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/using_selinux/getting-started-with-selinux_using-selinux#introduction-to-selinux_getting-started-with-selinux[Introduction to SELinux]

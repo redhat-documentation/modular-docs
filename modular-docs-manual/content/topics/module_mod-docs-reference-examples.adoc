@@ -4,7 +4,6 @@
 
 link:https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/changes-in-ansible-variables-between-version-2-and-3-container[Changes in Ansible Variables Between Version 2 and 3]
 
-link:https://access.redhat.com/documentation/en-us/red_hat_amq/7.2/html-single/using_amq_online_on_openshift_container_platform/#retrieving-address-space-information-messaging[Example commands for retrieving address space information]
+link:https://access.redhat.com/documentation/en-us/red_hat_amq_broker/7.11/html/deploying_amq_broker_on_openshift/reference-broker-ocp-broker-ocp#addressing-crd_broker-ocp[Address Custom Resource configuration reference]
 
-
-link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html-single/interacting_with_red_hat_process_automation_manager_using_kie_apis/index#ejb-api-services-ref_kie-apis[Supported EJB services]
+link:https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.8/html/interacting_with_red_hat_process_automation_manager_using_kie_apis/ejb-api-con_kie-apis#ejb-api-services-ref_kie-apis[Supported EJB services]

@@ -1,8 +1,8 @@
 [id="modular-docs-procedure-examples"]
 = Procedure module examples
 
-link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html-single/installing/index#installation-mirror-repository_installing-restricted-networks-preparations[Mirroring the OpenShift Container Platform image repository]
+link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/security_hardening/assembly_blocking-and-allowing-applications-using-fapolicyd_security-hardening#marking-files-as-trusted-using-an-additional-source-of-trust_assembly_blocking-and-allowing-applications-using-fapolicyd[Marking files as trusted using an additional source of trust]
 
-link:https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/using_containerized_identity_management_services/uninstalling-sssd-containers#uninstalling-sssd-containers-uninstalling-an-sssd-container-enrolled-in-an-ipa-domain[Uninstalling an SSSD Container Enrolled in an Identity Management Domain]
+link:https://access.redhat.com/documentation/en-us/openshift_container_platform/4.5/html/installing/installing-mirroring-installation-images#installation-mirror-repository_installing-mirroring-installation-images[Mirroring the OpenShift Container Platform image repository]
 
 link:https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/3/html/container_guide/administering-ceph-clusters-that-run-in-containers#purging-clusters-deployed-by-ansible[Purging Clusters Deployed by Ansible]
