@@ -6,12 +6,19 @@ The following list summarizes significant changes to the modular documentation s
 For a complete list of changes, see link:https://github.com/redhat-documentation/modular-docs/pulls?q=is%3Apr+is%3Aclosed[the merged pull requests].
 
 // Release notes template:
+// [discrete]
 // == <year>: <month>
 //
 // * <Brief description of change. Include an inline link to the relevant section of the guide.>
 // link:<URL of the GitHub issue associated with this change>
 
+[discrete]
+== 2024: January
 
+* Removed the `*[role="_abstract"]*` tag from the templates (regression).
+link:https://github.com/redhat-documentation/modular-docs/pull/222[#222]
+
+[discrete]
 == 2023: December
 
 * Added the *What's new* section to the Modular documentation reference guide.
@@ -20,31 +27,31 @@ link:https://github.com/redhat-documentation/modular-docs/pull/214[#214]
 * Added references to the *link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions]* section in the Red&nbsp;Hat SSG to provide detailed guidelines for the introduction of an assembly or a module.
 link:https://github.com/redhat-documentation/modular-docs/pull/216/[#216]
 
-
+[discrete]
 == 2023: September
 
 * Added guidance for solving the problem when *both* your assembly and the last module included in that assembly contain an *Additional resources* section to the modular documentation assembly template.
 link:https://github.com/redhat-documentation/modular-docs/pull/210[#210]
 
-
+[discrete]
 == 2023: August
 
 * Updated the name of the *content type attribute* in the templates from `:_content-type:` to `:_mod-docs-content-type:`.
 link:https://github.com/redhat-documentation/modular-docs/issues/203[#203]
 
-
+[discrete]
 == 2023: May
 
 * Removed the *module prefixes* (`proc_`, `con_`, and `ref_`) from anchors (IDs) both in the reference guide and the module templates.
 link:https://github.com/redhat-documentation/modular-docs/pull/201[#201]
 
-
+[discrete]
 == 2022: September
 
 * Added a guidance for *assembly titles*.
 link:https://github.com/redhat-documentation/modular-docs/pull/192[#192]
 
-
+[discrete]
 == 2022: August
 
 * Added many clarifications to the guidance covering modules and assemblies. Added definitions for the *Limitations*, *Troubleshooting*, and *Next steps* sections in procedure modules.
@@ -53,7 +60,7 @@ link:https://github.com/redhat-documentation/modular-docs/pull/208[#208]
 * Updated the name of the *content type attribute* in the templates from `:_module-type:` to `:_content-type:`.
 link:https://github.com/redhat-documentation/modular-docs/pull/191[#191]
 
-
+[discrete]
 == 2022: April
 
 * Updated headings in the reference guide and in the templates from title case to *sentence case*.
@@ -62,25 +69,25 @@ link:https://github.com/redhat-documentation/modular-docs/pull/189[#189]
 * Removed the `*[role="_abstract"]*` tag from the templates.
 link:https://github.com/redhat-documentation/modular-docs/issues/184[#184]
 
-
+[discrete]
 == 2022: March
 
 * Added an *assembly attribute* to identify assemblies and improved the guidance for *snippets*.
 link:https://github.com/redhat-documentation/modular-docs/pull/176[#176] and link:https://github.com/redhat-documentation/modular-docs/pull/178[#178]
 
-
+[discrete]
 == 2021: August
 
 * Changed the guidelines for *concept modules* to allow examples and simple *actions* in certain cases.
 link:https://github.com/redhat-documentation/modular-docs/pull/150[#150]
 
-
+[discrete]
 == 2021: June
 
 * Added a guidance for *text snippets* and a convention that *modules should not contain other modules*.
 link:https://github.com/redhat-documentation/modular-docs/pull/161[#161]
 
-
+[discrete]
 == 2021: April
 
 * Added a convention saying that the *Prerequisites* heading is always plural.
@@ -89,6 +96,7 @@ link:https://github.com/redhat-documentation/modular-docs/pull/157[#157]
 * Clarified the use of cross-references (xrefs) in modules.
 link:https://github.com/redhat-documentation/modular-docs/pull/162[#162]
 
+[discrete]
 == 2021: January
 
 * Changed *Verification steps* to *Verification* and clarified the use of numbered lists in modules.
