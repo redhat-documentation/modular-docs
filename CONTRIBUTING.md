@@ -1,61 +1,101 @@
-# Contributing Guide for the Modular Documentation Project
+# Contributor's guide for the Modular Documentation Project
 
-## Request GitHub Project Access
+## Getting started
 
-Send an email to the Modular Documentation Project mailing list (ccs-mod-docs@redhat.com) asking nicely to be given access to the Modular Documentation Project on GitHub. Please give us your GitHub username and use the following subject line: REQUESTING ACCESS.
+### Request project access
 
-## Configuring a Local Copy of the GitHub Project
+To join the Modular Documentation Project:
 
-STEP 1 - Fork your own copy of redhat-documentation/modular-docs:
-![image](https://github.com/redhat-documentation/modular-docs/assets/350907/e27b585e-f7f8-4b29-a62a-a0dbd025cebc)
+- **Email a request** to the Modular Documentation Project mailing list at `ccs-mod-docs@redhat.com`.
+  - Use "REQUESTING ACCESS" as the subject line.
+  - Include your GitHub username for access.
 
-STEP 2 - Go to your fork and copy the SSH link.
-![image](https://github.com/redhat-documentation/modular-docs/assets/350907/829fb743-104a-4db1-848e-8a7cd4994376)
+### Set up your workspace
 
-STEP 3 - In a terminal, clone your fork:
+#### Fork the repository
 
-    git clone git@github.com:_<username>_/modular-docs.git
+1. **Fork** the [Modular Docs Repository](https://github.com/redhat-documentation/modular-docs) on GitHub. For more information, see GitHub's [Forking a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository) topic.
 
-STEP 4 - Copy the SSH link of redhat-documentation/modular-docs, not your fork, and set it as your upstream remote:
+#### Clone your fork
 
-    cd modular-docs
-    git remote add upstream git@github.com:redhat-documentation/modular-docs.git
+2. **Clone** your fork to your local machine:
 
-STEP 5 - Verify that you have two remotes, `origin` and `upstream` and check the status of your project:
+   ```bash
+   git clone git@github.com:<username>/modular-docs.git
+   ```
 
-    git remote -v
-    git status
+   For more information, see GitHub's [Cloning your forked repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#cloning-your-forked-repository) topic.
 
-## Contributing Changes
+#### Configure an upstream remote
 
-STEP 1 - Create a new branch:
+3. **Configure an upstream remote** to sync with the original repository:
 
-    git checkout -b <new_branch_name>
+   ```bash
+   cd modular-docs
+   git remote add upstream git@github.com:redhat-documentation/modular-docs.git
+   ```
 
-Example:
+   For more information, see GitHub's [Configuring git to sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#configuring-git-to-sync-your-fork-with-the-upstream-repository) topic.
 
-    git checkout -b new_edits
+#### Verify the remotes
 
-STEP 2 - Add content or make edits.
+4. **Verify the remotes** and check your project's status:
 
-STEP 3 - Add and commit your changes:
+   ```bash
+   git remote -v
+   git status
+   ```
 
-    git add <path_to_file>
-    git commit -m "<place_your_comments_here>"
+## Making contributions
 
- Example:
+### Stay updated
 
-    git add modular-doc-manual/master.adoc
-    git commit -m -s "Updated the master.adoc file"
+* **Prepare your main branch**:
 
-STEP 4 - Push changes to the remote GitHub repository:
+   ```bash
+   git checkout main
+   git fetch upstream main
+   git rebase upstream/main  
+   git switch -c <new_branch_name>
+   ```
 
-    git push origin <new_branch_name>
+   Example:
 
-Example:
+   ```bash
+   git switch -c create_master_adoc
+   ```
 
-    git push origin new_edits
+### Make your changes
 
-STEP 5 - Create a new pull request from the GitHub web interface.
+1. **Edit content** or add new material as needed.
 
-STEP 6 - Everyone on the project team will review the merge request and add comments in GitHub. This review process will be open for one week from the day the merge request was submitted. If the merge request is still being actively discussed beyond the one week timeframe, then the merge request will stay open. Once the merge request discussion is resolved, the merge request will be NACK'd or ACK'd based on the comments given.  If no comments are given after a week, then the merge request will be ACK'd.
+2. **Stage, commit, and push** your updates:
+
+   ```bash
+   git add <path_to_file>
+   git commit -m "<your_commit_message_here>"
+   git push -f origin HEAD
+   ```
+
+   Example:
+
+   ```bash
+   git add modular-doc-manual/master.adoc
+   git commit -m "Updated the master.adoc file"
+   git push -f origin HEAD
+   ```
+
+4. **Create a pull request** by opening the link in the command output.
+
+   Example:
+
+   ```bash
+   remote: Create a pull request for '<new_branch_name>' on GitHub by visiting:
+   remote:      https://github.com/rolfedh/modular-docs/pull/new/<new_branch_name>
+   ```
+
+### Review and merge
+
+**Request team review**: The project team typically reviews your pull request and provides feedback within a week. If discussions extend beyond this period, the review will continue until resolved.
+
+- **Approval**: Pull requests are approved (ACK'd) or rejected (NACK'd) based on team feedback. Uncommented requests are automatically approved after one week.
