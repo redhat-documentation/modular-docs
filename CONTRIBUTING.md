@@ -1,61 +1,114 @@
-# Contributing Guide for the Modular Documentation Project
+# Contributor's guide for the Modular Documentation Project
 
-## Request GitHub Project Access
+## Getting started
 
-Send an email to the Modular Documentation Project mailing list (ccs-mod-docs@redhat.com) asking nicely to be given access to the Modular Documentation Project on GitHub. Please give us your GitHub username and use the following subject line: REQUESTING ACCESS.
+### Request project access
 
-## Configuring a Local Copy of the GitHub Project
+To join the Modular Documentation Project, email `ccs-mod-docs@redhat.com` with "REQUESTING ACCESS" in the subject and your GitHub username in the body.
 
-STEP 1 - Fork your own copy of redhat-documentation/modular-docs:
-![image](https://github.com/redhat-documentation/modular-docs/assets/350907/e27b585e-f7f8-4b29-a62a-a0dbd025cebc)
+### Set up your workspace
 
-STEP 2 - Go to your fork and copy the SSH link.
-![image](https://github.com/redhat-documentation/modular-docs/assets/350907/829fb743-104a-4db1-848e-8a7cd4994376)
+#### Fork the repository
 
-STEP 3 - In a terminal, clone your fork:
+1. **Fork** the [Modular Docs Repository](https://github.com/redhat-documentation/modular-docs) on GitHub. For more information, see GitHub's [Forking a repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository) topic.
 
-    git clone git@github.com:_<username>_/modular-docs.git
+#### Clone your fork
 
-STEP 4 - Copy the SSH link of redhat-documentation/modular-docs, not your fork, and set it as your upstream remote:
+2. **Clone** your fork to your local machine:
 
-    cd modular-docs
-    git remote add upstream git@github.com:redhat-documentation/modular-docs.git
+   ```bash
+   git clone git@github.com:<username>/modular-docs.git
+   ```
 
-STEP 5 - Verify that you have two remotes, `origin` and `upstream` and check the status of your project:
+   For more information, see GitHub's [Cloning your forked repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#cloning-your-forked-repository) topic.
 
-    git remote -v
-    git status
+#### Configure an upstream remote
 
-## Contributing Changes
+3. **Configure an upstream remote** to sync with the original repository:
 
-STEP 1 - Create a new branch:
+   ```bash
+   cd modular-docs
+   git remote add upstream git@github.com:redhat-documentation/modular-docs.git
+   ```
 
-    git checkout -b <new_branch_name>
+   For more information, see GitHub's [Configuring git to sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#configuring-git-to-sync-your-fork-with-the-upstream-repository) topic.
 
-Example:
+#### Verify the remotes
 
-    git checkout -b new_edits
+4. **Verify the remotes** and check your project's status:
 
-STEP 2 - Add content or make edits.
+   ```bash
+   git remote -v
+   git status
+   ```
 
-STEP 3 - Add and commit your changes:
+   The output should look like this:
 
-    git add <path_to_file>
-    git commit -m "<place_your_comments_here>"
+   ```
+   origin	https://github.com/<username>/modular-docs.git (fetch)
+   origin	https://github.com/<username>/modular-docs.git (push)
+   upstream	https://github.com/redhat-documentation/modular-docs.git (fetch)
+   upstream	https://github.com/redhat-documentation/modular-docs.git (push)
+   On branch main
+   Your branch is up to date with 'origin/main'.
 
- Example:
+   nothing to commit, working tree clean
+   ```
 
-    git add modular-doc-manual/master.adoc
-    git commit -m -s "Updated the master.adoc file"
+## Making contributions
 
-STEP 4 - Push changes to the remote GitHub repository:
+### Stay updated
 
-    git push origin <new_branch_name>
+* **Prepare your main branch**:
 
-Example:
+   ```bash
+   git checkout main
+   git fetch upstream main
+   git rebase upstream/main  
+   git switch -c <new_branch_name>
+   ```
 
-    git push origin new_edits
+   Example:
 
-STEP 5 - Create a new pull request from the GitHub web interface.
+   ```bash
+   git switch -c create_master_adoc
+   ```
 
-STEP 6 - Everyone on the project team will review the merge request and add comments in GitHub. This review process will be open for one week from the day the merge request was submitted. If the merge request is still being actively discussed beyond the one week timeframe, then the merge request will stay open. Once the merge request discussion is resolved, the merge request will be NACK'd or ACK'd based on the comments given.  If no comments are given after a week, then the merge request will be ACK'd.
+### Make your changes
+
+1. **Edit content** or add new material as needed.
+
+2. **Stage, commit, and push** your updates:
+
+   ```bash
+   git add <path_to_file>
+   git commit -m "<your_commit_message_here>"
+   git push origin HEAD
+   ```
+
+   Example:
+
+   ```bash
+   git add modular-doc-manual/master.adoc
+   git commit -m "Updated the master.adoc file"
+   git push origin HEAD
+   ```
+
+4. **Create a pull request** by opening the link in the command output.
+
+   Example:
+
+   ```bash
+   remote: Create a pull request for '<new_branch_name>' on GitHub by visiting:
+   remote:      https://github.com/rolfedh/modular-docs/pull/new/<new_branch_name>
+   ```
+
+### Requesting a team review for your PR
+
+ 1. **Initiate a review** by adding `fcc-review-board` under *Reviewers* in the PR and posting a request in [#ccs-mod-docs-steering-committee](https://redhat.enterprise.slack.com/archives/C04QRCA35K8) (private) or [#forum-ccs-mod-docs](https://redhat.enterprise.slack.com/archives/C04RPJLJJ9E) (public) on Slack.
+
+ 2. **Engage with feedback** and resolve any issues or suggestions raised by reviewers.
+
+ 3. **Follow up**, if needed, by gently reminding reviewers or reposting to the Slack channel after you make significant changes.
+
+ 4. **Close the issue**: After your PR gains the necessary approvals and a review board member has merged it, close the issue associated with your PR.
