@@ -8,7 +8,7 @@ ifdef::context[:parent-context: {context}]
 
 
 ////
-Indicate the content type:
+Indicates that this file is an assembly:
 ////
 :_mod-docs-content-type: ASSEMBLY
 

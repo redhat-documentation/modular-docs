@@ -1,5 +1,5 @@
 ////
-Indicate the module types:
+Indicates the module type:
 ////
 
 :_mod-docs-content-type: CONCEPT

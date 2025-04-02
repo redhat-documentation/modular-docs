@@ -1,5 +1,5 @@
 ////
-Indicate the module type:
+Indicates the module type:
 ////
 :_mod-docs-content-type: REFERENCE
 

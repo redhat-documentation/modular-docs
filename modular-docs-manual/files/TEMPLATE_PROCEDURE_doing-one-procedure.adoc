@@ -1,6 +1,6 @@
 
 ////
-Indicate the module type:
+Indicates the module type:
 ////
 
 :_mod-docs-content-type: PROCEDURE
@@ -38,10 +38,10 @@ Write a short introductory paragraph that provides an overview of the module. Th
 .. Do this other thing, and this other thing, and then select *Next*.
 . Use an unnumbered bullet (*) if the procedure includes only one step.
 +
-NOTE: You can add text, tables, code examples, images, and other items to a step. However, these items must be connected to the step the a plus sign (+). Any items under the .Procedure heading and before one of the following approved headings cannot be converted to DITA.
+NOTE: You can add text, tables, code examples, images, and other items to a step. However, these items must be connected to the step the a plus sign (+). Any items under the .Procedure heading and before one of the following approved headings that are not connected to the last step with a plus sign cannot be converted to DITA.
 
 ////
-Only the following block headings can be reliably mapped to DITA: Prerequisites, Procedure, Verification, Troubleshooting, Troubleshooting steps, Next steps, Next step, Additional resources. They must appear in this order and are only allowed in a procedure module. You can also use block headings in figure, table, and example titles.
+Only the following block headings can be reliably mapped to DITA: Prerequisites, Procedure, Verification, Troubleshooting, Troubleshooting steps, Next steps, Next step, Additional resources. They must appear in this order and, with the exception of Additional resources, are only allowed in a procedure module. You can also use block headings in figure, table, and example titles.
 ////
 
 
