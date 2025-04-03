@@ -8,7 +8,7 @@ ifdef::context[:parent-context: {context}]
 
 
 ////
-Indicates that this file is an assembly:
+Metadata attribute that will help enable correct parsing and conversion to the appropriate DITA element.
 ////
 :_mod-docs-content-type: ASSEMBLY
 
@@ -20,7 +20,6 @@ Indicates that this file is an assembly:
 
 The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken. Include {context} in the ID so the assembly can be reused.
 ////
-
 [id="assembly-my-user-story_{context}"]
 = My user story
 
@@ -64,7 +63,7 @@ include::modules/TEMPLATE_PROCEDURE_reference-material.adoc[leveloffset=+2]
 == Next steps
 
 * This section is optional.
-* Provide information about the next steps the user might want to take. T
+* Provide information about the next steps the user might want to take.
 * This section can include text and links. 
 
 // If the last module included in your assembly contains an Additional resources section as well, check the appearance of the rendered assembly. If the two Additional resources sections might be confusing for a reader, consider consolidating their content and removing one of them.

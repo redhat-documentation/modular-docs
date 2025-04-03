@@ -1,5 +1,5 @@
 ////
-Indicates the module type:
+Metadata attribute that will help enable correct parsing and conversion to the appropriate DITA element.
 ////
 :_mod-docs-content-type: REFERENCE
 
@@ -15,7 +15,6 @@ The `context` attribute enables module reuse. Every module ID includes {context}
 ////
 
 [id="reference-material_{context}"]
-
 = Reference material
 ////
 In the title of a reference module, include nouns that are used in the body text. For example, "Keyboard shortcuts for ___" or "Command options for ___." This helps readers and search engines find the information quickly.

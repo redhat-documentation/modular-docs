@@ -1,5 +1,5 @@
 ////
-Indicates the module type:
+Metadata attribute that will help enable correct parsing and conversion to the appropriate DITA element.
 ////
 
 :_mod-docs-content-type: CONCEPT
@@ -16,10 +16,9 @@ The `context` attribute enables module reuse. Every module ID includes {context}
 ////
 
 [id="my-concept-module-a_{context}"]
-
 = My concept module A
 ////
-In the title of concept modules, include nouns or noun phrases that are used in the body text. This helps readers and search engines find the information quickly. Do not start the title of concept modules with a verb or gerund. See also _Wording of headings_ in _The IBM Style Guide_.
+In the title of concept modules, include nouns or noun phrases that are used in the body text. This helps readers and search engines find the information quickly. Do not start the title of concept modules with a verb or gerund. See also _Wording of headings_ in _IBM Style_.
 
 Be sure to include a line break between the title and the module introduction.
 ////
@@ -34,8 +33,8 @@ The contents of a concept module give the user descriptions and explanations nee
 
 
 ////
-Do not include level three headings (===).
-Include titles and alternative text descriptions for images and enclose the descriptions in quotation marks (""). Alternative text should provide a textual, complete description of the image as a full sentence.
+Do not include third-level headings (===).
+Include titles and alternative text descriptions for images and enclose the descriptions in straight quotation marks (""). Alternative text should provide a textual, complete description of the image as a full sentence.
 Images should never be the sole means of conveying information and should only supplement the text.
 Avoid screenshots or other images that might quickly go out of date and that create a maintenance burden on documentation. Provide text equivalents for every diagram, image, or other non-text element. Avoid using images of text instead of actual text.
 ////
