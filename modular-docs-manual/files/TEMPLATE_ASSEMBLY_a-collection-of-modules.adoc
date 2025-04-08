@@ -8,7 +8,7 @@ ifdef::context[:parent-context: {context}]
 
 
 ////
-Metadata attribute that will help enable correct parsing and conversion to the appropriate DITA element.
+Metadata attribute that will help enable correct parsing and conversion to the appropriate DITA topic type.
 ////
 :_mod-docs-content-type: ASSEMBLY
 
@@ -18,22 +18,18 @@ Metadata attribute that will help enable correct parsing and conversion to the a
 * ID: [id="assembly-my-user-story_{context}"]
 * Title: = My user story
 
-The ID is an anchor that links to the module. Avoid changing it after the module has been published to ensure existing links are not broken. Include {context} in the ID so the assembly can be reused.
+ID is a unique identifier that can be used to reference this assembly. Avoid changing it after the module has been published to ensure existing links are not broken. Include {context} in the ID so the assembly can be reused.
+
+Be sure to include a line break between the title and the :context: variable and the :context: variable and the assembly introduction.
+If the assembly covers a task, start the title with a verb in the gerund form, such as Creating or Configuring.
 ////
 [id="assembly-my-user-story_{context}"]
 = My user story
-
-////
-Be sure to include a line break between the title and the :context: variable and the :context: variable and the assembly introduction.
-
-If the assembly covers a task, start the title with a verb in the gerund form, such as Creating or Configuring.
-////
-
-:context: assembly-keyword
-
 ////
 The `context` attribute enables module reuse. Every module ID includes {context}, which ensures that the module has a unique ID so you can include it multiple times in the same guide.
 ////
+
+:context: assembly-keyword
 
 This paragraph is the assembly introduction. It explains what the user will accomplish by working through the modules in the assembly and sets the context for the user story the assembly is based on.
 
@@ -47,16 +43,15 @@ This paragraph is the assembly introduction. It explains what the user will acco
 
 ////
 The following include statements pull in the module files that comprise the assembly. Include any combination of concept, procedure, or reference modules required to cover the user story. You can also include other assemblies.
+
+[leveloffset=+1] ensures that when a module title is a level 1 heading (= Title), the heading will be interpreted as a level-2 heading (== Title) in the assembly. Use [leveloffset=+2] and [leveloffset=+3] to nest modules in an assembly.
+
+ Add a blank line after each 'include::' statement.
 ////
 
 include::modules/TEMPLATE_CONCEPT_explaining_a_concept.adoc[leveloffset=+1]
 
-////
-[leveloffset=+1] ensures that when a module title is a level 1 heading (= Title), the heading will be interpreted as a level-2 heading (== Title) in the assembly. Use [leveloffset=+2] and [leveloffset=+3] to nest modules in an assembly.
-////
-
 include::modules/TEMPLATE_PROCEDURE_doing_one_procedure.adoc[leveloffset=+2]
-// Add a blank line after each 'include::' statement.
 
 include::modules/TEMPLATE_PROCEDURE_reference-material.adoc[leveloffset=+2]
 
