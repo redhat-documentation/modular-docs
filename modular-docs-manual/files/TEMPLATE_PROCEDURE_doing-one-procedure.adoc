@@ -33,7 +33,7 @@ Write a short introductory paragraph that provides an overview of the module. Th
 
 .Procedure
 . Make each step an instruction.
-. Include one imperative sentences for each step, for example:
+. Include one imperative sentence for each step, for example:
 .. Do this thing and then select *Next*.
 .. Do this other thing, and this other thing, and then select *Next*.
 . Use an unnumbered bullet (*) if the procedure includes only one step.
@@ -43,7 +43,6 @@ NOTE: You can add text, tables, code examples, images, and other items to a step
 ////
 Only the following block headings can be reliably mapped to DITA: Prerequisites, Procedure, Verification, Troubleshooting, Troubleshooting steps, Next steps, Next step, Additional resources. They must appear in this order and, with the exception of Additional resources, are only allowed in a procedure module. You can also use block headings in figure, table, and example titles.
 ////
-
 
 .Verification
 Delete this section if it does not apply to your module. Provide the user with verification methods for the procedure, such as expected output or commands that confirm success or failure.
@@ -59,23 +58,8 @@ Delete this section if it does not apply to your module. Provide the user with t
 * Make each step an instruction.
 * Use an unnumbered bullet (*) if the troubleshooting includes only one step.
 
-
 .Next steps
-* Provide a bulleted list of links that contain instructions that might be useful to the user after they complete this procedure.
-* Use an unnumbered bullet (*) if the list includes only one step.
-
-Delete this section if it does not apply to your module. Provide the user with verification methods for the procedure, such as expected output or commands that confirm success or failure.
-
-* Provide an example of expected command output or a pop-up window that the user receives when the procedure is successful.
-* List actions for the user to complete, such as entering a command, to determine the success or failure of the procedure.
-* Make each step an instruction.
-* Include one command or action per step.
-* Use an unnumbered bullet (*) if the verification includes only one step.
-
-[role="_additional-resources"]
-.Next steps
-
-* This section is optional.
+* Delete this section if it does not apply to your module.
 * Provide a bulleted list of links that contain instructions that might be useful to the user after they complete this procedure.
 * Use an unnumbered bullet (*) if the list includes only one step.
 

@@ -32,7 +32,7 @@ AsciiDoc markup to consider for reference data:
 .Unordered list
 * For more details on writing reference modules, see the link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
 * Use a consistent system for file names, IDs, and titles.
-For tips, see _Anchor Names and File Names_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
+For tips, see _File names and anchors_ in link:https://github.com/redhat-documentation/modular-docs#modular-documentation-reference-guide[Modular Documentation Reference Guide].
 
 .Labeled list
 Term 1:: Definition
