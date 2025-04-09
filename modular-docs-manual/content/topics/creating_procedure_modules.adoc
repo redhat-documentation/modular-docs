@@ -29,10 +29,6 @@ The introduction typically provides context for the procedure, such as:
 
 For details and examples, see the link:https://redhat-documentation.github.io/supplementary-style-guide/#shortdesc[Short descriptions] section in the Red&nbsp;Hat supplementary style guide.
 
-[id="limitations"]
-.Limitations
-This section is optional and not used often. If there are any limitations that affect the procedure, list them in this section. Use a bulleted list for limitations and the plural heading *Limitations*, even if your procedure only has a single limitation.
-
 [id="prerequisites"]
 .Prerequisites
 This section is optional. Prerequisites are a bulleted list of conditions that must be satisfied before the user starts the procedure. Use a bulleted list for prerequisites and the plural heading *Prerequisites*, even if your procedure only has a single prerequisite.
