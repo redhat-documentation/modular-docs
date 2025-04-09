@@ -13,6 +13,11 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 // link:<URL of the GitHub issue associated with this change>
 
 [discrete]
+== 2025: April
+
+* Removed 'Limitations' section from the Procedure section.
+* Updated the comments in the templates to provide guidance to prepare for migration to DITA.
+
 == 2024: January
 
 * Removed the `*[role="_abstract"]*` tag from the templates (regression).
