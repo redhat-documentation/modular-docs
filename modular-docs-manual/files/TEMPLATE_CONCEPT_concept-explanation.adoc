@@ -23,6 +23,7 @@ Be sure to include a line break between the title and the module introduction.
 In the title of concept modules, include nouns or noun phrases that are used in the body text. This helps readers and search engines find the information quickly. Do not start the title of concept modules with a verb or gerund. See also _Wording of headings_ in _IBM Style_.
 ////
 
+[role="_abstract"]
 Write a short introductory paragraph that provides an overview of the module.
 
 The contents of a concept module give the user descriptions and explanations needed to understand and use a product.
