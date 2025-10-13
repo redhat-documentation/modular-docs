@@ -11,6 +11,11 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 //
 // * <Brief description of change. Include an inline link to the relevant section of the guide.>
 // link:<URL of the GitHub issue associated with this change>
+[discrete]
+== 2025: October
+* Removed references to the [discrete] tag for concept and reference modules.
+* Updated the optional sections in the Procedure module section.
+
 
 [discrete]
 == 2025: April
