@@ -4,14 +4,13 @@
 
 Procedure modules explain how to do something. A procedure module contains numbered, step-by-step instructions to help users accomplish a single task. Sometimes those tasks include substeps. Procedure modules must include a title, a brief introduction, and one or more steps in the form of imperative statements. Procedure modules can also contain the following sections:
 
-* xref:limitations[]
 * xref:prerequisites[]
 * xref:verification[]
 * xref:troubleshooting[]
 * xref:next-steps[]
 * xref:additional-resources[]
 
-Do not change or embellish these subheadings. Unless absolutely necessary, do not create additional subheadings.
+Do not change or embellish these subheadings. Do not create additional subheadings.
 
 .Schema of a procedure module
 image::procedure-diagram.png[]
@@ -44,18 +43,18 @@ This section is required. The procedure consists of one or more steps required t
 NOTE: Not all numbered lists in documentation are procedures. You can also use numbered lists in any module type for non-procedural sequences, such as a process flow of system actions.
 
 [id="verification"]
-.Verification
+.Verification, Results, or Result
 This section is optional. It provides the user with one or more steps to verify that the procedure provided the intended outcome, for example:
 
 * An example of expected command output or a pop-up window that the user receives when the procedure is successful
 * Actions for the user to complete, such as entering a command, to determine the success or failure of the procedure
 
 [id="troubleshooting"]
-.Troubleshooting
+.Troubleshooting, Troubleshooting steps, or Troubleshooting step
 This section is optional and not used often. List any actions that can help with troubleshooting the procedure. This subsection should be short. Consider whether the information might be better in a separate troubleshooting procedure or as part of a reference module that contains other troubleshooting sections.
 
 [id="next-steps"]
-.Next steps
+.Next steps or Next step
 This section is optional. Provide links to resources that contain instructions that might be useful to the user after they complete this procedure.
 
 NOTE: Do not use *Next steps* to provide a second list of instructions.

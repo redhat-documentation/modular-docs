@@ -36,24 +36,9 @@ Avoid including instructions to perform an action. Action items belong in proced
 
 See also link:https://informationmapping.com/blogs/news/the-dita-topic-types-square-pegs-and-round-holes?_pos=1&_sid=45011393d&_ss=r[The DITA Topic Types] at _informationmapping.com_ for more information about different types of conceptual information: principle, concept, structure, process, and fact.
 
-If the concept module is large and complex, consider splitting the concept module into multiple standalone concept modules. If you cannot split the module into meaningful standalone modules, consider using subheadings in the module to structure the content for improved reader navigation. If you use subheadings in a concept module, you can add the `[discrete]` tag to exclude each subheading from the table of contents, if needed. However, in many cases, subheadings are helpful to include in the table of contents to improve content searchability.
+If the concept module is large and complex, consider splitting the concept module into multiple standalone concept modules. If you cannot split the module into meaningful standalone modules, consider using subheadings in the module to structure the content for improved reader navigation. In many cases, subheadings are helpful to include in the table of contents to improve content searchability.
 
-The following examples illustrate a discrete and a standard subheading:
-
-.Example discrete subheading excluded from table of contents
-[source]
-----
-= My concept module
-
-Concept introduction and body
-
-[discrete]
-== My concept module subheading
-
-More concept body content
-----
-
-.Example subheading included in table of contents
+.Example subheading
 [source]
 ----
 = My concept module
