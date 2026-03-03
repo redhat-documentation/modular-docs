@@ -34,7 +34,7 @@ Use the second level heading syntax for the Prerequisites section in the assembl
 [discrete]
 == Assembly modules
 
-To include modules in an assembly, use the Asciidoc  link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include directive]. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly. Use the `leveloffset` attribute to set the hierarchy of the module relative to the assembly, as shown in the following example:
+To include modules in an assembly, use the Asciidoc link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#include-files[include directive]. Use any combination of concept, procedure, and reference modules that fulfills the purpose of the assembly. Use the `leveloffset` attribute to set the hierarchy of the module relative to the assembly, as shown in the following example:
 
 .Level offset for module files
 ----
@@ -46,11 +46,9 @@ file3.adoc[leveloffset=+3]
 All module and assembly titles must use the H1 heading designation, such as `= My heading`.
 
 [discrete]
-
-
-== Next steps and Additional resources
-These sections are optional. If you use both *Next steps* and *Additional resources*, list *Next steps* first. The listed resources link to other material closely related to the contents of the module, such as other documentation resources, instructional videos, or labs.
+== Additional resources
+This section is optional. The listed resources link to other material closely related to the contents of the module, such as other documentation resources, instructional videos, or labs. To ensure the content is DITA-compatible, do not use any non-link text in this section.
 
 Focus on relevant resources that might interest the user. Do not list resources for completeness. If a resource applies to all of the modules in a user story, consider listing the resource in the Additional resources section of the assembly file. If you do this, consider including the resource in the procedure module as a comment.
 
-NOTE: If you use *Next steps* or *Additional resources* in an assembly file, check whether the last module in the assembly also has *Next steps* or *Additional resources*. If so, view the rendered HTML and consider rewriting or reorganizing the assembly.
+NOTE: If you use *Additional resources* in an assembly file, check whether the last module in the assembly also has *Additional resources*. If so, view the rendered HTML and consider rewriting or reorganizing the assembly.
