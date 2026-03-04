@@ -31,7 +31,7 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 == 2025: April
 
 * Removed the *Limitations* section from the Procedure section.
-* Updated the comments in the templates to provide guidance to prepare for migration to DITA.
+* Updated comments in the templates to guide migration preparations to DITA.
 
 [discrete]
 == 2024: January
@@ -69,7 +69,7 @@ link:https://github.com/redhat-documentation/modular-docs/pull/201[#201]
 [discrete]
 == 2022: September
 
-* Added a guidance for *assembly titles*.
+* Added guidance for *assembly titles*.
 link:https://github.com/redhat-documentation/modular-docs/pull/192[#192]
 
 [discrete]
@@ -105,7 +105,7 @@ link:https://github.com/redhat-documentation/modular-docs/pull/150[#150]
 [discrete]
 == 2021: June
 
-* Added a guidance for *text snippets* and a convention that *modules should not contain other modules*.
+* Added guidance for *text snippets* and a convention that *modules should not contain other modules*.
 link:https://github.com/redhat-documentation/modular-docs/pull/161[#161]
 
 [discrete]
