@@ -23,6 +23,11 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 * Updated the optional sections in the Procedure module section.
 
 [discrete]
+== 2025: September
+
+* Re-introduced the `[role="_abstract"]` tag in the templates to mark a paragraph containing a DITA-compatible short description.
+
+[discrete]
 == 2025: April
 
 * Removed the *Limitations* section from the Procedure section.
