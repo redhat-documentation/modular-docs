@@ -14,7 +14,7 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 [discrete]
 == 2026: February
 
-* Removed references the Next steps section from the assembly guidelines and template to avoid a confusing order in DITA.
+* Removed the Next steps section from the assembly guidelines and template to avoid a confusing order in DITA.
 
 [discrete]
 == 2025: October
