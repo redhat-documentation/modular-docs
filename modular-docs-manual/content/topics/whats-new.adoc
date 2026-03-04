@@ -19,19 +19,19 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 [discrete]
 == 2025: October
 
-* Removed references to the [discrete] tag for concept and reference modules.
+* Removed references to the `[discrete]` tag for concept and reference modules.
 * Updated the optional sections in the Procedure module section.
 
 [discrete]
 == 2025: April
 
-* Removed 'Limitations' section from the Procedure section.
+* Removed the *Limitations* section from the Procedure section.
 * Updated the comments in the templates to provide guidance to prepare for migration to DITA.
 
 [discrete]
 == 2024: January
 
-* Removed the `*[role="_abstract"]*` tag from the templates (regression).
+* Removed the `[role="_abstract"]` tag from the templates (regression).
 link:https://github.com/redhat-documentation/modular-docs/pull/222[#222]
 
 [discrete]
