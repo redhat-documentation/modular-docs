@@ -1,4 +1,4 @@
-[id="whats-new_{context}"]
+[id="whats-new"]
 = What's new
 
 The following list summarizes significant changes to the modular documentation standard over time.
