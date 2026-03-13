@@ -1,4 +1,4 @@
-[id="whats-new_{context}"]
+[id="whats-new"]
 = What's new
 
 The following list summarizes significant changes to the modular documentation standard over time.
@@ -14,24 +14,29 @@ For a complete list of changes, see link:https://github.com/redhat-documentation
 [discrete]
 == 2026: February
 
-* Removed references the Next steps section from the assembly guidelines and template to avoid a confusing order in DITA.
+* Removed the Next steps section from the assembly guidelines and template to avoid a confusing order in DITA.
 
 [discrete]
 == 2025: October
 
-* Removed references to the [discrete] tag for concept and reference modules.
+* Removed references to the `[discrete]` tag for concept and reference modules.
 * Updated the optional sections in the Procedure module section.
+
+[discrete]
+== 2025: September
+
+* Re-introduced the `[role="_abstract"]` tag in the templates to mark a paragraph containing a DITA-compatible short description.
 
 [discrete]
 == 2025: April
 
-* Removed 'Limitations' section from the Procedure section.
-* Updated the comments in the templates to provide guidance to prepare for migration to DITA.
+* Removed the *Limitations* section from the Procedure section.
+* Updated comments in the templates to guide migration preparations to DITA.
 
 [discrete]
 == 2024: January
 
-* Removed the `*[role="_abstract"]*` tag from the templates (regression).
+* Removed the `[role="_abstract"]` tag from the templates (regression).
 link:https://github.com/redhat-documentation/modular-docs/pull/222[#222]
 
 [discrete]
@@ -64,7 +69,7 @@ link:https://github.com/redhat-documentation/modular-docs/pull/201[#201]
 [discrete]
 == 2022: September
 
-* Added a guidance for *assembly titles*.
+* Added guidance for *assembly titles*.
 link:https://github.com/redhat-documentation/modular-docs/pull/192[#192]
 
 [discrete]
@@ -100,7 +105,7 @@ link:https://github.com/redhat-documentation/modular-docs/pull/150[#150]
 [discrete]
 == 2021: June
 
-* Added a guidance for *text snippets* and a convention that *modules should not contain other modules*.
+* Added guidance for *text snippets* and a convention that *modules should not contain other modules*.
 link:https://github.com/redhat-documentation/modular-docs/pull/161[#161]
 
 [discrete]
